@@ -10,6 +10,8 @@ public class Player : MonoBehaviour{
     public DetectObject detectObject;
     public GamePlayManager Gpm;
 
+    public  TextMeshP Tmp;
+
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
@@ -39,7 +41,9 @@ public class Player : MonoBehaviour{
         //MainMove();   //Movimento del PLayer tramite WASD
         if (Name == Gpm.Name)
         {
-            Debug.Log("pirla funziona "+Gpm.Name);
+            Tmp.SetName(Gpm.Name);
+            Debug.Log(Tmp.NamePlayer);
+            //Debug.Log("pirla funziona "+Tmp.NamePlayer);
             MainMove2();    //Movimento del Player tramite Doppio Click
 
         }

@@ -213,13 +213,13 @@ public class GamePlayManager : MonoBehaviour
                     Name = "Green";
                     break;
                 case PlayerTurn.P2:
-                    Name = "Yellow";
-                    break;
-                case PlayerTurn.P3:
                     Name = "Blue";
                     break;
-                case PlayerTurn.P4:
+                case PlayerTurn.P3:
                     Name = "Red";
+                    break;
+                case PlayerTurn.P4:
+                    Name = "Yellow";
                    
                     break;
             }
