@@ -98,6 +98,18 @@ public class Grid : MonoBehaviour {
         return Cells.Find(c => c.X == w && c.Z == h);
     }
 
+    public Vector3 GetCenterPosition()
+    {
+        foreach (CellData cell in Cells)
+        {
+            if (cell.X == Width / 2 && cell.Z == Height / 2)
+            {
+                return cell.WorldPosition;
+            }
+        }
+        return Cells[0].WorldPosition;
+    }
+
     public Vector3 GetWorldPosition(int x, int z)
     {
         foreach (CellData cell in Cells)

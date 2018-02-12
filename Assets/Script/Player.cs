@@ -15,6 +15,7 @@ public class Player : MonoBehaviour{
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
+    public int Life = 5;
 
     int XPos_old;
     int ZPos_old;
@@ -27,11 +28,9 @@ public class Player : MonoBehaviour{
     void Start()
     {
         SetPositionPlayer();
-        transform.position = grid.GetWorldPosition(XPos, ZPos); //Setto la posizione del player
+        transform.position = grid.GetCenterPosition(); //Setto la posizione del player
         transform.position += new Vector3(0f, 0.55f, 0f);   //Fix posizione Y del player
-        grid.FindCell(XPos, ZPos).SetValidity(false);   //Siccome il player è sopra a una casella, nessun altro giocatore potrà andarci sopra
-
-
+        //grid.FindCell(XPos, ZPos).SetValidity(false);   //Siccome il player è sopra a una casella, nessun altro giocatore potrà andarci sopra
         
     }
 
@@ -46,6 +45,17 @@ public class Player : MonoBehaviour{
             //Debug.Log("pirla funziona "+Tmp.NamePlayer);
             MainMove2();    //Movimento del Player tramite Doppio Click
 
+            // Morte
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Life--;
+            }
+            if (Life <= 0)
+            {
+                transform.position = grid.GetCenterPosition();
+                transform.position += new Vector3(0f, 0.55f, 0f);
+            }
+
         }
         //playerStatistiche.SetDistace(Name, DistanceMove);   //Setto il movimento del player // Da rivedere in futuro
     }
@@ -58,7 +68,7 @@ public class Player : MonoBehaviour{
             Vector3 globalPosition = grid.GetWorldPosition(XPos, ZPos);
             globalPosition += new Vector3(0f, 0.55f, 0f); ;
             transform.DOMove(globalPosition, 0.6f).SetEase(Ease.Linear);
-            grid.FindCell(XPos, ZPos).SetValidity(false);
+            //grid.FindCell(XPos, ZPos).SetValidity(false);
             detectObject.CorrectMove = false;
 
             // Finito il movimento passa alla fase successiva
@@ -159,7 +169,9 @@ public class Player : MonoBehaviour{
 
     //Set Position Player
     void SetPositionPlayer() {
-        switch (Name) {
+        XPos = grid.Width / 2;
+        ZPos = grid.Height / 2;
+        /*switch (Name) {
             case "Green":
                 XPos = 0;
                 ZPos = 0;
@@ -176,6 +188,6 @@ public class Player : MonoBehaviour{
                 XPos = grid.GetWidth() - 1;
                 ZPos = grid.GetHeight() - 1;
                 break;
-        }
+        }*/
     }
 }
