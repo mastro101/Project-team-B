@@ -66,14 +66,14 @@ public class Grid : MonoBehaviour {
 
     // Imposta la posizione delle città sulla griglia
     void SetCity() {
-        FindCell(0, 2).SetNameTile("A");
-        FindCell(2, 1).SetNameTile("B");
-        FindCell(3, 3).SetNameTile("C");
-        FindCell(4, 0).SetNameTile("D");
-        FindCell(4, 4).SetNameTile("E");
-        FindCell(6, 3).SetNameTile("F");
-        FindCell(7, 1).SetNameTile("G");
-        FindCell(9, 2).SetNameTile("H");
+        FindCell(6, 1).SetNameTile("A");
+        FindCell(3, 3).SetNameTile("B");
+        FindCell(9, 3).SetNameTile("C");
+        FindCell(1, 6).SetNameTile("D");
+        FindCell(11, 6).SetNameTile("E");
+        FindCell(3, 9).SetNameTile("F");
+        FindCell(9, 9).SetNameTile("G");
+        FindCell(6, 11).SetNameTile("H");
     }
 
     public int GetWidth() {
