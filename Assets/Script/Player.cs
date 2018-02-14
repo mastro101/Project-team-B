@@ -118,9 +118,9 @@ public class Player : MonoBehaviour{
         int ObjectX = detectObject.GetX();
         int ObjectZ = detectObject.GetZ();
         DistanceMove = playerStatistiche.GetDistance();
-        if (detectObject.CorrectMove == true) {
+        if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
 
-            if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).GetValidity())
+            if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
             { //SU
                 grid.FindCell(XPos, ZPos).SetValidity(true);
 
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour{
                 ZPos += DistanceMove;
                 Move();
             }
-            else if (ObjectX == XPos && ObjectZ + 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).GetValidity())
+            else if (ObjectX == XPos && ObjectZ + 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true)
             { //GIU
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour{
                 ZPos -= DistanceMove;
                 Move();
             }
-            else if (ObjectX + 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).GetValidity())
+            else if (ObjectX + 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true)
             { //SINISTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
@@ -152,7 +152,7 @@ public class Player : MonoBehaviour{
                 XPos -= DistanceMove;
                 Move();
             }
-            else if (ObjectX - 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).GetValidity())
+            else if (ObjectX - 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true)
             { //DESTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);

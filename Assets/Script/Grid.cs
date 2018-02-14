@@ -36,6 +36,7 @@ public class Grid : MonoBehaviour {
         }
 
         SetCity();
+        SetWalls();
 
         // Rende visibile la griglia
         for (int _x = 0; _x < x; _x++)
@@ -74,6 +75,12 @@ public class Grid : MonoBehaviour {
         FindCell(3, 9).SetNameTile("F");
         FindCell(9, 9).SetNameTile("G");
         FindCell(6, 11).SetNameTile("H");
+    }
+
+    void SetWalls()
+    {
+        Center().SetWalls(0);
+        FindCell(6, 7).SetWalls(2);
     }
 
     public int GetWidth() {

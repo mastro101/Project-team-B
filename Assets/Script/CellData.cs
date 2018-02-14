@@ -9,6 +9,7 @@ public class CellData
     public int Z;
     public Vector3 WorldPosition;
     public bool IsValid = true;
+    public bool[] Walls = new bool[4];
     public string NameTile;
 
     public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile)
@@ -38,5 +39,14 @@ public class CellData
         return NameTile;
     }
 
+    public void SetWalls(int i)
+    {
+        Walls[i] = true;
+    }
 
+    public void SetWalls(int i, int n)
+    {
+        Walls[i] = true;
+        Walls[n] = true;
+    }
 }
