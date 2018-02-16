@@ -21,6 +21,8 @@ public class GamePlayManager : MonoBehaviour
     {
         Movement,
         Event,
+        Object,
+        Combat,
         End,
     }
 
@@ -85,6 +87,12 @@ public class GamePlayManager : MonoBehaviour
             case State.Event:
                 Debug.Log("Enter" + CurrentState);
                 break;
+            case State.Object:
+                Debug.Log("Enter" + CurrentState);
+                break;
+            case State.Combat:
+                Debug.Log("Enter" + CurrentState);
+                break;
             case State.End:
                 Debug.Log("Enter" + CurrentState);
                 break;
@@ -105,6 +113,12 @@ public class GamePlayManager : MonoBehaviour
                 break;
             case State.Event:
                 Debug.Log("Event");
+                break;
+            case State.Object:
+                Debug.Log("Object");
+                break;
+            case State.Combat:
+                Debug.Log("Combat");
                 break;
             case State.End:
                 Debug.Log("End");
@@ -127,6 +141,12 @@ public class GamePlayManager : MonoBehaviour
                 break;
             case State.Event:
                 Debug.Log("Exit" + CurrentState);
+                break;
+            case State.Object:
+                Debug.Log("Enter" + CurrentState);
+                break;
+            case State.Combat:
+                Debug.Log("Enter" + CurrentState);
                 break;
             case State.End:
                 Debug.Log("Exit" + CurrentState);
@@ -153,10 +173,18 @@ public class GamePlayManager : MonoBehaviour
                 if (CurrentState != State.Movement)
                     return false;
                 return true;
-            case State.End:
+            case State.Object:
                 if (CurrentState != State.Event)
                     return false;
                 return true;
+            case State.Combat:
+                if (CurrentState != State.Event)
+                    return false;
+                return true;
+            case State.End:
+                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat)
+                    return true;
+                return false;
             default:
                 return false;
         }

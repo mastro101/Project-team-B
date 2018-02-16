@@ -49,4 +49,6 @@ public class CellData
         Walls[i] = true;
         Walls[n] = true;
     }
+
+
 }

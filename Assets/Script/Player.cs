@@ -43,6 +43,7 @@ public class Player : MonoBehaviour{
             Tmp.SetName(Gpm.Name);
             Debug.Log(Tmp.NamePlayer);
             //Debug.Log("pirla funziona "+Tmp.NamePlayer);
+            if (Gpm.CurrentState == GamePlayManager.State.Movement)
             MainMove2();    //Movimento del Player tramite Doppio Click
 
             // Morte
@@ -54,6 +55,9 @@ public class Player : MonoBehaviour{
             {
                 transform.position = grid.GetCenterPosition();
                 transform.position += new Vector3(0f, 0.55f, 0f);
+                XPos = 6;
+                ZPos = 6;
+                Life = 5;
             }
 
         }

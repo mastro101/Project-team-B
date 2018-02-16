@@ -435,7 +435,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 679326096}
   m_LocalRotation: {x: 0.43516818, y: 0, z: 0, w: 0.9003492}
-  m_LocalPosition: {x: 9.39, y: 11.33, z: -2.66}
+  m_LocalPosition: {x: 12.54, y: 13.78, z: -4.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -845,8 +845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tile: {fileID: 1717533534166888, guid: a05cf6bb237473544b432d0b47fc564f, type: 2}
+  Wall: {fileID: 1652642082125686, guid: cc6b00a0b1c424545882f755665dc0e4, type: 2}
   Cells: []
-  CellSize: 2
+  CellSize: 1
   NameTile: 
   Width: 13
   Height: 13

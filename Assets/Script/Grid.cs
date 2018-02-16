@@ -5,6 +5,7 @@ using UnityEngine;
 public class Grid : MonoBehaviour {
 
     public GameObject Tile;
+    public GameObject Wall;
     public List<CellData> Cells = new List<CellData>();
     public float CellSize = -1;
     public string NameTile;
@@ -58,7 +59,21 @@ public class Grid : MonoBehaviour {
                     ControlCity = FindCell(_x, _z).GetNameTile();
                     if (ControlCity != "")
                         tile.GetComponent<Renderer>().material.color = Color.red;
-                        Debug.Log(ControlCity);
+                    Debug.Log(ControlCity);
+
+                    // Crea Muri (Provvisorio)
+                    if (cell.Walls[0] == true)
+                    {
+                        GameObject wall = (GameObject)Instantiate(Wall);
+                        wall.transform.position = cell.WorldPosition + new Vector3(0, 0.5f, 1);
+                    }
+                    if (cell.Walls[1] == true)
+                    {
+                        GameObject wall = (GameObject)Instantiate(Wall);
+                        wall.transform.position = cell.WorldPosition + new Vector3(1, 0.5f, 0);
+                        wall.transform.rotation = Quaternion.Euler(0, 90, 0);
+                    }
+
                 }
             }
         }
@@ -81,6 +96,8 @@ public class Grid : MonoBehaviour {
     {
         Center().SetWalls(0);
         FindCell(6, 7).SetWalls(2);
+        FindCell(7, 7).SetWalls(1);
+        FindCell(8, 7).SetWalls(3);
     }
 
     public int GetWidth() {
