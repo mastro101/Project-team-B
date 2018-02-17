@@ -6,6 +6,7 @@ public class Grid : MonoBehaviour {
 
     public GameObject Tile;
     public GameObject Wall;
+    public GameObject Tower;
     public List<CellData> Cells = new List<CellData>();
     public float CellSize = -1;
     public string NameTile;
@@ -14,16 +15,17 @@ public class Grid : MonoBehaviour {
     public float DistanceTile;
 
 
-
     private void Awake()
     {
         Cells = new List<CellData>();
         GridSize(Width, Height);
+        SetTower();
     }
 
     void GridSize(int x, int z)
     {
         string ControlCity;
+        bool ControlEnemy = false;
 
         CellSize = Tile.transform.localScale.x + DistanceTile;
 
@@ -32,12 +34,13 @@ public class Grid : MonoBehaviour {
             for (int _z = 0; _z < z; _z++)
             {
                 
-                Cells.Add(new CellData(_x, _z, new Vector3(_x * CellSize, transform.position.y, _z * CellSize), NameTile));
+                Cells.Add(new CellData(_x, _z, new Vector3(_x * CellSize, transform.position.y, _z * CellSize), NameTile, false));
             }
         }
 
         SetCity();
         SetWalls();
+        SetEnemyPoint();
 
         // Rende visibile la griglia
         for (int _x = 0; _x < x; _x++)
@@ -59,6 +62,11 @@ public class Grid : MonoBehaviour {
                     ControlCity = FindCell(_x, _z).GetNameTile();
                     if (ControlCity != "")
                         tile.GetComponent<Renderer>().material.color = Color.red;
+
+                    // Colora i nemici
+                    ControlEnemy = FindCell(_x, _z).GetEnemy();
+                    if (ControlEnemy)
+                        tile.GetComponent<Renderer>().material.color = Color.blue;
                     Debug.Log(ControlCity);
 
                     // Crea Muri (Provvisorio)
@@ -94,10 +102,72 @@ public class Grid : MonoBehaviour {
 
     void SetWalls()
     {
-        Center().SetWalls(0);
-        FindCell(6, 7).SetWalls(2);
-        FindCell(7, 7).SetWalls(1);
-        FindCell(8, 7).SetWalls(3);
+
+        FindCell(6, 3).SetWalls(0);
+        FindCell(6, 4).SetWalls(2);
+
+        FindCell(6, 8).SetWalls(0);
+        FindCell(6, 9).SetWalls(2);
+
+        FindCell(3, 6).SetWalls(1);
+        FindCell(4, 6).SetWalls(3);
+
+        FindCell(8, 6).SetWalls(1);
+        FindCell(9, 6).SetWalls(3);
+
+    }
+
+    void SetEnemyPoint() {
+        FindCell(0, 0).SetEnemy(true);
+        FindCell(0, 2).SetEnemy(true);
+        FindCell(2, 0).SetEnemy(true);
+        FindCell(3, 0).SetEnemy(true);
+        FindCell(4, 0).SetEnemy(true);
+
+        FindCell(0, 8).SetEnemy(true);
+        FindCell(0, 9).SetEnemy(true);
+        FindCell(0, 10).SetEnemy(true);
+        FindCell(0, 12).SetEnemy(true);
+        FindCell(12, 2).SetEnemy(true);
+
+        FindCell(0, 10).SetEnemy(true);
+        FindCell(0, 12).SetEnemy(true);
+        FindCell(2, 12).SetEnemy(true);
+        FindCell(3, 12).SetEnemy(true);
+        FindCell(4, 12).SetEnemy(true);
+
+        FindCell(10, 12).SetEnemy(true);
+        FindCell(12, 12).SetEnemy(true);
+        FindCell(12, 8).SetEnemy(true);
+        FindCell(12, 9).SetEnemy(true);
+        FindCell(12, 10).SetEnemy(true);
+    }
+
+    void SetTower() {
+        FindCell(5, 5).SetValidity(false);
+        FindCell(5, 7).SetValidity(false);
+        FindCell(7, 5).SetValidity(false);
+        FindCell(7, 7).SetValidity(false);
+
+        CellData cell;
+        GameObject Tower1 = (GameObject)Instantiate(Tower);
+
+        cell = FindCell(5, 5);
+        Tower1.transform.position = cell.WorldPosition;
+
+        cell = FindCell(5, 7);
+        Tower1 = (GameObject)Instantiate(Tower);
+        Tower1.transform.position = cell.WorldPosition;
+
+        cell = FindCell(7, 5);
+        Tower1 = (GameObject)Instantiate(Tower);
+        Tower1.transform.position = cell.WorldPosition;
+
+        cell = FindCell(7, 7);
+        Tower1 = (GameObject)Instantiate(Tower);
+        Tower1.transform.position = cell.WorldPosition;
+
+
     }
 
     public int GetWidth() {

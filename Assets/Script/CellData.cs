@@ -11,13 +11,15 @@ public class CellData
     public bool IsValid = true;
     public bool[] Walls = new bool[4];
     public string NameTile;
+    public bool Enemy;
 
-    public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile)
+    public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile, bool enemy)
     {
         X = _xPos;
         Z = _zPos;
         WorldPosition = _worldPosition;
         NameTile = tile;
+        Enemy = enemy;
     }
 
     public void SetValidity(bool _isValid)
@@ -48,6 +50,16 @@ public class CellData
     {
         Walls[i] = true;
         Walls[n] = true;
+    }
+
+    public void SetEnemy(bool _isEnemy)
+    {
+        Enemy = _isEnemy;
+    }
+
+    public bool GetEnemy()
+    {
+        return Enemy;
     }
 
 

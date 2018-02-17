@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Player : MonoBehaviour{
 
     public Grid grid;
-    public PlayerStatistiche playerStatistiche;
+    //public PlayerStatistiche playerStatistiche;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
 
@@ -24,12 +24,14 @@ public class Player : MonoBehaviour{
 
     public string Name; //Indica il nome del Player
 
+    public float _Yoffset;
+
 
     void Start()
     {
         SetPositionPlayer();
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
-        transform.position += new Vector3(0f, 0.55f, 0f);   //Fix posizione Y del player
+        transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         //grid.FindCell(XPos, ZPos).SetValidity(false);   //Siccome il player è sopra a una casella, nessun altro giocatore potrà andarci sopra
         
     }
@@ -44,7 +46,8 @@ public class Player : MonoBehaviour{
             Debug.Log(Tmp.NamePlayer);
             //Debug.Log("pirla funziona "+Tmp.NamePlayer);
             if (Gpm.CurrentState == GamePlayManager.State.Movement)
-            MainMove2();    //Movimento del Player tramite Doppio Click
+            MainMove2();    //Movimento del Player tramite Click
+            MainMove3();
 
             // Morte
             if (Input.GetKeyDown(KeyCode.A))
@@ -54,7 +57,7 @@ public class Player : MonoBehaviour{
             if (Life <= 0)
             {
                 transform.position = grid.GetCenterPosition();
-                transform.position += new Vector3(0f, 0.55f, 0f);
+                transform.position += new Vector3(0f, _Yoffset, 0f);
                 XPos = 6;
                 ZPos = 6;
                 Life = 5;
@@ -70,7 +73,7 @@ public class Player : MonoBehaviour{
         if (grid.IsValidPosition(XPos, ZPos))
         {
             Vector3 globalPosition = grid.GetWorldPosition(XPos, ZPos);
-            globalPosition += new Vector3(0f, 0.55f, 0f); ;
+            globalPosition += new Vector3(0f, _Yoffset, 0f); ;
             transform.DOMove(globalPosition, 0.6f).SetEase(Ease.Linear);
             //grid.FindCell(XPos, ZPos).SetValidity(false);
             detectObject.CorrectMove = false;
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour{
     void MainMove() {
         XPos_old = XPos;
         ZPos_old = ZPos;
-        DistanceMove = playerStatistiche.GetDistance();
+        //DistanceMove = playerStatistiche.GetDistance();
         if (Input.GetKeyDown(KeyCode.A))//Sinistra
         {
             XPos -= DistanceMove;
@@ -121,7 +124,9 @@ public class Player : MonoBehaviour{
         //Debug.Log(detectObject.GetX() + " - " + detectObject.GetZ());
         int ObjectX = detectObject.GetX();
         int ObjectZ = detectObject.GetZ();
-        DistanceMove = playerStatistiche.GetDistance();
+
+        DistanceMove = 1;
+        //DistanceMove = playerStatistiche.GetDistance();
         if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
 
             if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
@@ -168,6 +173,63 @@ public class Player : MonoBehaviour{
                 Move();
             }
         } 
+    }
+
+    void MainMove3()
+    {
+        //Debug.Log(detectObject.GetX() + " - " + detectObject.GetZ());
+        int ObjectX = detectObject.GetX();
+        int ObjectZ = detectObject.GetZ();
+
+        DistanceMove = 2;
+        //DistanceMove = playerStatistiche.GetDistance();
+        if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity())
+        {
+
+            if (ObjectX == XPos && ObjectZ - 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
+            { //SU
+                grid.FindCell(XPos, ZPos).SetValidity(true);
+
+                XPos_old = XPos;
+                ZPos_old = ZPos;
+
+                ZPos += DistanceMove;
+                Move();
+            }
+            else if (ObjectX == XPos && ObjectZ + 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true)
+            { //GIU
+
+                grid.FindCell(XPos, ZPos).SetValidity(true);
+
+                XPos_old = XPos;
+                ZPos_old = ZPos;
+
+                ZPos -= DistanceMove;
+                Move();
+            }
+            else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true)
+            { //SINISTRA
+
+                grid.FindCell(XPos, ZPos).SetValidity(true);
+
+                XPos_old = XPos;
+                ZPos_old = ZPos;
+
+                XPos -= DistanceMove;
+                Move();
+            }
+            else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true)
+            { //DESTRA
+
+                grid.FindCell(XPos, ZPos).SetValidity(true);
+
+                XPos_old = XPos;
+                ZPos_old = ZPos;
+
+                XPos += DistanceMove;
+                Move();
+            }
+        }
     }
 
 
