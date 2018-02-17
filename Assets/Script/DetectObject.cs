@@ -46,8 +46,8 @@ public class DetectObject : MonoBehaviour {
                      * 
                      * Se questa condizione si dovesse risultare vera allora vado a salvare le variabili _x _z per capire quale cella della lista io abbia selezionato
                      */
-                    for (int x=0; x<=13; x++) {
-                        for (int z=0; z<=13; z++) {
+                    for (int x=0; x<13; x++) {
+                        for (int z=0; z<13; z++) {
                             CellPosition = grid.GetWorldPosition(x,z);
                             if (CellPosition == TilePosition) {
                                 _z = z;
