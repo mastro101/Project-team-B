@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Player : MonoBehaviour{
+public class Player : PlayerStatistiche{
 
     public Grid grid;
-    //public PlayerStatistiche playerStatistiche;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
 
@@ -15,14 +14,12 @@ public class Player : MonoBehaviour{
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
-    public int Life = 5;
+
 
     int XPos_old;
     int ZPos_old;
 
     int DistanceMove=1; // Di quanto il giocatore si Muove
-
-    public string Name; //Indica il nome del Player
 
     public float _Yoffset;
 
