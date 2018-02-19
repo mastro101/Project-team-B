@@ -204,7 +204,7 @@ public class Player : PlayerStatistiche{
                 ZPos -= DistanceMove;
                 Move();
             }
-            else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX - 1, ObjectZ).Walls[1] != true)
+            else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX + 1, ObjectZ).Walls[1] != true)
             { //SINISTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
@@ -215,7 +215,7 @@ public class Player : PlayerStatistiche{
                 XPos -= DistanceMove;
                 Move();
             }
-            else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX + 1, ObjectZ).Walls[3] != true)
+            else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).Walls[3] != true)
             { //DESTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
