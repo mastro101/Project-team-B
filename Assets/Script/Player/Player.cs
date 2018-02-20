@@ -62,6 +62,8 @@ public class Player : PlayerStatistiche{
                 XPos = 6;
                 ZPos = 6;
                 Life = 5;
+                Gpm.CurrentState = GamePlayManager.State.Event;
+                Gpm.CurrentState = GamePlayManager.State.End;
             }
 
         }
