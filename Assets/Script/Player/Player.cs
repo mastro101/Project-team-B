@@ -39,8 +39,9 @@ public class Player : PlayerStatistiche{
         //MainMove();   //Movimento del PLayer tramite WASD
         if (Name == Gpm.Name)
         {
+            Tmp.SetLife(Life.ToString());
+            Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
-            Debug.Log(Tmp.NamePlayer);
             //Debug.Log("pirla funziona "+Tmp.NamePlayer);
             if (Gpm.CurrentState == GamePlayManager.State.Movement)
             MainMove2();    //Movimento del Player tramite Click
@@ -50,6 +51,8 @@ public class Player : PlayerStatistiche{
             if (Input.GetKeyDown(KeyCode.A))
             {
                 Life--;
+                
+                
             }
             if (Life <= 0)
             {
@@ -77,6 +80,9 @@ public class Player : PlayerStatistiche{
 
             // Finito il movimento passa alla fase successiva
             Gpm.CurrentState = GamePlayManager.State.Event;
+
+            //
+
             Gpm.CurrentState = GamePlayManager.State.End;
         }
         else
@@ -88,35 +94,7 @@ public class Player : PlayerStatistiche{
     }
 
 
-    //movimento tramite WASD
-    void MainMove() {
-        XPos_old = XPos;
-        ZPos_old = ZPos;
-        //DistanceMove = playerStatistiche.GetDistance();
-        if (Input.GetKeyDown(KeyCode.A))//Sinistra
-        {
-            XPos -= DistanceMove;
-            Move();
-        }
-        else if (Input.GetKeyDown(KeyCode.D))//Destra
-        {
-            XPos += DistanceMove;
-            Move();
-        }
-        else if (Input.GetKeyDown(KeyCode.W))//Su
-        {
-            ZPos += DistanceMove;
-            Move();
-        }
-        else if (Input.GetKeyDown(KeyCode.S))//Giu
-        {
-            ZPos -= DistanceMove;
-            Move();
-        }
-    }
-
-
-    //Movimento tramite doppio click del mouse
+    //Movimento tramite click destro del mouse
     void MainMove2() {
         //Debug.Log(detectObject.GetX() + " - " + detectObject.GetZ());
         int ObjectX = detectObject.GetX();

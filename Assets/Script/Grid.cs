@@ -64,8 +64,9 @@ public class Grid : MonoBehaviour {
                         tile.GetComponent<Renderer>().material.color = Color.red;
 
                     // Colora i nemici
-                    ControlEnemy = FindCell(_x, _z).GetEnemy();
-                    if (ControlEnemy)
+                    /*ControlEnemy = FindCell(_x, _z).GetEnemy();
+                    if (ControlEnemy)*/
+                    if (ControlCity == "Enemy")
                         tile.GetComponent<Renderer>().material.color = Color.blue;
                     Debug.Log(ControlCity);
 
@@ -118,29 +119,29 @@ public class Grid : MonoBehaviour {
     }
 
     void SetEnemyPoint() {
-        FindCell(0, 0).SetEnemy(true);
-        FindCell(0, 2).SetEnemy(true);
-        FindCell(2, 0).SetEnemy(true);
-        FindCell(3, 0).SetEnemy(true);
-        FindCell(4, 0).SetEnemy(true);
+        FindCell(0, 0).SetNameTile("Enemy");
+        FindCell(0, 2).SetNameTile("Enemy");
+        FindCell(2, 0).SetNameTile("Enemy");
+        FindCell(3, 0).SetNameTile("Enemy");
+        FindCell(4, 0).SetNameTile("Enemy");
 
-        FindCell(0, 8).SetEnemy(true);
-        FindCell(0, 9).SetEnemy(true);
-        FindCell(0, 10).SetEnemy(true);
-        FindCell(0, 12).SetEnemy(true);
-        FindCell(12, 2).SetEnemy(true);
+        FindCell(0, 8).SetNameTile("Enemy");
+        FindCell(0, 9).SetNameTile("Enemy");
+        FindCell(0, 10).SetNameTile("Enemy");
+        FindCell(0, 12).SetNameTile("Enemy");
+        FindCell(12, 2).SetNameTile("Enemy");
 
-        FindCell(0, 10).SetEnemy(true);
-        FindCell(0, 12).SetEnemy(true);
-        FindCell(2, 12).SetEnemy(true);
-        FindCell(3, 12).SetEnemy(true);
-        FindCell(4, 12).SetEnemy(true);
+        FindCell(0, 10).SetNameTile("Enemy");
+        FindCell(0, 12).SetNameTile("Enemy");
+        FindCell(2, 12).SetNameTile("Enemy");
+        FindCell(3, 12).SetNameTile("Enemy");
+        FindCell(4, 12).SetNameTile("Enemy");
 
-        FindCell(10, 12).SetEnemy(true);
-        FindCell(12, 12).SetEnemy(true);
-        FindCell(12, 8).SetEnemy(true);
-        FindCell(12, 9).SetEnemy(true);
-        FindCell(12, 10).SetEnemy(true);
+        FindCell(10, 12).SetNameTile("Enemy");
+        FindCell(12, 12).SetNameTile("Enemy");
+        FindCell(12, 8).SetNameTile("Enemy");
+        FindCell(12, 9).SetNameTile("Enemy");
+        FindCell(12, 10).SetNameTile("Enemy");
     }
 
     void SetTower() {
