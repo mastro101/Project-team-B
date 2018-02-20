@@ -91,48 +91,138 @@ public class Grid : MonoBehaviour {
 
     // Imposta la posizione delle città sulla griglia
     void SetCity() {
-        FindCell(6, 1).SetNameTile("A");
-        FindCell(3, 3).SetNameTile("B");
-        FindCell(9, 3).SetNameTile("C");
-        FindCell(1, 6).SetNameTile("D");
-        FindCell(11, 6).SetNameTile("E");
-        FindCell(3, 9).SetNameTile("F");
-        FindCell(9, 9).SetNameTile("G");
-        FindCell(6, 11).SetNameTile("H");
+        FindCell(6, 11).SetNameTile("A");
+        FindCell(6, 1).SetNameTile("B");
+        FindCell(1, 6).SetNameTile("C");
+        FindCell(11, 6).SetNameTile("D");
+        FindCell(11, 11).SetNameTile("E");
+        FindCell(1, 11).SetNameTile("F");
+        FindCell(1, 1).SetNameTile("G");
+        FindCell(11, 1).SetNameTile("H");
     }
 
     void SetWalls()
     {
+        //4 centrali
+        FindCell(6, 4).SetWalls(0);
+        FindCell(6, 5).SetWalls(2);
 
-        FindCell(6, 3).SetWalls(0);
-        FindCell(6, 4).SetWalls(2);
+        FindCell(6, 7).SetWalls(0);
+        FindCell(6, 8).SetWalls(2);
 
-        FindCell(6, 8).SetWalls(0);
-        FindCell(6, 9).SetWalls(2);
+        FindCell(4, 6).SetWalls(1);
+        FindCell(5, 6).SetWalls(3);
 
-        FindCell(3, 6).SetWalls(1);
-        FindCell(4, 6).SetWalls(3);
+        FindCell(7, 6).SetWalls(1);
+        FindCell(8, 6).SetWalls(3);
 
-        FindCell(8, 6).SetWalls(1);
-        FindCell(9, 6).SetWalls(3);
+        //in basso a sinistra
+        FindCell(3, 3).SetWalls(0,3);
+        FindCell(3, 4).SetWalls(2);
+        FindCell(2, 3).SetWalls(1);
 
+        FindCell(3, 2).SetWalls(3);
+        FindCell(2, 2).SetWalls(1);
+
+        FindCell(0, 4).SetWalls(1);
+        FindCell(0, 3).SetWalls(1);
+        FindCell(0, 2).SetWalls(1);
+
+        FindCell(1, 4).SetWalls(3);
+        FindCell(1, 3).SetWalls(3);
+
+        FindCell(1, 2).SetWalls(2,3);
+        FindCell(1, 1).SetWalls(0,1);
+
+        FindCell(2, 0).SetWalls(0);
+        FindCell(3, 1).SetWalls(3);
+
+        FindCell(2, 1).SetWalls(1,2,3);
+
+        //in basso a destra
+        FindCell(9, 3).SetWalls(2, 3);
+        FindCell(9, 2).SetWalls(0);
+        FindCell(8, 3).SetWalls(1);
+
+        FindCell(10, 3).SetWalls(2);
+        FindCell(10, 2).SetWalls(0);
+
+        FindCell(8, 0).SetWalls(0);
+        FindCell(9, 0).SetWalls(0);
+        FindCell(10, 0).SetWalls(0);
+
+        FindCell(8, 1).SetWalls(2);
+        FindCell(9, 1).SetWalls(2);
+
+        FindCell(10, 1).SetWalls(1, 2);
+        FindCell(11, 1).SetWalls(0, 3);
+
+        FindCell(11, 3).SetWalls(2);
+        FindCell(12, 2).SetWalls(3);
+
+        FindCell(11, 2).SetWalls(0, 1, 2);
+
+        //in alto a sinistra
+        FindCell(3, 9).SetWalls(0, 1);
+        FindCell(3, 10).SetWalls(2);
+        FindCell(4, 9).SetWalls(3);
+
+        FindCell(2, 10).SetWalls(2);
+        FindCell(2, 9).SetWalls(0);
+        FindCell(1, 9).SetWalls(0);
+
+        FindCell(1, 11).SetWalls(1, 2);
+        FindCell(2, 11).SetWalls(0, 3);
+
+        FindCell(2, 12).SetWalls(2);
+        FindCell(3, 12).SetWalls(2);
+        FindCell(4, 12).SetWalls(2);
+
+        FindCell(3, 11).SetWalls(0);
+        FindCell(4, 11).SetWalls(0);
+
+        FindCell(0, 10).SetWalls(1);
+
+        FindCell(1, 10).SetWalls(0, 2, 3);
+
+        //in alto a destra
+        FindCell(9, 9).SetWalls(1, 2);
+        FindCell(9, 8).SetWalls(0);
+        FindCell(10, 9).SetWalls(3);
+
+        FindCell(9, 11).SetWalls(1);
+        FindCell(9, 10).SetWalls(1);
+        FindCell(10, 10).SetWalls(3);
+
+        FindCell(10, 12).SetWalls(2);
+        FindCell(11, 11).SetWalls(2, 3);
+        FindCell(11, 10).SetWalls(0, 1);
+
+        FindCell(11, 9).SetWalls(1);
+        FindCell(11, 8).SetWalls(1);
+
+        FindCell(12, 10).SetWalls(3);
+        FindCell(12, 9).SetWalls(3);
+        FindCell(12, 8).SetWalls(3);
+
+        FindCell(10, 11).SetWalls(0, 1, 3);
     }
 
     void SetEnemyPoint() {
         FindCell(0, 0).SetNameTile("Enemy");
         FindCell(0, 2).SetNameTile("Enemy");
         FindCell(2, 0).SetNameTile("Enemy");
-        FindCell(3, 0).SetNameTile("Enemy");
-        FindCell(4, 0).SetNameTile("Enemy");
+        FindCell(0, 3).SetNameTile("Enemy");
+        FindCell(0, 4).SetNameTile("Enemy");
 
-        FindCell(0, 8).SetNameTile("Enemy");
-        FindCell(0, 9).SetNameTile("Enemy");
+        FindCell(9, 0).SetNameTile("Enemy");
+        FindCell(8, 0).SetNameTile("Enemy");
         FindCell(0, 10).SetNameTile("Enemy");
         FindCell(0, 12).SetNameTile("Enemy");
         FindCell(12, 2).SetNameTile("Enemy");
 
-        FindCell(0, 10).SetNameTile("Enemy");
-        FindCell(0, 12).SetNameTile("Enemy");
+        FindCell(10, 0).SetNameTile("Enemy");
+        FindCell(12, 0).SetNameTile("Enemy");
         FindCell(2, 12).SetNameTile("Enemy");
         FindCell(3, 12).SetNameTile("Enemy");
         FindCell(4, 12).SetNameTile("Enemy");
@@ -145,26 +235,26 @@ public class Grid : MonoBehaviour {
     }
 
     void SetTower() {
-        FindCell(5, 5).SetValidity(false);
-        FindCell(5, 7).SetValidity(false);
-        FindCell(7, 5).SetValidity(false);
-        FindCell(7, 7).SetValidity(false);
+        FindCell(4, 4).SetValidity(false);
+        FindCell(8, 4).SetValidity(false);
+        FindCell(4, 8).SetValidity(false);
+        FindCell(8, 8).SetValidity(false);
 
         CellData cell;
         GameObject Tower1 = (GameObject)Instantiate(Tower);
 
-        cell = FindCell(5, 5);
+        cell = FindCell(4, 4);
         Tower1.transform.position = cell.WorldPosition;
 
-        cell = FindCell(5, 7);
+        cell = FindCell(4, 8);
         Tower1 = (GameObject)Instantiate(Tower);
         Tower1.transform.position = cell.WorldPosition;
 
-        cell = FindCell(7, 5);
+        cell = FindCell(8, 4);
         Tower1 = (GameObject)Instantiate(Tower);
         Tower1.transform.position = cell.WorldPosition;
 
-        cell = FindCell(7, 7);
+        cell = FindCell(8, 8);
         Tower1 = (GameObject)Instantiate(Tower);
         Tower1.transform.position = cell.WorldPosition;
 

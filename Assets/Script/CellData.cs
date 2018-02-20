@@ -52,6 +52,13 @@ public class CellData
         Walls[n] = true;
     }
 
+    public void SetWalls(int i, int n, int m)
+    {
+        Walls[i] = true;
+        Walls[n] = true;
+        Walls[m] = true;
+    }
+
     public void SetEnemy(bool _isEnemy)
     {
         Enemy = _isEnemy;

@@ -171,7 +171,7 @@ public class Player : PlayerStatistiche{
         if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity())
         {
 
-            if (ObjectX == XPos && ObjectZ - 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ - 1).Walls[2] != true)
+            if (ObjectX == XPos && ObjectZ - 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ - 1).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ-1).GetValidity())
             { //SU
                 grid.FindCell(XPos, ZPos).SetValidity(true);
 
@@ -181,7 +181,7 @@ public class Player : PlayerStatistiche{
                 ZPos += DistanceMove;
                 Move();
             }
-            else if (ObjectX == XPos && ObjectZ + 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).Walls[0] != true)
+            else if (ObjectX == XPos && ObjectZ + 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).GetValidity())
             { //GIU
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
@@ -192,7 +192,7 @@ public class Player : PlayerStatistiche{
                 ZPos -= DistanceMove;
                 Move();
             }
-            else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX + 1, ObjectZ).Walls[1] != true)
+            else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX + 1, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX +1 , ObjectZ).GetValidity())
             { //SINISTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
@@ -203,7 +203,7 @@ public class Player : PlayerStatistiche{
                 XPos -= DistanceMove;
                 Move();
             }
-            else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).Walls[3] != true)
+            else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).GetValidity())
             { //DESTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);

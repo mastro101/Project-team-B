@@ -473,7 +473,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Click I to opern Inventory
+  m_text: 'Click I to open Inventory
 
     CLick A to lost Life'
   m_isRightToLeft: 0
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 99802969}
-    characterCount: 47
+    characterCount: 46
     spriteCount: 0
     spaceCount: 9
     wordCount: 10
