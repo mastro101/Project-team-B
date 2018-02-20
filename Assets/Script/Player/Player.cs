@@ -44,9 +44,10 @@ public class Player : PlayerStatistiche{
             Tmp.SetName(Gpm.Name);
             //Debug.Log("pirla funziona "+Tmp.NamePlayer);
             if (Gpm.CurrentState == GamePlayManager.State.Movement)
-            MainMove2();    //Movimento del Player tramite Click
-            MainMove3();
-
+            {
+                MainMove2();    //Movimento del Player tramite Click
+                MainMove3();
+            }
             // Morte
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -81,9 +82,16 @@ public class Player : PlayerStatistiche{
             // Finito il movimento passa alla fase successiva
             Gpm.CurrentState = GamePlayManager.State.Event;
 
-            //
+            //Controllo in che tipo di casella mi trovo
+            if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
+            {
+                Debug.Log(Name+" si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
+            }else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
+            {
+                Debug.Log(Name+" si trova in una casella Nemico");
+            }
 
-            Gpm.CurrentState = GamePlayManager.State.End;
+                Gpm.CurrentState = GamePlayManager.State.End;
         }
         else
         {
