@@ -29,7 +29,6 @@ public class Player : PlayerStatistiche{
         SetPositionPlayer();
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
-        //grid.FindCell(XPos, ZPos).SetValidity(false);   //Siccome il player è sopra a una casella, nessun altro giocatore potrà andarci sopra
         
     }
 
@@ -42,12 +41,48 @@ public class Player : PlayerStatistiche{
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
-            //Debug.Log("pirla funziona "+Tmp.NamePlayer);
-            if (Gpm.CurrentState == GamePlayManager.State.Movement)
+            if (Gpm.CurrentState == GamePlayManager.State.Mission)
+            {
+                if (CheckMission && Mission != 0)
+                    Gpm.CurrentState = GamePlayManager.State.Movement;
+                if (!CheckMission)
+                {
+                    if (Input.GetKeyDown(KeyCode.M))
+                    {
+                        Debug.Log("M");
+                        Mission = 1;
+                    }
+                }
+                if (Mission != 0)
+                {
+                    CheckMission = true;
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                }
+                
+
+            }
+            else if (Gpm.CurrentState == GamePlayManager.State.Movement)
             {
                 MainMove2();    //Movimento del Player tramite Click
                 MainMove3();
             }
+            else if (Gpm.CurrentState == GamePlayManager.State.Event)
+            {
+                //Controllo in che tipo di casella mi trovo
+                if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
+                {
+                    Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
+                }
+                else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
+                {
+                    Debug.Log(Name + " si trova in una casella Nemico");
+                }
+
+                // Fase successiva
+                Gpm.CurrentState = GamePlayManager.State.End;
+            }
+
+
             // Morte
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -63,7 +98,6 @@ public class Player : PlayerStatistiche{
                 ZPos = 6;
                 Life = 5;
                 Gpm.CurrentState = GamePlayManager.State.Event;
-                Gpm.CurrentState = GamePlayManager.State.End;
             }
 
         }
@@ -83,17 +117,7 @@ public class Player : PlayerStatistiche{
 
             // Finito il movimento passa alla fase successiva
             Gpm.CurrentState = GamePlayManager.State.Event;
-
-            //Controllo in che tipo di casella mi trovo
-            if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
-            {
-                Debug.Log(Name+" si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
-            }else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
-            {
-                Debug.Log(Name+" si trova in una casella Nemico");
-            }
-
-                Gpm.CurrentState = GamePlayManager.State.End;
+                
         }
         else
         {

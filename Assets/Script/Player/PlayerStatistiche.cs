@@ -8,7 +8,7 @@ public class PlayerStatistiche : MonoBehaviour {
     public int Mission;
     public int Life = 5;
     public int Credit;
-    public GameObject[] Equip = {null, null, null}; 
+    public GameObject[] Equip = {null, null, null};
 
-    
+    public bool CheckMission = false;
 }

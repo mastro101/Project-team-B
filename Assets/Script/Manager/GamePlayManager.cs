@@ -19,6 +19,7 @@ public class GamePlayManager : MonoBehaviour
 
     public enum State
     {
+        Mission,
         Movement,
         Event,
         Object,
@@ -36,14 +37,14 @@ public class GamePlayManager : MonoBehaviour
         {
             if (CheckTurnChange(value) == true)
             {
-                OnStateEnd(_currentState);
+                OnTurnEnd(_currentTurn);
                 _currentTurn = value;
-                OnStateStart(_currentState);
+                OnTurnStart(_currentTurn);
             }
             else
             {
                 CurrentTurn = PlayerTurn.P1;
-                Debug.Log("Nope");
+                Debug.Log("Nope Turn");
             }
                 
 
@@ -65,7 +66,7 @@ public class GamePlayManager : MonoBehaviour
                 OnStateStart(_currentState);
             }
             else
-                Debug.Log("Nope");
+                Debug.Log("Nope State");
         }
     }
 
@@ -81,6 +82,9 @@ public class GamePlayManager : MonoBehaviour
     {
         switch (newState)
         {
+            case State.Mission:
+                Debug.Log("Enter" + CurrentState);
+                break;
             case State.Movement:
                 Debug.Log("Enter" + CurrentState);
                 break;
@@ -95,6 +99,27 @@ public class GamePlayManager : MonoBehaviour
                 break;
             case State.End:
                 Debug.Log("Enter" + CurrentState);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void OnTurnStart(PlayerTurn newTurn)
+    {
+        switch (newTurn)
+        {
+            case PlayerTurn.P1:
+                Debug.Log("Enter" + CurrentTurn);
+                break;
+            case PlayerTurn.P2:
+                Debug.Log("Enter" + CurrentTurn);
+                break;
+            case PlayerTurn.P3:
+                Debug.Log("Enter" + CurrentTurn);
+                break;
+            case PlayerTurn.P4:
+                Debug.Log("Enter" + CurrentTurn);
                 break;
             default:
                 break;
@@ -136,6 +161,9 @@ public class GamePlayManager : MonoBehaviour
     {
         switch (oldState)
         {
+            case State.Mission:
+                Debug.Log("Exit" + CurrentState);
+                break;
             case State.Movement:
                 Debug.Log("Exit" + CurrentState);
                 break;
@@ -156,6 +184,26 @@ public class GamePlayManager : MonoBehaviour
         }
     }
 
+    void OnTurnEnd(PlayerTurn oldTurn)
+    {
+        switch (oldTurn)
+        {
+            case PlayerTurn.P1:
+                Debug.Log("Exit" + CurrentTurn);
+                break;
+            case PlayerTurn.P2:
+                Debug.Log("Exit" + CurrentTurn);
+                break;
+            case PlayerTurn.P3:
+                Debug.Log("Exit" + CurrentTurn);
+                break;
+            case PlayerTurn.P4:
+                Debug.Log("Exit" + CurrentTurn);
+                break;
+            default:
+                break;
+        }
+    }
     /// <summary>
     /// Controlla se è possibile cambiare lo stato in quello richiesto in <paramref name="newState"/>
     /// </summary>
@@ -165,10 +213,14 @@ public class GamePlayManager : MonoBehaviour
     {
         switch (newState)
         {
-            case State.Movement:
+            case State.Mission:
                 if (CurrentState != State.End)
                     return false;
                 return true;
+            case State.Movement:
+                if (CurrentState == State.End || CurrentState == State.Mission)
+                    return true;
+                return false;
             case State.Event:
                 if (CurrentState != State.Movement)
                     return false;
@@ -182,7 +234,7 @@ public class GamePlayManager : MonoBehaviour
                     return false;
                 return true;
             case State.End:
-                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat)
+                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat || CurrentState == State.Mission)
                     return true;
                 return false;
             default:
@@ -218,7 +270,7 @@ public class GamePlayManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentState = State.Movement;
+        CurrentState = State.Mission;
     }
 
     private void Update()
@@ -247,20 +299,13 @@ public class GamePlayManager : MonoBehaviour
                     Name = "Red";
                     break;
                 case PlayerTurn.P4:
-                    Name = "Yellow";
-                   
+                    Name = "Yellow";                   
                     break;
             }
 
-            if (CurrentTurn == PlayerTurn.P4)
-
-
-            Debug.Log(CurrentTurn);
-            CurrentState = State.Movement;
+            CurrentState = State.Mission;
         }
 
-
-
-        OnStateUpdate();
+        //OnStateUpdate();
     }
 }
