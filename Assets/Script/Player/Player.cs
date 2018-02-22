@@ -11,6 +11,8 @@ public class Player : PlayerStatistiche{
 
     public  TextMeshP Tmp;
 
+    public LogManager Lg;
+
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
@@ -41,6 +43,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
+
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
             {
                 if (CheckMission && Mission != 0)
@@ -51,6 +54,8 @@ public class Player : PlayerStatistiche{
                     {
                         Debug.Log("M");
                         Mission = 1;
+
+                        Lg.SetTextLog("Missione assegnata a: "+Name, true);
                     }
                 }
                 if (Mission != 0)
@@ -68,14 +73,18 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
             {
+
+                Lg.SetTextLog(Name + ": Carta evento pescata", true);
+
                 //Controllo in che tipo di casella mi trovo
                 if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
                 {
                     Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
+                    Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
                 }
                 else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
                 {
-                    Debug.Log(Name + " si trova in una casella Nemico");
+                    Lg.SetTextLog(Name + " si trova in una casella Nemico",true);
                 }
 
                 // Fase successiva
@@ -87,6 +96,9 @@ public class Player : PlayerStatistiche{
             if (Input.GetKeyDown(KeyCode.A))
             {
                 Life--;
+
+                Lg.SetTextLog(Name+" ha perso vita",true);
+                
                 
                 
             }
@@ -98,6 +110,8 @@ public class Player : PlayerStatistiche{
                 ZPos = 6;
                 Life = 5;
                 Gpm.CurrentState = GamePlayManager.State.Event;
+                Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
+
             }
 
         }
@@ -117,6 +131,8 @@ public class Player : PlayerStatistiche{
 
             // Finito il movimento passa alla fase successiva
             Gpm.CurrentState = GamePlayManager.State.Event;
+
+            Lg.SetTextLog(Name + " si è mosso (" +XPos+"-"+ZPos+")" , true);
                 
         }
         else
