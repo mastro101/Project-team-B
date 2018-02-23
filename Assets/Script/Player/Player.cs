@@ -31,13 +31,14 @@ public class Player : PlayerStatistiche{
         SetPositionPlayer();
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
-        
+        CheckMissions = new int[4];
     }
 
 
     void Update()
     {
         //MainMove();   //Movimento del PLayer tramite WASD
+        
         if (Name == Gpm.Name)
         {
             Tmp.SetLife(Life.ToString());
@@ -50,16 +51,36 @@ public class Player : PlayerStatistiche{
                     Gpm.CurrentState = GamePlayManager.State.Movement;
                 if (!CheckMission)
                 {
-                    if (Input.GetKeyDown(KeyCode.M))
+                    // Assegnata missione casuale diversa da quella di un altro giocatore
+                    Debug.Log("M");
+                    do
                     {
-                        Debug.Log("M");
-                        Mission = 1;
-
-                        Lg.SetTextLog("Missione assegnata a: "+Name, true);
+                        Mission = Random.Range(1, 10);
                     }
-                }
-                if (Mission != 0)
-                {
+                    while (Mission == CheckMissions[0] || Mission == CheckMissions[1] || Mission == CheckMissions[2] || Mission == CheckMissions[3]);
+
+                    switch (Name)
+                    {
+                        case "Green":
+                            CheckMissions[0] = Mission;
+                            Debug.Log(CheckMissions[0]);
+                            break;
+                        case "Blue":
+                            CheckMissions[1] = Mission;
+                            Debug.Log(CheckMissions[1]);
+                            break;
+                        case "Red":
+                            CheckMissions[2] = Mission;
+                            Debug.Log(CheckMissions[2]);
+                            break;
+                        case "Yellow":
+                            CheckMissions[3] = Mission;
+                            Debug.Log(CheckMissions[3]);
+                            break;
+                    }
+
+
+                    Lg.SetTextLog("Missione assegnata a: " + Name, true);
                     CheckMission = true;
                     Gpm.CurrentState = GamePlayManager.State.End;
                 }
