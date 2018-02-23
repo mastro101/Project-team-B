@@ -41,6 +41,7 @@ public class Player : PlayerStatistiche{
         
         if (Name == Gpm.Name)
         {
+            Tmp.SetMission(Mission.ToString());
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
