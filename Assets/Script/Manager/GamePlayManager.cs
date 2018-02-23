@@ -171,10 +171,10 @@ public class GamePlayManager : MonoBehaviour
                 Debug.Log("Exit" + CurrentState);
                 break;
             case State.Object:
-                Debug.Log("Enter" + CurrentState);
+                Debug.Log("Exit" + CurrentState);
                 break;
             case State.Combat:
-                Debug.Log("Enter" + CurrentState);
+                Debug.Log("Exit" + CurrentState);
                 break;
             case State.End:
                 Debug.Log("Exit" + CurrentState);

@@ -25,6 +25,7 @@ public class Player : PlayerStatistiche{
 
     public float _Yoffset;
 
+    int eventCard;
 
     void Start()
     {
@@ -100,16 +101,50 @@ public class Player : PlayerStatistiche{
 
                 //Controllo in che tipo di casella mi trovo
                 if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
-                {
+                { 
+                    // se è all'interno di una città passa alla fase Object
                     Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
                     Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
+                    Gpm.CurrentState = GamePlayManager.State.Object;
                 }
                 else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
                 {
-                    Lg.SetTextLog(Name + " si trova in una casella Nemico",true);
+                    // se è all'interno di una Casella Nemico passa alla fase Combat
+                    Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
+                    Gpm.CurrentState = GamePlayManager.State.Combat;
+                }
+                else //In una casella neutrale
+                {
+                    // Viene scelto un numero randomico tra 0 e 2
+                    eventCard = Random.Range(0, 3);
+                    Debug.Log(eventCard);
                 }
 
-                // Fase successiva
+                switch (eventCard)
+                {
+                    // Evento che non comporta un cambio State
+                    case 0:
+                        Gpm.CurrentState = GamePlayManager.State.End;
+                        break;
+                    // Evento Oggetto
+                    case 1:
+                        Gpm.CurrentState = GamePlayManager.State.Object;
+                        break;
+                    // Evento Nemico
+                    case 2:
+                        Gpm.CurrentState = GamePlayManager.State.Combat;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            else if (Gpm.CurrentState == GamePlayManager.State.Object)
+            {
+                Gpm.CurrentState = GamePlayManager.State.End;
+            }
+            else if(Gpm.CurrentState == GamePlayManager.State.Combat)
+            {
                 Gpm.CurrentState = GamePlayManager.State.End;
             }
 
