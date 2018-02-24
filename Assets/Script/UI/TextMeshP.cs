@@ -44,7 +44,7 @@ public class TextMeshP : MonoBehaviour {
         Life = "Life:" + life;
     }
 
-    public void SetCredits(string credits) {
-        Credits = "Credits:" + credits;
+    public void SetCredits(string _credits) {
+        Credits = "Credits:" + _credits;
     }
 }

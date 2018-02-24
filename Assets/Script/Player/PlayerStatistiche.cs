@@ -11,6 +11,19 @@ public class PlayerStatistiche : MonoBehaviour {
     public int Life = 5;
     public int Credit;
     public GameObject[] Equip = {null, null, null};
-    
-    
+
+    private void Start()
+    {
+        Credit = 1;
+    }
+
+    public void Heal()
+    {
+
+        if (Credit >= 3 && Name == "Red")
+        {
+            Credit -= 3;
+            Life = 5;
+        }
+    }
 }
