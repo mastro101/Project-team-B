@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 4b411c7e2f6d03d44a069fda307ffb0b
-timeCreated: 1517299433
+timeCreated: 1518881935
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Tile: {fileID: 100000, guid: 748c2ed3e319b7d45ac3544dcab4681f, type: 3}
+  - Wall: {fileID: 1652642082125686, guid: cc6b00a0b1c424545882f755665dc0e4, type: 2}
+  - Tower: {fileID: 100002, guid: 294d7c65afcded64d9f23a3a024e01f4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
