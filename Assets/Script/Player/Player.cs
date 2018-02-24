@@ -13,6 +13,8 @@ public class Player : PlayerStatistiche{
 
     public LogManager Lg;
 
+    public UIManager UI;
+
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
@@ -29,10 +31,11 @@ public class Player : PlayerStatistiche{
 
     void Start()
     {
-        SetPositionPlayer();
+        
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
+        SetPositionPlayer();
     }
 
 
@@ -46,48 +49,9 @@ public class Player : PlayerStatistiche{
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
-
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
             {
-                if (CheckMission && Mission != 0)
-                    Gpm.CurrentState = GamePlayManager.State.Movement;
-                if (!CheckMission)
-                {
-                    // Assegnata missione casuale diversa da quella di un altro giocatore
-                    Debug.Log("M");
-                    do
-                    {
-                        Mission = Random.Range(1, 10);
-                    }
-                    while (Mission == CheckMissions[0] || Mission == CheckMissions[1] || Mission == CheckMissions[2] || Mission == CheckMissions[3]);
-
-                    switch (Name)
-                    {
-                        case "Green":
-                            CheckMissions[0] = Mission;
-                            Debug.Log(CheckMissions[0]);
-                            break;
-                        case "Blue":
-                            CheckMissions[1] = Mission;
-                            Debug.Log(CheckMissions[1]);
-                            break;
-                        case "Red":
-                            CheckMissions[2] = Mission;
-                            Debug.Log(CheckMissions[2]);
-                            break;
-                        case "Yellow":
-                            CheckMissions[3] = Mission;
-                            Debug.Log(CheckMissions[3]);
-                            break;
-                    }
-
-
-                    Lg.SetTextLog("Missione assegnata a: " + Name, true);
-                    CheckMission = true;
-                    Gpm.CurrentState = GamePlayManager.State.End;
-                }
-                
-
+                AssignMisison();
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Movement)
             {
@@ -96,48 +60,9 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
             {
-
                 Lg.SetTextLog(Name + ": Carta evento pescata", true);
-
-                //Controllo in che tipo di casella mi trovo
-                if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
-                { 
-                    // se è all'interno di una città passa alla fase Object
-                    Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
-                    Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
-                    Gpm.CurrentState = GamePlayManager.State.Object;
-                }
-                else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
-                {
-                    // se è all'interno di una Casella Nemico passa alla fase Combat
-                    Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
-                    Gpm.CurrentState = GamePlayManager.State.Combat;
-                }
-                else //In una casella neutrale
-                {
-                    // Viene scelto un numero randomico tra 0 e 2
-                    eventCard = Random.Range(0, 3);
-                    Debug.Log(eventCard);
-                }
-
-                switch (eventCard)
-                {
-                    // Evento che non comporta un cambio State
-                    case 0:
-                        Gpm.CurrentState = GamePlayManager.State.End;
-                        break;
-                    // Evento Oggetto
-                    case 1:
-                        Gpm.CurrentState = GamePlayManager.State.Object;
-                        break;
-                    // Evento Nemico
-                    case 2:
-                        Gpm.CurrentState = GamePlayManager.State.Combat;
-                        break;
-                    default:
-                        break;
-                }
                 
+                Event();   
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Object)
             {
@@ -148,29 +73,8 @@ public class Player : PlayerStatistiche{
                 Gpm.CurrentState = GamePlayManager.State.End;
             }
 
-
             // Morte
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Life--;
-
-                Lg.SetTextLog(Name+" ha perso vita",true);
-                
-                
-                
-            }
-            if (Life <= 0)
-            {
-                transform.position = grid.GetCenterPosition();
-                transform.position += new Vector3(0f, _Yoffset, 0f);
-                XPos = 6;
-                ZPos = 6;
-                Life = 5;
-                Gpm.CurrentState = GamePlayManager.State.Event;
-                Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-
-            }
-
+            Morte();
         }
         //playerStatistiche.SetDistace(Name, DistanceMove);   //Setto il movimento del player // Da rivedere in futuro
     }
@@ -182,7 +86,26 @@ public class Player : PlayerStatistiche{
         {
             Vector3 globalPosition = grid.GetWorldPosition(XPos, ZPos);
             globalPosition += new Vector3(0f, _Yoffset, 0f); ;
+            
+
+            switch (Name) {
+                case "Green":
+                    globalPosition += new Vector3(-0.6f, 0, 0.6f);
+                    break;
+                case "Blue":
+                    globalPosition += new Vector3(0.6f, 0, -0.6f);
+                    break;
+                case "Red":
+                    globalPosition += new Vector3(0.6f, 0, 0.6f);
+                    break;
+                case "Yellow":
+                    globalPosition += new Vector3(-0.6f, 0, -0.6f);
+                    break;
+            }
+
             transform.DOMove(globalPosition, 0.6f).SetEase(Ease.Linear);
+
+
             //grid.FindCell(XPos, ZPos).SetValidity(false);
             detectObject.CorrectMove = false;
 
@@ -319,23 +242,131 @@ public class Player : PlayerStatistiche{
     void SetPositionPlayer() {
         XPos = grid.Width / 2;
         ZPos = grid.Height / 2;
-        /*switch (Name) {
+        switch (Name) {
             case "Green":
-                XPos = 0;
-                ZPos = 0;
-                break;
-            case "Yellow":
-                XPos = 0;
-                ZPos = grid.GetHeight() - 1;
-                break;
-            case "Red":
-                XPos = grid.GetWidth() - 1;
-                ZPos = 0;
+                transform.position += new Vector3(-0.6f, 0, 0.6f);
                 break;
             case "Blue":
-                XPos = grid.GetWidth() - 1;
-                ZPos = grid.GetHeight() - 1;
+                transform.position += new Vector3(0.6f, 0, -0.6f);
                 break;
-        }*/
+            case "Red":
+                transform.position += new Vector3(0.6f, 0, 0.6f);
+                break;
+            case "Yellow":
+                transform.position += new Vector3(-0.6f, 0, -0.6f);
+                break;
+        }
     }
+
+    //Metodo per assegnare le missioni
+    void AssignMisison() {
+        if (CheckMission && Mission != 0)
+            Gpm.CurrentState = GamePlayManager.State.Movement;
+        if (!CheckMission)
+        {
+            // Assegnata missione casuale diversa da quella di un altro giocatore
+            Debug.Log("M");
+            do
+            {
+                Mission = Random.Range(1, 10);
+            }
+            while (Mission == CheckMissions[0] || Mission == CheckMissions[1] || Mission == CheckMissions[2] || Mission == CheckMissions[3]);
+
+            switch (Name)
+            {
+                case "Green":
+                    CheckMissions[0] = Mission;
+                    Debug.Log(CheckMissions[0]);
+                    break;
+                case "Blue":
+                    CheckMissions[1] = Mission;
+                    Debug.Log(CheckMissions[1]);
+                    break;
+                case "Red":
+                    CheckMissions[2] = Mission;
+                    Debug.Log(CheckMissions[2]);
+                    break;
+                case "Yellow":
+                    CheckMissions[3] = Mission;
+                    Debug.Log(CheckMissions[3]);
+                    break;
+            }
+
+
+            Lg.SetTextLog("Missione assegnata a: " + Name, true);
+            CheckMission = true;
+            Gpm.CurrentState = GamePlayManager.State.End;
+        }
+    }
+
+    void Event() {
+        //Controllo in che tipo di casella mi trovo
+        if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
+        {
+            // se è all'interno di una città passa alla fase Object
+            Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
+            Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
+
+            //ActiveTurn = false;
+           /* UI._isHealActive[0] = true;
+            UI._isHealActive[1] = true;*/
+            Gpm.CurrentState = GamePlayManager.State.Object;
+        }
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
+        {
+            // se è all'interno di una Casella Nemico passa alla fase Combat
+            Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
+            Gpm.CurrentState = GamePlayManager.State.Combat;
+        }
+        else //In una casella neutrale
+        {
+            // Viene scelto un numero randomico tra 0 e 2
+            eventCard = Random.Range(0, 3);
+            Debug.Log(eventCard);
+        }
+
+        switch (eventCard)
+        {
+            // Evento che non comporta un cambio State
+            case 0:
+                Gpm.CurrentState = GamePlayManager.State.End;
+                Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
+                break;
+            // Evento Oggetto
+            case 1:
+                Gpm.CurrentState = GamePlayManager.State.Object;
+                Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
+                break;
+            // Evento Nemico
+            case 2:
+                Gpm.CurrentState = GamePlayManager.State.Combat;
+                Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Morte() {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Life--;
+            Lg.SetTextLog(Name + " ha perso vita", true);
+
+            if (Life <= 0)
+            {
+                transform.position = grid.GetCenterPosition();
+                transform.position += new Vector3(0f, _Yoffset, 0f);
+                XPos = 6;
+                ZPos = 6;
+                Life = 5;
+                Gpm.CurrentState = GamePlayManager.State.Event;
+                Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
+
+            }
+
+        }   
+    }
+
+    
 }
