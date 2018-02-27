@@ -53,10 +53,10 @@ public class Player : PlayerStatistiche{
             {
                 AssignMisison();
             }
-            else if (Gpm.CurrentState == GamePlayManager.State.Movement)
+            else if (Gpm.CurrentState == GamePlayManager.State.Movement && PossibleMove > 0)
             {
                 MainMove2();    //Movimento del Player tramite Click
-                MainMove3();
+                //MainMove3();
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
             {
@@ -72,6 +72,9 @@ public class Player : PlayerStatistiche{
             {
                 Gpm.CurrentState = GamePlayManager.State.End;
             }
+
+            if (PossibleMove == 0)
+                PossibleMove = 2;
 
             // Morte
             Morte();
@@ -110,7 +113,12 @@ public class Player : PlayerStatistiche{
             detectObject.CorrectMove = false;
 
             // Finito il movimento passa alla fase successiva
-            Gpm.CurrentState = GamePlayManager.State.Event;
+            if(PossibleMove == 0)
+            {
+                Gpm.CurrentState = GamePlayManager.State.Event;
+                //PossibleMove = 2;
+            }
+                
 
             Lg.SetTextLog(Name + " si è mosso (" +XPos+"-"+ZPos+")" , true);
                 
@@ -129,7 +137,7 @@ public class Player : PlayerStatistiche{
         //Debug.Log(detectObject.GetX() + " - " + detectObject.GetZ());
         int ObjectX = detectObject.GetX();
         int ObjectZ = detectObject.GetZ();
-
+        
         DistanceMove = 1;
         //DistanceMove = playerStatistiche.GetDistance();
         if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
@@ -142,6 +150,7 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 ZPos += DistanceMove;
+                PossibleMove--;
                 Move();
             }
             else if (ObjectX == XPos && ObjectZ + 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true)
@@ -153,6 +162,7 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 ZPos -= DistanceMove;
+                PossibleMove--;
                 Move();
             }
             else if (ObjectX + 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true)
@@ -164,6 +174,7 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 XPos -= DistanceMove;
+                PossibleMove--;
                 Move();
             }
             else if (ObjectX - 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true)
@@ -175,12 +186,16 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 XPos += DistanceMove;
+                PossibleMove--;
                 Move();
             }
         } 
+
+
+
     }
 
-    void MainMove3()
+    /*void MainMove3()
     {
         //Debug.Log(detectObject.GetX() + " - " + detectObject.GetZ());
         int ObjectX = detectObject.GetX();
@@ -235,7 +250,7 @@ public class Player : PlayerStatistiche{
                 Move();
             }
         }
-    }
+    }*/
 
 
     //Set Position Player
@@ -368,5 +383,4 @@ public class Player : PlayerStatistiche{
         }   
     }
 
-    
 }

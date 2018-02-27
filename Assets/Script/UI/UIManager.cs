@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour {
 
     public GameObject DrawPanel;
     public bool[] _isDraw;
+
+    public Scrollbar sb;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +26,8 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        sb.value = 0;
+
         if (_isHealActive[1]) {
             ActiveHealPanel();
             _isHealActive[1] = false;

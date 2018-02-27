@@ -5,12 +5,14 @@ using UnityEngine;
 public class Grid : MonoBehaviour {
 
     public GameObject Tile;
-    public GameObject Wall;
+    public GameObject Wall, City, City2;
     public GameObject Tower;
     public List<CellData> Cells = new List<CellData>();
     public float CellSize = -1;
     public string NameTile;
     public int Width = 0, Height = 0;
+
+    GameObject tile;
 
     public float DistanceTile;
 
@@ -24,8 +26,8 @@ public class Grid : MonoBehaviour {
 
     void GridSize(int x, int z)
     {
-        string ControlCity;
-        bool ControlEnemy = false;
+        //string ControlCity;
+        //bool ControlEnemy = false;
 
         CellSize = Tile.transform.localScale.x + DistanceTile;
 
@@ -50,8 +52,33 @@ public class Grid : MonoBehaviour {
                 CellData cell = FindCell(_x, _z);
                 if (cell.IsValid)
                 {
-                    GameObject tile = (GameObject)Instantiate(Tile);
-                    tile.transform.position = cell.WorldPosition;
+
+                    if (FindCell(_x, _z).GetNameTile() == "")
+                    {
+                        tile = (GameObject)Instantiate(Tile);
+                        tile.transform.position = cell.WorldPosition;
+                    }
+                    else if(FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy")
+                    {
+                        int CityChoose = Random.Range(1, 3);
+                        if (CityChoose == 1) {
+                            tile = (GameObject)Instantiate(City);
+                            tile.transform.position = cell.WorldPosition;
+                        } else {
+                            tile = (GameObject)Instantiate(City2);
+                            tile.transform.position = cell.WorldPosition;
+                        }
+                        
+
+                    }
+                    else if (FindCell(_x, _z).GetNameTile() == "Enemy")
+                    {
+                        tile = (GameObject)Instantiate(Tile);
+                        tile.transform.position = cell.WorldPosition;
+                        tile.GetComponent<Renderer>().material.color = Color.blue;
+                    }
+
+
                     //Colora il centro
                     if (cell == Center())
                     {
@@ -59,27 +86,27 @@ public class Grid : MonoBehaviour {
                     }
 
                     // Colora le città                    
-                    ControlCity = FindCell(_x, _z).GetNameTile();
+                    /*ControlCity = FindCell(_x, _z).GetNameTile();
                     if (ControlCity != "")
-                        tile.GetComponent<Renderer>().material.color = Color.red;
+                        tile.GetComponent<Renderer>().material.color = Color.red;*/
 
                     // Colora i nemici
                     /*ControlEnemy = FindCell(_x, _z).GetEnemy();
-                    if (ControlEnemy)*/
-                    if (ControlCity == "Enemy")
-                        tile.GetComponent<Renderer>().material.color = Color.blue;
-                    Debug.Log(ControlCity);
+                    if (ControlEnemy)
+                    if (ControlCity == "Enemy")*/
+                        
+                    //Debug.Log(ControlCity);
 
                     // Crea Muri (Provvisorio)
                     if (cell.Walls[0] == true)
                     {
                         GameObject wall = (GameObject)Instantiate(Wall);
-                        wall.transform.position = cell.WorldPosition + new Vector3(0, 0.5f, 1);
+                        wall.transform.position = cell.WorldPosition + new Vector3(0, 0.5f, 1.55f);
                     }
                     if (cell.Walls[1] == true)
                     {
                         GameObject wall = (GameObject)Instantiate(Wall);
-                        wall.transform.position = cell.WorldPosition + new Vector3(1, 0.5f, 0);
+                        wall.transform.position = cell.WorldPosition + new Vector3(1.55f, 0.5f, 0);
                         wall.transform.rotation = Quaternion.Euler(0, 90, 0);
                     }
 

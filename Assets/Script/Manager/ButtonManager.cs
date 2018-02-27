@@ -12,7 +12,7 @@ public class ButtonManager : MonoBehaviour {
     private void Start()
     {
         ConsolPosition = PanelConsole.transform.position;
-        PanelConsole.transform.position += new Vector3(300f, 0f, 0f);
+        PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
     }
 
 
@@ -20,7 +20,7 @@ public class ButtonManager : MonoBehaviour {
         if (!ActiveConsole)
         {
             //PanelConsole.SetActive(true);
-            PanelConsole.transform.position += new Vector3(300f, 0f, 0f);
+            PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
             ActiveConsole = true;
 
         }
