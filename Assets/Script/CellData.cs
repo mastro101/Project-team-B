@@ -12,7 +12,7 @@ public class CellData
     public bool[] Walls = new bool[4];
     public string NameTile;
     public bool Enemy;
-    public int EnemyNumber = 0;
+    public int PlayerNumber = 0;
 
     public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile, bool enemy)
     {
@@ -44,12 +44,12 @@ public class CellData
 
     public void SetEnemyNumber(int i)
     {
-        EnemyNumber = i;
+        PlayerNumber = i;
     }
 
     public int GetEnemyNumber()
     {
-        return EnemyNumber;
+        return PlayerNumber;
     }
 
     public void SetWalls(int i)

@@ -9,6 +9,10 @@ public class ButtonManager : MonoBehaviour {
 
     Vector3 ConsolPosition;
 
+    public GamePlayManager Gpm;
+    public GameObject EndP;
+    public Player Pl1, Pl2, Pl4, Pl3;
+
     private void Start()
     {
         ConsolPosition = PanelConsole.transform.position;
@@ -31,5 +35,24 @@ public class ButtonManager : MonoBehaviour {
             ActiveConsole = false;
 
         }
+    }
+
+    public void EndPhase() {
+        Gpm.CurrentState = GamePlayManager.State.Event;
+        switch (Gpm.Name) {
+            case "Green":
+                Pl1.PossibleMove = 2;
+                break;
+            case "Blue":
+                Pl2.PossibleMove = 2;
+                break;
+            case "Red":
+                Pl3.PossibleMove = 2;
+                break;
+            case "Yellow":
+                Pl4.PossibleMove = 2;
+                break;
+        }
+        EndP.SetActive(false);
     }
 }

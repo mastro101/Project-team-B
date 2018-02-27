@@ -15,6 +15,8 @@ public class Player : PlayerStatistiche{
 
     public UIManager UI;
 
+    public ButtonManager BM;
+
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
@@ -42,13 +44,16 @@ public class Player : PlayerStatistiche{
     void Update()
     {
         //MainMove();   //Movimento del PLayer tramite WASD
-        
+
         if (Name == Gpm.Name)
         {
             Tmp.SetMission(Mission.ToString());
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
+            Tmp.SetMosse(PossibleMove.ToString());
+
+
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
             {
                 AssignMisison();
@@ -61,21 +66,30 @@ public class Player : PlayerStatistiche{
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
             {
                 Lg.SetTextLog(Name + ": Carta evento pescata", true);
-                
-                Event();   
+
+                Event();
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Object)
             {
                 Gpm.CurrentState = GamePlayManager.State.End;
             }
-            else if(Gpm.CurrentState == GamePlayManager.State.Combat)
+            else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
                 Gpm.CurrentState = GamePlayManager.State.End;
             }
 
             if (PossibleMove == 0)
+            {
                 PossibleMove = 2;
+                BM.EndP.SetActive(false);
+            }
+            else if (PossibleMove == 1)
+            {
+                BM.EndP.SetActive(true);
+            }
 
+            
+            
             // Morte
             Morte();
         }
@@ -323,8 +337,8 @@ public class Player : PlayerStatistiche{
             Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
 
             //ActiveTurn = false;
-           /* UI._isHealActive[0] = true;
-            UI._isHealActive[1] = true;*/
+            UI._isHealActive[0] = true;
+            UI._isHealActive[1] = true;
             Gpm.CurrentState = GamePlayManager.State.Object;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
@@ -377,6 +391,7 @@ public class Player : PlayerStatistiche{
                 Life = 5;
                 Gpm.CurrentState = GamePlayManager.State.Event;
                 Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
+                PossibleMove = 2;
 
             }
 

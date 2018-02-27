@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         sb.value = 0;
 
         if (_isHealActive[1]) {
