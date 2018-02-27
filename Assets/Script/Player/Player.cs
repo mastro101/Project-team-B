@@ -386,12 +386,13 @@ public class Player : PlayerStatistiche{
             {
                 transform.position = grid.GetCenterPosition();
                 transform.position += new Vector3(0f, _Yoffset, 0f);
+                SetPositionPlayer();
                 XPos = 6;
                 ZPos = 6;
                 Life = 5;
                 Gpm.CurrentState = GamePlayManager.State.Event;
                 Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-                PossibleMove = 2;
+                //PossibleMove = 2; rimuovi commento per eliminare il BUG [Volontario]
 
             }
 
