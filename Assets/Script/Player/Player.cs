@@ -33,7 +33,7 @@ public class Player : PlayerStatistiche{
 
     void Start()
     {
-        
+        grid.Center().PlayerOnTile = 4;
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
@@ -105,25 +105,28 @@ public class Player : PlayerStatistiche{
             globalPosition += new Vector3(0f, _Yoffset, 0f); ;
             
 
-            switch (Name) {
-                case "Green":
+            switch (grid.FindCell(XPos, ZPos).PlayerOnTile) {
+                case 1:
                     globalPosition += new Vector3(-0.6f, 0, 0.6f);
                     break;
-                case "Blue":
+                case 2:
                     globalPosition += new Vector3(0.6f, 0, -0.6f);
                     break;
-                case "Red":
+                case 3:
                     globalPosition += new Vector3(0.6f, 0, 0.6f);
                     break;
-                case "Yellow":
+                case 4:
                     globalPosition += new Vector3(-0.6f, 0, -0.6f);
+                    break;
+                default:
                     break;
             }
 
             transform.DOMove(globalPosition, 0.6f).SetEase(Ease.Linear);
 
+            // Il player è sulla casella
+            grid.FindCell(XPos, ZPos).PlayerOnTile++;
 
-            //grid.FindCell(XPos, ZPos).SetValidity(false);
             detectObject.CorrectMove = false;
 
             // Finito il movimento passa alla fase successiva
@@ -155,6 +158,9 @@ public class Player : PlayerStatistiche{
         DistanceMove = 1;
         //DistanceMove = playerStatistiche.GetDistance();
         if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
+
+            // Il player non è più sulla casella di prima
+            grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
             if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
             { //SU

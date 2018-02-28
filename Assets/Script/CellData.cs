@@ -13,6 +13,7 @@ public class CellData
     public string NameTile;
     public bool Enemy;
     public int PlayerNumber = 0;
+    public int PlayerOnTile;
 
     public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile, bool enemy)
     {
