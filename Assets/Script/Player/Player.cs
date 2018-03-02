@@ -390,13 +390,15 @@ public class Player : PlayerStatistiche{
 
             if (Life <= 0)
             {
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
                 transform.position = grid.GetCenterPosition();
                 transform.position += new Vector3(0f, _Yoffset, 0f);
                 SetPositionPlayer();
                 XPos = 6;
                 ZPos = 6;
                 Life = 5;
-                Gpm.CurrentState = GamePlayManager.State.Event;
+                grid.FindCell(XPos, ZPos).PlayerOnTile++;
+                Gpm.CurrentState = GamePlayManager.State.End;
                 Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
                 //PossibleMove = 2; rimuovi commento per eliminare il BUG [Volontario]
 
