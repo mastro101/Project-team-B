@@ -967,7 +967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &206566549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1334,7 +1334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -91.49997}
+  m_AnchoredPosition: {x: 0.000091552734, y: -91.49998}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406764183
@@ -3452,8 +3452,8 @@ MonoBehaviour:
   CreditsText: {fileID: 83780596}
   PlayerInventoryText: {fileID: 751170964}
   MosseRimaste: {fileID: 791004645}
-  StaminaText: {fileID: 0}
-  CombatPointsText: {fileID: 0}
+  StaminaText: {fileID: 931455030}
+  CombatPointsText: {fileID: 2131655127}
   _TurnPlayer: 0
   _Mission: 0
   _Life: 0
@@ -6649,8 +6649,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 23
-  m_fontSizeBase: 23
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

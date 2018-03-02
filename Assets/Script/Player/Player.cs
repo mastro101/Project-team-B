@@ -52,6 +52,8 @@ public class Player : PlayerStatistiche{
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
             Tmp.SetMosse(PossibleMove.ToString());
+            Tmp.SetStamina(Stamina.ToString());
+            Tmp.SetCombatPoints(CombatPoints.ToString());
 
 
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
