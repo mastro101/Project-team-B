@@ -42,16 +42,20 @@ public class ButtonManager : MonoBehaviour {
         switch (Gpm.Name)
         {
             case "Green":
-                Pl1.Life = 5;                
+                Pl1.Life = 5;
+                Pl1.Credit -= 3;
                 break;
             case "Blue":
-                Pl2.Life = 5;               
+                Pl2.Life = 5;
+                Pl2.Credit -= 3;
                 break;
             case "Red":
-                Pl3.Life = 5;                
+                Pl3.Life = 5;
+                Pl3.Credit -= 3;
                 break;
             case "Yellow":
-                Pl4.Life = 5;               
+                Pl4.Life = 5;
+                Pl4.Credit -= 3;
                 break;
         }
         Gpm.CurrentState = GamePlayManager.State.End;
