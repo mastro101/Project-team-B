@@ -126,6 +126,8 @@ public class Grid : MonoBehaviour {
         FindCell(1, 11).SetNameTile("F");
         FindCell(1, 1).SetNameTile("G");
         FindCell(11, 1).SetNameTile("H");
+
+        FindCell(7, 6).SetNameTile("CittàDebug");
     }
 
     void SetWalls()

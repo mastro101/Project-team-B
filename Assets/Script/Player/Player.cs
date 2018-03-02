@@ -78,6 +78,7 @@ public class Player : PlayerStatistiche{
                 {
                     UI._isHealActive[0] = true;
                     UI._isHealActive[1] = true;
+                    Lg.SetTextLog("Pezzo di merda fungi", true);
                 }
                 else {
                     Gpm.CurrentState = GamePlayManager.State.End; 
