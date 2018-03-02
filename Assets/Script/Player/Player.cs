@@ -63,7 +63,8 @@ public class Player : PlayerStatistiche{
             else if (Gpm.CurrentState == GamePlayManager.State.Movement && PossibleMove > 0)
             {
                 MainMove2();    //Movimento del Player tramite Click
-                //MainMove3();
+                if(PossibleMove == 2)
+                    MainMove3();
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
             {
@@ -224,7 +225,7 @@ public class Player : PlayerStatistiche{
 
     }
 
-    /*void MainMove3()
+    void MainMove3()
     {
         //Debug.Log(detectObject.GetX() + " - " + detectObject.GetZ());
         int ObjectX = detectObject.GetX();
@@ -243,6 +244,7 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 ZPos += DistanceMove;
+                PossibleMove-=2;
                 Move();
             }
             else if (ObjectX == XPos && ObjectZ + 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).GetValidity())
@@ -254,6 +256,7 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 ZPos -= DistanceMove;
+                PossibleMove -= 2;
                 Move();
             }
             else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX + 1, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX +1 , ObjectZ).GetValidity())
@@ -265,6 +268,7 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 XPos -= DistanceMove;
+                PossibleMove -= 2;
                 Move();
             }
             else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).GetValidity())
@@ -276,10 +280,11 @@ public class Player : PlayerStatistiche{
                 ZPos_old = ZPos;
 
                 XPos += DistanceMove;
+                PossibleMove -= 2;
                 Move();
             }
         }
-    }*/
+    }
 
 
     //Set Position Player
