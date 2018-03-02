@@ -11,6 +11,8 @@ public class PlayerStatistiche : MonoBehaviour {
     public int Life = 5;
     public int Credit;
     public int PossibleMove = 2;
+    public int Stamina = 10;
+    public int CombatPoints = 5;
     public GameObject[] Equip = {null, null, null};
 
     private void Start()
