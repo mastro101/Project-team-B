@@ -400,7 +400,7 @@ public class Player : PlayerStatistiche{
                 grid.FindCell(XPos, ZPos).PlayerOnTile++;
                 Gpm.CurrentState = GamePlayManager.State.End;
                 Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-                //PossibleMove = 2; rimuovi commento per eliminare il BUG [Volontario]
+                PossibleMove = 2; //rimuovi commento per eliminare il BUG [Volontario]
 
             }
 

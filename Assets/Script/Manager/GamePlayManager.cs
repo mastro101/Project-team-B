@@ -234,7 +234,7 @@ public class GamePlayManager : MonoBehaviour
                     return false;
                 return true;
             case State.End:
-                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat || CurrentState == State.Mission)
+                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat || CurrentState == State.Mission || CurrentState == State.Movement)
                     return true;
                 return false;
             default:
