@@ -73,7 +73,14 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Object)
             {
-                Gpm.CurrentState = GamePlayManager.State.End;
+                if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
+                {
+                    UI._isHealActive[0] = true;
+                    UI._isHealActive[1] = true;
+                }
+                else {
+                    Gpm.CurrentState = GamePlayManager.State.End; 
+                }
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
@@ -82,8 +89,8 @@ public class Player : PlayerStatistiche{
 
             if (PossibleMove == 0)
             {
-                PossibleMove = 2;
-                BM.EndP.SetActive(false);
+                //PossibleMove = 2;
+                BM.EndP.SetActive(true);
             }
             else if (PossibleMove == 1)
             {
@@ -132,11 +139,11 @@ public class Player : PlayerStatistiche{
             detectObject.CorrectMove = false;
 
             // Finito il movimento passa alla fase successiva
-            if(PossibleMove == 0)
+            /*if(PossibleMove == 0)
             {
                 Gpm.CurrentState = GamePlayManager.State.Event;
                 //PossibleMove = 2;
-            }
+            }*/
                 
 
             Lg.SetTextLog(Name + " si è mosso (" +XPos+"-"+ZPos+")" , true);
@@ -345,8 +352,6 @@ public class Player : PlayerStatistiche{
             Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
 
             //ActiveTurn = false;
-            UI._isHealActive[0] = true;
-            UI._isHealActive[1] = true;
             Gpm.CurrentState = GamePlayManager.State.Object;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")

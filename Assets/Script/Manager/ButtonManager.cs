@@ -37,6 +37,31 @@ public class ButtonManager : MonoBehaviour {
         }
     }
 
+    public void HealLife()
+    {
+        switch (Gpm.Name)
+        {
+            case "Green":
+                Pl1.Life = 5;                
+                break;
+            case "Blue":
+                Pl2.Life = 5;               
+                break;
+            case "Red":
+                Pl3.Life = 5;                
+                break;
+            case "Yellow":
+                Pl4.Life = 5;               
+                break;
+        }
+        Gpm.CurrentState = GamePlayManager.State.End;
+    }
+
+    public void NoHeal()
+    {
+        Gpm.CurrentState = GamePlayManager.State.End;
+    }
+
     public void EndPhase() {
         Gpm.CurrentState = GamePlayManager.State.Event;
         switch (Gpm.Name) {
