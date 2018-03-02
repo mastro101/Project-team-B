@@ -366,33 +366,35 @@ public class Player : PlayerStatistiche{
             Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
             Gpm.CurrentState = GamePlayManager.State.Combat;
         }
-        else //In una casella neutrale
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "")//In una casella neutrale
         {
             // Viene scelto un numero randomico tra 0 e 2
             eventCard = Random.Range(0, 3);
             Debug.Log(eventCard);
+
+            switch (eventCard)
+                    {
+                        // Evento che non comporta un cambio State
+                        case 0:
+                            Gpm.CurrentState = GamePlayManager.State.End;
+                            Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
+                            break;
+                        // Evento Oggetto
+                        case 1:
+                            Gpm.CurrentState = GamePlayManager.State.Object;
+                            Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
+                            break;
+                        // Evento Nemico
+                        case 2:
+                            Gpm.CurrentState = GamePlayManager.State.Combat;
+                            Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
+                            break;
+                        default:
+                            break;
+                    }
         }
 
-        switch (eventCard)
-        {
-            // Evento che non comporta un cambio State
-            case 0:
-                Gpm.CurrentState = GamePlayManager.State.End;
-                Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
-                break;
-            // Evento Oggetto
-            case 1:
-                Gpm.CurrentState = GamePlayManager.State.Object;
-                Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
-                break;
-            // Evento Nemico
-            case 2:
-                Gpm.CurrentState = GamePlayManager.State.Combat;
-                Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
-                break;
-            default:
-                break;
-        }
+        
     }
 
     void Morte() {
