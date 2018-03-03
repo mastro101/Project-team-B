@@ -7,6 +7,7 @@ public class GamePlayManager : MonoBehaviour
 
     public string Name="Green";
 
+    public DetectObject DO;
 
     public enum PlayerTurn
     {
@@ -291,17 +292,23 @@ public class GamePlayManager : MonoBehaviour
             switch (CurrentTurn) {
                 case PlayerTurn.P1:
                     Name = "Green";
+                    DO.NameDO = "Green";
                     break;
                 case PlayerTurn.P2:
                     Name = "Blue";
+                    DO.NameDO = "Blue";
                     break;
                 case PlayerTurn.P3:
                     Name = "Red";
+                    DO.NameDO = "Red";
                     break;
                 case PlayerTurn.P4:
-                    Name = "Yellow";                   
+                    Name = "Yellow";
+                    DO.NameDO = "Yellow";
                     break;
             }
+
+
 
             CurrentState = State.Mission;
         }

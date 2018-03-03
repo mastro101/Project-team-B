@@ -90,7 +90,7 @@ public class Player : PlayerStatistiche{
             }
 
             if (PossibleMove == 0)
-            {
+            {                               
                 //PossibleMove = 2;
                 BM.EndP.SetActive(true);
             }
@@ -421,5 +421,10 @@ public class Player : PlayerStatistiche{
 
         }   
     }
+
+}
+
+public class ciccioBalilla {
+
 
 }

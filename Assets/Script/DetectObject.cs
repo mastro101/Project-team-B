@@ -6,6 +6,7 @@ public class DetectObject : MonoBehaviour {
 	
     public float XPosition, ZPosition;
     public bool CorrectMove;
+    public Player[] player = new Player[4];
 
 
     float Size;
@@ -16,15 +17,21 @@ public class DetectObject : MonoBehaviour {
 
     int _x, _z;
 
-    
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetMouseButtonDown(0))
+    public string NameDO;
+    public GamePlayManager Gpm;
+
+    // Update is called once per frame
+    void Update () {
+
+        
+
+        if (Input.GetMouseButtonDown(0) && NameDO == Gpm.Name)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             
+
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 if (hit.transform != null)
