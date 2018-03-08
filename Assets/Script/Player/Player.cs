@@ -170,12 +170,12 @@ public class Player : PlayerStatistiche{
         //DistanceMove = playerStatistiche.GetDistance();
         if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
 
-            // Il player non è più sulla casella di prima
-            grid.FindCell(XPos, ZPos).PlayerOnTile--;
+            
 
             if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
             { //SU
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
@@ -188,6 +188,7 @@ public class Player : PlayerStatistiche{
             { //GIU
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
@@ -200,6 +201,7 @@ public class Player : PlayerStatistiche{
             { //SINISTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
@@ -212,6 +214,7 @@ public class Player : PlayerStatistiche{
             { //DESTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
@@ -240,6 +243,7 @@ public class Player : PlayerStatistiche{
             if (ObjectX == XPos && ObjectZ - 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ - 1).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ-1).GetValidity())
             { //SU
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
@@ -252,6 +256,7 @@ public class Player : PlayerStatistiche{
             { //GIU
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
@@ -264,6 +269,7 @@ public class Player : PlayerStatistiche{
             { //SINISTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
@@ -276,6 +282,7 @@ public class Player : PlayerStatistiche{
             { //DESTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;

@@ -285,6 +285,8 @@ public class GamePlayManager : MonoBehaviour
 
         if (CurrentState == State.End)
         {
+            DO.CorrectMove = false;
+
             PlayerTurn _playerTurn = CurrentTurn;
 
             CurrentTurn = _playerTurn + 1;
