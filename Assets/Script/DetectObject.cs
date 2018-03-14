@@ -20,12 +20,14 @@ public class DetectObject : MonoBehaviour {
     public string NameDO;
     public GamePlayManager Gpm;
 
+    public UIManager UIM;
+
     // Update is called once per frame
     void Update () {
 
-        
 
-        if (Input.GetMouseButtonDown(0) && NameDO == Gpm.Name)
+
+        if (Input.GetMouseButtonDown(0) && NameDO == Gpm.Name && UIM._isInfo == false)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
