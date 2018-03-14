@@ -8,6 +8,7 @@ public class Player : PlayerStatistiche{
     public Grid grid;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
+    public GameObject Enemy;
 
     public  TextMeshP Tmp;
 
@@ -38,6 +39,7 @@ public class Player : PlayerStatistiche{
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
         SetPositionPlayer();
+        Stamina = 20;
     }
 
 
@@ -78,7 +80,6 @@ public class Player : PlayerStatistiche{
                 {
                     UI._isHealActive[0] = true;
                     UI._isHealActive[1] = true;
-                    Lg.SetTextLog("Pezzo di merda fungi", true);
                 }
                 else {
                     Gpm.CurrentState = GamePlayManager.State.End; 
@@ -86,6 +87,10 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
+                
+                Enemy.GetComponent<Enemy>().Stamina -= CurrentAttack;
+                
+
                 Gpm.CurrentState = GamePlayManager.State.End;
             }
 

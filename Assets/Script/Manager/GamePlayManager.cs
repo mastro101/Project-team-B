@@ -8,6 +8,7 @@ public class GamePlayManager : MonoBehaviour
     public string Name="Green";
 
     public DetectObject DO;
+    public Enemy Enemy;
 
     public enum PlayerTurn
     {
@@ -295,18 +296,22 @@ public class GamePlayManager : MonoBehaviour
                 case PlayerTurn.P1:
                     Name = "Green";
                     DO.NameDO = "Green";
+                    Enemy.PlayerToAttack = "Green";
                     break;
                 case PlayerTurn.P2:
                     Name = "Blue";
                     DO.NameDO = "Blue";
+                    Enemy.PlayerToAttack = "Blue";
                     break;
                 case PlayerTurn.P3:
                     Name = "Red";
                     DO.NameDO = "Red";
+                    Enemy.PlayerToAttack = "Red";
                     break;
                 case PlayerTurn.P4:
                     Name = "Yellow";
                     DO.NameDO = "Yellow";
+                    Enemy.PlayerToAttack = "Yellow";
                     break;
             }
 

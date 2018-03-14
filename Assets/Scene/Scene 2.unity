@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964128, b: 0.5748176, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -113,6 +113,112 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14046086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 14046091}
+  - component: {fileID: 14046090}
+  - component: {fileID: 14046089}
+  - component: {fileID: 14046088}
+  - component: {fileID: 14046087}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &14046087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14046086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54932ba2feb85ce449976850dc0b4754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stamina: 10
+  CombatPoints: 0
+  Credits: 0
+  Attack: 1
+  PlayerToAttack: 
+  PGreen: {fileID: 2071244644}
+  PBlue: {fileID: 857374695}
+  PRed: {fileID: 487505901}
+  PYellow: {fileID: 924047375}
+  Gpm: {fileID: 493988554}
+--- !u!23 &14046088
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14046086}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &14046089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14046086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &14046090
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14046086}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &14046091
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14046086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 144.62889, y: 79.92943, z: 15.284958}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &35753759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -91.49998}
+  m_AnchoredPosition: {x: 0.0001296997, y: -91.49998}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406764183
@@ -1820,6 +1926,12 @@ MonoBehaviour:
   PossibleMove: 2
   Stamina: 10
   CombatPoints: 5
+  CurrentAttack: 1
+  Attack1: 1
+  Attack2: 1
+  Attack3: 1
+  Attack4: 1
+  Attack5: 1
   Equip:
   - {fileID: 0}
   - {fileID: 0}
@@ -1827,6 +1939,7 @@ MonoBehaviour:
   grid: {fileID: 1529248543}
   detectObject: {fileID: 1837046790}
   Gpm: {fileID: 493988554}
+  Enemy: {fileID: 14046086}
   Tmp: {fileID: 973254497}
   Lg: {fileID: 712182118}
   UI: {fileID: 1173938045}
@@ -1863,6 +1976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Green
   DO: {fileID: 1837046790}
+  Enemy: {fileID: 14046087}
 --- !u!4 &493988555
 Transform:
   m_ObjectHideFlags: 0
@@ -2013,8 +2127,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595734448}
   m_HandleRect: {fileID: 595734447}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999997
+  m_Value: 0.25
+  m_Size: 0.99999964
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2173,7 +2287,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -2635,6 +2749,12 @@ MonoBehaviour:
   PossibleMove: 2
   Stamina: 10
   CombatPoints: 5
+  CurrentAttack: 1
+  Attack1: 1
+  Attack2: 1
+  Attack3: 1
+  Attack4: 1
+  Attack5: 1
   Equip:
   - {fileID: 0}
   - {fileID: 0}
@@ -2642,6 +2762,7 @@ MonoBehaviour:
   grid: {fileID: 1529248543}
   detectObject: {fileID: 1837046790}
   Gpm: {fileID: 493988554}
+  Enemy: {fileID: 14046086}
   Tmp: {fileID: 973254497}
   Lg: {fileID: 712182118}
   UI: {fileID: 1173938045}
@@ -2891,6 +3012,12 @@ MonoBehaviour:
   PossibleMove: 2
   Stamina: 10
   CombatPoints: 5
+  CurrentAttack: 1
+  Attack1: 1
+  Attack2: 1
+  Attack3: 1
+  Attack4: 1
+  Attack5: 1
   Equip:
   - {fileID: 0}
   - {fileID: 0}
@@ -2898,6 +3025,7 @@ MonoBehaviour:
   grid: {fileID: 1529248543}
   detectObject: {fileID: 1837046790}
   Gpm: {fileID: 493988554}
+  Enemy: {fileID: 14046086}
   Tmp: {fileID: 973254497}
   Lg: {fileID: 712182118}
   UI: {fileID: 1173938045}
@@ -6523,6 +6651,12 @@ MonoBehaviour:
   PossibleMove: 2
   Stamina: 10
   CombatPoints: 5
+  CurrentAttack: 1
+  Attack1: 1
+  Attack2: 1
+  Attack3: 1
+  Attack4: 1
+  Attack5: 1
   Equip:
   - {fileID: 0}
   - {fileID: 0}
@@ -6530,6 +6664,7 @@ MonoBehaviour:
   grid: {fileID: 1529248543}
   detectObject: {fileID: 1837046790}
   Gpm: {fileID: 493988554}
+  Enemy: {fileID: 14046086}
   Tmp: {fileID: 973254497}
   Lg: {fileID: 712182118}
   UI: {fileID: 1173938045}
