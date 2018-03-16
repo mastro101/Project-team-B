@@ -53,4 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefabs:
   - {fileID: 1093514816397326, guid: 69bd9ea1f0e47e44886c2353acf7054e, type: 2}
+  - {fileID: 1135966179746968, guid: 316fb7cf641b75c489afbe460a8a3e01, type: 2}
   MaxEnemy: 3

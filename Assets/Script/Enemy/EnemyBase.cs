@@ -11,6 +11,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     public int CombatPoints;
     public int Credits;
     public int Attack;
+    public bool IsAlive;
     public string PlayerToAttack;
     public GameObject PGreen, PBlue, PRed, PYellow;
     public GamePlayManager Gpm;
@@ -28,9 +29,13 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         set { _currentState = value; }
     }
 
+    int IEnemy.Attack { get { return Attack; } }
+
     int IEnemy.Credits { get { return Credits; } }
 
     int IEnemy.CombatPoints { get { return CombatPoints; } }
+
+    bool IEnemy.IsAlive { get { return IsAlive; } }
 
     public event IEnemyEvents.EnemyEvent OnSpawn;
     public event IEnemyEvents.EnemyEvent OnDestroy;
@@ -55,6 +60,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
 
     public virtual void Spawn()
     {
+        IsAlive = true;
         CurrentState = IEnemyState.InUse;
         InvockOnSpawn();
     }
@@ -77,6 +83,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         Stamina -= damage;
         if (Stamina <= 0)
         {
+            IsAlive = false;
             DestroyMe();
         }
     }

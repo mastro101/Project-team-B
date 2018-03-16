@@ -8,4 +8,5 @@ public class Enemy1 : EnemyBase
         return 0;
     }
 
+    
 }

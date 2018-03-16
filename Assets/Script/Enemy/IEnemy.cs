@@ -5,6 +5,8 @@ public interface IEnemy {
     int ID { get; }
     int CombatPoints { get; }
     int Credits { get; }
+    int Attack { get; }
+    bool IsAlive { get; }
     GameObject gameObject { get; }
     IEnemyState CurrentState { get; set; }
 

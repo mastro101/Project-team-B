@@ -111,6 +111,12 @@ public class Player : PlayerStatistiche{
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         currentEnemy.TakeDamage(Attacks[Random.Range(0, 5)]);
+                        TakeDamage(currentEnemy.Attack);
+                        if (currentEnemy.IsAlive == false)
+                        {
+                            Credit += currentEnemy.Credits;
+                            CombatPoints += currentEnemy.CombatPoints;
+                        }
                     }
                 }
 
@@ -450,6 +456,15 @@ public class Player : PlayerStatistiche{
         
     }
 
+    public void TakeDamage(int damage)
+    {
+        Stamina -= damage;
+        if (Stamina <= 0)
+        {
+            Morte();
+        }
+    }
+
     void Morte() {
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -466,10 +481,10 @@ public class Player : PlayerStatistiche{
                 ZPos = 6;
                 Life = 5;
                 grid.FindCell(XPos, ZPos).PlayerOnTile++;
-                Gpm.CurrentState = GamePlayManager.State.End;
+                PossibleMove = 2;
                 Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-                PossibleMove = 2; //rimuovi commento per eliminare il BUG [Volontario]
-
+                Gpm.CurrentState = GamePlayManager.State.End;
+                
             }
 
         }   
