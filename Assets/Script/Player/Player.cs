@@ -8,7 +8,7 @@ public class Player : PlayerStatistiche{
     public Grid grid;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
-    public GameObject Enemy;
+    IEnemy currentEnemy;
 
     public  TextMeshP Tmp;
 
@@ -18,6 +18,7 @@ public class Player : PlayerStatistiche{
 
     public ButtonManager BM;
 
+    EnemyPoolManager enemyManager;
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
@@ -31,15 +32,25 @@ public class Player : PlayerStatistiche{
     public float _Yoffset;
 
     int eventCard;
+    bool inCombat;
 
     void Start()
     {
+        enemyManager = FindObjectOfType<EnemyPoolManager>();
+
+
         grid.Center().PlayerOnTile = 4;
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
         SetPositionPlayer();
+
         Stamina = 20;
+        Attacks[0] = 1;
+        Attacks[1] = 2;
+        Attacks[2] = 3;
+        Attacks[3] = 4;
+        Attacks[4] = 5;
     }
 
 
@@ -87,11 +98,27 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
-                
-                Enemy.GetComponent<Enemy>().Stamina -= CurrentAttack;
-                
 
-                Gpm.CurrentState = GamePlayManager.State.End;
+                if (!inCombat)
+                {
+                    SpawnEnemy();
+                    inCombat = true;
+                }
+
+                // Attacco
+                if (currentEnemy.CurrentState == IEnemyState.InUse)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        currentEnemy.TakeDamage(Attacks[Random.Range(0, 5)]);
+                    }
+                }
+
+                if (currentEnemy.CurrentState == IEnemyState.InPool)
+                {
+                    inCombat = false;
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                }
             }
 
             if (PossibleMove == 0)
@@ -110,6 +137,20 @@ public class Player : PlayerStatistiche{
             Morte();
         }
         //playerStatistiche.SetDistace(Name, DistanceMove);   //Setto il movimento del player // Da rivedere in futuro
+    }
+
+    private void SpawnEnemy()
+    {
+        currentEnemy = enemyManager.GetEnemy(Random.Range(0, enemyManager.EnemyPrefabs.Length));
+        currentEnemy.gameObject.transform.position = this.transform.position;
+        currentEnemy.Spawn();
+        currentEnemy.OnDestroy += OnEnemyDestroy;
+
+    }
+
+    public void OnEnemyDestroy(IEnemy enemy)
+    {
+        currentEnemy.OnDestroy -= OnEnemyDestroy;
     }
 
     //Movimento del Player
@@ -385,25 +426,25 @@ public class Player : PlayerStatistiche{
             Debug.Log(eventCard);
 
             switch (eventCard)
-                    {
-                        // Evento che non comporta un cambio State
-                        case 0:
-                            Gpm.CurrentState = GamePlayManager.State.End;
-                            Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
-                            break;
-                        // Evento Oggetto
-                        case 1:
-                            Gpm.CurrentState = GamePlayManager.State.Object;
-                            Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
-                            break;
-                        // Evento Nemico
-                        case 2:
-                            Gpm.CurrentState = GamePlayManager.State.Combat;
-                            Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
-                            break;
-                        default:
-                            break;
-                    }
+            {
+                // Evento che non comporta un cambio State
+                case 0:
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                    Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
+                    break;
+                // Evento Oggetto
+                case 1:
+                    Gpm.CurrentState = GamePlayManager.State.Object;
+                    Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
+                    break;
+                // Evento Nemico
+                case 2:
+                    Gpm.CurrentState = GamePlayManager.State.Combat;
+                    Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
+                    break;
+                default:
+                    break;
+            }
         }
 
         

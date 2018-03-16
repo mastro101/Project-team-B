@@ -8,7 +8,7 @@ public class GamePlayManager : MonoBehaviour
     public string Name="Green";
 
     public DetectObject DO;
-    public Enemy Enemy;
+    public EnemyBase Enemy;
 
     public enum PlayerTurn
     {
