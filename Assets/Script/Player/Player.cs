@@ -8,6 +8,7 @@ public class Player : PlayerStatistiche{
     public Grid grid;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
+    IEnemy currentEnemy;
 
     public  TextMeshP Tmp;
 
@@ -15,6 +16,9 @@ public class Player : PlayerStatistiche{
 
     public UIManager UI;
 
+    public ButtonManager BM;
+
+    EnemyPoolManager enemyManager;
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
@@ -28,55 +32,131 @@ public class Player : PlayerStatistiche{
     public float _Yoffset;
 
     int eventCard;
+    bool inCombat;
 
     void Start()
     {
-        
+        enemyManager = FindObjectOfType<EnemyPoolManager>();
+
+
+        grid.Center().PlayerOnTile = 4;
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
         SetPositionPlayer();
+
+        Stamina = 20;
+        Attacks[0] = 1;
+        Attacks[1] = 2;
+        Attacks[2] = 3;
+        Attacks[3] = 4;
+        Attacks[4] = 5;
     }
 
 
     void Update()
     {
         //MainMove();   //Movimento del PLayer tramite WASD
-        
+
         if (Name == Gpm.Name)
         {
             Tmp.SetMission(Mission.ToString());
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
+            Tmp.SetMosse(PossibleMove.ToString());
+            Tmp.SetStamina(Stamina.ToString());
+            Tmp.SetCombatPoints(CombatPoints.ToString());
+
+
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
             {
                 AssignMisison();
             }
-            else if (Gpm.CurrentState == GamePlayManager.State.Movement)
+            else if (Gpm.CurrentState == GamePlayManager.State.Movement && PossibleMove > 0)
             {
                 MainMove2();    //Movimento del Player tramite Click
-                MainMove3();
+                if(PossibleMove == 2)
+                    MainMove3();
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
             {
                 Lg.SetTextLog(Name + ": Carta evento pescata", true);
-                
-                Event();   
+
+                Event();
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Object)
             {
-                Gpm.CurrentState = GamePlayManager.State.End;
+                if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
+                {
+                    UI._isHealActive[0] = true;
+                    UI._isHealActive[1] = true;
+                }
+                else {
+                    Gpm.CurrentState = GamePlayManager.State.End; 
+                }
             }
-            else if(Gpm.CurrentState == GamePlayManager.State.Combat)
+            else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
-                Gpm.CurrentState = GamePlayManager.State.End;
+
+                if (!inCombat)
+                {
+                    SpawnEnemy();
+                    inCombat = true;
+                }
+
+                // Attacco
+                if (currentEnemy.CurrentState == IEnemyState.InUse)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        currentEnemy.TakeDamage(Attacks[Random.Range(0, 5)]);
+                        TakeDamage(currentEnemy.Attack);
+                        if (currentEnemy.IsAlive == false)
+                        {
+                            Credit += currentEnemy.Credits;
+                            CombatPoints += currentEnemy.CombatPoints;
+                        }
+                    }
+                }
+
+                if (currentEnemy.CurrentState == IEnemyState.InPool)
+                {
+                    inCombat = false;
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                }
             }
 
+            if (PossibleMove == 0)
+            {                               
+                //PossibleMove = 2;
+                BM.EndP.SetActive(true);
+            }
+            else if (PossibleMove == 1)
+            {
+                BM.EndP.SetActive(true);
+            }
+
+            
+            
             // Morte
             Morte();
         }
         //playerStatistiche.SetDistace(Name, DistanceMove);   //Setto il movimento del player // Da rivedere in futuro
+    }
+
+    private void SpawnEnemy()
+    {
+        currentEnemy = enemyManager.GetEnemy(Random.Range(0, enemyManager.EnemyPrefabs.Length));
+        currentEnemy.gameObject.transform.position = this.transform.position;
+        currentEnemy.Spawn();
+        currentEnemy.OnDestroy += OnEnemyDestroy;
+
+    }
+
+    public void OnEnemyDestroy(IEnemy enemy)
+    {
+        currentEnemy.OnDestroy -= OnEnemyDestroy;
     }
 
     //Movimento del Player
@@ -88,29 +168,37 @@ public class Player : PlayerStatistiche{
             globalPosition += new Vector3(0f, _Yoffset, 0f); ;
             
 
-            switch (Name) {
-                case "Green":
+            switch (grid.FindCell(XPos, ZPos).PlayerOnTile) {
+                case 1:
                     globalPosition += new Vector3(-0.6f, 0, 0.6f);
                     break;
-                case "Blue":
+                case 2:
                     globalPosition += new Vector3(0.6f, 0, -0.6f);
                     break;
-                case "Red":
+                case 3:
                     globalPosition += new Vector3(0.6f, 0, 0.6f);
                     break;
-                case "Yellow":
+                case 4:
                     globalPosition += new Vector3(-0.6f, 0, -0.6f);
+                    break;
+                default:
                     break;
             }
 
             transform.DOMove(globalPosition, 0.6f).SetEase(Ease.Linear);
 
+            // Il player è sulla casella
+            grid.FindCell(XPos, ZPos).PlayerOnTile++;
 
-            //grid.FindCell(XPos, ZPos).SetValidity(false);
             detectObject.CorrectMove = false;
 
             // Finito il movimento passa alla fase successiva
-            Gpm.CurrentState = GamePlayManager.State.Event;
+            /*if(PossibleMove == 0)
+            {
+                Gpm.CurrentState = GamePlayManager.State.Event;
+                //PossibleMove = 2;
+            }*/
+                
 
             Lg.SetTextLog(Name + " si è mosso (" +XPos+"-"+ZPos+")" , true);
                 
@@ -129,55 +217,68 @@ public class Player : PlayerStatistiche{
         //Debug.Log(detectObject.GetX() + " - " + detectObject.GetZ());
         int ObjectX = detectObject.GetX();
         int ObjectZ = detectObject.GetZ();
-
+        
         DistanceMove = 1;
         //DistanceMove = playerStatistiche.GetDistance();
         if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
 
+            
+
             if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
             { //SU
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 ZPos += DistanceMove;
+                PossibleMove--;
                 Move();
             }
             else if (ObjectX == XPos && ObjectZ + 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true)
             { //GIU
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 ZPos -= DistanceMove;
+                PossibleMove--;
                 Move();
             }
             else if (ObjectX + 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true)
             { //SINISTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 XPos -= DistanceMove;
+                PossibleMove--;
                 Move();
             }
             else if (ObjectX - 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true)
             { //DESTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 XPos += DistanceMove;
+                PossibleMove--;
                 Move();
             }
         } 
+
+
+
     }
 
     void MainMove3()
@@ -194,44 +295,52 @@ public class Player : PlayerStatistiche{
             if (ObjectX == XPos && ObjectZ - 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ - 1).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ-1).GetValidity())
             { //SU
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 ZPos += DistanceMove;
+                PossibleMove-=2;
                 Move();
             }
             else if (ObjectX == XPos && ObjectZ + 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).GetValidity())
             { //GIU
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 ZPos -= DistanceMove;
+                PossibleMove -= 2;
                 Move();
             }
             else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX + 1, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX +1 , ObjectZ).GetValidity())
             { //SINISTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 XPos -= DistanceMove;
+                PossibleMove -= 2;
                 Move();
             }
             else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).GetValidity())
             { //DESTRA
 
                 grid.FindCell(XPos, ZPos).SetValidity(true);
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
                 XPos_old = XPos;
                 ZPos_old = ZPos;
 
                 XPos += DistanceMove;
+                PossibleMove -= 2;
                 Move();
             }
         }
@@ -308,8 +417,6 @@ public class Player : PlayerStatistiche{
             Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
 
             //ActiveTurn = false;
-           /* UI._isHealActive[0] = true;
-            UI._isHealActive[1] = true;*/
             Gpm.CurrentState = GamePlayManager.State.Object;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
@@ -318,32 +425,43 @@ public class Player : PlayerStatistiche{
             Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
             Gpm.CurrentState = GamePlayManager.State.Combat;
         }
-        else //In una casella neutrale
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "")//In una casella neutrale
         {
             // Viene scelto un numero randomico tra 0 e 2
             eventCard = Random.Range(0, 3);
             Debug.Log(eventCard);
+
+            switch (eventCard)
+            {
+                // Evento che non comporta un cambio State
+                case 0:
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                    Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
+                    break;
+                // Evento Oggetto
+                case 1:
+                    Gpm.CurrentState = GamePlayManager.State.Object;
+                    Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
+                    break;
+                // Evento Nemico
+                case 2:
+                    Gpm.CurrentState = GamePlayManager.State.Combat;
+                    Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
+                    break;
+                default:
+                    break;
+            }
         }
 
-        switch (eventCard)
+        
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Stamina -= damage;
+        if (Stamina <= 0)
         {
-            // Evento che non comporta un cambio State
-            case 0:
-                Gpm.CurrentState = GamePlayManager.State.End;
-                Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
-                break;
-            // Evento Oggetto
-            case 1:
-                Gpm.CurrentState = GamePlayManager.State.Object;
-                Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
-                break;
-            // Evento Nemico
-            case 2:
-                Gpm.CurrentState = GamePlayManager.State.Combat;
-                Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
-                break;
-            default:
-                break;
+            Morte();
         }
     }
 
@@ -355,18 +473,26 @@ public class Player : PlayerStatistiche{
 
             if (Life <= 0)
             {
+                grid.FindCell(XPos, ZPos).PlayerOnTile--;
                 transform.position = grid.GetCenterPosition();
                 transform.position += new Vector3(0f, _Yoffset, 0f);
+                SetPositionPlayer();
                 XPos = 6;
                 ZPos = 6;
                 Life = 5;
-                Gpm.CurrentState = GamePlayManager.State.Event;
+                grid.FindCell(XPos, ZPos).PlayerOnTile++;
+                PossibleMove = 2;
                 Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-
+                Gpm.CurrentState = GamePlayManager.State.End;
+                
             }
 
         }   
     }
 
-    
+}
+
+public class ciccioBalilla {
+
+
 }

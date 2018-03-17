@@ -11,6 +11,10 @@ public class TextMeshP : MonoBehaviour {
     public TextMeshProUGUI LifeText;
     public TextMeshProUGUI CreditsText;
     public TextMeshProUGUI PlayerInventoryText;
+    public TextMeshProUGUI MosseRimaste;
+    public TextMeshProUGUI StaminaText;
+    public TextMeshProUGUI CombatPointsText;
+
 
     public bool _TurnPlayer;
     public bool _Mission;
@@ -18,7 +22,7 @@ public class TextMeshP : MonoBehaviour {
     public bool _Credits;
 
     public string NamePlayer;
-    public string Mission, Life, Credits;
+    public string Mission, Life, Credits, Mosse, Stamina, CombatPoints;
     public string PlayerInventory;
 	
 	// Update is called once per frame
@@ -28,6 +32,9 @@ public class TextMeshP : MonoBehaviour {
         LifeText.text = Life;
         CreditsText.text = Credits;
         PlayerInventoryText.text = PlayerInventory;
+        MosseRimaste.text = Mosse;
+        StaminaText.text = Stamina;
+        CombatPointsText.text = CombatPoints;
     }
 
     public void SetName(string name) {
@@ -46,5 +53,20 @@ public class TextMeshP : MonoBehaviour {
 
     public void SetCredits(string _credits) {
         Credits = "Credits:" + _credits;
+    }
+
+    public void SetMosse(string mosse)
+    {
+        Mosse = "MOSSE RIMASTE: " + mosse;
+    }
+
+    public void SetStamina(string _stamina)
+    {
+        Stamina = "Stamina: " + _stamina;
+    }
+
+    public void SetCombatPoints(string _combatPoints)
+    {
+        CombatPoints = "Punti Combattimento: " + _combatPoints;
     }
 }

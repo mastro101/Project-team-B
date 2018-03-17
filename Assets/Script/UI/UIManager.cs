@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
     public GameObject HealPanel;
     public bool[] _isHealActive;
 
-    public GameObject DrawPanel;
-    public bool[] _isDraw;
+    public GameObject InfoPanel;
+    public bool _isInfo=false;
+
+    public Scrollbar sb;
 
 	// Use this for initialization
 	void Start () {
@@ -16,24 +19,31 @@ public class UIManager : MonoBehaviour {
         _isHealActive[0] = false;
         _isHealActive[1] = false;
 
-        _isDraw = new bool[2];
-        _isDraw[0] = false;
-        _isDraw[1] = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        sb.value = 0;
+
         if (_isHealActive[1]) {
             ActiveHealPanel();
             _isHealActive[1] = false;
             Debug.Log("8Aperto");
         }
 
-        if (_isDraw[1])
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            ActiveDrawPanel();
-            _isDraw[1] = false;
-            Debug.Log("8Aperto");
+            if (!_isInfo)
+            {
+                InfoPanel.SetActive(true);
+                _isInfo = true;    
+            }
+            else
+            {
+                InfoPanel.SetActive(false);
+                _isInfo = false;
+            }
         }
 
 
@@ -49,21 +59,6 @@ public class UIManager : MonoBehaviour {
         else {
             HealPanel.SetActive(false);
             _isHealActive[0] = false;
-        }
-    }
-
-    void ActiveDrawPanel()
-    {
-        if (_isDraw[0])
-        {
-            DrawPanel.SetActive(true);
-            _isDraw[0] = true;
-            Debug.Log("Aperto");
-        }
-        else
-        {
-            DrawPanel.SetActive(false);
-            _isDraw[0] = false;
         }
     }
 

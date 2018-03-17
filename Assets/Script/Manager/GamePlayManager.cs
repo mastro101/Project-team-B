@@ -7,6 +7,8 @@ public class GamePlayManager : MonoBehaviour
 
     public string Name="Green";
 
+    public DetectObject DO;
+    public EnemyBase Enemy;
 
     public enum PlayerTurn
     {
@@ -234,7 +236,7 @@ public class GamePlayManager : MonoBehaviour
                     return false;
                 return true;
             case State.End:
-                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat || CurrentState == State.Mission)
+                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat || CurrentState == State.Mission || CurrentState == State.Movement)
                     return true;
                 return false;
             default:
@@ -284,6 +286,8 @@ public class GamePlayManager : MonoBehaviour
 
         if (CurrentState == State.End)
         {
+            DO.CorrectMove = false;
+
             PlayerTurn _playerTurn = CurrentTurn;
 
             CurrentTurn = _playerTurn + 1;
@@ -291,17 +295,27 @@ public class GamePlayManager : MonoBehaviour
             switch (CurrentTurn) {
                 case PlayerTurn.P1:
                     Name = "Green";
+                    DO.NameDO = "Green";
+                    Enemy.PlayerToAttack = "Green";
                     break;
                 case PlayerTurn.P2:
                     Name = "Blue";
+                    DO.NameDO = "Blue";
+                    Enemy.PlayerToAttack = "Blue";
                     break;
                 case PlayerTurn.P3:
                     Name = "Red";
+                    DO.NameDO = "Red";
+                    Enemy.PlayerToAttack = "Red";
                     break;
                 case PlayerTurn.P4:
-                    Name = "Yellow";                   
+                    Name = "Yellow";
+                    DO.NameDO = "Yellow";
+                    Enemy.PlayerToAttack = "Yellow";
                     break;
             }
+
+
 
             CurrentState = State.Mission;
         }
