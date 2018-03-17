@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0e3d30e4303fb5243b93c8c925f09912
-timeCreated: 1519428110
+timeCreated: 1520962216
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -8,276 +8,122 @@ ModelImporter:
     100000: antenna001
     100002: antenna0010
     100004: antenna0011
-    100006: antenna0012
-    100008: antenna0013
-    100010: antenna0014
-    100012: antenna0015
-    100014: antenna0016
-    100016: antenna0017
-    100018: antenna0018
-    100020: antenna002
-    100022: antenna006
-    100024: antenna008
-    100026: antenna009
-    100028: antenna_trivella
-    100030: antenna_trivella1
-    100032: basamento_antenna001
-    100034: basamento_antenna002
-    100036: basamento_antenna003
-    100038: basamento_antenna004
-    100040: basamento_antenna_torre
-    100042: basamento_antenna_torre1
-    100044: casella
-    100046: casetta_quadrata
-    100048: casetta_quadrata1
-    100050: //RootNode
-    100052: lampione
-    100054: lampione1
-    100056: parte_bassa_torre
-    100058: parte_bassa_torre1
-    100060: particolare_trivella003
-    100062: particolare_trivella004
-    100064: particolare_trivella005
-    100066: particolare_trivella006
-    100068: porticina_torre
-    100070: porticina_torre1
-    100072: struttura_trivella
-    100074: struttura_trivella1
-    100076: tetto_torre
-    100078: tetto_torre1
-    100080: torre1
-    100082: torre10
-    100084: torre11
-    100086: torre12
-    100088: torre2
-    100090: torre3
-    100092: torre4
-    100094: torre5
-    100096: torre6
-    100098: torre7
-    100100: torre8
-    100102: torre9
-    100104: trivella
-    100106: trivella1
+    100006: antenna006
+    100008: antenna008
+    100010: antenna009
+    100012: antenna_trivella
+    100014: basamento_antenna001
+    100016: basamento_antenna002
+    100018: basamento_antenna_torre
+    100020: casella
+    100022: casetta_001
+    100024: casetta_quadrata
+    100026: //RootNode
+    100028: lampione
+    100030: parte_bassa_torre
+    100032: particolare_trivella003
+    100034: particolare_trivella004
+    100036: porticina_torre
+    100038: struttura_trivella
+    100040: tetto_torre
+    100042: torre11
+    100044: torre_001
+    100046: trivella
+    100048: trivella_001
     400000: antenna001
     400002: antenna0010
     400004: antenna0011
-    400006: antenna0012
-    400008: antenna0013
-    400010: antenna0014
-    400012: antenna0015
-    400014: antenna0016
-    400016: antenna0017
-    400018: antenna0018
-    400020: antenna002
-    400022: antenna006
-    400024: antenna008
-    400026: antenna009
-    400028: antenna_trivella
-    400030: antenna_trivella1
-    400032: basamento_antenna001
-    400034: basamento_antenna002
-    400036: basamento_antenna003
-    400038: basamento_antenna004
-    400040: basamento_antenna_torre
-    400042: basamento_antenna_torre1
-    400044: casella
-    400046: casetta_quadrata
-    400048: casetta_quadrata1
-    400050: //RootNode
-    400052: lampione
-    400054: lampione1
-    400056: parte_bassa_torre
-    400058: parte_bassa_torre1
-    400060: particolare_trivella003
-    400062: particolare_trivella004
-    400064: particolare_trivella005
-    400066: particolare_trivella006
-    400068: porticina_torre
-    400070: porticina_torre1
-    400072: struttura_trivella
-    400074: struttura_trivella1
-    400076: tetto_torre
-    400078: tetto_torre1
-    400080: torre1
-    400082: torre10
-    400084: torre11
-    400086: torre12
-    400088: torre2
-    400090: torre3
-    400092: torre4
-    400094: torre5
-    400096: torre6
-    400098: torre7
-    400100: torre8
-    400102: torre9
-    400104: trivella
-    400106: trivella1
+    400006: antenna006
+    400008: antenna008
+    400010: antenna009
+    400012: antenna_trivella
+    400014: basamento_antenna001
+    400016: basamento_antenna002
+    400018: basamento_antenna_torre
+    400020: casella
+    400022: casetta_001
+    400024: casetta_quadrata
+    400026: //RootNode
+    400028: lampione
+    400030: parte_bassa_torre
+    400032: particolare_trivella003
+    400034: particolare_trivella004
+    400036: porticina_torre
+    400038: struttura_trivella
+    400040: tetto_torre
+    400042: torre11
+    400044: torre_001
+    400046: trivella
+    400048: trivella_001
     2300000: antenna001
     2300002: antenna0010
     2300004: antenna0011
-    2300006: antenna0012
-    2300008: antenna0013
-    2300010: antenna0014
-    2300012: antenna0015
-    2300014: antenna0016
-    2300016: antenna0017
-    2300018: antenna0018
-    2300020: antenna002
-    2300022: antenna006
-    2300024: antenna008
-    2300026: antenna009
-    2300028: antenna_trivella
-    2300030: antenna_trivella1
-    2300032: basamento_antenna001
-    2300034: basamento_antenna002
-    2300036: basamento_antenna003
-    2300038: basamento_antenna004
-    2300040: basamento_antenna_torre
-    2300042: basamento_antenna_torre1
-    2300044: casella
-    2300046: casetta_quadrata
-    2300048: casetta_quadrata1
-    2300050: lampione
-    2300052: lampione1
-    2300054: parte_bassa_torre
-    2300056: parte_bassa_torre1
-    2300058: particolare_trivella003
-    2300060: particolare_trivella004
-    2300062: particolare_trivella005
-    2300064: particolare_trivella006
-    2300066: porticina_torre
-    2300068: porticina_torre1
-    2300070: struttura_trivella
-    2300072: struttura_trivella1
-    2300074: tetto_torre
-    2300076: tetto_torre1
-    2300078: torre1
-    2300080: torre10
-    2300082: torre11
-    2300084: torre12
-    2300086: torre2
-    2300088: torre3
-    2300090: torre4
-    2300092: torre5
-    2300094: torre6
-    2300096: torre7
-    2300098: torre8
-    2300100: torre9
-    2300102: trivella
-    2300104: trivella1
+    2300006: antenna006
+    2300008: antenna008
+    2300010: antenna009
+    2300012: antenna_trivella
+    2300014: basamento_antenna001
+    2300016: basamento_antenna002
+    2300018: basamento_antenna_torre
+    2300020: casella
+    2300022: casetta_quadrata
+    2300024: lampione
+    2300026: parte_bassa_torre
+    2300028: particolare_trivella003
+    2300030: particolare_trivella004
+    2300032: porticina_torre
+    2300034: struttura_trivella
+    2300036: tetto_torre
+    2300038: torre11
+    2300040: trivella
     3300000: antenna001
     3300002: antenna0010
     3300004: antenna0011
-    3300006: antenna0012
-    3300008: antenna0013
-    3300010: antenna0014
-    3300012: antenna0015
-    3300014: antenna0016
-    3300016: antenna0017
-    3300018: antenna0018
-    3300020: antenna002
-    3300022: antenna006
-    3300024: antenna008
-    3300026: antenna009
-    3300028: antenna_trivella
-    3300030: antenna_trivella1
-    3300032: basamento_antenna001
-    3300034: basamento_antenna002
-    3300036: basamento_antenna003
-    3300038: basamento_antenna004
-    3300040: basamento_antenna_torre
-    3300042: basamento_antenna_torre1
-    3300044: casella
-    3300046: casetta_quadrata
-    3300048: casetta_quadrata1
-    3300050: lampione
-    3300052: lampione1
-    3300054: parte_bassa_torre
-    3300056: parte_bassa_torre1
-    3300058: particolare_trivella003
-    3300060: particolare_trivella004
-    3300062: particolare_trivella005
-    3300064: particolare_trivella006
-    3300066: porticina_torre
-    3300068: porticina_torre1
-    3300070: struttura_trivella
-    3300072: struttura_trivella1
-    3300074: tetto_torre
-    3300076: tetto_torre1
-    3300078: torre1
-    3300080: torre10
-    3300082: torre11
-    3300084: torre12
-    3300086: torre2
-    3300088: torre3
-    3300090: torre4
-    3300092: torre5
-    3300094: torre6
-    3300096: torre7
-    3300098: torre8
-    3300100: torre9
-    3300102: trivella
-    3300104: trivella1
+    3300006: antenna006
+    3300008: antenna008
+    3300010: antenna009
+    3300012: antenna_trivella
+    3300014: basamento_antenna001
+    3300016: basamento_antenna002
+    3300018: basamento_antenna_torre
+    3300020: casella
+    3300022: casetta_quadrata
+    3300024: lampione
+    3300026: parte_bassa_torre
+    3300028: particolare_trivella003
+    3300030: particolare_trivella004
+    3300032: porticina_torre
+    3300034: struttura_trivella
+    3300036: tetto_torre
+    3300038: torre11
+    3300040: trivella
     4300000: casella
     4300002: lampione
-    4300004: lampione1
-    4300006: antenna008
-    4300008: basamento_antenna001
-    4300010: antenna001
-    4300012: basamento_antenna002
-    4300014: antenna002
-    4300016: casetta_quadrata
-    4300018: antenna0014
-    4300020: basamento_antenna004
-    4300022: antenna0013
-    4300024: basamento_antenna003
-    4300026: antenna0012
-    4300028: casetta_quadrata1
-    4300030: porticina_torre
-    4300032: tetto_torre
+    4300004: casetta_quadrata
+    4300006: basamento_antenna002
+    4300008: antenna001
+    4300010: basamento_antenna001
+    4300012: antenna008
+    4300014: struttura_trivella
+    4300016: particolare_trivella004
+    4300018: particolare_trivella003
+    4300020: trivella
+    4300022: antenna_trivella
+    4300024: parte_bassa_torre
+    4300026: basamento_antenna_torre
+    4300028: antenna009
+    4300030: antenna0010
+    4300032: antenna006
     4300034: antenna0011
-    4300036: antenna006
-    4300038: antenna0010
-    4300040: antenna009
-    4300042: basamento_antenna_torre
-    4300044: torre6
-    4300046: torre5
-    4300048: torre4
-    4300050: torre3
-    4300052: torre2
-    4300054: torre1
-    4300056: parte_bassa_torre
-    4300058: porticina_torre1
-    4300060: tetto_torre1
-    4300062: antenna0018
-    4300064: antenna0017
-    4300066: antenna0016
-    4300068: antenna0015
-    4300070: basamento_antenna_torre1
-    4300072: torre12
-    4300074: torre11
-    4300076: torre10
-    4300078: torre9
-    4300080: torre8
-    4300082: torre7
-    4300084: parte_bassa_torre1
-    4300086: antenna_trivella
-    4300088: trivella
-    4300090: particolare_trivella003
-    4300092: particolare_trivella004
-    4300094: struttura_trivella
-    4300096: antenna_trivella1
-    4300098: trivella1
-    4300100: particolare_trivella006
-    4300102: particolare_trivella005
-    4300104: struttura_trivella1
+    4300036: tetto_torre
+    4300038: porticina_torre
+    4300040: torre11
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 3213f9169c850324da1587408be070ee, type: 2}
+    second: {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -330,7 +176,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

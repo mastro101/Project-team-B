@@ -1,0 +1,215 @@
+fileFormatVersion: 2
+guid: 126b9b934e9d1e443b1cdc4603141a04
+timeCreated: 1521135138
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: cappa
+    100004: cappa_grande
+    100006: cappa_grande 1
+    100008: cappa_grande1
+    100010: casella
+    100012: casetta1
+    100014: casetta2
+    100016: ciminiera
+    100018: inferriata_oriz
+    100020: inferriata_vert001
+    100022: inferriata_vert002
+    100024: inferriata_vert003
+    100026: lastra_tegola
+    100028: "obl\xF2"
+    100030: particolare
+    100032: particolare_cappa
+    100034: porte
+    100036: rottame
+    100038: rottame1
+    100040: struttura
+    100042: struttura002
+    100044: struttura1
+    100046: struttura_cappa
+    100048: struttura_casa03
+    100050: tubatura
+    100052: tubo01
+    100054: tubo03
+    400000: //RootNode
+    400002: cappa
+    400004: cappa_grande
+    400006: cappa_grande 1
+    400008: cappa_grande1
+    400010: casella
+    400012: casetta1
+    400014: casetta2
+    400016: ciminiera
+    400018: inferriata_oriz
+    400020: inferriata_vert001
+    400022: inferriata_vert002
+    400024: inferriata_vert003
+    400026: lastra_tegola
+    400028: "obl\xF2"
+    400030: particolare
+    400032: particolare_cappa
+    400034: porte
+    400036: rottame
+    400038: rottame1
+    400040: struttura
+    400042: struttura002
+    400044: struttura1
+    400046: struttura_cappa
+    400048: struttura_casa03
+    400050: tubatura
+    400052: tubo01
+    400054: tubo03
+    2300000: cappa
+    2300002: cappa_grande 1
+    2300004: cappa_grande1
+    2300006: casella
+    2300008: inferriata_oriz
+    2300010: inferriata_vert001
+    2300012: inferriata_vert002
+    2300014: inferriata_vert003
+    2300016: lastra_tegola
+    2300018: "obl\xF2"
+    2300020: particolare
+    2300022: particolare_cappa
+    2300024: porte
+    2300026: rottame
+    2300028: rottame1
+    2300030: struttura
+    2300032: struttura002
+    2300034: struttura1
+    2300036: struttura_cappa
+    2300038: struttura_casa03
+    2300040: tubatura
+    2300042: tubo01
+    2300044: tubo03
+    3300000: cappa
+    3300002: cappa_grande 1
+    3300004: cappa_grande1
+    3300006: casella
+    3300008: inferriata_oriz
+    3300010: inferriata_vert001
+    3300012: inferriata_vert002
+    3300014: inferriata_vert003
+    3300016: lastra_tegola
+    3300018: "obl\xF2"
+    3300020: particolare
+    3300022: particolare_cappa
+    3300024: porte
+    3300026: rottame
+    3300028: rottame1
+    3300030: struttura
+    3300032: struttura002
+    3300034: struttura1
+    3300036: struttura_cappa
+    3300038: struttura_casa03
+    3300040: tubatura
+    3300042: tubo01
+    3300044: tubo03
+    4300000: casella
+    4300002: cappa
+    4300004: tubo01
+    4300006: tubo03
+    4300008: porte
+    4300010: struttura_casa03
+    4300012: struttura002
+    4300014: lastra_tegola
+    4300016: inferriata_vert001
+    4300018: inferriata_oriz
+    4300020: inferriata_vert002
+    4300022: inferriata_vert003
+    4300024: struttura_cappa
+    4300026: particolare
+    4300028: cappa_grande
+    4300030: particolare_cappa
+    4300032: cappa_grande1
+    4300034: struttura
+    4300036: "obl\xF2"
+    4300038: tubatura
+    4300040: struttura1
+    4300042: rottame
+    4300044: rottame1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
