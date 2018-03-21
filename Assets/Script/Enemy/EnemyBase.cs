@@ -38,6 +38,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     bool IEnemy.IsAlive { get { return IsAlive; } }
 
     public event IEnemyEvents.EnemyEvent OnSpawn;
+    public event IEnemyEvents.EnemyEvent OnAttack;
     public event IEnemyEvents.EnemyEvent OnDestroy;
 
     #region Events
@@ -46,6 +47,12 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     {
         if (OnSpawn != null)
             OnSpawn(this);
+    }
+
+    protected void InvockOnAttack()
+    {
+        if (OnAttack != null)
+            OnAttack(this);
     }
 
     protected void InvockOnDestroy()
@@ -63,6 +70,13 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         IsAlive = true;
         CurrentState = IEnemyState.InUse;
         InvockOnSpawn();
+    }
+
+    public virtual void AttackPlayer(Player player)
+    {
+        InvockOnAttack();
+        if (CurrentState == IEnemyState.InUse)           
+            player.TakeDamage(Attack);
     }
 
     public virtual void DestroyMe()
@@ -125,6 +139,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         }
 
         CurrentPlayer = GetComponent<Player>();
+
+        
     }
 
     #endregion

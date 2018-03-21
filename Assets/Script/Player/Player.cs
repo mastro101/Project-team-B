@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -111,12 +111,9 @@ public class Player : PlayerStatistiche{
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         currentEnemy.TakeDamage(Attacks[Random.Range(0, 5)]);
-                        TakeDamage(currentEnemy.Attack);
-                        if (currentEnemy.IsAlive == false)
-                        {
-                            Credit += currentEnemy.Credits;
-                            CombatPoints += currentEnemy.CombatPoints;
-                        }
+                        currentEnemy.AttackPlayer(this);
+                        currentEnemy.OnAttack += OnEnemyAttack;
+                        
                     }
                 }
 
@@ -145,6 +142,11 @@ public class Player : PlayerStatistiche{
         //playerStatistiche.SetDistace(Name, DistanceMove);   //Setto il movimento del player // Da rivedere in futuro
     }
 
+    private void OnEnemyAttack(IEnemy enemy)
+    {
+        currentEnemy.OnAttack -= OnEnemyAttack;
+    }
+
     private void SpawnEnemy()
     {
         currentEnemy = enemyManager.GetEnemy(Random.Range(0, enemyManager.EnemyPrefabs.Length));
@@ -156,6 +158,11 @@ public class Player : PlayerStatistiche{
 
     public void OnEnemyDestroy(IEnemy enemy)
     {
+        if (currentEnemy.IsAlive == false)
+        {
+            Credit += currentEnemy.Credits;
+            CombatPoints += currentEnemy.CombatPoints;
+        }
         currentEnemy.OnDestroy -= OnEnemyDestroy;
     }
 
@@ -461,7 +468,13 @@ public class Player : PlayerStatistiche{
         Stamina -= damage;
         if (Stamina <= 0)
         {
-            Morte();
+            currentEnemy.DestroyMe();
+            Life--;
+
+            if (Life <= 0)
+                Morte();
+
+            Stamina = 20;
         }
     }
 
@@ -470,24 +483,25 @@ public class Player : PlayerStatistiche{
         {
             Life--;
             Lg.SetTextLog(Name + " ha perso vita", true);
-
-            if (Life <= 0)
-            {
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-                transform.position = grid.GetCenterPosition();
-                transform.position += new Vector3(0f, _Yoffset, 0f);
-                SetPositionPlayer();
-                XPos = 6;
-                ZPos = 6;
-                Life = 5;
-                grid.FindCell(XPos, ZPos).PlayerOnTile++;
-                PossibleMove = 2;
-                Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-                Gpm.CurrentState = GamePlayManager.State.End;
+        }
+        if (Life <= 0)
+        {
+            grid.FindCell(XPos, ZPos).PlayerOnTile--;
+            transform.position = grid.GetCenterPosition();
+            transform.position += new Vector3(0f, _Yoffset, 0f);
+            SetPositionPlayer();
+            XPos = 6;
+            ZPos = 6;
+            Life = 5;
+            grid.FindCell(XPos, ZPos).PlayerOnTile++;
+            PossibleMove = 2;
+            Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
+            Stamina = 20;
+            Gpm.CurrentState = GamePlayManager.State.End;
                 
-            }
+        }
 
-        }   
+           
     }
 
 }

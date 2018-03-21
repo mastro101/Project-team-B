@@ -13,9 +13,11 @@ public interface IEnemy {
     void Spawn();
     void DestroyMe();
     void TakeDamage(int damage);
+    void AttackPlayer(Player player);
 
 
     event IEnemyEvents.EnemyEvent OnSpawn;
+    event IEnemyEvents.EnemyEvent OnAttack;
     event IEnemyEvents.EnemyEvent OnDestroy;
 
 }
