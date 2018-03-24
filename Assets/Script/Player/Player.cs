@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -8,7 +8,8 @@ public class Player : PlayerStatistiche{
     public Grid grid;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
-    IEnemy currentEnemy;
+    public IEnemy currentEnemy;
+    public Player currentEnemyPlayer;
 
     public  TextMeshP Tmp;
 
@@ -17,6 +18,8 @@ public class Player : PlayerStatistiche{
     public UIManager UI;
 
     public ButtonManager BM;
+
+    public CombatManager CB;
 
     EnemyPoolManager enemyManager;
 
@@ -32,7 +35,8 @@ public class Player : PlayerStatistiche{
     public float _Yoffset;
 
     int eventCard;
-    bool inCombat;
+    public bool inCombatEnemy;
+    public bool inCombatPlayer;
 
     void Start()
     {
@@ -98,32 +102,60 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
-
-                if (!inCombat)
+                if (grid.FindCell(XPos, ZPos).POnTile == this)
                 {
-                    SpawnEnemy();
-                    inCombat = true;
-                }
-
-                // Attacco
-                if (currentEnemy.CurrentState == IEnemyState.InUse)
-                {
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    
+                    if (!inCombatEnemy)
                     {
-                        currentEnemy.TakeDamage(Attacks[Random.Range(0, 5)]);
-                        TakeDamage(currentEnemy.Attack);
-                        if (currentEnemy.IsAlive == false)
-                        {
-                            Credit += currentEnemy.Credits;
-                            CombatPoints += currentEnemy.CombatPoints;
-                        }
+                        SpawnEnemy();
+                        inCombatEnemy = true;
+                    }
+                }
+                else
+                {
+                    if (!inCombatPlayer)
+                    {
+                        currentEnemyPlayer = grid.FindCell(XPos, ZPos).POnTile;
+                        inCombatPlayer = true;
                     }
                 }
 
-                if (currentEnemy.CurrentState == IEnemyState.InPool)
+
+                // Attacco
+                if (inCombatEnemy)
                 {
-                    inCombat = false;
-                    Gpm.CurrentState = GamePlayManager.State.End;
+                    CB.player = this;
+                    if (CB.Active == false)
+                        CB.OpenAndCloseInventoryCombat();
+
+                    /*if (currentEnemy.CurrentState == IEnemyState.InUse)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            currentEnemy.TakeDamage(Attacks[Random.Range(0, 5)]);
+                            currentEnemy.AttackPlayer(this);
+                            currentEnemy.OnAttack += OnEnemyAttack;
+
+                        }
+                    }*/
+                }
+                else if (inCombatPlayer)
+                {
+                    CB.player = this;
+                    if (CB.Active == false)
+                        CB.OpenAndCloseInventoryCombat();
+                }
+
+
+
+                if (grid.FindCell(XPos, ZPos).POnTile == this)
+                {
+                    if (currentEnemy.CurrentState == IEnemyState.InPool)
+                    {
+                        inCombatEnemy = false;
+                        CB.OpenAndCloseInventoryCombat();
+                        Gpm.CurrentState = GamePlayManager.State.End;
+                    }
                 }
             }
 
@@ -145,6 +177,11 @@ public class Player : PlayerStatistiche{
         //playerStatistiche.SetDistace(Name, DistanceMove);   //Setto il movimento del player // Da rivedere in futuro
     }
 
+    public void OnEnemyAttack(IEnemy enemy)
+    {
+        currentEnemy.OnAttack -= OnEnemyAttack;
+    }
+
     private void SpawnEnemy()
     {
         currentEnemy = enemyManager.GetEnemy(Random.Range(0, enemyManager.EnemyPrefabs.Length));
@@ -156,6 +193,12 @@ public class Player : PlayerStatistiche{
 
     public void OnEnemyDestroy(IEnemy enemy)
     {
+        CB.OpenAndCloseInventoryCombat();
+        if (currentEnemy.IsAlive == false)
+        {
+            Credit += currentEnemy.Credits;
+            CombatPoints += currentEnemy.CombatPoints;
+        }
         currentEnemy.OnDestroy -= OnEnemyDestroy;
     }
 
@@ -189,8 +232,12 @@ public class Player : PlayerStatistiche{
 
             // Il player è sulla casella
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
+            if (grid.FindCell(XPos, ZPos).POnTile == null && (grid.FindCell(XPos, ZPos).GetNameTile() == "" || grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy"))
+                grid.FindCell(XPos, ZPos).SetPlayer(this);
 
             detectObject.CorrectMove = false;
+
+
 
             // Finito il movimento passa alla fase successiva
             /*if(PossibleMove == 0)
@@ -226,11 +273,8 @@ public class Player : PlayerStatistiche{
 
             if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
             { //SU
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 ZPos += DistanceMove;
                 PossibleMove--;
@@ -239,11 +283,7 @@ public class Player : PlayerStatistiche{
             else if (ObjectX == XPos && ObjectZ + 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true)
             { //GIU
 
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 ZPos -= DistanceMove;
                 PossibleMove--;
@@ -252,11 +292,7 @@ public class Player : PlayerStatistiche{
             else if (ObjectX + 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true)
             { //SINISTRA
 
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 XPos -= DistanceMove;
                 PossibleMove--;
@@ -265,11 +301,7 @@ public class Player : PlayerStatistiche{
             else if (ObjectX - 1 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true)
             { //DESTRA
 
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 XPos += DistanceMove;
                 PossibleMove--;
@@ -294,11 +326,8 @@ public class Player : PlayerStatistiche{
 
             if (ObjectX == XPos && ObjectZ - 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ - 1).Walls[2] != true && grid.FindCell(ObjectX, ObjectZ-1).GetValidity())
             { //SU
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
 
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 ZPos += DistanceMove;
                 PossibleMove-=2;
@@ -307,11 +336,7 @@ public class Player : PlayerStatistiche{
             else if (ObjectX == XPos && ObjectZ + 2 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).Walls[0] != true && grid.FindCell(ObjectX, ObjectZ + 1).GetValidity())
             { //GIU
 
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 ZPos -= DistanceMove;
                 PossibleMove -= 2;
@@ -320,11 +345,7 @@ public class Player : PlayerStatistiche{
             else if (ObjectX + 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX + 1, ObjectZ).Walls[1] != true && grid.FindCell(ObjectX +1 , ObjectZ).GetValidity())
             { //SINISTRA
 
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 XPos -= DistanceMove;
                 PossibleMove -= 2;
@@ -333,17 +354,24 @@ public class Player : PlayerStatistiche{
             else if (ObjectX - 2 == XPos && ObjectZ == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).Walls[3] != true && grid.FindCell(ObjectX - 1, ObjectZ).GetValidity())
             { //DESTRA
 
-                grid.FindCell(XPos, ZPos).SetValidity(true);
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-
-                XPos_old = XPos;
-                ZPos_old = ZPos;
+                moveSetting();
 
                 XPos += DistanceMove;
                 PossibleMove -= 2;
                 Move();
             }
         }
+    }
+
+    void moveSetting()
+    {
+        grid.FindCell(XPos, ZPos).SetValidity(true);
+        grid.FindCell(XPos, ZPos).PlayerOnTile--;
+        if (grid.FindCell(XPos, ZPos).POnTile == this)
+            grid.FindCell(XPos, ZPos).SetPlayer(null);
+
+        XPos_old = XPos;
+        ZPos_old = ZPos;
     }
 
 
@@ -410,6 +438,8 @@ public class Player : PlayerStatistiche{
 
     void Event() {
         //Controllo in che tipo di casella mi trovo
+
+        
         if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
         {
             // se è all'interno di una città passa alla fase Object
@@ -418,6 +448,11 @@ public class Player : PlayerStatistiche{
 
             //ActiveTurn = false;
             Gpm.CurrentState = GamePlayManager.State.Object;
+        }
+        else if (grid.FindCell(XPos, ZPos).POnTile != this)
+        {
+            Lg.SetTextLog(Name + "Sta Combattendo contro " + grid.FindCell(XPos, ZPos).POnTile.Name, true);
+            Gpm.CurrentState = GamePlayManager.State.Combat;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
         {
@@ -461,7 +496,16 @@ public class Player : PlayerStatistiche{
         Stamina -= damage;
         if (Stamina <= 0)
         {
-            Morte();
+            CB.OpenAndCloseInventoryCombat();
+            if (currentEnemy != null)
+                currentEnemy.DestroyMe();
+            Life--;
+            Gpm.CurrentState = GamePlayManager.State.End;
+
+            if (Life <= 0)
+                Morte();
+
+            Stamina = 20;
         }
     }
 
@@ -470,24 +514,27 @@ public class Player : PlayerStatistiche{
         {
             Life--;
             Lg.SetTextLog(Name + " ha perso vita", true);
-
-            if (Life <= 0)
-            {
-                grid.FindCell(XPos, ZPos).PlayerOnTile--;
-                transform.position = grid.GetCenterPosition();
-                transform.position += new Vector3(0f, _Yoffset, 0f);
-                SetPositionPlayer();
-                XPos = 6;
-                ZPos = 6;
-                Life = 5;
-                grid.FindCell(XPos, ZPos).PlayerOnTile++;
-                PossibleMove = 2;
-                Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-                Gpm.CurrentState = GamePlayManager.State.End;
+        }
+        if (Life <= 0)
+        {
+            grid.FindCell(XPos, ZPos).PlayerOnTile--;
+            if (grid.FindCell(XPos, ZPos).POnTile == this)
+                grid.FindCell(XPos, ZPos).SetPlayer(null);
+            transform.position = grid.GetCenterPosition();
+            transform.position += new Vector3(0f, _Yoffset, 0f);
+            SetPositionPlayer();
+            XPos = 6;
+            ZPos = 6;
+            Life = 5;
+            grid.FindCell(XPos, ZPos).PlayerOnTile++;
+            PossibleMove = 2;
+            Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
+            Stamina = 20;
+            Gpm.CurrentState = GamePlayManager.State.End;
                 
-            }
+        }
 
-        }   
+           
     }
 
 }

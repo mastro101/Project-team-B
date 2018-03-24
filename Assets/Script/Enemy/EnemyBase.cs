@@ -7,6 +7,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
 
     protected IEnemyState _currentState = IEnemyState.InPool;
 
+    public CombatManager CB;
+
     public int Stamina;
     public int CombatPoints;
     public int Credits;
@@ -29,6 +31,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         set { _currentState = value; }
     }
 
+    int IEnemy.Stamina { get { return Stamina; } }
+
     int IEnemy.Attack { get { return Attack; } }
 
     int IEnemy.Credits { get { return Credits; } }
@@ -38,6 +42,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     bool IEnemy.IsAlive { get { return IsAlive; } }
 
     public event IEnemyEvents.EnemyEvent OnSpawn;
+    public event IEnemyEvents.EnemyEvent OnAttack;
     public event IEnemyEvents.EnemyEvent OnDestroy;
 
     #region Events
@@ -46,6 +51,12 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     {
         if (OnSpawn != null)
             OnSpawn(this);
+    }
+
+    protected void InvockOnAttack()
+    {
+        if (OnAttack != null)
+            OnAttack(this);
     }
 
     protected void InvockOnDestroy()
@@ -63,6 +74,13 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         IsAlive = true;
         CurrentState = IEnemyState.InUse;
         InvockOnSpawn();
+    }
+
+    public virtual void AttackPlayer(Player player)
+    {
+        InvockOnAttack();
+        if (CurrentState == IEnemyState.InUse)           
+            player.TakeDamage(Attack);
     }
 
     public virtual void DestroyMe()
@@ -84,6 +102,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         if (Stamina <= 0)
         {
             IsAlive = false;
+            
             DestroyMe();
         }
     }
@@ -95,6 +114,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         PBlue = GameObject.Find("PedoneBlue");
         PRed = GameObject.Find("PedoneRed");
         PYellow = GameObject.Find("PedoneYellow");
+        CB = FindObjectOfType<CombatManager>();
 
         _stamina = Stamina;
     }
@@ -125,6 +145,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         }
 
         CurrentPlayer = GetComponent<Player>();
+
+        
     }
 
     #endregion
