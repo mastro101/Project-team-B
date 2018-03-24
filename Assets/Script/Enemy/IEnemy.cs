@@ -3,6 +3,7 @@
 public interface IEnemy {
 
     int ID { get; }
+    int Stamina { get; }
     int CombatPoints { get; }
     int Credits { get; }
     int Attack { get; }

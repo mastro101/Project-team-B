@@ -7,6 +7,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
 
     protected IEnemyState _currentState = IEnemyState.InPool;
 
+    public CombatManager CB;
+
     public int Stamina;
     public int CombatPoints;
     public int Credits;
@@ -28,6 +30,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         get { return _currentState; }
         set { _currentState = value; }
     }
+
+    int IEnemy.Stamina { get { return Stamina; } }
 
     int IEnemy.Attack { get { return Attack; } }
 
@@ -98,6 +102,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         if (Stamina <= 0)
         {
             IsAlive = false;
+            
             DestroyMe();
         }
     }
@@ -109,6 +114,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         PBlue = GameObject.Find("PedoneBlue");
         PRed = GameObject.Find("PedoneRed");
         PYellow = GameObject.Find("PedoneYellow");
+        CB = FindObjectOfType<CombatManager>();
 
         _stamina = Stamina;
     }

@@ -14,14 +14,16 @@ public class CellData
     public bool Enemy;
     public int PlayerNumber = 0;
     public int PlayerOnTile;
+    public Player POnTile;
 
-    public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile, bool enemy)
+    public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile, bool enemy, Player _pOnTile)
     {
         X = _xPos;
         Z = _zPos;
         WorldPosition = _worldPosition;
         NameTile = tile;
         Enemy = enemy;
+        POnTile = _pOnTile;
     }
 
     public void SetValidity(bool _isValid)
@@ -81,5 +83,8 @@ public class CellData
         return Enemy;
     }
 
-
+    public void SetPlayer(Player _POnTile)
+    {
+        POnTile = _POnTile;
+    }
 }

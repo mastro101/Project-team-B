@@ -36,7 +36,7 @@ public class Grid : MonoBehaviour {
             for (int _z = 0; _z < z; _z++)
             {
                 
-                Cells.Add(new CellData(_x, _z, new Vector3(_x * CellSize, transform.position.y, _z * CellSize), NameTile, false));
+                Cells.Add(new CellData(_x, _z, new Vector3(_x * CellSize, transform.position.y, _z * CellSize), NameTile, false, null));
             }
         }
 
