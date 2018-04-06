@@ -336,6 +336,16 @@ public class Grid : MonoBehaviour {
         return Cells[0].WorldPosition;
     }
 
+    public CellData GetCity(string city)
+    {
+        foreach (CellData cell in Cells)
+        {
+            if (cell.NameTile == city)
+                return cell;
+        }
+        return Cells[0];
+    }
+
     public bool IsValidPosition(int x, int z)
     {
         if (x < 0 || z < 0)
