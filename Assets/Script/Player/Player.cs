@@ -21,6 +21,7 @@ public class Player : PlayerStatistiche{
 
     public CombatManager CB;
 
+
     EnemyPoolManager enemyManager;
 
     public int XPos;    //Posizione X del Player sulla casella
@@ -397,7 +398,7 @@ public class Player : PlayerStatistiche{
 
     //Metodo per assegnare le missioni
     void AssignMisison() {
-        if (CheckMission && Mission != 0)
+        if (CheckMission)
             Gpm.CurrentState = GamePlayManager.State.Movement;
         if (!CheckMission)
         {
@@ -405,7 +406,7 @@ public class Player : PlayerStatistiche{
             Debug.Log("M");
             do
             {
-                Mission = Random.Range(1, 10);
+                Mission = Random.Range(0, 4);
             }
             while (Mission == CheckMissions[0] || Mission == CheckMissions[1] || Mission == CheckMissions[2] || Mission == CheckMissions[3]);
 
