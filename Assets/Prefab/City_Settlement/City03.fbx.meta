@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: da7ea0734b830b04dbb3637f483f6a56
+timeCreated: 1521018871
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: antenna002
+    100002: antenna003
+    100004: basamento_antenna001
+    100006: casella
+    100008: //RootNode
+    100010: porticina_struttura
+    100012: porticina_torre
+    100014: struttura_bassa
+    100016: struttura_bassa 1
+    100018: torre_cilindrica
+    100020: torre_struttura
+    400000: antenna002
+    400002: antenna003
+    400004: basamento_antenna001
+    400006: casella
+    400008: //RootNode
+    400010: porticina_struttura
+    400012: porticina_torre
+    400014: struttura_bassa
+    400016: struttura_bassa 1
+    400018: torre_cilindrica
+    400020: torre_struttura
+    2300000: antenna002
+    2300002: antenna003
+    2300004: basamento_antenna001
+    2300006: casella
+    2300008: porticina_struttura
+    2300010: porticina_torre
+    2300012: struttura_bassa 1
+    2300014: torre_struttura
+    3300000: antenna002
+    3300002: antenna003
+    3300004: basamento_antenna001
+    3300006: casella
+    3300008: porticina_struttura
+    3300010: porticina_torre
+    3300012: struttura_bassa 1
+    3300014: torre_struttura
+    4300000: casella
+    4300002: basamento_antenna001
+    4300004: antenna002
+    4300006: porticina_struttura
+    4300008: struttura_bassa
+    4300010: porticina_torre
+    4300012: torre_struttura
+    4300014: antenna003
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: City_03_mtl
+    second: {fileID: 2100000, guid: d0a4a388b39cf6d4fbaa4f4a4f402555, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: e4ed40d159448d349badd467d548240d
+timeCreated: 1521193602
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Antenna_01
+    100002: Balloon_antenna
+    100004: base
+    100006: camino
+    100008: capannone
+    100010: casetta
+    100012: Cavo_Antenna
+    100014: //RootNode
+    100016: Corda
+    100018: palazzo_bot1
+    100020: palazzo_mid1
+    100022: palazzo_top1
+    100024: Palo_legno
+    100026: Piattaforma_grande
+    100028: Piattaforma_Piccola
+    100030: Pilone_Singolo
+    100032: Sonar_antenna1
+    400000: Antenna_01
+    400002: Balloon_antenna
+    400004: base
+    400006: camino
+    400008: capannone
+    400010: casetta
+    400012: Cavo_Antenna
+    400014: //RootNode
+    400016: Corda
+    400018: palazzo_bot1
+    400020: palazzo_mid1
+    400022: palazzo_top1
+    400024: Palo_legno
+    400026: Piattaforma_grande
+    400028: Piattaforma_Piccola
+    400030: Pilone_Singolo
+    400032: Sonar_antenna1
+    2300000: Antenna_01
+    2300002: Balloon_antenna
+    2300004: base
+    2300006: camino
+    2300008: capannone
+    2300010: casetta
+    2300012: Cavo_Antenna
+    2300014: Corda
+    2300016: palazzo_bot1
+    2300018: palazzo_mid1
+    2300020: palazzo_top1
+    2300022: Palo_legno
+    2300024: Piattaforma_grande
+    2300026: Piattaforma_Piccola
+    2300028: Pilone_Singolo
+    2300030: Sonar_antenna1
+    3300000: Antenna_01
+    3300002: Balloon_antenna
+    3300004: base
+    3300006: camino
+    3300008: capannone
+    3300010: casetta
+    3300012: Cavo_Antenna
+    3300014: Corda
+    3300016: palazzo_bot1
+    3300018: palazzo_mid1
+    3300020: palazzo_top1
+    3300022: Palo_legno
+    3300024: Piattaforma_grande
+    3300026: Piattaforma_Piccola
+    3300028: Pilone_Singolo
+    3300030: Sonar_antenna1
+    4300000: base
+    4300002: Piattaforma_grande
+    4300004: camino
+    4300006: Piattaforma_Piccola
+    4300008: Antenna_01
+    4300010: palazzo_top1
+    4300012: palazzo_mid1
+    4300014: palazzo_bot1
+    4300016: Balloon_antenna
+    4300018: casetta
+    4300020: Palo_legno
+    4300022: Corda
+    4300024: Cavo_Antenna
+    4300026: Pilone_Singolo
+    4300028: capannone
+    4300030: Sonar_antenna1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 4d056e47ca40cbb41a461883506d3c9c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
