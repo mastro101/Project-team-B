@@ -21,6 +21,7 @@ public class Player : PlayerStatistiche{
 
     public CombatManager CB;
 
+    public Mission MissionManager;
 
     EnemyPoolManager enemyManager;
 
@@ -42,6 +43,7 @@ public class Player : PlayerStatistiche{
     void Start()
     {
         enemyManager = FindObjectOfType<EnemyPoolManager>();
+        MissionManager = FindObjectOfType<Mission>();
 
 
         grid.Center().PlayerOnTile = 4;
@@ -65,7 +67,36 @@ public class Player : PlayerStatistiche{
 
         if (Name == Gpm.Name)
         {
-            Tmp.SetMission(Mission.ToString());
+            switch (Mission)
+            {
+                case 1:
+                    if (MissionManager.check[0] == false)
+                        Tmp.SetMission("Vai in A");
+                    else
+                        Tmp.SetMission("Vai in B");
+                    break;
+                case 2:
+                    if (MissionManager.check[1] == false)
+                        Tmp.SetMission("Vai in B");
+                    else
+                        Tmp.SetMission("Vai in C");
+                    break;
+                case 3:
+                    if (MissionManager.check[2] == false)
+                        Tmp.SetMission("Vai in C");
+                    else
+                        Tmp.SetMission("Vai in D");
+                    break;
+                case 4:
+                    if (MissionManager.check[3] == false)
+                        Tmp.SetMission("Vai in D");
+                    else
+                        Tmp.SetMission("Vai in A");
+                    break;
+                default:
+                    break;
+            }
+            //Tmp.SetMission(Mission.ToString());
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
@@ -233,7 +264,7 @@ public class Player : PlayerStatistiche{
 
             // Il player è sulla casella
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
-            if (grid.FindCell(XPos, ZPos).POnTile == null && (grid.FindCell(XPos, ZPos).GetNameTile() == "" || grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy"))
+            if (grid.FindCell(XPos, ZPos).POnTile == null /*&& (grid.FindCell(XPos, ZPos).GetNameTile() == "" || grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")*/ )
                 grid.FindCell(XPos, ZPos).SetPlayer(this);
 
             detectObject.CorrectMove = false;
@@ -398,15 +429,17 @@ public class Player : PlayerStatistiche{
 
     //Metodo per assegnare le missioni
     void AssignMisison() {
-        if (CheckMission)
+        if (CheckMission && Mission != 0)
+        {
             Gpm.CurrentState = GamePlayManager.State.Movement;
+        }
         if (!CheckMission)
         {
             // Assegnata missione casuale diversa da quella di un altro giocatore
             Debug.Log("M");
             do
             {
-                Mission = Random.Range(0, 4);
+                Mission = Random.Range(1, 5);
             }
             while (Mission == CheckMissions[0] || Mission == CheckMissions[1] || Mission == CheckMissions[2] || Mission == CheckMissions[3]);
 
