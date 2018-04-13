@@ -46,6 +46,13 @@ public class CombatManager : MonoBehaviour {
         }
     }
 
+    public void CloseInventoryCombat()
+    {
+        Active = false;
+        InventoryPanel.SetActive(false);
+        _isPanel = false;
+    }
+
 
 
 

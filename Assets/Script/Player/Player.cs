@@ -225,7 +225,7 @@ public class Player : PlayerStatistiche{
 
     public void OnEnemyDestroy(IEnemy enemy)
     {
-        CB.OpenAndCloseInventoryCombat();
+        CB.CloseInventoryCombat();
         if (currentEnemy.IsAlive == false)
         {
             Credit += currentEnemy.Credits;
@@ -530,16 +530,22 @@ public class Player : PlayerStatistiche{
         Stamina -= damage;
         if (Stamina <= 0)
         {
-            CB.OpenAndCloseInventoryCombat();
+            Gpm.CurrentState = GamePlayManager.State.End;
+            CB.CloseInventoryCombat();
+
             if (currentEnemy != null)
                 currentEnemy.DestroyMe();
             Life--;
-            Gpm.CurrentState = GamePlayManager.State.End;
-
+            if (inCombatPlayer)
+            {                
+                inCombatPlayer = false;
+            }
+            
             if (Life <= 0)
                 Morte();
 
             Stamina = 20;
+            
         }
     }
 
