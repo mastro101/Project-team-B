@@ -15,6 +15,7 @@ public class CellData
     public int PlayerNumber = 0;
     public int PlayerOnTile;
     public Player POnTile;
+    public CellTerrainType cellTerrainType;
 
     public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile, bool enemy, Player _pOnTile)
     {
@@ -87,4 +88,16 @@ public class CellData
     {
         POnTile = _POnTile;
     }
+
+    public void SetTerrainType(CellTerrainType _type)
+    {
+        cellTerrainType = _type;
+    }
+}
+
+public enum CellTerrainType
+{
+    Terrain1,
+    Terrain2,
+    Terrain3,
 }

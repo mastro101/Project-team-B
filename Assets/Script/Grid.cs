@@ -35,7 +35,7 @@ public class Grid : MonoBehaviour {
         {
             for (int _z = 0; _z < z; _z++)
             {
-                
+
                 Cells.Add(new CellData(_x, _z, new Vector3(_x * CellSize, transform.position.y, _z * CellSize), NameTile, false, null));
             }
         }
@@ -43,6 +43,7 @@ public class Grid : MonoBehaviour {
         SetCity();
         SetWalls();
         SetEnemyPoint();
+        SetCellTerrainType();
 
         // Rende visibile la griglia
         for (int _x = 0; _x < x; _x++)
@@ -57,8 +58,9 @@ public class Grid : MonoBehaviour {
                     {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
+                        SetCellTexture(cell, tile);
                     }
-                    else if(FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy")
+                    else if (FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy")
                     {
                         int CityChoose = Random.Range(1, 3);
                         if (CityChoose == 1) {
@@ -68,7 +70,7 @@ public class Grid : MonoBehaviour {
                             tile = (GameObject)Instantiate(City2);
                             tile.transform.position = cell.WorldPosition;
                         }
-                        
+
 
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Enemy")
@@ -94,7 +96,7 @@ public class Grid : MonoBehaviour {
                     /*ControlEnemy = FindCell(_x, _z).GetEnemy();
                     if (ControlEnemy)
                     if (ControlCity == "Enemy")*/
-                        
+
                     //Debug.Log(ControlCity);
 
                     // Crea Muri (Provvisorio)
@@ -146,7 +148,7 @@ public class Grid : MonoBehaviour {
         FindCell(8, 6).SetWalls(3);
 
         //in basso a sinistra
-        FindCell(3, 3).SetWalls(0,3);
+        FindCell(3, 3).SetWalls(0, 3);
         FindCell(3, 4).SetWalls(2);
         FindCell(2, 3).SetWalls(1);
 
@@ -160,13 +162,13 @@ public class Grid : MonoBehaviour {
         FindCell(1, 4).SetWalls(3);
         FindCell(1, 3).SetWalls(3);
 
-        FindCell(1, 2).SetWalls(2,3);
-        FindCell(1, 1).SetWalls(0,1);
+        FindCell(1, 2).SetWalls(2, 3);
+        FindCell(1, 1).SetWalls(0, 1);
 
         FindCell(2, 0).SetWalls(0);
         FindCell(3, 1).SetWalls(3);
 
-        FindCell(2, 1).SetWalls(1,2,3);
+        FindCell(2, 1).SetWalls(1, 2, 3);
 
         //in basso a destra
         FindCell(9, 3).SetWalls(2, 3);
@@ -288,6 +290,27 @@ public class Grid : MonoBehaviour {
         Tower1.transform.position = cell.WorldPosition;
 
 
+    }
+
+    public void SetCellTerrainType()
+    {
+        FindCell(5, 5).SetTerrainType(CellTerrainType.Terrain1);
+    }
+
+    public void SetCellTexture(CellData _data, GameObject _tile) {
+        switch (_data.cellTerrainType)
+        {
+            case CellTerrainType.Terrain1:
+                _tile.GetComponent<Renderer>().material.mainTexture = Resources.Load("Texture/Terrain/Ancient1/Ancient1_mtl") as Texture;
+                Debug.Log(_tile.GetComponent<Renderer>().material.mainTexture);
+                break;
+            case CellTerrainType.Terrain2:
+                break;
+            case CellTerrainType.Terrain3:
+                break;
+            default:
+                break;
+        }
     }
 
     public int GetWidth() {
