@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: ca25b9040ac5aaf44b284c53088ee32d
+timeCreated: 1523539578
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: braccio_mech
+    100002: cavo_braccio1
+    100004: cavo_braccio2
+    100006: cavo_braccio3
+    100008: cavo_gamba1
+    100010: cavo_gamba2
+    100012: cavo_gamba3
+    100014: detriti_mech
+    100016: gamba_mech
+    100018: giunto_gamba_1
+    100020: giunto_gamba_2
+    100022: giunto_gamba_3
+    100024: giunto_gamba_4
+    100026: giunto_gamba_5
+    100028: //RootNode
+    100030: mech_trigambe
+    100032: particolare_ondulato
+    100034: particolare_tondo
+    100036: pezzo_gamba1
+    100038: pezzo_gamba2
+    100040: pezzo_gamba3
+    100042: pezzo_gamba4
+    100044: pezzo_gamba5
+    100046: pezzo_gamba6
+    100048: specie_occhio
+    100050: struttura_base
+    100052: struttura_centrale
+    100054: struttura_centrale 1
+    100056: struttura_centrale 2
+    400000: braccio_mech
+    400002: cavo_braccio1
+    400004: cavo_braccio2
+    400006: cavo_braccio3
+    400008: cavo_gamba1
+    400010: cavo_gamba2
+    400012: cavo_gamba3
+    400014: detriti_mech
+    400016: gamba_mech
+    400018: giunto_gamba_1
+    400020: giunto_gamba_2
+    400022: giunto_gamba_3
+    400024: giunto_gamba_4
+    400026: giunto_gamba_5
+    400028: //RootNode
+    400030: mech_trigambe
+    400032: particolare_ondulato
+    400034: particolare_tondo
+    400036: pezzo_gamba1
+    400038: pezzo_gamba2
+    400040: pezzo_gamba3
+    400042: pezzo_gamba4
+    400044: pezzo_gamba5
+    400046: pezzo_gamba6
+    400048: specie_occhio
+    400050: struttura_base
+    400052: struttura_centrale
+    400054: struttura_centrale 1
+    400056: struttura_centrale 2
+    2300000: cavo_braccio1
+    2300002: cavo_braccio2
+    2300004: cavo_braccio3
+    2300006: cavo_gamba1
+    2300008: cavo_gamba2
+    2300010: cavo_gamba3
+    2300012: giunto_gamba_1
+    2300014: giunto_gamba_2
+    2300016: giunto_gamba_3
+    2300018: giunto_gamba_4
+    2300020: giunto_gamba_5
+    2300022: particolare_ondulato
+    2300024: particolare_tondo
+    2300026: pezzo_gamba1
+    2300028: pezzo_gamba2
+    2300030: pezzo_gamba3
+    2300032: pezzo_gamba4
+    2300034: pezzo_gamba5
+    2300036: pezzo_gamba6
+    2300038: specie_occhio
+    2300040: struttura_base
+    2300042: struttura_centrale
+    2300044: struttura_centrale 1
+    2300046: struttura_centrale 2
+    3300000: cavo_braccio1
+    3300002: cavo_braccio2
+    3300004: cavo_braccio3
+    3300006: cavo_gamba1
+    3300008: cavo_gamba2
+    3300010: cavo_gamba3
+    3300012: giunto_gamba_1
+    3300014: giunto_gamba_2
+    3300016: giunto_gamba_3
+    3300018: giunto_gamba_4
+    3300020: giunto_gamba_5
+    3300022: particolare_ondulato
+    3300024: particolare_tondo
+    3300026: pezzo_gamba1
+    3300028: pezzo_gamba2
+    3300030: pezzo_gamba3
+    3300032: pezzo_gamba4
+    3300034: pezzo_gamba5
+    3300036: pezzo_gamba6
+    3300038: specie_occhio
+    3300040: struttura_base
+    3300042: struttura_centrale
+    3300044: struttura_centrale 1
+    3300046: struttura_centrale 2
+    4300000: giunto_gamba_1
+    4300002: giunto_gamba_2
+    4300004: particolare_ondulato
+    4300006: pezzo_gamba1
+    4300008: pezzo_gamba2
+    4300010: particolare_tondo
+    4300012: struttura_base
+    4300014: pezzo_gamba3
+    4300016: pezzo_gamba4
+    4300018: giunto_gamba_3
+    4300020: pezzo_gamba5
+    4300022: giunto_gamba_4
+    4300024: pezzo_gamba6
+    4300026: giunto_gamba_5
+    4300028: struttura_centrale
+    4300030: cavo_gamba1
+    4300032: cavo_gamba2
+    4300034: cavo_gamba3
+    4300036: struttura_centrale
+    4300038: cavo_braccio1
+    4300040: cavo_braccio2
+    4300042: cavo_braccio3
+    4300044: struttura_centrale
+    4300046: specie_occhio
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
