@@ -11,6 +11,7 @@ public class Grid : MonoBehaviour {
     public float CellSize = -1;
     public string NameTile;
     public int Width = 0, Height = 0;
+    public Material[] texture = new Material[3];
 
     GameObject tile;
 
@@ -295,13 +296,15 @@ public class Grid : MonoBehaviour {
     public void SetCellTerrainType()
     {
         FindCell(5, 5).SetTerrainType(CellTerrainType.Terrain1);
+        Debug.Log(FindCell(5, 5).cellTerrainType);
     }
 
     public void SetCellTexture(CellData _data, GameObject _tile) {
+        Debug.Log(_data.cellTerrainType);
         switch (_data.cellTerrainType)
         {
             case CellTerrainType.Terrain1:
-                _tile.GetComponent<Renderer>().material.mainTexture = Resources.Load("Texture/Terrain/Ancient1/Ancient1_mtl") as Texture;
+                _tile.GetComponent<Renderer>().material = texture[0];
                 Debug.Log(_tile.GetComponent<Renderer>().material.mainTexture);
                 break;
             case CellTerrainType.Terrain2:
