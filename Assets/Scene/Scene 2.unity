@@ -1802,7 +1802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00015258789, y: -91.49998}
+  m_AnchoredPosition: {x: 0.0001373291, y: -91.49996}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406764183
@@ -2446,8 +2446,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595734448}
   m_HandleRect: {fileID: 595734447}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999998
+  m_Value: 0.125
+  m_Size: 0.99999964
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6634,7 +6634,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1669406304}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6976,7 +6976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b411c7e2f6d03d44a069fda307ffb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tile: {fileID: 100000, guid: ed5f78ec82faafd4592a4be3329f5569, type: 3}
+  Tile: {fileID: 1207955031874182, guid: 7f2704cf4f44d094181c1c5b0b9cbf57, type: 2}
   Wall: {fileID: 1652642082125686, guid: cc6b00a0b1c424545882f755665dc0e4, type: 2}
   City: {fileID: 1546103643020952, guid: 1d67e77104832d74882a8dd9aff53a16, type: 2}
   City2: {fileID: 1297517724767110, guid: c90de884f8197ab49b4f65205cf65e8b, type: 2}

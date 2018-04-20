@@ -295,7 +295,7 @@ public class Grid : MonoBehaviour {
 
     public void SetCellTerrainType()
     {
-        FindCell(5, 5).SetTerrainType(CellTerrainType.Terrain1);
+        FindCell(5, 5).SetTerrainType(CellTerrainType.Terrain2);
         Debug.Log(FindCell(5, 5).cellTerrainType);
     }
 
@@ -303,11 +303,11 @@ public class Grid : MonoBehaviour {
         Debug.Log(_data.cellTerrainType);
         switch (_data.cellTerrainType)
         {
-            case CellTerrainType.Terrain1:
-                _tile.GetComponent<Renderer>().material = texture[0];
-                Debug.Log(_tile.GetComponent<Renderer>().material.mainTexture);
+            case CellTerrainType.Terrain1:                
                 break;
             case CellTerrainType.Terrain2:
+                _tile.GetComponent<Renderer>().material = texture[0];
+                Debug.Log(_tile.GetComponent<Renderer>().material.mainTexture);
                 break;
             case CellTerrainType.Terrain3:
                 break;
