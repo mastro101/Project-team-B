@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7911f446415598b44b6806e79a295041
+timeCreated: 1524302865
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Tile: {instanceID: 0}
+  - Wall: {instanceID: 0}
+  - City: {instanceID: 0}
+  - City2: {instanceID: 0}
+  - Tower: {instanceID: 0}
+  - heightmap: {instanceID: 0}
+  - heightmapTerreinType: {fileID: 2800000, guid: 8adc176cb15d6304287d0a9dfd46477b,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
