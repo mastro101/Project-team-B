@@ -504,8 +504,12 @@ public class Player : PlayerStatistiche{
             {
                 // Evento che non comporta un cambio State
                 case 0:
-                    Gpm.CurrentState = GamePlayManager.State.End;
                     Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
+                    int drawedCredits = Random.Range(0, 5);
+                    Credit += drawedCredits;
+                    Lg.SetTextLog(Name + "ha guadagnato" + drawedCredits, true);
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                    
                     break;
                 // Evento Oggetto
                 case 1:
