@@ -87,7 +87,7 @@ public class GridTest : MonoBehaviour {
 
                 case "000000":
 
-                    cell.SetTerrainType(CellTerrainType.Terrain3);
+                    cell.SetTerrainType(CellTerrainType.Desert1);
                     break;
                 default:
 
@@ -157,7 +157,7 @@ public class GridTest : MonoBehaviour {
             case CellTerrainType.Terrain2:
                 tileT.material = texture[0];                
                 break;
-            case CellTerrainType.Terrain3:
+            case CellTerrainType.Desert1:
                 tileT.material.color = Color.black;
                 break;
             default:

@@ -46,7 +46,7 @@ public class Grid : MonoBehaviour {
         SetCity();
         SetWalls();
         SetEnemyPoint();
-        SetCellTerrainType();
+        //SetCellTerrainType();
         ColorateGrid();
 
         // Rende visibile la griglia
@@ -136,23 +136,64 @@ public class Grid : MonoBehaviour {
 
             string colorRGB = ColorUtility.ToHtmlStringRGB(terrainTypeColors[cell.X, cell.Z]);
 
+            /*
+            Azzurro 00CFFF
+            Verde acqua 15B788
+            Marroncino 7A6A46
+            Lime 97AF41
+            Grigio blu 3B464F
+            Blu 1A1468
+            Verde 145917 
+            */
+
+            /*
+             Colori unity perchè è stronzo
+
+            verde acqua 15B789
+            Marroncino 7B6A47
+            Lime 96AF42
+            Grigio blu 3C464F
+            Blu 1B1468
+            Verde 145918
+            */
+
             switch (colorRGB)
             {
 
                 case "00CFFF":
+                    cell.SetTerrainType(CellTerrainType.Terrain1);
+                    break;
 
+                case "15B789":
                     cell.SetTerrainType(CellTerrainType.Terrain2);
+                    break;
 
+                case "7B6A47":
+                    cell.SetTerrainType(CellTerrainType.Desert1);
+                    break;
+
+                case "96AF42":
+                    cell.SetTerrainType(CellTerrainType.Desert2);
+                    break;
+
+                case "3C464F":
+                    cell.SetTerrainType(CellTerrainType.Steppe1);
+                    break;
+
+                case "1B1468":
+                    cell.SetTerrainType(CellTerrainType.Steppe2);
+                    break;
+
+                case "145918":
+                    cell.SetTerrainType(CellTerrainType.Steppe2180);
                     break;
 
                 case "000000":
-
-                    cell.SetTerrainType(CellTerrainType.Terrain3);
+                    cell.SetTerrainType(CellTerrainType.Terrain2);
                     break;
+
                 default:
-
-                    Debug.Log("colore non trovato " + colorRGB);
-
+                    Debug.Log(colorRGB);
                     break;
             }
         }
@@ -376,18 +417,36 @@ public class Grid : MonoBehaviour {
         switch (_data.cellTerrainType)
         {
             case CellTerrainType.Terrain1:
-                Debug.Log("Coglione");
-                break;
-            case CellTerrainType.Terrain2:
                 tileT.material = texture[0];
                 break;
-            case CellTerrainType.Terrain3:
-                tileT.material.color = Color.black;
+            case CellTerrainType.Terrain2:
+                tileT.material = texture[1];
+                break;
+            case CellTerrainType.Desert1:
+                tileT.material = texture[2];
+                break;
+            case CellTerrainType.Desert2:
+                tileT.material = texture[3];
+                break;
+            case CellTerrainType.Steppe1:
+                tileT.material = texture[4];
+                break;
+            case CellTerrainType.Steppe2:
+                tileT.material = texture[5];
+                break;
+            case CellTerrainType.Steppe2180:
+                tileT.material = texture[6];
+                break;
+            case CellTerrainType.Water1:
+                tileT.material = texture[7];
+                break;
+            case CellTerrainType.Water2:
+                tileT.material = texture[8];
                 break;
             default:
                 break;
         }
-        Debug.Log(FindCell(_data.X, _data.Z).X + "x" + FindCell(_data.X, _data.Z).Z + " " + tileT.material.mainTexture);
+        Debug.Log(FindCell(_data.X, _data.Z).X + "x" + FindCell(_data.X, _data.Z).Z + " " + tileT.material.mainTexture + "" + FindCell(_data.X, _data.Z).cellTerrainType);
     }
 
     public int GetWidth() {
