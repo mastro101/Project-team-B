@@ -1,32 +1,44 @@
 fileFormatVersion: 2
 guid: aeec11860b846d543adbe500ba219d67
-timeCreated: 1523552365
+timeCreated: 1523692452
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: massi
-    100002: pietra_cristallo
-    100004: //RootNode
-    100006: roccia_lastra
-    100008: sassi_allungati
-    400000: massi
-    400002: pietra_cristallo
-    400004: //RootNode
-    400006: roccia_lastra
-    400008: sassi_allungati
-    2300000: massi
-    2300002: pietra_cristallo
-    2300004: roccia_lastra
+    100000: lastra
+    100002: massi
+    100004: pietra_cristallo
+    100006: //RootNode
+    100008: roccia_lastra
+    100010: sassi_allungati
+    100012: sassi_doppi
+    100014: sasso_singolo
+    400000: lastra
+    400002: massi
+    400004: pietra_cristallo
+    400006: //RootNode
+    400008: roccia_lastra
+    400010: sassi_allungati
+    400012: sassi_doppi
+    400014: sasso_singolo
+    2300000: lastra
+    2300002: massi
+    2300004: pietra_cristallo
     2300006: sassi_allungati
-    3300000: massi
-    3300002: pietra_cristallo
-    3300004: roccia_lastra
+    2300008: sassi_doppi
+    2300010: sasso_singolo
+    3300000: lastra
+    3300002: massi
+    3300004: pietra_cristallo
     3300006: sassi_allungati
+    3300008: sassi_doppi
+    3300010: sasso_singolo
     4300000: pietra_cristallo
     4300002: sassi_allungati
-    4300004: roccia_lastra
-    4300006: massi
+    4300004: lastra
+    4300006: sassi_doppi
+    4300008: sasso_singolo
+    4300010: massi
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -35,7 +47,7 @@ ModelImporter:
     second: {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   materials:
     importMaterials: 1
-    materialName: 1
+    materialName: 0
     materialSearch: 1
     materialLocation: 0
   animations:
@@ -85,7 +97,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

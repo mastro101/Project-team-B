@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 95b64f45cc4f2fe46be6ebba6e20d15c
+timeCreated: 1524130558
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: ala_DX
+    100002: ala_SX
+    100004: antenna_DX
+    100006: antenna_SX
+    100008: attacco_pungiglione
+    100010: corpo_centrale
+    100012: corpo_sotto
+    100014: //RootNode
+    100016: pungiglione
+    100018: testa
+    100020: zampa_alta_DX
+    100022: zampa_alta_SX
+    100024: zampa_bassa_DX
+    100026: zampa_bassa_SX
+    100028: zampa_media_DX
+    100030: zampa_media_SX
+    400000: ala_DX
+    400002: ala_SX
+    400004: antenna_DX
+    400006: antenna_SX
+    400008: attacco_pungiglione
+    400010: corpo_centrale
+    400012: corpo_sotto
+    400014: //RootNode
+    400016: pungiglione
+    400018: testa
+    400020: zampa_alta_DX
+    400022: zampa_alta_SX
+    400024: zampa_bassa_DX
+    400026: zampa_bassa_SX
+    400028: zampa_media_DX
+    400030: zampa_media_SX
+    2300000: ala_DX
+    2300002: ala_SX
+    2300004: antenna_DX
+    2300006: antenna_SX
+    2300008: attacco_pungiglione
+    2300010: corpo_centrale
+    2300012: corpo_sotto
+    2300014: pungiglione
+    2300016: testa
+    2300018: zampa_alta_DX
+    2300020: zampa_alta_SX
+    2300022: zampa_bassa_DX
+    2300024: zampa_bassa_SX
+    2300026: zampa_media_DX
+    2300028: zampa_media_SX
+    3300000: ala_DX
+    3300002: ala_SX
+    3300004: antenna_DX
+    3300006: antenna_SX
+    3300008: attacco_pungiglione
+    3300010: corpo_centrale
+    3300012: corpo_sotto
+    3300014: pungiglione
+    3300016: testa
+    3300018: zampa_alta_DX
+    3300020: zampa_alta_SX
+    3300022: zampa_bassa_DX
+    3300024: zampa_bassa_SX
+    3300026: zampa_media_DX
+    3300028: zampa_media_SX
+    4300000: zampa_alta_SX
+    4300002: zampa_media_SX
+    4300004: zampa_bassa_SX
+    4300006: zampa_bassa_DX
+    4300008: zampa_media_DX
+    4300010: zampa_alta_DX
+    4300012: pungiglione
+    4300014: corpo_centrale
+    4300016: corpo_sotto
+    4300018: attacco_pungiglione
+    4300020: testa
+    4300022: ala_SX
+    4300024: ala_DX
+    4300026: antenna_SX
+    4300028: antenna_DX
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
