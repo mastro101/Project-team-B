@@ -13,6 +13,8 @@ public class Grid : MonoBehaviour {
     public int Width = 0, Height = 0;
     public Material[] texture = new Material[3];
 
+    public Texture2D heightmapTerreinType;
+
     GameObject tile;
 
     public float DistanceTile;
@@ -45,6 +47,7 @@ public class Grid : MonoBehaviour {
         SetWalls();
         SetEnemyPoint();
         SetCellTerrainType();
+        ColorateGrid();
 
         // Rende visibile la griglia
         for (int _x = 0; _x < x; _x++)
@@ -59,7 +62,8 @@ public class Grid : MonoBehaviour {
                     {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
-                        SetCellTexture(cell, tile);
+                        
+
                     }
                     else if (FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy")
                     {
@@ -71,7 +75,7 @@ public class Grid : MonoBehaviour {
                             tile = (GameObject)Instantiate(City2);
                             tile.transform.position = cell.WorldPosition;
                         }
-
+                        
 
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Enemy")
@@ -79,13 +83,17 @@ public class Grid : MonoBehaviour {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
                         tile.GetComponent<Renderer>().material.color = Color.blue;
+                        
                     }
+
+                    if (cell.GetNameTile() == "" || cell.GetNameTile() == "Enemy")
+                        SetCellTexture(cell, tile);
 
 
                     //Colora il centro
                     if (cell == Center())
                     {
-                        tile.GetComponent<Renderer>().material.color = Color.black;
+                        //tile.GetComponent<Renderer>().material.color = Color.black;
                     }
 
                     // Colora le città                    
@@ -117,6 +125,37 @@ public class Grid : MonoBehaviour {
             }
         }
 
+    }
+
+    void ColorateGrid()
+    {
+        Color[,] terrainTypeColors = GetGridDataFromTexture(heightmapTerreinType, Width, Height);
+
+        foreach (var cell in Cells)
+        {
+
+            string colorRGB = ColorUtility.ToHtmlStringRGB(terrainTypeColors[cell.X, cell.Z]);
+
+            switch (colorRGB)
+            {
+
+                case "00CFFF":
+
+                    cell.SetTerrainType(CellTerrainType.Terrain2);
+
+                    break;
+
+                case "000000":
+
+                    cell.SetTerrainType(CellTerrainType.Terrain3);
+                    break;
+                default:
+
+                    Debug.Log("colore non trovato " + colorRGB);
+
+                    break;
+            }
+        }
     }
 
     // Imposta la posizione delle città sulla griglia
@@ -293,27 +332,62 @@ public class Grid : MonoBehaviour {
 
     }
 
+    Color[,] GetGridDataFromTexture(Texture2D _texture, int gridWidth, int gridHeight)
+    {
+
+        Color[,] returnColors = new Color[Width, Height];
+
+
+
+        int cellWidth = 130 / gridWidth;
+
+        int cellHeight = 130 / gridHeight;
+
+
+
+        foreach (CellData cell in Cells)
+        {
+
+            int xPixelPosition = (int)(cell.X * cellWidth) + (cellWidth / 2);
+
+            int yPixelPosition = (int)(cell.Z * cellHeight) + (cellHeight / 2);
+
+            Color resultColor = _texture.GetPixel(xPixelPosition, yPixelPosition);
+
+            returnColors[(int)cell.X, (int)cell.Z] = resultColor;
+
+
+
+        }
+
+        return returnColors;
+
+    }
+
     public void SetCellTerrainType()
     {
         FindCell(5, 5).SetTerrainType(CellTerrainType.Terrain2);
         Debug.Log(FindCell(5, 5).cellTerrainType);
     }
 
-    public void SetCellTexture(CellData _data, GameObject _tile) {
-        Debug.Log(_data.cellTerrainType);
+    public void SetCellTexture(CellData _data, GameObject _tile)
+    {
+        Renderer tileT = _tile.GetComponent<Renderer>();
         switch (_data.cellTerrainType)
         {
-            case CellTerrainType.Terrain1:                
+            case CellTerrainType.Terrain1:
+                Debug.Log("Coglione");
                 break;
             case CellTerrainType.Terrain2:
-                _tile.GetComponent<Renderer>().material = texture[0];
-                Debug.Log(_tile.GetComponent<Renderer>().material.mainTexture);
+                tileT.material = texture[0];
                 break;
             case CellTerrainType.Terrain3:
+                tileT.material.color = Color.black;
                 break;
             default:
                 break;
         }
+        Debug.Log(FindCell(_data.X, _data.Z).X + "x" + FindCell(_data.X, _data.Z).Z + " " + tileT.material.mainTexture);
     }
 
     public int GetWidth() {

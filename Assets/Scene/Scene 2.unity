@@ -1802,7 +1802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.0001373291, y: -91.49996}
+  m_AnchoredPosition: {x: 0.00009918213, y: -91.499985}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406764183
@@ -2446,8 +2446,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595734448}
   m_HandleRect: {fileID: 595734447}
   m_Direction: 0
-  m_Value: 0.125
-  m_Size: 0.99999964
+  m_Value: 0
+  m_Size: 0.9999997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6990,6 +6990,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 418a126cc7f40fb43b833960cfba0499, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+  heightmapTerreinType: {fileID: 2800000, guid: 07f6c13899c28e74393333f30097f21d,
+    type: 3}
   DistanceTile: 2.1
 --- !u!1 &1616135740
 GameObject:
