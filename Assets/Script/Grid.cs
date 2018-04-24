@@ -137,63 +137,168 @@ public class Grid : MonoBehaviour {
             string colorRGB = ColorUtility.ToHtmlStringRGB(terrainTypeColors[cell.X, cell.Z]);
 
             /*
-            Azzurro 00CFFF
-            Verde acqua 15B788
-            Marroncino 7A6A46
-            Lime 97AF41
-            Grigio blu 3B464F
-            Blu 1A1468
-            Verde 145917 
-            */
+            #00cfff   rgb(0,207,255);
+            #15b788   rgb(21,183,136)
+            #1c6850   rgb(28,104,80)
+            #91e2c9   rgb(145,226,201)
+            #b2dbce   rgb(178,219,206)
 
-            /*
-             Colori unity perchè è stronzo
+            #aace11   rgb(170,206,17)
+            #cfea5e   rgb(207,234,94)
+            #97af41   rgb(151,175,65)
+            #5b662b   rgb(91,102,43)
+            #d6e28f   rgb(214,226,143)
+            #181c09  rgb(24,28,9)
+            #145917   rgb(20,89,23)
+            #aaaf77   rgb(170,175,119)
+            #aaaf77   rgb(170,175,119)
 
-            verde acqua 15B789
-            Marroncino 7B6A47
-            Lime 96AF42
-            Grigio blu 3C464F
-            Blu 1B1468
-            Verde 145918
+            #1a1468   rgb(26,20,104)
+            #678ca5    rgb(103,140,165)
+            #0a2a3f   rgb(10,42,63)
+            #3b464f   rgb(59,70,79)
+            #afbdc6   rgb(175,189,198)
+
+            #7a6a46   rgb(122,106,70)
             */
 
             switch (colorRGB)
             {
 
                 case "00CFFF":
-                    cell.SetTerrainType(CellTerrainType.Terrain1);
+                    cell.SetTerrainType(CellTerrainType.Water1);
                     break;
 
                 case "15B789":
-                    cell.SetTerrainType(CellTerrainType.Terrain2);
+                    cell.SetTerrainType(CellTerrainType.Water2);
                     break;
 
-                case "7B6A47":
-                    cell.SetTerrainType(CellTerrainType.Desert1);
+                case "1B674F":
+                    cell.SetTerrainType(CellTerrainType.Water3);
+                    break;
+
+                case "91E1C8":
+                    cell.SetTerrainType(CellTerrainType.Water4);
+                    break;
+
+                case "B2DBCE":
+                    cell.SetTerrainType(CellTerrainType.Water5);
+                    break;
+
+                case "AACD10":
+                    cell.SetTerrainType(CellTerrainType.Grass1);
+                    break;
+
+                case "AACF10":
+                    cell.SetTerrainType(CellTerrainType.Grass1);
+                    break;
+
+                case "CEE95D":
+                    cell.SetTerrainType(CellTerrainType.Grass2);
+                    break;
+
+                case "D0EC5D":
+                    cell.SetTerrainType(CellTerrainType.Grass2);
                     break;
 
                 case "96AF42":
-                    cell.SetTerrainType(CellTerrainType.Desert2);
+                    cell.SetTerrainType(CellTerrainType.Grass3);
                     break;
 
-                case "3C464F":
-                    cell.SetTerrainType(CellTerrainType.Steppe1);
+                case "5A6629":
+                    cell.SetTerrainType(CellTerrainType.Grass4);
                     break;
 
-                case "1B1468":
-                    cell.SetTerrainType(CellTerrainType.Steppe2);
+                case "5A662B":
+                    cell.SetTerrainType(CellTerrainType.Grass4);
+                    break;
+
+                case "D6E18E":
+                    cell.SetTerrainType(CellTerrainType.Grass5);
+                    break;
+
+                case "181C08":
+                    cell.SetTerrainType(CellTerrainType.Grass6);
+                    break;
+
+                case "181E21":
+                    cell.SetTerrainType(CellTerrainType.Desert);
                     break;
 
                 case "145918":
-                    cell.SetTerrainType(CellTerrainType.Steppe2180);
+                    cell.SetTerrainType(CellTerrainType.Grass7);
+                    break;
+
+                case "125915":
+                    cell.SetTerrainType(CellTerrainType.Grass7);
+                    break;
+
+                case "155915":
+                    cell.SetTerrainType(CellTerrainType.Grass7);
+                    break;
+
+                case "AAAF78":
+                    cell.SetTerrainType(CellTerrainType.Grass8);
+                    break;
+
+                case "A9B077":
+                    cell.SetTerrainType(CellTerrainType.Grass8);
+                    break;
+
+                case "AAAF75":
+                    cell.SetTerrainType(CellTerrainType.Grass8);
+                    break;
+
+                case "CBED00":
+                    cell.SetTerrainType(CellTerrainType.Grass9);
+                    break;
+
+                case "1B1468":
+                    cell.SetTerrainType(CellTerrainType.Ancient1);
+                    break;
+
+                case "688CA7":
+                    cell.SetTerrainType(CellTerrainType.Ancient2);
+                    break;
+
+                case "678CA5":
+                    cell.SetTerrainType(CellTerrainType.Ancient2);
+                    break;
+
+                case "0A2A3F":
+                    cell.SetTerrainType(CellTerrainType.Ancient3);
+                    break;
+
+                case "3C464F":
+                    cell.SetTerrainType(CellTerrainType.Ancient4);
+                    break;
+
+                case "AFBDC6":
+                    cell.SetTerrainType(CellTerrainType.Ancient5);
+                    break;
+
+                case "7B6A47":
+                    cell.SetTerrainType(CellTerrainType.Desert);
+                    break;
+
+                case "7B6A44":
+                    cell.SetTerrainType(CellTerrainType.Desert);
+                    break;
+
+                case "7B6946":
+                    cell.SetTerrainType(CellTerrainType.Desert);
+                    break;
+
+                case "786A44":
+                    cell.SetTerrainType(CellTerrainType.Desert);
                     break;
 
                 case "000000":
-                    cell.SetTerrainType(CellTerrainType.Terrain2);
+                    
                     break;
 
                 default:
-                    Debug.Log(colorRGB);
+                    Debug.Log(colorRGB + "   " + cell.X + "x" + cell.Z);
                     break;
             }
         }
@@ -405,43 +510,81 @@ public class Grid : MonoBehaviour {
 
     }
 
-    public void SetCellTerrainType()
+    /*public void SetCellTerrainType()
     {
         FindCell(5, 5).SetTerrainType(CellTerrainType.Terrain2);
         Debug.Log(FindCell(5, 5).cellTerrainType);
     }
+    */
+
 
     public void SetCellTexture(CellData _data, GameObject _tile)
     {
         Renderer tileT = _tile.GetComponent<Renderer>();
+        
         switch (_data.cellTerrainType)
         {
-            case CellTerrainType.Terrain1:
+            case CellTerrainType.Water1:
                 tileT.material = texture[0];
                 break;
-            case CellTerrainType.Terrain2:
+            case CellTerrainType.Water2:
                 tileT.material = texture[1];
+                _tile.transform.rotation = Quaternion.Euler(0, 90f, 0);
                 break;
-            case CellTerrainType.Desert1:
+            case CellTerrainType.Water3:
                 tileT.material = texture[2];
                 break;
-            case CellTerrainType.Desert2:
+            case CellTerrainType.Water4:
                 tileT.material = texture[3];
                 break;
-            case CellTerrainType.Steppe1:
+            case CellTerrainType.Water5:
                 tileT.material = texture[4];
                 break;
-            case CellTerrainType.Steppe2:
+            case CellTerrainType.Grass1:
                 tileT.material = texture[5];
                 break;
-            case CellTerrainType.Steppe2180:
+            case CellTerrainType.Grass2:
                 tileT.material = texture[6];
                 break;
-            case CellTerrainType.Water1:
+            case CellTerrainType.Grass3:
                 tileT.material = texture[7];
                 break;
-            case CellTerrainType.Water2:
+            case CellTerrainType.Grass4:
                 tileT.material = texture[8];
+                break;
+            case CellTerrainType.Grass5:
+                tileT.material = texture[9];
+                break;
+            case CellTerrainType.Grass6:
+                tileT.material = texture[10];
+                break;
+            case CellTerrainType.Grass7:
+                tileT.material = texture[11];
+                break;
+            case CellTerrainType.Grass8:
+                tileT.material = texture[12];
+                break;
+            case CellTerrainType.Grass9:
+                tileT.material = texture[13];
+                break;
+            case CellTerrainType.Ancient1:
+                tileT.material = texture[14];
+                break;
+            case CellTerrainType.Ancient2:
+                tileT.material = texture[15];
+                break;
+            case CellTerrainType.Ancient3:
+                tileT.material = texture[16];
+                _tile.transform.rotation = Quaternion.Euler(0, 0, 0);
+                break;
+            case CellTerrainType.Ancient4:
+                tileT.material = texture[17];
+                break;
+            case CellTerrainType.Ancient5:
+                tileT.material = texture[18];
+                break;
+            case CellTerrainType.Desert:
+                tileT.material = texture[19];
                 break;
             default:
                 break;
