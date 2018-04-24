@@ -21,11 +21,14 @@ public class CombatManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        PlayerStaminaText.text = "Stamina:" + player.Stamina.ToString();
-        if (player.inCombatEnemy)
-            EnemyStaminaText.text = "Stamina:" + player.currentEnemy.Stamina.ToString();
-        else if (player.inCombatPlayer)
-            EnemyStaminaText.text = "Stamina:" + player.currentEnemyPlayer.Stamina.ToString();
+        if (player != null)
+        {
+            PlayerStaminaText.text = "Stamina:" + player.Stamina.ToString();
+            if (player.inCombatEnemy)
+                EnemyStaminaText.text = "Stamina:" + player.currentEnemy.Stamina.ToString();
+            else if (player.inCombatPlayer)
+                EnemyStaminaText.text = "Stamina:" + player.currentEnemyPlayer.Stamina.ToString();
+        }
     }
 
 

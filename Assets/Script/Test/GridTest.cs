@@ -24,7 +24,7 @@ public class GridTest : MonoBehaviour {
     {
         Cells = new List<CellData>();
         GridSize(Width, Height);
-        ColorateGrid();
+        
         
     }
 
@@ -44,6 +44,7 @@ public class GridTest : MonoBehaviour {
             }
         }
 
+        ColorateGrid();
 
         // Rende visibile la griglia
         for (int _x = 0; _x < x; _x++)
@@ -58,7 +59,8 @@ public class GridTest : MonoBehaviour {
                     {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
-                        
+
+                        SetCellTexture(cell, tile);
                     }
                 }
             }
@@ -67,34 +69,36 @@ public class GridTest : MonoBehaviour {
 
     void ColorateGrid()
     {
-        Color[,] terrainTypeColors = GetGridDataFromTexture(heightmapTerreinType, Height, Width);
+        Color[,] terrainTypeColors = GetGridDataFromTexture(heightmapTerreinType, Width, Height);
 
         foreach (var cell in Cells)
         {
 
-            string colorRGB = ColorUtility.ToHtmlStringRGB(terrainTypeColors[(int)cell.WorldPosition.x, (int)cell.WorldPosition.y]);
+            string colorRGB = ColorUtility.ToHtmlStringRGB(terrainTypeColors[cell.X, cell.Z]);
 
             switch (colorRGB)
             {
 
-                case "FFFFFF":
+                case "00CFFF":
 
                     cell.SetTerrainType(CellTerrainType.Terrain2);
-                    
 
                     break;
 
-                
+                case "000000":
 
+                    cell.SetTerrainType(CellTerrainType.Desert1);
+                    break;
                 default:
 
-                    //Debug.Log("colore non trovato " + colorRGB);
+                    
+                    Debug.Log("colore non trovato " + colorRGB);
 
                     break;
 
             }
 
-            SetCellTexture(cell, tile);
+            
 
         }
     }
@@ -107,26 +111,26 @@ public class GridTest : MonoBehaviour {
     Color[,] GetGridDataFromTexture(Texture2D _texture, int gridWidth, int gridHeight)
     {
 
-        Color[,] returnColors = new Color[gridWidth, gridHeight];
+        Color[,] returnColors = new Color[Width,Height];
 
 
 
-        int cellWidth = _texture.width / gridWidth;
+        int cellWidth = 130 / gridWidth;
 
-        int cellHeight = _texture.height / gridHeight;
+        int cellHeight = 130 / gridHeight;
 
 
 
         foreach (CellData cell in Cells)
         {
 
-            int xPixelPosition = (int)(cell.WorldPosition.x * cellWidth) + (cellWidth / 2);
+            int xPixelPosition = (int)(cell.X * cellWidth) + (cellWidth / 2);
 
-            int yPixelPosition = (int)(cell.WorldPosition.y * cellHeight) + (cellHeight / 2);
+            int yPixelPosition = (int)(cell.Z * cellHeight) + (cellHeight / 2);
 
             Color resultColor = _texture.GetPixel(xPixelPosition, yPixelPosition);
 
-            returnColors[(int)cell.WorldPosition.x, (int)cell.WorldPosition.y] = resultColor;
+            returnColors[(int)cell.X, (int)cell.Z] = resultColor;
 
 
 
@@ -136,8 +140,6 @@ public class GridTest : MonoBehaviour {
 
     }
 
-
-
     public void SetCellTerrainType()
     {
         FindCell(5, 5).SetTerrainType(CellTerrainType.Terrain2);
@@ -146,20 +148,22 @@ public class GridTest : MonoBehaviour {
 
     public void SetCellTexture(CellData _data, GameObject _tile)
     {
-        Debug.Log(_data.cellTerrainType);
+        Renderer tileT = _tile.GetComponent<Renderer>();
         switch (_data.cellTerrainType)
         {
             case CellTerrainType.Terrain1:
+                Debug.Log("Coglione");
                 break;
             case CellTerrainType.Terrain2:
-                _tile.GetComponent<Renderer>().material = texture[0];
-                Debug.Log(_tile.GetComponent<Renderer>().material.mainTexture);
+                tileT.material = texture[0];                
                 break;
-            case CellTerrainType.Terrain3:
+            case CellTerrainType.Desert1:
+                tileT.material.color = Color.black;
                 break;
             default:
                 break;
         }
+        Debug.Log(FindCell(_data.X, _data.Z).X + "x" + FindCell(_data.X, _data.Z).Z + " " + tileT.material.mainTexture);
     }
 
 }

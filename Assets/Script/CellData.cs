@@ -99,5 +99,11 @@ public enum CellTerrainType
 {
     Terrain1,
     Terrain2,
-    Terrain3,
+    Desert1,
+    Desert2,
+    Steppe1,
+    Steppe2,
+    Steppe2180,
+    Water1,
+    Water2,
 }
