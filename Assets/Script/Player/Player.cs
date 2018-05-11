@@ -51,13 +51,6 @@ public class Player : PlayerStatistiche{
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
         SetPositionPlayer();
-
-        Stamina = 20;
-        Attacks[0] = 1;
-        Attacks[1] = 2;
-        Attacks[2] = 3;
-        Attacks[3] = 4;
-        Attacks[4] = 5;
     }
 
 
@@ -101,8 +94,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
             Tmp.SetMosse(PossibleMove.ToString());
-            Tmp.SetStamina(Stamina.ToString());
-            Tmp.SetCombatPoints(CombatPoints.ToString());
+            Tmp.SetCombatPoints(WinPoint.ToString());
 
 
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
@@ -154,28 +146,172 @@ public class Player : PlayerStatistiche{
 
 
                 // Attacco
+                if (inCombatEnemy || inCombatPlayer)
+                {
+                    if (Input.GetKeyDown(KeyCode.Alpha1))
+                        Attacks = 1;
+                    else if (Input.GetKeyDown(KeyCode.Alpha2))
+                        Attacks = 2;
+                    else if (Input.GetKeyDown(KeyCode.Alpha3))
+                        Attacks = 3;
+
+                }
+
                 if (inCombatEnemy)
                 {
+                    currentEnemy.CurrentPlayer = this;
                     CB.player = this;
                     if (CB.Active == false)
                         CB.OpenAndCloseInventoryCombat();
 
-                    /*if (currentEnemy.CurrentState == IEnemyState.InUse)
-                    {
-                        if (Input.GetKeyDown(KeyCode.Space))
-                        {
-                            currentEnemy.TakeDamage(Attacks[Random.Range(0, 5)]);
-                            currentEnemy.AttackPlayer(this);
-                            currentEnemy.OnAttack += OnEnemyAttack;
+                    if (currentEnemy.Attack == 0)
+                        currentEnemy.Attack = Random.Range(1, 4);
 
+                    if (Attacks != 0 && currentEnemy.Attack != 0)
+                    {
+                        
+                        switch (Attacks)
+                        {
+                            case 1:
+                                switch (currentEnemy.Attack)
+                                {
+                                    case 1:
+                                        currentEnemy.Attack = 0;
+                                        Attacks = 0;
+                                        break;
+                                    case 2:
+                                        currentEnemy.DamagePlayer(this);
+                                        currentEnemy.OnAttack += OnEnemyAttack;
+                                        break;
+                                    case 3:
+                                        currentEnemy.LoseRound();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+
+                            case 2:
+                                switch (currentEnemy.Attack)
+                                {
+                                    case 1:
+                                        currentEnemy.LoseRound();
+                                        break;
+                                    case 2:
+                                        currentEnemy.Attack = 0;
+                                        Attacks = 0;
+                                        break;
+                                    case 3:
+                                        currentEnemy.DamagePlayer(this);
+                                        currentEnemy.OnAttack += OnEnemyAttack;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            case 3:
+                                switch (currentEnemy.Attack)
+                                {
+                                    case 1:
+                                        currentEnemy.DamagePlayer(this);
+                                        currentEnemy.OnAttack += OnEnemyAttack;
+                                        break;
+                                    case 2:
+                                        currentEnemy.LoseRound();
+                                        break;
+                                    case 3:
+                                        currentEnemy.Attack = 0;
+                                        Attacks = 0;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+
+
+                            default:
+                                break;
                         }
-                    }*/
+                    }
+
                 }
+
+                
                 else if (inCombatPlayer)
                 {
+                    currentEnemyPlayer.currentEnemyPlayer = this;
                     CB.player = this;
                     if (CB.Active == false)
                         CB.OpenAndCloseInventoryCombat();
+                    if (Input.GetKeyDown(KeyCode.Alpha8))
+                        currentEnemyPlayer.Attacks = 1;
+                    else if (Input.GetKeyDown(KeyCode.Alpha9))
+                        currentEnemyPlayer.Attacks = 2;
+                    else if (Input.GetKeyDown(KeyCode.Alpha0))
+                        currentEnemyPlayer.Attacks = 3;
+
+                    if (Attacks != 0 && currentEnemyPlayer.Attacks != 0)
+                    {
+                        switch (Attacks)
+                        {
+                            case 1:
+                                switch (currentEnemyPlayer.Attacks)
+                                {
+                                    case 1:
+                                        currentEnemyPlayer.Attacks = 0;
+                                        Attacks = 0;
+                                        break;
+                                    case 2:
+                                        LoseRound();
+                                        break;
+                                    case 3:
+                                        currentEnemyPlayer.LoseRound();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+
+                            case 2:
+                                switch (currentEnemyPlayer.Attacks)
+                                {
+                                    case 1:
+                                        currentEnemyPlayer.LoseRound();
+                                        break;
+                                    case 2:
+                                        currentEnemyPlayer.Attacks = 0;
+                                        Attacks = 0;
+                                        break;
+                                    case 3:
+                                        LoseRound();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            case 3:
+                                switch (currentEnemyPlayer.Attacks)
+                                {
+                                    case 1:
+                                        LoseRound();
+                                        break;
+                                    case 2:
+                                        currentEnemyPlayer.LoseRound();
+                                        break;
+                                    case 3:
+                                        currentEnemyPlayer.Attacks = 0;
+                                        Attacks = 0;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+
+
+                            default:
+                                break;
+                        }
+                    }
                 }
 
 
@@ -185,7 +321,7 @@ public class Player : PlayerStatistiche{
                     if (currentEnemy.CurrentState == IEnemyState.InPool)
                     {
                         inCombatEnemy = false;
-                        CB.OpenAndCloseInventoryCombat();
+                        //CB.OpenAndCloseInventoryCombat();
                         Gpm.CurrentState = GamePlayManager.State.End;
                     }
                 }
@@ -229,7 +365,7 @@ public class Player : PlayerStatistiche{
         if (currentEnemy.IsAlive == false)
         {
             Credit += currentEnemy.Credits;
-            CombatPoints += currentEnemy.CombatPoints;
+            
         }
         currentEnemy.OnDestroy -= OnEnemyDestroy;
     }
@@ -529,26 +665,48 @@ public class Player : PlayerStatistiche{
         
     }
 
-    public void TakeDamage(int damage)
+    public void LoseRound()
     {
-        Stamina -= damage;
-        if (Stamina <= 0)
+        if (inCombatEnemy)
+        {
+            currentEnemy.WinPoint++;
+            currentEnemy.Attack = 0;
+        }
+
+        if (inCombatPlayer)
+        {
+            currentEnemyPlayer.WinPoint++;
+            currentEnemyPlayer.Attacks = 0;
+        }
+
+
+        Attacks = 0;
+        
+        if ((currentEnemy != null && currentEnemy.WinPoint == 2) || (currentEnemyPlayer != null && currentEnemyPlayer.WinPoint == 2))
         {
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
 
             if (currentEnemy != null)
                 currentEnemy.DestroyMe();
+
+            if (inCombatPlayer)
+            {
+                currentEnemyPlayer.Attacks = 0;
+                currentEnemyPlayer.WinPoint = 0;
+            }
+
             Life--;
             if (inCombatPlayer)
             {                
                 inCombatPlayer = false;
             }
             
+            WinPoint = 0;
+
             if (Life <= 0)
                 Morte();
 
-            Stamina = 20;
             
         }
     }
@@ -573,7 +731,6 @@ public class Player : PlayerStatistiche{
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
             PossibleMove = 2;
             Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-            Stamina = 20;
             Gpm.CurrentState = GamePlayManager.State.End;
                 
         }

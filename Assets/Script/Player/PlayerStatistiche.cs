@@ -11,15 +11,14 @@ public class PlayerStatistiche : MonoBehaviour {
     public int Life = 5;
     public int Credit;
     public int PossibleMove = 2;
-    public int Stamina = 20;
-    public int CombatPoints = 5;
+    public int WinPoint;
     public int CurrentAttack;
-    public int[] Attacks = new int[5];
+    public int Attacks;
     public GameObject[] Equip = {null, null, null};
 
-    private void Start()
+    private void Awake()
     {
-
+       
     }
 
     public void Heal()

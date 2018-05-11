@@ -5,7 +5,7 @@ using UnityEngine;
 public class Grid : MonoBehaviour {
 
     public GameObject Tile;
-    public GameObject Wall, City, City2;
+    public GameObject Wall, City, City2, City3, City4;
     public GameObject Tower;
     public List<CellData> Cells = new List<CellData>();
     public float CellSize = -1;
@@ -49,6 +49,8 @@ public class Grid : MonoBehaviour {
         //SetCellTerrainType();
         ColorateGrid();
 
+        int []_city = new int[4];
+
         // Rende visibile la griglia
         for (int _x = 0; _x < x; _x++)
         {
@@ -67,15 +69,89 @@ public class Grid : MonoBehaviour {
                     }
                     else if (FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy")
                     {
-                        int CityChoose = Random.Range(1, 3);
-                        if (CityChoose == 1) {
-                            tile = (GameObject)Instantiate(City);
-                            tile.transform.position = cell.WorldPosition;
-                        } else {
-                            tile = (GameObject)Instantiate(City2);
+
+                        if (cell.GetNameTile() == "A")
+                        {
+                            if (_city[0] == 0)
+                            {
+                                tile = (GameObject)Instantiate(City);
+                                tile.transform.position = cell.WorldPosition + new Vector3(1.55f, 0, 1.55f);
+                                tile.transform.rotation = Quaternion.Euler(0, 180, 0);
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            else
+                            {
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            _city[0]++;
+                        }
+                        else if (cell.GetNameTile() == "B")
+                        {
+                            if (_city[1] == 0)
+                            {
+                                tile = (GameObject)Instantiate(City2);
+                                tile.transform.position = cell.WorldPosition + new Vector3(1.55f, 0, 1.55f);
+                                tile.transform.rotation = Quaternion.Euler(0, 180, 0);
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            else
+                            {
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            _city[1]++;
+                        }
+                        else if (cell.GetNameTile() == "C")
+                        {
+                            if (_city[2] == 0)
+                            {
+                                tile = (GameObject)Instantiate(City3);
+                                tile.transform.position = cell.WorldPosition + new Vector3(1.55f, 0, 1.55f);
+                                tile.transform.rotation = Quaternion.Euler(0, 180, 0);
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            else
+                            {
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            _city[2]++;
+                        }
+                        else if (cell.GetNameTile() == "D")
+                        {
+                            if (_city[3] == 0)
+                            {
+                                tile = (GameObject)Instantiate(City4);
+                                tile.transform.position = cell.WorldPosition + new Vector3(1.55f, 0, 1.55f);
+                                tile.transform.rotation = Quaternion.Euler(0, 180, 0);
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            else
+                            {
+                                tile = Instantiate(Tile);
+                                tile.transform.position = cell.WorldPosition;
+                                tile.GetComponent<Renderer>().enabled = false;
+                            }
+                            _city[3]++;
+                        }
+                        else
+                        {
+                            tile = Instantiate(Tile);
                             tile.transform.position = cell.WorldPosition;
                         }
-                        
+
 
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Enemy")
@@ -306,14 +382,29 @@ public class Grid : MonoBehaviour {
 
     // Imposta la posizione delle città sulla griglia
     void SetCity() {
-        FindCell(6, 11).SetNameTile("A");
-        FindCell(6, 1).SetNameTile("B");
-        FindCell(1, 6).SetNameTile("C");
-        FindCell(11, 6).SetNameTile("D");
-        FindCell(11, 11).SetNameTile("E");
-        FindCell(1, 11).SetNameTile("F");
-        FindCell(1, 1).SetNameTile("G");
-        FindCell(11, 1).SetNameTile("H");
+        //FindCell(6, 11).SetNameTile("A");
+        //FindCell(6, 1).SetNameTile("B");
+        //FindCell(1, 6).SetNameTile("C");
+        //FindCell(11, 6).SetNameTile("D");
+        FindCell(11, 11).SetNameTile("D");
+        FindCell(11, 10).SetNameTile("D");
+        FindCell(10, 10).SetNameTile("D");
+        FindCell(10, 11).SetNameTile("D");
+
+        FindCell(2, 11).SetNameTile("B");
+        FindCell(1, 10).SetNameTile("B");
+        FindCell(2, 10).SetNameTile("B");
+        FindCell(1, 11).SetNameTile("B");
+
+        FindCell(1, 2).SetNameTile("A");
+        FindCell(2, 1).SetNameTile("A");
+        FindCell(2, 2).SetNameTile("A");
+        FindCell(1, 1).SetNameTile("A");
+
+        FindCell(11, 1).SetNameTile("C");
+        FindCell(11, 2).SetNameTile("C");
+        FindCell(10, 1).SetNameTile("C");
+        FindCell(10, 2).SetNameTile("C");
 
         FindCell(7, 6).SetNameTile("CittàDebug");
     }

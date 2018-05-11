@@ -751,7 +751,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: 155}
+  m_AnchoredPosition: {x: -50.93, y: -146.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99587905
@@ -1363,7 +1363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: -181}
+  m_AnchoredPosition: {x: -56.2, y: 156.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238145636
@@ -1801,7 +1801,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0.00015258789, y: -91.5}
+=======
+  m_AnchoredPosition: {x: 0.00009918213, y: -91.49998}
+>>>>>>> fca600d664efad129b5410d3bc439fb451c1e722
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406764183
@@ -2128,8 +2132,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -72.8, y: -15}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 190.5, y: -145.9}
+  m_SizeDelta: {x: 64.6, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463760530
 MonoBehaviour:
@@ -2274,10 +2278,9 @@ MonoBehaviour:
   Life: 5
   Credit: 10
   PossibleMove: 2
-  Stamina: 10
-  CombatPoints: 5
+  WinPoint: 0
   CurrentAttack: 1
-  Attacks: 0000000000000000000000000000000000000000
+  Attacks: 0
   Equip:
   - {fileID: 0}
   - {fileID: 0}
@@ -2446,7 +2449,11 @@ MonoBehaviour:
   m_HandleRect: {fileID: 595734447}
   m_Direction: 0
   m_Value: 1
+<<<<<<< HEAD
   m_Size: 1
+=======
+  m_Size: 0.99999994
+>>>>>>> fca600d664efad129b5410d3bc439fb451c1e722
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3414,10 +3421,9 @@ MonoBehaviour:
   Life: 5
   Credit: 10
   PossibleMove: 2
-  Stamina: 10
-  CombatPoints: 5
+  WinPoint: 0
   CurrentAttack: 1
-  Attacks: 0000000000000000000000000000000000000000
+  Attacks: 0
   Equip:
   - {fileID: 0}
   - {fileID: 0}
@@ -3677,10 +3683,9 @@ MonoBehaviour:
   Life: 5
   Credit: 10
   PossibleMove: 2
-  Stamina: 10
-  CombatPoints: 5
+  WinPoint: 0
   CurrentAttack: 1
-  Attacks: 0000000000000000000000000000000000000000
+  Attacks: 0
   Equip:
   - {fileID: 0}
   - {fileID: 0}
@@ -4326,6 +4331,7 @@ MonoBehaviour:
   Stamina: 
   CombatPoints: 
   PlayerInventory: 
+<<<<<<< HEAD
 --- !u!1 &1091705360
 GameObject:
   m_ObjectHideFlags: 0
@@ -4479,6 +4485,8 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1091705360}
+=======
+>>>>>>> fca600d664efad129b5410d3bc439fb451c1e722
 --- !u!1001 &1094943474
 Prefab:
   m_ObjectHideFlags: 0
@@ -5014,7 +5022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 265, y: -15}
+  m_AnchoredPosition: {x: 256.2, y: 156.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1132984323
@@ -5471,28 +5479,27 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1181001041}
---- !u!1 &1187239686
+--- !u!1 &1218096743
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1187239687}
-  - component: {fileID: 1187239689}
-  - component: {fileID: 1187239688}
+  - component: {fileID: 1218096744}
   m_Layer: 5
-  m_Name: G
+  m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1187239687
+--- !u!224 &1218096744
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1187239686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -72.8, y: -181, z: 0}
@@ -5500,12 +5507,23 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2043945076}
   m_RootOrder: 6
+=======
+  m_GameObject: {fileID: 1218096743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 595734447}
+  m_Father: {fileID: 549450077}
+  m_RootOrder: 0
+>>>>>>> fca600d664efad129b5410d3bc439fb451c1e722
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -72.8, y: -181}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 --- !u!114 &1187239688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5658,6 +5676,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> fca600d664efad129b5410d3bc439fb451c1e722
 --- !u!1001 &1226526906
 Prefab:
   m_ObjectHideFlags: 0
@@ -6972,8 +6992,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tile: {fileID: 1902378144960888, guid: a36d05ba18ef87c4eb5337dcd653d325, type: 2}
   Wall: {fileID: 100028, guid: ca25b9040ac5aaf44b284c53088ee32d, type: 3}
-  City: {fileID: 1546103643020952, guid: 1d67e77104832d74882a8dd9aff53a16, type: 2}
-  City2: {fileID: 1297517724767110, guid: c90de884f8197ab49b4f65205cf65e8b, type: 2}
+  City: {fileID: 1947737590418900, guid: d26c4f4c5f4673444bce91a4affe436b, type: 2}
+  City2: {fileID: 1047317635494294, guid: 7cba66ac5cc8a2148bbe3c3507492544, type: 2}
+  City3: {fileID: 1793611215146870, guid: 3f28a3b1bd5b0fe43a9cd08c8891fa5b, type: 2}
+  City4: {fileID: 1376578023596594, guid: 8994c557628044a49996f8d3acdf54a6, type: 2}
   Tower: {fileID: 100016, guid: 0ade4bed843f95948a7f36f216ade472, type: 3}
   Cells: []
   CellSize: 1
@@ -7509,6 +7531,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1699599112
 GameObject:
   m_ObjectHideFlags: 0
@@ -7662,6 +7685,8 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1699599112}
+=======
+>>>>>>> fca600d664efad129b5410d3bc439fb451c1e722
 --- !u!1 &1751994721
 GameObject:
   m_ObjectHideFlags: 0
@@ -8257,10 +8282,6 @@ RectTransform:
   - {fileID: 238145635}
   - {fileID: 463760529}
   - {fileID: 1132984322}
-  - {fileID: 1699599113}
-  - {fileID: 2050881466}
-  - {fileID: 1187239687}
-  - {fileID: 1091705361}
   m_Father: {fileID: 791186564}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8269,6 +8290,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 --- !u!1 &2050881465
 GameObject:
   m_ObjectHideFlags: 0
@@ -8422,6 +8444,8 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2050881465}
+=======
+>>>>>>> fca600d664efad129b5410d3bc439fb451c1e722
 --- !u!1 &2062156853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8601,10 +8625,9 @@ MonoBehaviour:
   Life: 5
   Credit: 10
   PossibleMove: 2
-  Stamina: 10
-  CombatPoints: 5
+  WinPoint: 0
   CurrentAttack: 1
-  Attacks: 0000000000000000000000000000000000000000
+  Attacks: 0
   Equip:
   - {fileID: 0}
   - {fileID: 0}
