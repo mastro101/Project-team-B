@@ -1,21 +1,28 @@
 fileFormatVersion: 2
 guid: 7c357303e0a42f54ca0b4da05ae2005e
-timeCreated: 1521137878
+timeCreated: 1524933005
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: refinery
+    100000: casella
+    100002: //RootNode
+    100004: refinery_struttura
+    400000: casella
+    400002: //RootNode
+    400004: refinery_struttura
+    2300000: casella
+    2300002: refinery_struttura
+    3300000: casella
+    3300002: refinery_struttura
+    4300000: casella
+    4300002: refinery_struttura
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: 4d056e47ca40cbb41a461883506d3c9c, type: 2}
+    second: {fileID: 2100000, guid: 9b07e28d0e58f93419aaf810d0e1c26f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,8 +57,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
