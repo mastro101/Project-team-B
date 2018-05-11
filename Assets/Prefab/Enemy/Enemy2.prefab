@@ -1190,10 +1190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CB: {fileID: 0}
-  Stamina: 2
-  CombatPoints: 2
   Credits: 2
-  Attack: 2
+  Attack: 0
   IsAlive: 0
   PlayerToAttack: 
   PGreen: {fileID: 0}
@@ -1201,3 +1199,4 @@ MonoBehaviour:
   PRed: {fileID: 0}
   PYellow: {fileID: 0}
   Gpm: {fileID: 0}
+  WinPoint: 0

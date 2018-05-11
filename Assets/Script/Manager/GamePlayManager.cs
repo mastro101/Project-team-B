@@ -277,12 +277,7 @@ public class GamePlayManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            CurrentState = State.Movement;
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-            CurrentState = State.Event;
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-            CurrentState = State.End;
+        
 
         if (CurrentState == State.End)
         {

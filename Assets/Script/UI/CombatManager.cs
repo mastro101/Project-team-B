@@ -23,11 +23,13 @@ public class CombatManager : MonoBehaviour {
     {
         if (player != null)
         {
+            /*
             PlayerStaminaText.text = "Stamina:" + player.Stamina.ToString();
             if (player.inCombatEnemy)
                 EnemyStaminaText.text = "Stamina:" + player.currentEnemy.Stamina.ToString();
             else if (player.inCombatPlayer)
                 EnemyStaminaText.text = "Stamina:" + player.currentEnemyPlayer.Stamina.ToString();
+                */
         }
     }
 
@@ -62,10 +64,11 @@ public class CombatManager : MonoBehaviour {
 
     public void Attack()
     {
+        /*
         if (player.inCombatEnemy)
         {
             player.currentEnemy.TakeDamage(player.Attacks[Random.Range(0, 5)]);
-            player.currentEnemy.AttackPlayer(player);
+            player.currentEnemy.DamagePlayer(player);
             player.currentEnemy.OnAttack += player.OnEnemyAttack;
         }
         if (player.inCombatPlayer)
@@ -73,6 +76,7 @@ public class CombatManager : MonoBehaviour {
             player.currentEnemyPlayer.TakeDamage(player.Attacks[Random.Range(0, 5)]);
             player.TakeDamage(player.currentEnemyPlayer.Attacks[Random.Range(0, 5)]);
         }
+        */
     }
 
 }

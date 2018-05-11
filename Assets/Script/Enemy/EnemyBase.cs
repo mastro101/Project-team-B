@@ -9,17 +9,16 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
 
     public CombatManager CB;
 
-    public int Stamina;
-    public int CombatPoints;
+    
     public int Credits;
     public int Attack;
     public bool IsAlive;
     public string PlayerToAttack;
     public GameObject PGreen, PBlue, PRed, PYellow;
     public GamePlayManager Gpm;
-    Player CurrentPlayer;
+    public Player CurrentPlayer;
 
-    int _stamina;
+    public int WinPoint;
 
     public int ID { get { return getID(); } }
 
@@ -31,15 +30,15 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         set { _currentState = value; }
     }
 
-    int IEnemy.Stamina { get { return Stamina; } }
-
-    int IEnemy.Attack { get { return Attack; } }
+    int IEnemy.Attack { get { return Attack; } set { Attack = value; } }
 
     int IEnemy.Credits { get { return Credits; } }
 
-    int IEnemy.CombatPoints { get { return CombatPoints; } }
+    int IEnemy.WinPoint { get { return WinPoint; } set { WinPoint = value; } }
 
     bool IEnemy.IsAlive { get { return IsAlive; } }
+
+    Player IEnemy.CurrentPlayer { get { return CurrentPlayer; } set { CurrentPlayer = value; } }
 
     public event IEnemyEvents.EnemyEvent OnSpawn;
     public event IEnemyEvents.EnemyEvent OnAttack;
@@ -76,11 +75,12 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         InvockOnSpawn();
     }
 
-    public virtual void AttackPlayer(Player player)
+    public virtual void DamagePlayer(Player player)
     {
         InvockOnAttack();
+        CurrentPlayer = player;
         if (CurrentState == IEnemyState.InUse)           
-            player.TakeDamage(Attack);
+            player.LoseRound();
     }
 
     public virtual void DestroyMe()
@@ -96,13 +96,15 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         CurrentState = IEnemyState.InPool;
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void LoseRound()
     {
-        Stamina -= damage;
-        if (Stamina <= 0)
+        Attack = 0;
+        CurrentPlayer.Attacks = 0;
+        CurrentPlayer.WinPoint++;
+        if (CurrentPlayer.WinPoint == 2)
         {
             IsAlive = false;
-            
+            CurrentPlayer.WinPoint = 0;
             DestroyMe();
         }
     }
@@ -116,12 +118,12 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         PYellow = GameObject.Find("PedoneYellow");
         CB = FindObjectOfType<CombatManager>();
 
-        _stamina = Stamina;
     }
 
     public virtual void ResetStatistic()
     {
-        Stamina = _stamina;
+        WinPoint = 0;
+        Attack = 0;
     }
 
     private void Update()
