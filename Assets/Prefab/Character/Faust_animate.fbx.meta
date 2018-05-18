@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 78393fb67d16b9348837432ef04fccb8
+timeCreated: 1526599137
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: avambraccio_DX
+    100002: avambraccio_SX
+    100004: braccio_DX
+    100006: braccio_SX
+    100008: busto
+    100010: coscia_DX
+    100012: coscia_SX
+    100014: Ctrl_Head
+    100016: Ctrl_L_Arm
+    100018: Ctrl_L_Foot
+    100020: Ctrl_mano_DX_martello
+    100022: Ctrl_mano_SX_martello
+    100024: Ctrl_martello
+    100026: Ctrl_Pelvis
+    100028: Ctrl_R_Arm
+    100030: Ctrl_R_Foot
+    100032: drappo_avanti
+    100034: drappo_dietro
+    100036: Faust
+    100038: //RootNode
+    100040: ginocchio_DX
+    100042: ginocchio_SX
+    100044: gomito_DX
+    100046: gomito_SX
+    100048: Head
+    100050: intero_busto
+    100052: joint13
+    100054: joint6
+    100056: joint6 1
+    100058: L_Arm
+    100060: L_clavicola
+    100062: L_Foot
+    100064: L_Hand
+    100066: L_Lower_Leg
+    100068: L_Shoulder
+    100070: L_Upper_Leg
+    100072: mano_DX
+    100074: mano_DX_martello
+    100076: mano_SX
+    100078: mano_SX_martello
+    100080: martello
+    100082: Pelvis
+    100084: piede_DX
+    100086: piede_SX
+    100088: porta_martello
+    100090: R_Arm
+    100092: R_clavicola
+    100094: R_Foot
+    100096: R_Hand
+    100098: R_Lower_Leg
+    100100: R_Shoulder
+    100102: R_Upper_Leg
+    100104: spallacci
+    100106: Spine
+    100108: stinco_DX
+    100110: stinco_SX
+    100112: testa
+    400000: avambraccio_DX
+    400002: avambraccio_SX
+    400004: braccio_DX
+    400006: braccio_SX
+    400008: busto
+    400010: coscia_DX
+    400012: coscia_SX
+    400014: Ctrl_Head
+    400016: Ctrl_L_Arm
+    400018: Ctrl_L_Foot
+    400020: Ctrl_mano_DX_martello
+    400022: Ctrl_mano_SX_martello
+    400024: Ctrl_martello
+    400026: Ctrl_Pelvis
+    400028: Ctrl_R_Arm
+    400030: Ctrl_R_Foot
+    400032: drappo_avanti
+    400034: drappo_dietro
+    400036: Faust
+    400038: //RootNode
+    400040: ginocchio_DX
+    400042: ginocchio_SX
+    400044: gomito_DX
+    400046: gomito_SX
+    400048: Head
+    400050: intero_busto
+    400052: joint13
+    400054: joint6
+    400056: joint6 1
+    400058: L_Arm
+    400060: L_clavicola
+    400062: L_Foot
+    400064: L_Hand
+    400066: L_Lower_Leg
+    400068: L_Shoulder
+    400070: L_Upper_Leg
+    400072: mano_DX
+    400074: mano_DX_martello
+    400076: mano_SX
+    400078: mano_SX_martello
+    400080: martello
+    400082: Pelvis
+    400084: piede_DX
+    400086: piede_SX
+    400088: porta_martello
+    400090: R_Arm
+    400092: R_clavicola
+    400094: R_Foot
+    400096: R_Hand
+    400098: R_Lower_Leg
+    400100: R_Shoulder
+    400102: R_Upper_Leg
+    400104: spallacci
+    400106: Spine
+    400108: stinco_DX
+    400110: stinco_SX
+    400112: testa
+    4300000: martello
+    4300002: testa
+    4300004: busto
+    4300006: porta_martello
+    4300008: spallacci
+    4300010: braccio_DX
+    4300012: gomito_DX
+    4300014: avambraccio_DX
+    4300016: mano_DX
+    4300018: braccio_SX
+    4300020: gomito_SX
+    4300022: avambraccio_SX
+    4300024: mano_SX
+    4300026: coscia_DX
+    4300028: ginocchio_DX
+    4300030: stinco_DX
+    4300032: piede_DX
+    4300034: coscia_SX
+    4300036: ginocchio_SX
+    4300038: stinco_SX
+    4300040: piede_SX
+    4300042: drappo_avanti
+    4300044: drappo_dietro
+    7400000: Idle
+    7400002: Walk
+    7400004: Attack
+    7400006: Take_Beat
+    7400008: Death
+    9500000: //RootNode
+    13700000: avambraccio_DX
+    13700002: avambraccio_SX
+    13700004: braccio_DX
+    13700006: braccio_SX
+    13700008: busto
+    13700010: coscia_DX
+    13700012: coscia_SX
+    13700014: drappo_avanti
+    13700016: drappo_dietro
+    13700018: ginocchio_DX
+    13700020: ginocchio_SX
+    13700022: gomito_DX
+    13700024: gomito_SX
+    13700026: mano_DX
+    13700028: mano_SX
+    13700030: martello
+    13700032: piede_DX
+    13700034: piede_SX
+    13700036: porta_martello
+    13700038: spallacci
+    13700040: stinco_DX
+    13700042: stinco_SX
+    13700044: testa
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 9b07e28d0e58f93419aaf810d0e1c26f, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 360
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 361
+      lastFrame: 500
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 501
+      lastFrame: 858
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Take_Beat
+      takeName: Take 001
+      firstFrame: 870
+      lastFrame: 900
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 948
+      lastFrame: 1095
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
