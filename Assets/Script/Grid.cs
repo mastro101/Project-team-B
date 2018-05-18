@@ -163,7 +163,7 @@ public class Grid : MonoBehaviour {
                     }
 
                     if (cell.GetNameTile() == "" || cell.GetNameTile() == "Enemy")
-                        SetCellTexture(cell, tile);
+                        //SetCellTexture(cell, tile);
 
 
                     //Colora il centro

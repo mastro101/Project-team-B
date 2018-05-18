@@ -6,6 +6,8 @@ public class EnemyPoolManager : MonoBehaviour
 {
     public GameObject[] EnemyPrefabs;
 
+
+
     Vector3 poolPositionOutOffScreen = new Vector3(1000, 1000, 1000);
     public int MaxEnemy = 3;
 
@@ -13,6 +15,7 @@ public class EnemyPoolManager : MonoBehaviour
 
     private void Start()
     {
+
         foreach (var enemyPrefab in EnemyPrefabs)
         {
             for (int i = 0; i < MaxEnemy; i++)
@@ -28,6 +31,7 @@ public class EnemyPoolManager : MonoBehaviour
                 enemy.OnSpawn += OnEnemySpawn;
                 enemy.OnDestroy += OnEnemyDestroy;
                 //
+
                 OnEnemyDestroy(enemy);
                 enemies.Add(enemy);
             }
@@ -51,6 +55,7 @@ public class EnemyPoolManager : MonoBehaviour
     void OnEnemyDestroy(IEnemy enemy)
     {
         enemy.gameObject.transform.position = poolPositionOutOffScreen;
+        
     }
 
     public IEnemy GetEnemy(int EnemyID)

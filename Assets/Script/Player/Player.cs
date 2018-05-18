@@ -11,6 +11,11 @@ public class Player : PlayerStatistiche{
     public IEnemy currentEnemy;
     public Player currentEnemyPlayer;
 
+    Camera gameCamera;
+    GameObject playerPrefab;
+
+    public GameObject PlayerPrefab;
+
     public  TextMeshP Tmp;
 
     public LogManager Lg;
@@ -44,7 +49,10 @@ public class Player : PlayerStatistiche{
     {
         enemyManager = FindObjectOfType<EnemyPoolManager>();
         MissionManager = FindObjectOfType<Mission>();
+        gameCamera = FindObjectOfType<Camera>();
 
+        playerPrefab = Instantiate(PlayerPrefab);
+        playerPrefab.transform.position = new Vector3(1000, 1000, 1000);
 
         grid.Center().PlayerOnTile = 4;
         transform.position = grid.GetCenterPosition(); //Setto la posizione del player
@@ -126,12 +134,17 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
+                
+
                 if (grid.FindCell(XPos, ZPos).POnTile == this)
                 {
                     
                     if (!inCombatEnemy)
                     {
                         SpawnEnemy();
+                        gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        gameCamera.orthographicSize = 4;
+                        playerPrefab.transform.position = new Vector3(14.73f, 37.97f, 21f);
                         inCombatEnemy = true;
                     }
                 }
@@ -140,6 +153,9 @@ public class Player : PlayerStatistiche{
                     if (!inCombatPlayer)
                     {
                         currentEnemyPlayer = grid.FindCell(XPos, ZPos).POnTile;
+                        gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        gameCamera.orthographicSize = 4;
+                        playerPrefab.transform.position = new Vector3(14.73f, 37.97f, 21f);
                         inCombatPlayer = true;
                     }
                 }
@@ -240,6 +256,7 @@ public class Player : PlayerStatistiche{
                 else if (inCombatPlayer)
                 {
                     currentEnemyPlayer.currentEnemyPlayer = this;
+                    currentEnemyPlayer.playerPrefab.transform.position = new Vector3(21f, 37.66f, 21.03f);
                     CB.player = this;
                     if (CB.Active == false)
                         CB.OpenAndCloseInventoryCombat();
@@ -322,6 +339,7 @@ public class Player : PlayerStatistiche{
                     {
                         inCombatEnemy = false;
                         //CB.OpenAndCloseInventoryCombat();
+                        playerPrefab.transform.position = new Vector3(1000, 1000, 1000);
                         Gpm.CurrentState = GamePlayManager.State.End;
                     }
                 }
@@ -353,7 +371,7 @@ public class Player : PlayerStatistiche{
     private void SpawnEnemy()
     {
         currentEnemy = enemyManager.GetEnemy(Random.Range(0, enemyManager.EnemyPrefabs.Length));
-        currentEnemy.gameObject.transform.position = this.transform.position;
+        currentEnemy.gameObject.transform.position = new Vector3(21f, 37.66f, 21.03f);
         currentEnemy.Spawn();
         currentEnemy.OnDestroy += OnEnemyDestroy;
 
@@ -362,6 +380,8 @@ public class Player : PlayerStatistiche{
     public void OnEnemyDestroy(IEnemy enemy)
     {
         CB.CloseInventoryCombat();
+        gameCamera.transform.rotation = Quaternion.Euler(90f, 0, 0);
+        gameCamera.orthographicSize = 21;
         if (currentEnemy.IsAlive == false)
         {
             Credit += currentEnemy.Credits;
@@ -686,6 +706,9 @@ public class Player : PlayerStatistiche{
         {
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
+            gameCamera.transform.rotation = Quaternion.Euler(90f, 0, 0);
+            gameCamera.orthographicSize = 21;
+            
 
             if (currentEnemy != null)
                 currentEnemy.DestroyMe();
@@ -700,6 +723,8 @@ public class Player : PlayerStatistiche{
             if (inCombatPlayer)
             {                
                 inCombatPlayer = false;
+                playerPrefab.transform.position = new Vector3(1000,1000,1000);
+                currentEnemyPlayer.playerPrefab.transform.position = new Vector3(1000,1000,1000);
             }
             
             WinPoint = 0;
