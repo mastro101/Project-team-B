@@ -1,0 +1,130 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class EventManager : MonoBehaviour
+{
+
+    GamePlayManager GPM;
+
+    private void Start()
+    {
+        GPM = FindObjectOfType<GamePlayManager>();
+    }
+
+
+    public void Heal (int _life, Player _player1, Player _player2 = null, Player _player3 = null)
+    {
+        _player1.Life += _life;
+        if (_player2 != null && _player3 != null)
+        {
+            _player2.Life += _life;
+            _player3.Life += _life;
+        }
+    }
+
+    public void TakeCredits(int _credits, Player _player1, Player _player2 = null, Player _player3 = null)
+    {
+        _player1.Credit += _credits;
+        if (_player2 != null && _player3 != null)
+        {
+            _player2.Credit += _credits;
+            _player3.Credit += _credits;
+        }
+    }
+
+    public void AddMaterial(int materialType, int _material, Player _player1, Player _player2 = null, Player _player3 = null)
+    {
+        _player1.Materiali[materialType] += _material;
+        if (_player1.Materiali[materialType] < 0)
+            _player1.Materiali[materialType] = 0;
+        if (_player2 != null && _player3 != null)
+        {
+            _player2.Materiali[materialType] += _material;
+            if (_player2.Materiali[materialType] < 0)
+                _player2.Materiali[materialType] = 0;
+
+            _player3.Materiali[materialType] += _material;
+            if (_player3.Materiali[materialType] < 0)
+                _player3.Materiali[materialType] = 0;
+        }
+    }
+
+    public void AddRandomMaterial(int _materiali, Player _player1, Player _player2 = null, Player _player3 = null)
+    {
+        for (int i = 0; i < _materiali; i++)
+        {
+            AddMaterial(Random.Range(0, 4), 1, _player1);
+            if (_player2 != null && _player3 != null)
+            {
+                AddMaterial(Random.Range(0, 4), 1, _player2);
+                AddMaterial(Random.Range(0, 4), 1, _player3);
+            }
+        }
+    }
+
+    public void RemoveRandomMaterial(int _materiali, Player _player1, Player _player2 = null, Player _player3 = null)
+    {
+        for (int i = 0; i < _materiali; i++)
+        {
+            AddMaterial(Random.Range(0, 4), -1, _player1);
+            if (_player2 != null && _player3 != null)
+            {
+                AddMaterial(Random.Range(0, 4), -1, _player2);
+                AddMaterial(Random.Range(0, 4), -1, _player3);
+            }
+        }
+    }
+
+    // Da finire
+    public void PayForMaterial(int _credit, int _materialType, int _materiali, Player _player1, Player _player2 = null, Player _player3 = null)
+    {
+        AddMaterial(_materialType, _materiali, _player1);
+        _player1.Credit -= _credit;
+    }
+
+    public void Jynix(Player _player, int _materiali, int possibility, int _credit, bool allIn = false)
+    {
+        int random = Random.Range(1, 11);
+        int chooseMateriali;
+        if (_player.Materiali[0] + _player.Materiali[1] + _player.Materiali[2] + _player.Materiali[3] >= _materiali)
+        {
+            if (allIn)
+            {
+                do
+                {
+                    chooseMateriali = Random.Range(0, 4);                    
+                }
+                while (_player.Materiali[chooseMateriali] == 0);
+                _player.Materiali[chooseMateriali] = 0;
+                if (random <= possibility)
+                {
+                    _player.WinPoint++;
+                    _player.Lg.SetTextLog("Hai vinto un punto Vittoria", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _materiali; i++)
+                {
+                    do
+                    {
+                        chooseMateriali = Random.Range(0, 4);
+                        if (_player.Materiali[chooseMateriali] != 0)
+                            _player.Materiali[chooseMateriali]--;
+                    }
+                    while (_player.Materiali[chooseMateriali] == 0);
+                }
+
+                if (random <= possibility)
+                {
+                    _player.Credit += _credit;
+                    _player.Lg.SetTextLog("Hai vinto " + _credit + " credit", true);
+                }
+            }
+        }
+        else
+        {
+            _player.Lg.SetTextLog("Non hai abbastanza crediti", true);
+        }
+    }
+}

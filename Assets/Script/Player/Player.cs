@@ -10,25 +10,53 @@ public class Player : PlayerStatistiche{
     public GamePlayManager Gpm;
     public IEnemy currentEnemy;
     public Player currentEnemyPlayer;
+    public Player PlayerEnemy1, PlayerEnemy2, PlayerEnemy3;
 
     Camera gameCamera;
     GameObject playerPrefab;
 
     public GameObject PlayerPrefab;
-
     public  TextMeshP Tmp;
-
     public LogManager Lg;
-
     public UIManager UI;
-
     public ButtonManager BM;
-
     public CombatManager CB;
-
     public Mission MissionManager;
 
     EnemyPoolManager enemyManager;
+    EventManager eventManager;
+
+    public int Life
+    {
+        get { return life; }
+        set
+        {
+            if (value > MaxLife)
+                life = MaxLife;
+            else
+                life = value;
+            Morte();
+        }
+    }
+
+    public int Credit
+    {
+        get { return credit; }
+        set
+        {
+            credit = value;
+            if (credit < 0)
+                credit = 0;
+        }
+    }
+
+    public void AddMaterial(int materialType, int _material)
+    {
+        Materiali[materialType] += _material;
+        if (Materiali[materialType] < 0)
+            Materiali[materialType] = 0;
+    }
+
 
     public int XPos;    //Posizione X del Player sulla casella
     public int ZPos;    //Posizione Z del Player sulla casella
@@ -39,6 +67,9 @@ public class Player : PlayerStatistiche{
 
     int DistanceMove=1; // Di quanto il giocatore si Muove
 
+    [HideInInspector]
+    public bool jumperEvent;
+
     public float _Yoffset;
 
     int eventCard;
@@ -47,9 +78,13 @@ public class Player : PlayerStatistiche{
 
     void Start()
     {
+        Life = 5;
+
         enemyManager = FindObjectOfType<EnemyPoolManager>();
         MissionManager = FindObjectOfType<Mission>();
         gameCamera = FindObjectOfType<Camera>();
+        eventManager = FindObjectOfType<EventManager>();
+        Materiali = new int[4];
 
         playerPrefab = Instantiate(PlayerPrefab);
         playerPrefab.transform.position = new Vector3(1000, 1000, 1000);
@@ -103,6 +138,10 @@ public class Player : PlayerStatistiche{
             Tmp.SetName(Gpm.Name);
             Tmp.SetMosse(PossibleMove.ToString());
             Tmp.SetCombatPoints(WinPoint.ToString());
+            Tmp.SetM1(Materiali[0].ToString());
+            Tmp.SetM2(Materiali[1].ToString());
+            Tmp.SetM3(Materiali[2].ToString());
+            Tmp.SetM4(Materiali[3].ToString());
 
 
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
@@ -111,13 +150,15 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Movement && PossibleMove > 0)
             {
+                
                 MainMove2();    //Movimento del Player tramite Click
                 if(PossibleMove == 2)
                     MainMove3();
+                
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
             {
-                Lg.SetTextLog(Name + ": Carta evento pescata", true);
+                
 
                 Event();
             }
@@ -350,7 +391,7 @@ public class Player : PlayerStatistiche{
                 //PossibleMove = 2;
                 BM.EndP.SetActive(true);
             }
-            else if (PossibleMove == 1)
+            else if (PossibleMove < 4)
             {
                 BM.EndP.SetActive(true);
             }
@@ -626,6 +667,8 @@ public class Player : PlayerStatistiche{
         }
     }
 
+    int event1, event2;
+
     void Event() {
         //Controllo in che tipo di casella mi trovo
 
@@ -652,37 +695,168 @@ public class Player : PlayerStatistiche{
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "")//In una casella neutrale
         {
-            // Viene scelto un numero randomico tra 0 e 2
-            eventCard = Random.Range(0, 3);
-            Debug.Log(eventCard);
-
-            switch (eventCard)
+            // Viene scelto un numero randomico per ogni evento
+            if (eventCard == 0)
             {
-                // Evento che non comporta un cambio State
-                case 0:
-                    Lg.SetTextLog(Name + " Ha pescato una carta evento", true);
-                    int drawedCredits = Random.Range(0, 5);
-                    Credit += drawedCredits;
-                    Lg.SetTextLog(Name + "ha guadagnato" + drawedCredits, true);
-                    Gpm.CurrentState = GamePlayManager.State.End;
-                    
-                    break;
-                // Evento Oggetto
-                case 1:
-                    Gpm.CurrentState = GamePlayManager.State.Object;
-                    Lg.SetTextLog(Name + " Ha pescato una carta oggetto", true);
-                    break;
-                // Evento Nemico
-                case 2:
-                    Gpm.CurrentState = GamePlayManager.State.Combat;
-                    Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
-                    break;
-                default:
-                    break;
+                do {
+                    eventCard = Random.Range(1, 12);
+                } while (eventCard == 0);                
+                event1 = eventCard;
+                EventListView(event1);
+                Debug.Log(event1);
+                do {
+                    eventCard = Random.Range(1, 12);
+                }
+                while (eventCard == event1 || eventCard == 0);
+                event2 = eventCard;
+                EventListView(event2);
+                Debug.Log(event2);
             }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                EventList(event1);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+                    Gpm.CurrentState = GamePlayManager.State.End;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                EventList(event2);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+                    Gpm.CurrentState = GamePlayManager.State.End;
+            }
+
+            
+           
         }
 
         
+    }
+
+    public void EventList(int _event)
+    {
+        switch (_event)
+        {
+            // Evento che non comporta un cambio State
+            case 0:
+                Debug.Log("Error");
+                break;
+            // Evento Nemico
+            case 1:
+                Gpm.CurrentState = GamePlayManager.State.Combat;
+                Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
+
+                break;
+            // Cuore Meccanico
+            case 2:
+                eventManager.Heal(2, this);
+                Lg.SetTextLog(Name + " Si è curato di 2", true);
+                break;
+            // Pioggia Acida
+            case 3:
+                eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                Lg.SetTextLog("Gli altri giocatori hanno perso una vita", true);
+                break;
+            // Vincere la scommessa
+            case 4:
+                eventManager.TakeCredits(10, this);
+                Lg.SetTextLog(Name + "Ha guadagnato 10 crediti", true);
+                break;
+            // Ladri
+            case 5:
+                eventManager.TakeCredits(-5, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                Lg.SetTextLog("Gli altri giocatori hanno perso 5 crediti", true);
+                break;
+            // Jumper
+            case 6:
+                if (jumperEvent == false)
+                    PossibleMove = 2;
+                jumperEvent = true;
+                Gpm.CurrentState = GamePlayManager.State.Movement;
+                break;
+            // Terreno Fangoso
+            case 7:
+                PlayerEnemy1.PossibleMove = 2;
+                PlayerEnemy2.PossibleMove = 2;
+                PlayerEnemy3.PossibleMove = 2;
+                Lg.SetTextLog("Gli altri giocatori hanno perso 2 movimenti", true);
+                break;
+            // Jynix doppia coppia
+            case 8:
+                eventManager.Jynix(this, 2, 6, 6);
+                break;
+            // Jynix Poker D'assi
+            case 9:
+                eventManager.Jynix(this, 4, 8, 10);
+                break;
+            // All in
+            case 10:
+                eventManager.Jynix(this, 1, 8, 0, true);
+                break;
+            // fold
+            case 11:
+                eventManager.Jynix(this, 1, 10, 1);
+                break;
+            default:
+                Lg.SetTextLog("Evento " + eventCard + " nullo", true);
+                break;
+        }
+    }
+
+    public void EventListView(int _eventCard)
+    {
+        switch (_eventCard)
+        {
+            // Evento Nemico
+            case 1:
+                Lg.SetTextLog("Un nemico Ti attacca", true);
+                break;
+            // Cuore Meccanico
+            case 2:
+                Lg.SetTextLog(" Ti curi di 2", true);
+                break;
+            // Pioggia Acida
+            case 3:
+                Lg.SetTextLog("Gli altri giocatori perdono una vita", true);
+                break;
+            // Vincere la scommessa
+            case 4:
+                Lg.SetTextLog("Guadagni 10 crediti", true);
+                break;
+            // Ladri
+            case 5:
+                Lg.SetTextLog("Gli altri giocatori Perdono 5 crediti", true);
+                break;
+            // Jumper
+            case 6:
+                Lg.SetTextLog("Hai 2 movimenti in più", true);
+                break;
+            // Terreno Fangoso
+            case 7:
+                Lg.SetTextLog("Gli altri giocatori perdono 2 movimenti", true);
+                break;
+            // Jynix doppia coppia
+            case 8:
+                Lg.SetTextLog("Vendi 2 materiali random per forse 6 crediti", true);
+                break;
+            // Jynix Poker D'assi
+            case 9:
+                Lg.SetTextLog("Vendi 4 materiali random per forse 10 crediti", true);
+                break;
+            // All in
+            case 10:
+                Lg.SetTextLog("Vendi tutti i materiali di un tipo random per forse 1 punto vittoria", true);
+                break;
+            // fold
+            case 11:
+                Lg.SetTextLog("Vendi 1 materiale random per 2 crediti", true);
+                break;
+            default:
+                Lg.SetTextLog("Evento " + eventCard + " nullo", true);
+                break;
+        }
     }
 
     public void LoseRound()
@@ -729,10 +903,19 @@ public class Player : PlayerStatistiche{
             
             WinPoint = 0;
 
-            if (Life <= 0)
-                Morte();
+            //if (Life <= 0)
+              //  Morte();
 
             
+        }
+    }
+
+    public void Heal()
+    {
+        if (Credit >= 3)
+        {
+            Credit -= 3;
+            Life = 5;
         }
     }
 
@@ -754,9 +937,10 @@ public class Player : PlayerStatistiche{
             ZPos = 6;
             Life = 5;
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
-            PossibleMove = 2;
+            PossibleMove = 4;
             Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-            Gpm.CurrentState = GamePlayManager.State.End;
+            if (Name == Gpm.Name)
+                Gpm.CurrentState = GamePlayManager.State.End;
                 
         }
 
@@ -764,6 +948,8 @@ public class Player : PlayerStatistiche{
     }
 
 }
+
+
 
 public class ciccioBalilla {
 

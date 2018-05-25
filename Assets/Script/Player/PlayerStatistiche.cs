@@ -8,8 +8,14 @@ public class PlayerStatistiche : MonoBehaviour {
     public bool CheckMission = false;
     static public int[] CheckMissions;
     public int Mission;
-    public int Life = 5;
-    public int Credit;
+    public int MaxLife = 4;
+    public int life;
+    public int[] Materiali;
+
+    
+
+
+    public int credit;
     public int PossibleMove = 2;
     public int WinPoint;
     public int CurrentAttack;
@@ -21,13 +27,5 @@ public class PlayerStatistiche : MonoBehaviour {
        
     }
 
-    public void Heal()
-    {
-
-        if (Credit >= 3)
-        {
-            Credit -= 3;
-            Life = 5;
-        }
-    }
+    
 }

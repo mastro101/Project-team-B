@@ -220,7 +220,7 @@ public class GamePlayManager : MonoBehaviour
                     return false;
                 return true;
             case State.Movement:
-                if (CurrentState == State.End || CurrentState == State.Mission)
+                if (CurrentState == State.End || CurrentState == State.Mission || CurrentState == State.Event)
                     return true;
                 return false;
             case State.Event:

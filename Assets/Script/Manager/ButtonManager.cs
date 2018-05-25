@@ -67,19 +67,51 @@ public class ButtonManager : MonoBehaviour {
     }
 
     public void EndPhase() {
+        switch (Gpm.Name)
+        {
+            case "Green":
+                if (Pl1.jumperEvent == true)
+                {
+                    Pl1.jumperEvent = false;
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                }
+                break;
+            case "Blue":
+                if (Pl2.jumperEvent == true)
+                {
+                    Pl2.jumperEvent = false;
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                }
+                break;
+            case "Red":
+                if (Pl3.jumperEvent == true)
+                {
+                    Pl3.jumperEvent = false;
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                }
+                break;
+            case "Yellow":
+                if (Pl4.jumperEvent == true)
+                {
+                    Pl4.jumperEvent = false;
+                    Gpm.CurrentState = GamePlayManager.State.End;                    
+                }
+                    
+                break;
+        }
         Gpm.CurrentState = GamePlayManager.State.Event;
         switch (Gpm.Name) {
             case "Green":
-                Pl1.PossibleMove = 2;
+                Pl1.PossibleMove = 4;
                 break;
             case "Blue":
-                Pl2.PossibleMove = 2;
+                Pl2.PossibleMove = 4;
                 break;
             case "Red":
-                Pl3.PossibleMove = 2;
+                Pl3.PossibleMove = 4;
                 break;
             case "Yellow":
-                Pl4.PossibleMove = 2;
+                Pl4.PossibleMove = 4;
                 break;
         }
         EndP.SetActive(false);
