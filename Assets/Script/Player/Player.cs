@@ -137,7 +137,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
             Tmp.SetMosse(PossibleMove.ToString());
-            Tmp.SetCombatPoints(WinPoint.ToString());
+            Tmp.SetCombatPoints(CombatPoint.ToString());
             Tmp.SetM1(Materiali[0].ToString());
             Tmp.SetM2(Materiali[1].ToString());
             Tmp.SetM3(Materiali[2].ToString());
@@ -702,13 +702,13 @@ public class Player : PlayerStatistiche{
             if (eventCard == 0)
             {
                 do {
-                    eventCard = Random.Range(1, 12);
+                    eventCard = Random.Range(1, 14);
                 } while (eventCard == 0);                
                 event1 = eventCard;
                 EventListView(event1);
                 Debug.Log(event1);
                 do {
-                    eventCard = Random.Range(1, 12);
+                    eventCard = Random.Range(1, 14);
                 }
                 while (eventCard == event1 || eventCard == 0);
                 event2 = eventCard;
@@ -802,6 +802,12 @@ public class Player : PlayerStatistiche{
             case 11:
                 eventManager.Jynix(this, 1, 10, 1);
                 break;
+            case 12:
+                eventManager.AddRandomMaterial(5, this);
+                break;
+            case 13:
+                eventManager.RemoveRandomMaterial(2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
             default:
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);
                 break;
@@ -856,6 +862,12 @@ public class Player : PlayerStatistiche{
             case 11:
                 Lg.SetTextLog("Vendi 1 materiale random per 2 crediti", true);
                 break;
+            case 12:
+                Lg.SetTextLog("Ricevi 5 materiali random", true);
+                break;
+            case 13:
+                Lg.SetTextLog("Rimuovi agli altri 2 materiali random", true);
+                break;
             default:
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);
                 break;
@@ -866,20 +878,20 @@ public class Player : PlayerStatistiche{
     {
         if (inCombatEnemy)
         {
-            currentEnemy.WinPoint++;
+            currentEnemy.CombatPoint++;
             currentEnemy.Attack = 0;
         }
 
         if (inCombatPlayer)
         {
-            currentEnemyPlayer.WinPoint++;
+            currentEnemyPlayer.CombatPoint++;
             currentEnemyPlayer.Attacks = 0;
         }
 
 
         Attacks = 0;
         
-        if ((currentEnemy != null && currentEnemy.WinPoint == 2) || (currentEnemyPlayer != null && currentEnemyPlayer.WinPoint == 2))
+        if ((currentEnemy != null && currentEnemy.CombatPoint == 2) || (currentEnemyPlayer != null && currentEnemyPlayer.CombatPoint == 2))
         {
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
@@ -895,7 +907,7 @@ public class Player : PlayerStatistiche{
             if (inCombatPlayer)
             {
                 currentEnemyPlayer.Attacks = 0;
-                currentEnemyPlayer.WinPoint = 0;
+                currentEnemyPlayer.CombatPoint = 0;
             }
 
             Life--;
@@ -906,7 +918,7 @@ public class Player : PlayerStatistiche{
                 currentEnemyPlayer.playerPrefab.transform.position = new Vector3(1000,1000,1000);
             }
             
-            WinPoint = 0;
+            CombatPoint = 0;
 
             //if (Life <= 0)
               //  Morte();

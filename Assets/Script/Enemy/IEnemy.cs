@@ -3,7 +3,7 @@
 public interface IEnemy {
 
     int ID { get; }
-    int WinPoint { get; set; }
+    int CombatPoint { get; set; }
     int Credits { get; }
     int Attack { get; set; }
     bool IsAlive { get; }

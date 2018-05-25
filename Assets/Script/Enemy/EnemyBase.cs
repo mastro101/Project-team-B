@@ -34,7 +34,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
 
     int IEnemy.Credits { get { return Credits; } }
 
-    int IEnemy.WinPoint { get { return WinPoint; } set { WinPoint = value; } }
+    int IEnemy.CombatPoint { get { return WinPoint; } set { WinPoint = value; } }
 
     bool IEnemy.IsAlive { get { return IsAlive; } }
 
@@ -100,11 +100,11 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     {
         Attack = 0;
         CurrentPlayer.Attacks = 0;
-        CurrentPlayer.WinPoint++;
-        if (CurrentPlayer.WinPoint == 2)
+        CurrentPlayer.CombatPoint++;
+        if (CurrentPlayer.CombatPoint == 2)
         {
             IsAlive = false;
-            CurrentPlayer.WinPoint = 0;
+            CurrentPlayer.CombatPoint = 0;
             DestroyMe();
         }
     }

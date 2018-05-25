@@ -12,12 +12,10 @@ public class PlayerStatistiche : MonoBehaviour {
     public int life;
     public int[] Materiali;
 
-    
-
-
+    public int WinPoint;
     public int credit;
     public int PossibleMove = 2;
-    public int WinPoint;
+    public int CombatPoint;
     public int CurrentAttack;
     public int Attacks;
     public GameObject[] Equip = {null, null, null};
