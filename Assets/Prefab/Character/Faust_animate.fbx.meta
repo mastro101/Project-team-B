@@ -176,12 +176,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: 9b07e28d0e58f93419aaf810d0e1c26f, type: 2}
+    second: {fileID: 2100000, guid: 18525ffa369b0f44b8db72af702b8ca2, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -206,7 +206,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle
       takeName: Take 001
-      firstFrame: 3
+      firstFrame: 0
       lastFrame: 360
       wrapMode: 0
       orientationOffsetY: 0
