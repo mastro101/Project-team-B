@@ -2431,9 +2431,10 @@ MonoBehaviour:
   MaxLife: 4
   life: 0
   Materiali: 
+  WinPoint: 0
   credit: 0
   PossibleMove: 4
-  WinPoint: 0
+  CombatPoint: 0
   CurrentAttack: 1
   Attacks: 0
   Equip:
@@ -3578,9 +3579,10 @@ MonoBehaviour:
   MaxLife: 4
   life: 0
   Materiali: 
+  WinPoint: 0
   credit: 0
   PossibleMove: 4
-  WinPoint: 0
+  CombatPoint: 0
   CurrentAttack: 1
   Attacks: 0
   Equip:
@@ -3847,9 +3849,10 @@ MonoBehaviour:
   MaxLife: 4
   life: 0
   Materiali: 
+  WinPoint: 0
   credit: 0
   PossibleMove: 4
-  WinPoint: 0
+  CombatPoint: 0
   CurrentAttack: 1
   Attacks: 0
   Equip:
@@ -8041,9 +8044,10 @@ MonoBehaviour:
   MaxLife: 4
   life: 0
   Materiali: 
+  WinPoint: 0
   credit: 0
   PossibleMove: 4
-  WinPoint: 0
+  CombatPoint: 0
   CurrentAttack: 1
   Attacks: 0
   Equip:

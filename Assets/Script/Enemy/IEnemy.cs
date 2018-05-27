@@ -7,6 +7,8 @@ public interface IEnemy {
     int Credits { get; }
     int Attack { get; set; }
     bool IsAlive { get; }
+    int Damage { get; }
+    int Materiali { get; }
     Player CurrentPlayer { get; set; }
     GameObject gameObject { get; }
     IEnemyState CurrentState { get; set; }
@@ -33,4 +35,12 @@ public enum IEnemyState
     InPool,
     Destroying,
     InUse,
+}
+
+public enum IEnemyType
+{
+    Green,
+    Blue,
+    Red,
+    Yellow,
 }

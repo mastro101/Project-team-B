@@ -6,7 +6,7 @@ public class Mission : MonoBehaviour {
 
     public Grid grid;
     public LogManager Lg;
-
+    public Player Player1, Player2, Player3, Player4;
 
     public int MissioniComuni;
 
@@ -17,9 +17,24 @@ public class Mission : MonoBehaviour {
 
     private void Update()
     {
-        
-        
-        if (grid.GetCity("A").POnTile != null && grid.GetCity("A").POnTile.Mission == 1)
+        if (Player1.WinPoint == 4)
+        {
+            Lg.SetTextLog(Player1 + " HA VINTO", true);
+        }
+        else if (Player2.WinPoint == 4)
+        {
+            Lg.SetTextLog(Player2 + " HA VINTO", true);
+        }
+        else if (Player3.WinPoint == 4)
+        {
+            Lg.SetTextLog(Player3 + " HA VINTO", true);
+        }
+        else if (Player1.WinPoint == 4)
+        {
+            Lg.SetTextLog(Player4 + " HA VINTO", true);
+        }
+
+        /*if (grid.GetCity("A").POnTile != null && grid.GetCity("A").POnTile.Mission == 1)
         {
             if (!check[0])
                 Lg.SetTextLog("Now go to B", true);
@@ -72,8 +87,8 @@ public class Mission : MonoBehaviour {
         {
             Lg.SetTextLog("Missione Comune completata", true);
 
-        }
-        
+        }*/
+
     }
         
     

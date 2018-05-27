@@ -891,7 +891,7 @@ public class Player : PlayerStatistiche{
 
         Attacks = 0;
         
-        if ((currentEnemy != null && currentEnemy.CombatPoint == 2) || (currentEnemyPlayer != null && currentEnemyPlayer.CombatPoint == 2))
+        if ((currentEnemy != null && currentEnemy.CombatPoint == 1) || (currentEnemyPlayer != null && currentEnemyPlayer.CombatPoint == 1))
         {
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
@@ -910,7 +910,8 @@ public class Player : PlayerStatistiche{
                 currentEnemyPlayer.CombatPoint = 0;
             }
 
-            Life--;
+            Life -= currentEnemy.Damage;
+
             if (inCombatPlayer)
             {                
                 inCombatPlayer = false;

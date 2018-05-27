@@ -576,6 +576,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -610,6 +611,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -644,6 +646,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -678,6 +681,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -712,6 +716,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -746,6 +751,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -780,6 +786,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -814,6 +821,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -848,6 +856,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -882,6 +891,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -916,6 +926,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -950,6 +961,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -984,6 +996,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -1018,6 +1031,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -1052,6 +1066,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
   m_StaticBatchInfo:
@@ -1192,6 +1207,8 @@ MonoBehaviour:
   CB: {fileID: 0}
   Credits: 2
   Attack: 0
+  Damage: 1
+  Materiali: 5
   IsAlive: 0
   PlayerToAttack: 
   PGreen: {fileID: 0}
@@ -1199,4 +1216,6 @@ MonoBehaviour:
   PRed: {fileID: 0}
   PYellow: {fileID: 0}
   Gpm: {fileID: 0}
+  CurrentPlayer: {fileID: 0}
+  Type: 0
   WinPoint: 0

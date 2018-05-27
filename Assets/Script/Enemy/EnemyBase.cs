@@ -12,11 +12,14 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     
     public int Credits;
     public int Attack;
+    public int Damage;
+    public int Materiali;
     public bool IsAlive;
     public string PlayerToAttack;
     public GameObject PGreen, PBlue, PRed, PYellow;
     public GamePlayManager Gpm;
     public Player CurrentPlayer;
+    public IEnemyType Type;
 
     public int WinPoint;
 
@@ -29,6 +32,10 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         get { return _currentState; }
         set { _currentState = value; }
     }
+
+    int IEnemy.Damage { get { return Damage; } }
+
+    int IEnemy.Materiali { get { return Materiali; } }
 
     int IEnemy.Attack { get { return Attack; } set { Attack = value; } }
 
@@ -71,6 +78,24 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     public virtual void Spawn()
     {
         IsAlive = true;
+        int random = UnityEngine.Random.Range(0, 5);
+        switch (random)
+        {
+            case 1:
+                Type = IEnemyType.Green;
+                break;
+            case 2:
+                Type = IEnemyType.Blue;
+                break;
+            case 3:
+                Type = IEnemyType.Red;
+                break;
+            case 4:
+                Type = IEnemyType.Yellow;
+                break;
+            default:
+                break;
+        }
         CurrentState = IEnemyState.InUse;
         InvockOnSpawn();
     }
@@ -101,9 +126,31 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
         Attack = 0;
         CurrentPlayer.Attacks = 0;
         CurrentPlayer.CombatPoint++;
-        if (CurrentPlayer.CombatPoint == 2)
+        if (CurrentPlayer.CombatPoint == 1)
         {
             IsAlive = false;
+            switch (Type)
+            {
+                case IEnemyType.Green:
+                    CurrentPlayer.AddMaterial(0, Materiali);
+                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M1", true);
+                    break;
+                case IEnemyType.Blue:
+                    CurrentPlayer.AddMaterial(1, Materiali);
+                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M2", true);
+                    break;
+                case IEnemyType.Red:
+                    CurrentPlayer.AddMaterial(2, Materiali);
+                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M3", true);
+                    break;
+                case IEnemyType.Yellow:
+                    CurrentPlayer.AddMaterial(3, Materiali);
+                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M4", true);
+                    break;
+                default:
+                    Debug.Log("Non Ha dato materiali. Colore assente");
+                    break;
+            }
             CurrentPlayer.CombatPoint = 0;
             DestroyMe();
         }

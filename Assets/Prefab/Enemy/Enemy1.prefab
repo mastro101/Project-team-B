@@ -258,12 +258,15 @@ MonoBehaviour:
   CB: {fileID: 0}
   Credits: 2
   Attack: 0
+  Damage: 1
+  Materiali: 5
   IsAlive: 0
-  PlayerToAttack: Blue
+  PlayerToAttack: Yellow
   PGreen: {fileID: 0}
   PBlue: {fileID: 0}
   PRed: {fileID: 0}
   PYellow: {fileID: 0}
   Gpm: {fileID: 0}
   CurrentPlayer: {fileID: 0}
+  Type: 0
   WinPoint: 0
