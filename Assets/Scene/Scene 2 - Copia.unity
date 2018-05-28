@@ -1805,7 +1805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00018310547, y: -91.49997}
+  m_AnchoredPosition: {x: 0.00021362305, y: -91.49998}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406764183
@@ -2609,8 +2609,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595734448}
   m_HandleRect: {fileID: 595734447}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999998
+  m_Value: 0
+  m_Size: 0.9999997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3361,6 +3361,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 1529248543}
   Lg: {fileID: 712182118}
+  Player1: {fileID: 2071244646}
+  Player2: {fileID: 857374697}
+  Player3: {fileID: 487505903}
+  Player4: {fileID: 924047377}
   MissioniComuni: 0
   check: 00000000
 --- !u!1 &791004643
