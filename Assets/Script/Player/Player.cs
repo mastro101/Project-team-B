@@ -76,6 +76,8 @@ public class Player : PlayerStatistiche{
     public bool inCombatEnemy;
     public bool inCombatPlayer;
 
+    float countdown = 5f;
+
     void Start()
     {
         Life = 5;
@@ -103,7 +105,7 @@ public class Player : PlayerStatistiche{
 
         if (Name == Gpm.Name)
         {
-            switch (Mission)
+            /*switch (Mission)
             {
                 case 1:
                     if (MissionManager.check[0] == false)
@@ -131,7 +133,7 @@ public class Player : PlayerStatistiche{
                     break;
                 default:
                     break;
-            }
+            }*/
             //Tmp.SetMission(Mission.ToString());
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
@@ -205,7 +207,7 @@ public class Player : PlayerStatistiche{
 
 
                 // Attacco
-                if (inCombatEnemy || inCombatPlayer)
+                if ((inCombatEnemy || inCombatPlayer) && Attacks == 0)
                 {
                     if (Input.GetKeyDown(KeyCode.Alpha1))
                         Attacks = 1;
@@ -228,68 +230,88 @@ public class Player : PlayerStatistiche{
 
                     if (Attacks != 0 && currentEnemy.Attack != 0)
                     {
-                        
-                        switch (Attacks)
+                        if (Gpm.CurrentCombatState != GamePlayManager.CombatState.Animation)
                         {
-                            case 1:
-                                switch (currentEnemy.Attack)
-                                {
-                                    case 1:
-                                        currentEnemy.Attack = 0;
-                                        Attacks = 0;
-                                        break;
-                                    case 2:
-                                        currentEnemy.DamagePlayer(this);
-                                        currentEnemy.OnAttack += OnEnemyAttack;
-                                        break;
-                                    case 3:
-                                        currentEnemy.LoseRound();
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                break;
+                            Lg.SetTextLog("Hai usato " + Attacks, true);
+                            Lg.SetTextLog("Nemico usa " + currentEnemy.Attack, true);
+                            Gpm.CurrentCombatState = GamePlayManager.CombatState.Animation;
+                        }
 
-                            case 2:
-                                switch (currentEnemy.Attack)
-                                {
-                                    case 1:
-                                        currentEnemy.LoseRound();
-                                        break;
-                                    case 2:
-                                        currentEnemy.Attack = 0;
-                                        Attacks = 0;
-                                        break;
-                                    case 3:
-                                        currentEnemy.DamagePlayer(this);
-                                        currentEnemy.OnAttack += OnEnemyAttack;
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                break;
-                            case 3:
-                                switch (currentEnemy.Attack)
-                                {
-                                    case 1:
-                                        currentEnemy.DamagePlayer(this);
-                                        currentEnemy.OnAttack += OnEnemyAttack;
-                                        break;
-                                    case 2:
-                                        currentEnemy.LoseRound();
-                                        break;
-                                    case 3:
-                                        currentEnemy.Attack = 0;
-                                        Attacks = 0;
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                break;
+                        if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Animation)
+                        { 
+                            countdown -= Time.deltaTime;
+                            Debug.Log(countdown);
+                            if (countdown <= 0)
+                            {
+                                countdown = 5f;
+                                Gpm.CurrentCombatState = GamePlayManager.CombatState.Check;
+                            }
+                        }
+
+                        if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Check)
+                        {
+                            switch (Attacks)
+                            {
+                                case 1:
+                                    switch (currentEnemy.Attack)
+                                    {
+                                        case 1:
+                                            currentEnemy.Attack = 0;
+                                            Attacks = 0;
+                                            break;
+                                        case 2:
+                                            currentEnemy.DamagePlayer(this);
+                                            currentEnemy.OnAttack += OnEnemyAttack;
+                                            break;
+                                        case 3:
+                                            currentEnemy.LoseRound();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+
+                                case 2:
+                                    switch (currentEnemy.Attack)
+                                    {
+                                        case 1:
+                                            currentEnemy.LoseRound();
+                                            break;
+                                        case 2:
+                                            currentEnemy.Attack = 0;
+                                            Attacks = 0;
+                                            break;
+                                        case 3:
+                                            currentEnemy.DamagePlayer(this);
+                                            currentEnemy.OnAttack += OnEnemyAttack;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+                                case 3:
+                                    switch (currentEnemy.Attack)
+                                    {
+                                        case 1:
+                                            currentEnemy.DamagePlayer(this);
+                                            currentEnemy.OnAttack += OnEnemyAttack;
+                                            break;
+                                        case 2:
+                                            currentEnemy.LoseRound();
+                                            break;
+                                        case 3:
+                                            currentEnemy.Attack = 0;
+                                            Attacks = 0;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
 
 
-                            default:
-                                break;
+                                default:
+                                    break;
+                            }
                         }
                     }
 
@@ -303,73 +325,97 @@ public class Player : PlayerStatistiche{
                     CB.player = this;
                     if (CB.Active == false)
                         CB.OpenAndCloseInventoryCombat();
-                    if (Input.GetKeyDown(KeyCode.Alpha8))
-                        currentEnemyPlayer.Attacks = 1;
-                    else if (Input.GetKeyDown(KeyCode.Alpha9))
-                        currentEnemyPlayer.Attacks = 2;
-                    else if (Input.GetKeyDown(KeyCode.Alpha0))
-                        currentEnemyPlayer.Attacks = 3;
+                    if (currentEnemyPlayer.Attacks == 0)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Alpha8))
+                            currentEnemyPlayer.Attacks = 1;
+                        else if (Input.GetKeyDown(KeyCode.Alpha9))
+                            currentEnemyPlayer.Attacks = 2;
+                        else if (Input.GetKeyDown(KeyCode.Alpha0))
+                            currentEnemyPlayer.Attacks = 3;
+                    }
 
                     if (Attacks != 0 && currentEnemyPlayer.Attacks != 0)
                     {
-                        switch (Attacks)
+                        if (Gpm.CurrentCombatState != GamePlayManager.CombatState.Animation)
                         {
-                            case 1:
-                                switch (currentEnemyPlayer.Attacks)
-                                {
-                                    case 1:
-                                        currentEnemyPlayer.Attacks = 0;
-                                        Attacks = 0;
-                                        break;
-                                    case 2:
-                                        LoseRound();
-                                        break;
-                                    case 3:
-                                        currentEnemyPlayer.LoseRound();
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                break;
+                            Lg.SetTextLog("Hai usato " + Attacks, true);
+                            Lg.SetTextLog("Nemico usa " + currentEnemyPlayer.Attacks, true);
+                            Gpm.CurrentCombatState = GamePlayManager.CombatState.Animation;
+                        }
 
-                            case 2:
-                                switch (currentEnemyPlayer.Attacks)
-                                {
-                                    case 1:
-                                        currentEnemyPlayer.LoseRound();
-                                        break;
-                                    case 2:
-                                        currentEnemyPlayer.Attacks = 0;
-                                        Attacks = 0;
-                                        break;
-                                    case 3:
-                                        LoseRound();
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                break;
-                            case 3:
-                                switch (currentEnemyPlayer.Attacks)
-                                {
-                                    case 1:
-                                        LoseRound();
-                                        break;
-                                    case 2:
-                                        currentEnemyPlayer.LoseRound();
-                                        break;
-                                    case 3:
-                                        currentEnemyPlayer.Attacks = 0;
-                                        Attacks = 0;
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                break;
+                        if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Animation)
+                        {
+                            countdown -= Time.deltaTime;
+                            Debug.Log(countdown);
+                            if (countdown <= 0)
+                            {                               
+                                Gpm.CurrentCombatState = GamePlayManager.CombatState.Check;                                
+                            }
+                        }
+
+                        if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Check)
+                        {
+                            countdown = 5f;
+                            switch (Attacks)
+                            {
+                                case 1:
+                                    switch (currentEnemyPlayer.Attacks)
+                                    {
+                                        case 1:
+                                            currentEnemyPlayer.Attacks = 0;
+                                            Attacks = 0;
+                                            break;
+                                        case 2:
+                                            LoseRound();
+                                            break;
+                                        case 3:
+                                            currentEnemyPlayer.LoseRound();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+
+                                case 2:
+                                    switch (currentEnemyPlayer.Attacks)
+                                    {
+                                        case 1:
+                                            currentEnemyPlayer.LoseRound();
+                                            break;
+                                        case 2:
+                                            currentEnemyPlayer.Attacks = 0;
+                                            Attacks = 0;
+                                            break;
+                                        case 3:
+                                            LoseRound();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+                                case 3:
+                                    switch (currentEnemyPlayer.Attacks)
+                                    {
+                                        case 1:
+                                            LoseRound();
+                                            break;
+                                        case 2:
+                                            currentEnemyPlayer.LoseRound();
+                                            break;
+                                        case 3:
+                                            currentEnemyPlayer.Attacks = 0;
+                                            Attacks = 0;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
 
 
-                            default:
-                                break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                 }
@@ -882,7 +928,7 @@ public class Player : PlayerStatistiche{
             currentEnemy.Attack = 0;
         }
 
-        if (inCombatPlayer)
+        if (!inCombatEnemy)
         {
             currentEnemyPlayer.CombatPoint++;
             currentEnemyPlayer.Attacks = 0;
@@ -891,7 +937,7 @@ public class Player : PlayerStatistiche{
 
         Attacks = 0;
         
-        if ((currentEnemy != null && currentEnemy.CombatPoint == 1) || (currentEnemyPlayer != null && currentEnemyPlayer.CombatPoint == 1))
+        if ((currentEnemy != null && currentEnemy.CombatPoint == 1) || (!inCombatEnemy && currentEnemyPlayer.CombatPoint == 1))
         {
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
@@ -904,15 +950,16 @@ public class Player : PlayerStatistiche{
             if (currentEnemy != null)
                 currentEnemy.DestroyMe();
 
-            if (inCombatPlayer)
+            if (!inCombatEnemy)
             {
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
             }
 
-            Life -= currentEnemy.Damage;
+            if (inCombatEnemy)
+                Life -= currentEnemy.Damage;
 
-            if (inCombatPlayer)
+            if (!inCombatEnemy)
             {                
                 inCombatPlayer = false;
                 playerPrefab.transform.position = new Vector3(1000,1000,1000);

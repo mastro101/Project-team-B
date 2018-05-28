@@ -29,6 +29,16 @@ public class GamePlayManager : MonoBehaviour
         End,
     }
 
+    public enum CombatState
+    {
+        Choose,
+        Animation,
+        Check,
+        NotCombat,
+    }
+
+    public CombatState CurrentCombatState;
+
     public PlayerTurn CurrentTurn
     {
         get
