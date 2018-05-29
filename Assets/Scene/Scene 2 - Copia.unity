@@ -1805,7 +1805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00021362305, y: -91.49998}
+  m_AnchoredPosition: {x: 0.00018310547, y: -91.49997}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406764183
@@ -2432,7 +2432,7 @@ MonoBehaviour:
   life: 0
   Materiali: 
   WinPoint: 0
-  credit: 0
+  credit: 4
   PossibleMove: 4
   CombatPoint: 0
   CurrentAttack: 1
@@ -2609,8 +2609,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595734448}
   m_HandleRect: {fileID: 595734447}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999997
+  m_Value: 1
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3584,7 +3584,7 @@ MonoBehaviour:
   life: 0
   Materiali: 
   WinPoint: 0
-  credit: 0
+  credit: 4
   PossibleMove: 4
   CombatPoint: 0
   CurrentAttack: 1
@@ -3854,7 +3854,7 @@ MonoBehaviour:
   life: 0
   Materiali: 
   WinPoint: 0
-  credit: 0
+  credit: 4
   PossibleMove: 4
   CombatPoint: 0
   CurrentAttack: 1
@@ -4168,6 +4168,11 @@ Prefab:
       value: 
       objectReference: {fileID: 114323522347911696, guid: 69bd9ea1f0e47e44886c2353acf7054e,
         type: 2}
+    - target: {fileID: 114713838401893226, guid: 437c11aea52ad3e44871b5f214eff7ed,
+        type: 2}
+      propertyPath: buttonManager
+      value: 
+      objectReference: {fileID: 1632493918}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 437c11aea52ad3e44871b5f214eff7ed, type: 2}
   m_IsPrefabParent: 0
@@ -8049,7 +8054,7 @@ MonoBehaviour:
   life: 0
   Materiali: 
   WinPoint: 0
-  credit: 0
+  credit: 4
   PossibleMove: 4
   CombatPoint: 0
   CurrentAttack: 1

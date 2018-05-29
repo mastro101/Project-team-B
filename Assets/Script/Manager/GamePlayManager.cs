@@ -7,6 +7,7 @@ public class GamePlayManager : MonoBehaviour
 
     public string Name="Green";
 
+    public ButtonManager buttonManager;
     public DetectObject DO;
     public EnemyBase Enemy;
 
@@ -24,7 +25,7 @@ public class GamePlayManager : MonoBehaviour
         Mission,
         Movement,
         Event,
-        Object,
+        City,
         Combat,
         End,
     }
@@ -103,7 +104,7 @@ public class GamePlayManager : MonoBehaviour
             case State.Event:
                 Debug.Log("Enter" + CurrentState);
                 break;
-            case State.Object:
+            case State.City:
                 Debug.Log("Enter" + CurrentState);
                 break;
             case State.Combat:
@@ -151,7 +152,7 @@ public class GamePlayManager : MonoBehaviour
             case State.Event:
                 Debug.Log("Event");
                 break;
-            case State.Object:
+            case State.City:
                 Debug.Log("Object");
                 break;
             case State.Combat:
@@ -182,7 +183,7 @@ public class GamePlayManager : MonoBehaviour
             case State.Event:
                 Debug.Log("Exit" + CurrentState);
                 break;
-            case State.Object:
+            case State.City:
                 Debug.Log("Exit" + CurrentState);
                 break;
             case State.Combat:
@@ -237,7 +238,7 @@ public class GamePlayManager : MonoBehaviour
                 if (CurrentState != State.Movement)
                     return false;
                 return true;
-            case State.Object:
+            case State.City:
                 if (CurrentState != State.Event)
                     return false;
                 return true;
@@ -246,7 +247,7 @@ public class GamePlayManager : MonoBehaviour
                     return false;
                 return true;
             case State.End:
-                if (CurrentState == State.Event || CurrentState == State.Object || CurrentState == State.Combat || CurrentState == State.Mission || CurrentState == State.Movement)
+                if (CurrentState == State.Event || CurrentState == State.City || CurrentState == State.Combat || CurrentState == State.Mission || CurrentState == State.Movement)
                     return true;
                 return false;
             default:
@@ -292,6 +293,7 @@ public class GamePlayManager : MonoBehaviour
         if (CurrentState == State.End)
         {
             DO.CorrectMove = false;
+            buttonManager.EndP.SetActive(false);
 
             PlayerTurn _playerTurn = CurrentTurn;
 

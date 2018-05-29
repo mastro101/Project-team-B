@@ -164,7 +164,7 @@ public class Player : PlayerStatistiche{
 
                 Event();
             }
-            else if (Gpm.CurrentState == GamePlayManager.State.Object)
+            else if (Gpm.CurrentState == GamePlayManager.State.City)
             {
                 if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
                 {
@@ -729,7 +729,7 @@ public class Player : PlayerStatistiche{
             Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
 
             //ActiveTurn = false;
-            Gpm.CurrentState = GamePlayManager.State.Object;
+            Gpm.CurrentState = GamePlayManager.State.City;
         }
         else if (grid.FindCell(XPos, ZPos).POnTile != this)
         {
