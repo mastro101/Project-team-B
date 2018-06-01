@@ -1,28 +1,21 @@
 fileFormatVersion: 2
 guid: 6ec6be34d34eda34ebc8e6d9760704b8
-timeCreated: 1524900309
+timeCreated: 1527327656
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: corpo_centrale
-    100002: //RootNode
-    100004: mantella
-    400000: corpo_centrale
-    400002: //RootNode
-    400004: mantella
-    2300000: corpo_centrale
-    2300002: mantella
-    3300000: corpo_centrale
-    3300002: mantella
-    4300000: mantella
-    4300002: corpo_centrale
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Ghost_MOB
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: 9b07e28d0e58f93419aaf810d0e1c26f, type: 2}
+    second: {fileID: 2100000, guid: 169ff7dd820f7af4a963d5499640d760, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -52,13 +45,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 15
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
