@@ -39,25 +39,155 @@ public class ButtonManager : MonoBehaviour {
         }
     }
 
+    public void SellMateriali(int _materialType)
+    {
+        switch (Gpm.Name)
+        {
+            case "Green":
+                if (Pl1.Materiali[_materialType] >= 10)
+                {
+                    Pl1.Materiali[_materialType] -= 10;
+                    Pl1.WinPoint++;
+                }
+                break;
+            case "Blue":
+                if (Pl2.Materiali[_materialType] >= 10)
+                {
+                    Pl2.Materiali[_materialType] -= 10;
+                    Pl2.WinPoint++;
+                }
+                break;
+            case "Red":
+                if (Pl3.Materiali[_materialType] >= 10)
+                {
+                    Pl3.Materiali[_materialType] -= 10;
+                    Pl3.WinPoint++;
+                }
+                break;
+            case "Yellow":
+                if (Pl4.Materiali[_materialType] >= 10)
+                {
+                    Pl4.Materiali[_materialType] -= 10;
+                    Pl4.WinPoint++;
+                }
+                break;
+        }
+    }
+
+    public void BuyMateriali(int _materialType)
+    {
+        switch (Gpm.Name)
+        {
+            case "Green":
+                if (Pl1.Credit >= 2)
+                {
+                    Pl1.Materiali[_materialType]++;
+                    Pl1.Credit -= 2;
+                }
+                break;
+            case "Blue":
+                if (Pl2.Credit >= 2)
+                {
+                    Pl2.Materiali[_materialType]++;
+                    Pl2.Credit -= 2;
+                }
+                break;
+            case "Red":
+                if (Pl3.Credit >= 2)
+                {
+                    Pl3.Materiali[_materialType]++;
+                    Pl3.Credit -= 2;
+                }
+                break;
+            case "Yellow":
+                if (Pl4.Credit >= 2)
+                {
+                    Pl4.Materiali[_materialType]++;
+                    Pl4.Credit -= 2;
+                }
+                break;
+        }
+    }
+
+    // Funzioni da mettere nei bottoni delle città
+
+        // per la vendita di materiali in cambio di punti vittoria
+
+    public void SellInCityA()
+    {
+        SellMateriali(0);
+    }
+
+    public void SellInCityB()
+    {
+        SellMateriali(1);
+    }
+
+    public void SellInCityC()
+    {
+        SellMateriali(2);
+    }
+
+    public void SellInCityD()
+    {
+        SellMateriali(3);
+    }
+
+        // Per Comprare materiali
+
+    public void BuyInCityA()
+    {
+        BuyMateriali(1);
+    }
+
+    public void BuyInCityB()
+    {
+        BuyMateriali(2);
+    }
+
+    public void BuyInCityC()
+    {
+        BuyMateriali(3);
+    }
+
+    public void BuyInCityD()
+    {
+        BuyMateriali(0);
+    }
+
+    //
+
     public void HealLife()
     {
         switch (Gpm.Name)
         {
             case "Green":
-                Pl1.Life = 5;
-                Pl1.Credit -= 3;
+                if (Pl1.Credit >= 6)
+                {
+                    Pl1.Life = Pl1.MaxLife;
+                    Pl1.Credit -= 6;
+                }
                 break;
             case "Blue":
-                Pl2.Life = 5;
-                Pl2.Credit -= 3;
+                if (Pl2.Credit >= 6)
+                {
+                    Pl2.Life = Pl2.MaxLife;
+                    Pl2.Credit -= 6;
+                }
                 break;
             case "Red":
-                Pl3.Life = 5;
-                Pl3.Credit -= 3;
+                if (Pl3.Credit >= 6)
+                {
+                    Pl3.Life = Pl3.MaxLife;
+                    Pl3.Credit -= 6;
+                }
                 break;
             case "Yellow":
-                Pl4.Life = 5;
-                Pl4.Credit -= 3;
+                if (Pl4.Credit >= 6)
+                {
+                    Pl4.Life = Pl4.MaxLife;
+                    Pl4.Credit -= 6;
+                }
                 break;
         }
         Gpm.CurrentState = GamePlayManager.State.End;
