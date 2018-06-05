@@ -46,6 +46,7 @@ public class Grid : MonoBehaviour {
         SetCity();
         SetWalls();
         SetEnemyPoint();
+        setCreditPoint();
         //SetCellTerrainType();
         ColorateGrid();
 
@@ -64,7 +65,8 @@ public class Grid : MonoBehaviour {
                     {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
-                        
+                        tile.GetComponent<Renderer>().material.color = Color.green;
+
 
                     }
                     else if (FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy")
@@ -160,6 +162,12 @@ public class Grid : MonoBehaviour {
                         tile.transform.position = cell.WorldPosition;
                         tile.GetComponent<Renderer>().material.color = Color.blue;
                         
+                    }
+                    else if (FindCell(_x, _z).GetNameTile() == "Credit")
+                    {
+                        tile = (GameObject)Instantiate(Tile);
+                        tile.transform.position = cell.WorldPosition;
+                        tile.GetComponent<Renderer>().material.color = Color.yellow;
                     }
 
                     if (cell.GetNameTile() == "" || cell.GetNameTile() == "Enemy")
@@ -382,10 +390,7 @@ public class Grid : MonoBehaviour {
 
     // Imposta la posizione delle città sulla griglia
     void SetCity() {
-        //FindCell(6, 11).SetNameTile("A");
-        //FindCell(6, 1).SetNameTile("B");
-        //FindCell(1, 6).SetNameTile("C");
-        //FindCell(11, 6).SetNameTile("D");
+        
         FindCell(11, 11).SetNameTile("D");
         FindCell(11, 10).SetNameTile("D");
         FindCell(10, 10).SetNameTile("D");
@@ -517,29 +522,64 @@ public class Grid : MonoBehaviour {
     }
 
     void SetEnemyPoint() {
-        FindCell(0, 0).SetNameTile("Enemy");
-        FindCell(0, 2).SetNameTile("Enemy");
-        FindCell(2, 0).SetNameTile("Enemy");
-        FindCell(0, 3).SetNameTile("Enemy");
-        FindCell(0, 4).SetNameTile("Enemy");
+        FindCell(0, 1).SetNameTile("Enemy");
+        FindCell(0, 5).SetNameTile("Enemy");
+        FindCell(0, 7).SetNameTile("Enemy");
+        FindCell(0, 11).SetNameTile("Enemy");
 
-        FindCell(9, 0).SetNameTile("Enemy");
-        FindCell(8, 0).SetNameTile("Enemy");
-        FindCell(0, 10).SetNameTile("Enemy");
-        FindCell(0, 12).SetNameTile("Enemy");
-        FindCell(12, 2).SetNameTile("Enemy");
+        FindCell(1, 0).SetNameTile("Enemy");
+        FindCell(1, 12).SetNameTile("Enemy");
 
-        FindCell(10, 0).SetNameTile("Enemy");
-        FindCell(12, 0).SetNameTile("Enemy");
-        FindCell(2, 12).SetNameTile("Enemy");
-        FindCell(3, 12).SetNameTile("Enemy");
-        FindCell(4, 12).SetNameTile("Enemy");
+        FindCell(2, 3).SetNameTile("Enemy");
+        FindCell(2, 5).SetNameTile("Enemy");
+        FindCell(2, 7).SetNameTile("Enemy");
+        FindCell(2, 9).SetNameTile("Enemy");
 
-        FindCell(10, 12).SetNameTile("Enemy");
-        FindCell(12, 12).SetNameTile("Enemy");
-        FindCell(12, 8).SetNameTile("Enemy");
-        FindCell(12, 9).SetNameTile("Enemy");
-        FindCell(12, 10).SetNameTile("Enemy");
+        FindCell(3, 2).SetNameTile("Enemy");
+        FindCell(3, 10).SetNameTile("Enemy");
+
+        FindCell(5, 0).SetNameTile("Enemy");
+        FindCell(5, 2).SetNameTile("Enemy");
+        FindCell(5, 6).SetNameTile("Enemy");
+        FindCell(5, 10).SetNameTile("Enemy");
+        FindCell(5, 12).SetNameTile("Enemy");
+
+        FindCell(6, 5).SetNameTile("Enemy");
+        FindCell(6, 7).SetNameTile("Enemy");
+
+        FindCell(7, 0).SetNameTile("Enemy");
+        FindCell(7, 2).SetNameTile("Enemy");
+        FindCell(7, 6).SetNameTile("Enemy");
+        FindCell(7, 10).SetNameTile("Enemy");
+        FindCell(7, 12).SetNameTile("Enemy");
+
+        FindCell(9, 2).SetNameTile("Enemy");
+        FindCell(9, 10).SetNameTile("Enemy");
+
+        FindCell(10, 3).SetNameTile("Enemy");
+        FindCell(10, 5).SetNameTile("Enemy");
+        FindCell(10, 7).SetNameTile("Enemy");
+        FindCell(10, 9).SetNameTile("Enemy");
+
+        FindCell(11, 0).SetNameTile("Enemy");
+        FindCell(11, 12).SetNameTile("Enemy");
+
+        FindCell(12, 1).SetNameTile("Enemy");
+        FindCell(12, 5).SetNameTile("Enemy");
+        FindCell(12, 7).SetNameTile("Enemy");
+        FindCell(12, 11).SetNameTile("Enemy");
+
+    }
+
+    void setCreditPoint()
+    {
+        FindCell(0, 0).SetNameTile("Credit");
+        FindCell(0, 0).SetNameTile("Credit");
+        FindCell(0, 0).SetNameTile("Credit");
+        FindCell(0, 0).SetNameTile("Credit");
+        FindCell(0, 0).SetNameTile("Credit");
+        FindCell(0, 0).SetNameTile("Credit");
+        FindCell(0, 0).SetNameTile("Credit");
     }
 
     void SetTower() {

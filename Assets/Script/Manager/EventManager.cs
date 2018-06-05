@@ -75,12 +75,35 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    // Da finire
-    public void PayForMaterial(int _credit, int _materialType, int _materiali, Player _player1, Player _player2 = null, Player _player3 = null)
+
+    public void PayForMaterial(int _credit, int _materialType, int _materiali, Player _player1)
     {
-        AddMaterial(_materialType, _materiali, _player1);
-        _player1.Credit -= _credit;
+        if (_player1.Credit >= _credit)
+        {
+            AddMaterial(_materialType, _materiali, _player1);
+            _player1.Credit -= _credit;
+        }
+        else
+        {
+            _player1.Lg.SetTextLog("Non hai abbastanza crediti", true);
+        }
+
     }
+
+    public void PayForRandomMaterial(int _credit, int _materiali, Player _player1)
+    {
+        if (_player1.Credit >= _credit)
+        {
+            AddMaterial(Random.Range(0, 4), _materiali, _player1);
+            _player1.Credit -= _credit;
+        }
+        else
+        {
+            _player1.Lg.SetTextLog("Non hai abbastanza crediti", true);
+        }
+
+    }
+
 
     public void Jynix(Player _player, int _materiali, int possibility, int _credit, bool allIn = false)
     {
