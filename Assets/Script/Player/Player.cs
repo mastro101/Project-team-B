@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Player : PlayerStatistiche{
 
-    public Grid grid;
+    public TheGrid grid;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
     public IEnemy currentEnemy;
@@ -722,7 +722,7 @@ public class Player : PlayerStatistiche{
         //Controllo in che tipo di casella mi trovo
 
         
-        if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy" && grid.FindCell(XPos, ZPos).GetNameTile() != "Credit")
+        if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy" && grid.FindCell(XPos, ZPos).GetNameTile() != "Credit" && grid.FindCell(XPos, ZPos).GetNameTile() != "Empty")
         {
             // se è all'interno di una città passa alla fase Object
             Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
@@ -740,13 +740,16 @@ public class Player : PlayerStatistiche{
         {
             // se è all'interno di una Casella Nemico passa alla fase Combat
             Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
+            neutralizeCell(XPos, ZPos);
             Gpm.CurrentState = GamePlayManager.State.Combat;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Credit")
         {
             eventManager.TakeCredits(Random.Range(1, 11), this);
+            neutralizeCell(XPos, ZPos);
+            Gpm.CurrentState = GamePlayManager.State.End;
         }
-        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Nulla")
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Empty")
         {
             Gpm.CurrentState = GamePlayManager.State.End;
         }
@@ -774,7 +777,10 @@ public class Player : PlayerStatistiche{
             {
                 EventList(event1);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+                {
+                    neutralizeCell(XPos, ZPos);
                     Gpm.CurrentState = GamePlayManager.State.End;
+                }
             }
 
 
@@ -782,7 +788,10 @@ public class Player : PlayerStatistiche{
             {
                 EventList(event2);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+                {
+                    neutralizeCell(XPos, ZPos);
                     Gpm.CurrentState = GamePlayManager.State.End;
+                }
             }
 
             
@@ -1051,6 +1060,12 @@ public class Player : PlayerStatistiche{
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);
                 break;
         }
+    }
+
+    void neutralizeCell(int _x, int _z)
+    {
+        grid.FindCell(_x, _z).Tile.GetComponent<Renderer>().material.color = Color.gray;
+        grid.FindCell(_x, _z).SetNameTile("Empty");
     }
 
     public void LoseRound()

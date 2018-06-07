@@ -13,7 +13,7 @@ public class DetectObject : MonoBehaviour {
 
     Vector3 TilePosition,CellPosition;
 
-    public Grid grid;
+    public TheGrid grid;
 
     int _x, _z;
 

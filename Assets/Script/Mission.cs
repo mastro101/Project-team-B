@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mission : MonoBehaviour {
 
-    public Grid grid;
+    public TheGrid grid;
     public LogManager Lg;
     public Player Player1, Player2, Player3, Player4;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour {
+public class TheGrid : MonoBehaviour {
 
     public GameObject Tile;
     public GameObject Wall, City, City2, City3, City4;
@@ -24,7 +24,7 @@ public class Grid : MonoBehaviour {
     {
         Cells = new List<CellData>();
         GridSize(Width, Height);
-        SetTower();
+        //SetTower();
     }
 
     void GridSize(int x, int z)
@@ -43,10 +43,12 @@ public class Grid : MonoBehaviour {
             }
         }
 
+        
         SetCity();
         SetWalls();
         SetEnemyPoint();
         setCreditPoint();
+        setEmptyPoint();
         //SetCellTerrainType();
         ColorateGrid();
 
@@ -69,7 +71,7 @@ public class Grid : MonoBehaviour {
 
 
                     }
-                    else if (FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy")
+                    else if (FindCell(_x, _z).GetNameTile() != "" && FindCell(_x, _z).GetNameTile() != "Enemy" && FindCell(_x, _z).GetNameTile() != "Empty" && FindCell(_x, _z).GetNameTile() != "Credit")
                     {
 
                         if (cell.GetNameTile() == "A")
@@ -163,12 +165,20 @@ public class Grid : MonoBehaviour {
                         tile.GetComponent<Renderer>().material.color = Color.blue;
                         
                     }
+                    else if (FindCell(_x, _z).GetNameTile() == "Empty")
+                    {
+                        tile = (GameObject)Instantiate(Tile);
+                        tile.transform.position = cell.WorldPosition;
+                        tile.GetComponent<Renderer>().material.color = Color.grey;
+                    }
                     else if (FindCell(_x, _z).GetNameTile() == "Credit")
                     {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
                         tile.GetComponent<Renderer>().material.color = Color.yellow;
                     }
+
+                    cell.Tile = tile;
 
                     if (cell.GetNameTile() == "" || cell.GetNameTile() == "Enemy")
                         //SetCellTexture(cell, tile);
@@ -411,11 +421,12 @@ public class Grid : MonoBehaviour {
         FindCell(10, 1).SetNameTile("C");
         FindCell(10, 2).SetNameTile("C");
 
-        FindCell(7, 6).SetNameTile("CittàDebug");
+        //FindCell(7, 6).SetNameTile("CittàDebug");
     }
 
     void SetWalls()
     {
+        /*
         //4 centrali
         FindCell(6, 4).SetWalls(0);
         FindCell(6, 5).SetWalls(2);
@@ -519,6 +530,7 @@ public class Grid : MonoBehaviour {
         FindCell(12, 8).SetWalls(3);
 
         FindCell(10, 11).SetWalls(0, 1, 3);
+        */
     }
 
     void SetEnemyPoint() {
@@ -573,16 +585,114 @@ public class Grid : MonoBehaviour {
 
     void setCreditPoint()
     {
-        FindCell(0, 0).SetNameTile("Credit");
-        FindCell(0, 0).SetNameTile("Credit");
-        FindCell(0, 0).SetNameTile("Credit");
-        FindCell(0, 0).SetNameTile("Credit");
-        FindCell(0, 0).SetNameTile("Credit");
-        FindCell(0, 0).SetNameTile("Credit");
-        FindCell(0, 0).SetNameTile("Credit");
+        FindCell(0, 1).SetNameTile("Credit");
+        FindCell(1, 3).SetNameTile("Credit");
+        FindCell(1, 9).SetNameTile("Credit");
+        FindCell(3, 1).SetNameTile("Credit");
+        FindCell(3, 6).SetNameTile("Credit");
+        FindCell(3, 11).SetNameTile("Credit");
+        FindCell(4, 4).SetNameTile("Credit");
+        FindCell(4, 8).SetNameTile("Credit");
+        FindCell(6, 0).SetNameTile("Credit");
+        FindCell(6, 3).SetNameTile("Credit");
+        FindCell(6, 9).SetNameTile("Credit");
+        FindCell(6, 12).SetNameTile("Credit");
+        FindCell(12, 1).SetNameTile("Credit");
+        FindCell(11, 3).SetNameTile("Credit");
+        FindCell(11, 9).SetNameTile("Credit");
+        FindCell(9, 1).SetNameTile("Credit");
+        FindCell(9, 6).SetNameTile("Credit");
+        FindCell(9, 11).SetNameTile("Credit");
+        FindCell(8, 4).SetNameTile("Credit");
+        FindCell(8, 8).SetNameTile("Credit");
     }
 
-    void SetTower() {
+    void setEmptyPoint()
+    {
+        FindCell(0, 2).SetNameTile("Empty");
+        FindCell(0, 3).SetNameTile("Empty");
+        FindCell(0, 4).SetNameTile("Empty");
+        FindCell(0, 8).SetNameTile("Empty");
+        FindCell(0, 9).SetNameTile("Empty");
+        FindCell(0, 10).SetNameTile("Empty");
+        FindCell(1, 4).SetNameTile("Empty");
+        FindCell(1, 5).SetNameTile("Empty");
+        FindCell(1, 6).SetNameTile("Empty");
+        FindCell(1, 7).SetNameTile("Empty");
+        FindCell(1, 8).SetNameTile("Empty");
+        FindCell(2, 0).SetNameTile("Empty");
+        FindCell(2, 6).SetNameTile("Empty");
+        FindCell(2, 12).SetNameTile("Empty");
+        FindCell(3, 0).SetNameTile("Empty");
+        FindCell(3, 3).SetNameTile("Empty");
+        FindCell(3, 4).SetNameTile("Empty");
+        FindCell(3, 5).SetNameTile("Empty");
+        FindCell(3, 7).SetNameTile("Empty");
+        FindCell(3, 8).SetNameTile("Empty");
+        FindCell(3, 9).SetNameTile("Empty");
+        FindCell(3, 12).SetNameTile("Empty");
+        FindCell(4, 0).SetNameTile("Empty");
+        FindCell(4, 1).SetNameTile("Empty");
+        FindCell(4, 3).SetNameTile("Empty");
+        FindCell(4, 5).SetNameTile("Empty");
+        FindCell(4, 6).SetNameTile("Empty");
+        FindCell(4, 7).SetNameTile("Empty");
+        FindCell(4, 8).SetNameTile("Empty");
+        FindCell(4, 11).SetNameTile("Empty");
+        FindCell(4, 12).SetNameTile("Empty");
+        FindCell(5, 1).SetNameTile("Empty");
+        FindCell(5, 3).SetNameTile("Empty");
+        FindCell(5, 4).SetNameTile("Empty");
+        FindCell(5, 8).SetNameTile("Empty");
+        FindCell(5, 9).SetNameTile("Empty");
+        FindCell(5, 11).SetNameTile("Empty");
+        FindCell(6, 1).SetNameTile("Empty");
+        FindCell(6, 2).SetNameTile("Empty");
+        FindCell(6, 4).SetNameTile("Empty");
+        FindCell(6, 6).SetNameTile("Empty");
+        FindCell(6, 8).SetNameTile("Empty");
+        FindCell(6, 10).SetNameTile("Empty");
+        FindCell(6, 11).SetNameTile("Empty");
+        FindCell(12, 2).SetNameTile("Empty");
+        FindCell(12, 3).SetNameTile("Empty");
+        FindCell(12, 4).SetNameTile("Empty");
+        FindCell(12, 8).SetNameTile("Empty");
+        FindCell(12, 9).SetNameTile("Empty");
+        FindCell(12, 10).SetNameTile("Empty");
+        FindCell(11, 4).SetNameTile("Empty");
+        FindCell(11, 5).SetNameTile("Empty");
+        FindCell(11, 6).SetNameTile("Empty");
+        FindCell(11, 7).SetNameTile("Empty");
+        FindCell(11, 8).SetNameTile("Empty");
+        FindCell(10, 0).SetNameTile("Empty");
+        FindCell(10, 6).SetNameTile("Empty");
+        FindCell(10, 12).SetNameTile("Empty");
+        FindCell(9, 0).SetNameTile("Empty");
+        FindCell(9, 3).SetNameTile("Empty");
+        FindCell(9, 4).SetNameTile("Empty");
+        FindCell(9, 5).SetNameTile("Empty");
+        FindCell(9, 7).SetNameTile("Empty");
+        FindCell(9, 8).SetNameTile("Empty");
+        FindCell(9, 9).SetNameTile("Empty");
+        FindCell(9, 12).SetNameTile("Empty");
+        FindCell(8, 0).SetNameTile("Empty");
+        FindCell(8, 1).SetNameTile("Empty");
+        FindCell(8, 3).SetNameTile("Empty");
+        FindCell(8, 5).SetNameTile("Empty");
+        FindCell(8, 6).SetNameTile("Empty");
+        FindCell(8, 7).SetNameTile("Empty");
+        FindCell(8, 8).SetNameTile("Empty");
+        FindCell(8, 11).SetNameTile("Empty");
+        FindCell(8, 12).SetNameTile("Empty");
+        FindCell(7, 1).SetNameTile("Empty");
+        FindCell(7, 3).SetNameTile("Empty");
+        FindCell(7, 4).SetNameTile("Empty");
+        FindCell(7, 8).SetNameTile("Empty");
+        FindCell(7, 9).SetNameTile("Empty");
+        FindCell(7, 11).SetNameTile("Empty");
+    }
+
+    /*void SetTower() {
         FindCell(4, 4).SetValidity(false);
         FindCell(8, 4).SetValidity(false);
         FindCell(4, 8).SetValidity(false);
@@ -607,7 +717,7 @@ public class Grid : MonoBehaviour {
         Tower1.transform.position = cell.WorldPosition;
 
 
-    }
+    }*/
 
     Color[,] GetGridDataFromTexture(Texture2D _texture, int gridWidth, int gridHeight)
     {

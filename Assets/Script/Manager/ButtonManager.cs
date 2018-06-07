@@ -9,14 +9,14 @@ public class ButtonManager : MonoBehaviour {
 
     Vector3 ConsolPosition;
 
-    Grid grid;
+    TheGrid grid;
     public GamePlayManager Gpm;
     public GameObject EndP;
     public Player Pl1, Pl2, Pl4, Pl3;
 
     private void Start()
     {
-        grid = FindObjectOfType<Grid>();
+        grid = FindObjectOfType<TheGrid>();
         ConsolPosition = PanelConsole.transform.position;
         PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
     }

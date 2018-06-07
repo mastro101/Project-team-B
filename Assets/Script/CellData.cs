@@ -16,6 +16,7 @@ public class CellData
     public int PlayerOnTile;
     public Player POnTile;
     public CellTerrainType cellTerrainType;
+    public GameObject Tile;
 
     public CellData(int _xPos, int _zPos, Vector3 _worldPosition, string tile, bool enemy, Player _pOnTile)
     {
