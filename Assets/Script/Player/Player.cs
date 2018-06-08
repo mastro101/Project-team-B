@@ -738,7 +738,8 @@ public class Player : PlayerStatistiche{
         }
     }
 
-    int event1, event2;
+    [HideInInspector]
+    public int event1, event2;
 
     void Event() {
         //Controllo in che tipo di casella mi trovo
@@ -793,6 +794,7 @@ public class Player : PlayerStatistiche{
                 event2 = eventCard;
                 EventListView(event2);
                 Debug.Log(event2);
+                UI.UICardEvent.SetActive(true);
             }
 
             if (Input.GetKeyDown(KeyCode.O))
@@ -1084,7 +1086,7 @@ public class Player : PlayerStatistiche{
         }
     }
 
-    void neutralizeCell(int _x, int _z)
+    public void neutralizeCell(int _x, int _z)
     {
         grid.FindCell(_x, _z).Tile.GetComponent<Renderer>().material.color = Color.gray;
         grid.FindCell(_x, _z).SetNameTile("Empty");

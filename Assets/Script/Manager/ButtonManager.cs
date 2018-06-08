@@ -76,6 +76,97 @@ public class ButtonManager : MonoBehaviour {
         }
     }
 
+    // Event
+
+
+    public void Event1()
+    {
+        Debug.Log("FuckU");
+        switch (Gpm.Name)
+        {
+            case "Green":
+                Pl1.EventList(Pl1.event1);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl1.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
+                }
+                break;
+            case "Blue":
+                Pl2.EventList(Pl2.event1);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl2.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
+                }
+                break;
+            case "Red":
+                Pl3.EventList(Pl3.event1);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl3.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
+                }
+                break;
+            case "Yellow":
+                Pl4.EventList(Pl4.event1);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl4.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
+                }
+                break;
+        }
+        Gpm.CurrentState = GamePlayManager.State.End;
+    }
+
+    public void Event2()
+    {
+        Debug.Log("FuckU");
+        switch (Gpm.Name)
+        {
+            case "Green":
+                Pl1.EventList(Pl1.event2);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl1.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
+                }
+                break;
+            case "Blue":
+                Pl2.EventList(Pl2.event2);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl2.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
+                }
+                break;
+            case "Red":
+                Pl3.EventList(Pl3.event2);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl3.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
+                }
+                break;
+            case "Yellow":
+                Pl4.EventList(Pl4.event2);
+                if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl4.jumperEvent == false)
+                {
+                    UI.UICardEvent.SetActive(false);
+                    Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
+                }
+                break;
+        }
+        Gpm.CurrentState = GamePlayManager.State.End;
+    }
+
+    //
+
+
+
+
+
     public void BuyMateriali(int _materialType)
     {
         switch (Gpm.Name)
@@ -372,6 +463,7 @@ public class ButtonManager : MonoBehaviour {
         if (Gpm.CurrentState == GamePlayManager.State.Event)
         {
             EndP.SetActive(false);
+            UI.UICardEvent.SetActive(false);
             Gpm.CurrentState = GamePlayManager.State.End;
         }
         else if (Gpm.CurrentState == GamePlayManager.State.Movement)

@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour {
     public bool _isInfo=false;
 
     public GameObject UICity;
+    public GameObject UICardEvent;
 
     public Texture[] MaterialiImage;
     public RawImage MaterialeToBuy, MaterialeToSell;
