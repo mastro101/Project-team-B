@@ -212,7 +212,7 @@ public class Player : PlayerStatistiche{
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographicSize = 4;
-                        playerPrefab.transform.position = new Vector3(14.73f, 37.97f, 21f);
+                        playerPrefab.transform.position = new Vector3(14.73f, 36.6f, 21f);
                         inCombatEnemy = true;
                     }
                 }
@@ -224,7 +224,7 @@ public class Player : PlayerStatistiche{
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographicSize = 4;
-                        playerPrefab.transform.position = new Vector3(14.73f, 37.97f, 21f);
+                        playerPrefab.transform.position = new Vector3(14.73f, 36.6f, 21f);
                         inCombatPlayer = true;
                     }
                 }
@@ -345,7 +345,7 @@ public class Player : PlayerStatistiche{
                 else if (inCombatPlayer)
                 {
                     currentEnemyPlayer.currentEnemyPlayer = this;
-                    currentEnemyPlayer.playerPrefab.transform.position = new Vector3(21f, 37.66f, 21.03f);
+                    currentEnemyPlayer.playerPrefab.transform.position = new Vector3(21f, 36.6f, 21.03f);
                     CB.player = this;
                     if (CB.Active == false)
                         CB.OpenAndCloseInventoryCombat();
@@ -484,7 +484,8 @@ public class Player : PlayerStatistiche{
     private void SpawnEnemy()
     {
         currentEnemy = enemyManager.GetEnemy(Random.Range(0, enemyManager.EnemyPrefabs.Length));
-        currentEnemy.gameObject.transform.position = new Vector3(21f, 37.66f, 21.03f);
+        currentEnemy.gameObject.transform.position = new Vector3(21f, 36.9f, 21.03f);
+        currentEnemy.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         currentEnemy.Spawn();
         currentEnemy.OnDestroy += OnEnemyDestroy;
 
@@ -493,8 +494,8 @@ public class Player : PlayerStatistiche{
     public void OnEnemyDestroy(IEnemy enemy)
     {
         CB.CloseInventoryCombat();
-        gameCamera.transform.position = new Vector3(40f, 35f, -7f);
-        gameCamera.transform.rotation = Quaternion.Euler(47f, -45.50f, 0);
+        gameCamera.transform.position = new Vector3(40f, 32.3f, -7f);
+        gameCamera.transform.rotation = Quaternion.Euler(41.36f, -45.542f, 0.361f);
         gameCamera.orthographicSize = 21;
         if (currentEnemy.IsAlive == false)
         {
@@ -1278,8 +1279,8 @@ public class Player : PlayerStatistiche{
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
 
-            gameCamera.transform.position = new Vector3(40f, 35f, -7f);
-            gameCamera.transform.rotation = Quaternion.Euler(47f, -45.50f, 0);
+            gameCamera.transform.position = new Vector3(40f, 32.3f, -7f);
+            gameCamera.transform.rotation = Quaternion.Euler(41.36f, -45.542f, 0.361f);
             gameCamera.orthographicSize = 21;
             
 
