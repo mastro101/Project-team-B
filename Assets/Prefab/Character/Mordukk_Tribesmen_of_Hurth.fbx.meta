@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 15edf451d00a3154ba0aaed65da8e287
+timeCreated: 1528467845
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: anca_DX
+    100002: anca_SX
+    100004: avambraccio_DX
+    100006: avambraccio_SX
+    100008: braccio_DX
+    100010: braccio_SX
+    100012: busto
+    100014: caviglia_DX
+    100016: caviglia_SX
+    100018: cloth_pelliccia
+    100020: collo
+    100022: coscia_DX
+    100024: coscia_SX
+    100026: ginocchio_DX
+    100028: ginocchio_SX
+    100030: gomito_DX
+    100032: gomito_SX
+    100034: joint4
+    100036: joint8
+    100038: joint8 1
+    100040: joint81
+    100042: mano_DX
+    100044: mano_SX
+    100046: Mordukk
+    100048: //RootNode
+    100050: pelvis
+    100052: piede_DX
+    100054: piede_SX
+    100056: polso_DX
+    100058: polso_SX
+    100060: scapola_DX
+    100062: scapola_SX
+    100064: spalla_DX
+    100066: spalla_SX
+    100068: spine
+    100070: stinco_DX
+    100072: stinco_SX
+    100074: testa
+    400000: anca_DX
+    400002: anca_SX
+    400004: avambraccio_DX
+    400006: avambraccio_SX
+    400008: braccio_DX
+    400010: braccio_SX
+    400012: busto
+    400014: caviglia_DX
+    400016: caviglia_SX
+    400018: cloth_pelliccia
+    400020: collo
+    400022: coscia_DX
+    400024: coscia_SX
+    400026: ginocchio_DX
+    400028: ginocchio_SX
+    400030: gomito_DX
+    400032: gomito_SX
+    400034: joint4
+    400036: joint8
+    400038: joint8 1
+    400040: joint81
+    400042: mano_DX
+    400044: mano_SX
+    400046: Mordukk
+    400048: //RootNode
+    400050: pelvis
+    400052: piede_DX
+    400054: piede_SX
+    400056: polso_DX
+    400058: polso_SX
+    400060: scapola_DX
+    400062: scapola_SX
+    400064: spalla_DX
+    400066: spalla_SX
+    400068: spine
+    400070: stinco_DX
+    400072: stinco_SX
+    400074: testa
+    4300000: avambraccio_SX
+    4300002: mano_SX
+    4300004: braccio_SX
+    4300006: avambraccio_DX
+    4300008: mano_DX
+    4300010: braccio_DX
+    4300012: testa
+    4300014: busto
+    4300016: cloth_pelliccia
+    4300018: coscia_DX
+    4300020: coscia_SX
+    4300022: stinco_DX
+    4300024: stinco_SX
+    4300026: piede_DX
+    4300028: piede_SX
+    7400000: Idle
+    7400002: Walk
+    7400004: Attack
+    7400006: Death
+    9500000: //RootNode
+    13700000: avambraccio_DX
+    13700002: avambraccio_SX
+    13700004: braccio_DX
+    13700006: braccio_SX
+    13700008: busto
+    13700010: cloth_pelliccia
+    13700012: coscia_DX
+    13700014: coscia_SX
+    13700016: mano_DX
+    13700018: mano_SX
+    13700020: piede_DX
+    13700022: piede_SX
+    13700024: stinco_DX
+    13700026: stinco_SX
+    13700028: testa
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 4b1453c98445b2d4b962df499ab57781, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
