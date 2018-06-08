@@ -1205,10 +1205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CB: {fileID: 0}
-  Credits: 2
+  Credits: 1
   Attack: 0
   Damage: 1
-  Materiali: 5
+  Materiali: 3
   IsAlive: 0
   PlayerToAttack: 
   PGreen: {fileID: 0}

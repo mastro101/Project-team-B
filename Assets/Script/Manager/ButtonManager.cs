@@ -9,6 +9,7 @@ public class ButtonManager : MonoBehaviour {
 
     Vector3 ConsolPosition;
 
+    UIManager UI;
     TheGrid grid;
     public GamePlayManager Gpm;
     public GameObject EndP;
@@ -17,6 +18,7 @@ public class ButtonManager : MonoBehaviour {
     private void Start()
     {
         grid = FindObjectOfType<TheGrid>();
+        UI = FindObjectOfType<UIManager>();
         ConsolPosition = PanelConsole.transform.position;
         PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
     }
@@ -113,6 +115,89 @@ public class ButtonManager : MonoBehaviour {
 
         // per la vendita di materiali in cambio di punti vittoria
 
+    public void Sell()
+    {
+        switch (Gpm.Name)
+        {
+            case "Green":
+                switch (grid.FindCell(Pl1.XPos, Pl1.ZPos).GetNameTile())
+                {
+                    case "A":
+                        SellInCityA();
+                        break;
+                    case "B":
+                        SellInCityB();
+                        break;
+                    case "C":
+                        SellInCityC();
+                        break;
+                    case "D":
+                        SellInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Blue":
+                switch (grid.FindCell(Pl2.XPos, Pl2.ZPos).GetNameTile())
+                {
+                    case "A":
+                        SellInCityA();
+                        break;
+                    case "B":
+                        SellInCityB();
+                        break;
+                    case "C":
+                        SellInCityC();
+                        break;
+                    case "D":
+                        SellInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Red":
+                switch (grid.FindCell(Pl3.XPos, Pl3.ZPos).GetNameTile())
+                {
+                    case "A":
+                        SellInCityA();
+                        break;
+                    case "B":
+                        SellInCityB();
+                        break;
+                    case "C":
+                        SellInCityC();
+                        break;
+                    case "D":
+                        SellInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Yellow":
+                switch (grid.FindCell(Pl4.XPos, Pl4.ZPos).GetNameTile())
+                {
+                    case "A":
+                        SellInCityA();
+                        break;
+                    case "B":
+                        SellInCityB();
+                        break;
+                    case "C":
+                        SellInCityC();
+                        break;
+                    case "D":
+                        SellInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
+    }
+    
     public void SellInCityA()
     {
         SellMateriali(0);
@@ -134,6 +219,90 @@ public class ButtonManager : MonoBehaviour {
     }
 
         // Per Comprare materiali
+
+
+    public void Buy()
+    {
+        switch (Gpm.Name)
+        {
+            case "Green":
+                switch (grid.FindCell(Pl1.XPos, Pl1.ZPos).GetNameTile())
+                {
+                    case "A":
+                        BuyInCityA();
+                        break;
+                    case "B":
+                        BuyInCityB();
+                        break;
+                    case "C":
+                        BuyInCityC();
+                        break;
+                    case "D":
+                        BuyInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Blue":
+                switch (grid.FindCell(Pl2.XPos, Pl2.ZPos).GetNameTile())
+                {
+                    case "A":
+                        BuyInCityA();
+                        break;
+                    case "B":
+                        BuyInCityB();
+                        break;
+                    case "C":
+                        BuyInCityC();
+                        break;
+                    case "D":
+                        BuyInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Red":
+                switch (grid.FindCell(Pl3.XPos, Pl3.ZPos).GetNameTile())
+                {
+                    case "A":
+                        BuyInCityA();
+                        break;
+                    case "B":
+                        BuyInCityB();
+                        break;
+                    case "C":
+                        BuyInCityC();
+                        break;
+                    case "D":
+                        BuyInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Yellow":
+                switch (grid.FindCell(Pl4.XPos, Pl4.ZPos).GetNameTile())
+                {
+                    case "A":
+                        BuyInCityA();
+                        break;
+                    case "B":
+                        BuyInCityB();
+                        break;
+                    case "C":
+                        BuyInCityC();
+                        break;
+                    case "D":
+                        BuyInCityD();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
+    }
 
     public void BuyInCityA()
     {
@@ -190,12 +359,12 @@ public class ButtonManager : MonoBehaviour {
                 }
                 break;
         }
-        Gpm.CurrentState = GamePlayManager.State.End;
+        //Gpm.CurrentState = GamePlayManager.State.End;
     }
 
     public void NoHeal()
     {
-        Gpm.CurrentState = GamePlayManager.State.End;
+        //Gpm.CurrentState = GamePlayManager.State.End;
     }
 
     public void EndPhase() {
@@ -223,6 +392,11 @@ public class ButtonManager : MonoBehaviour {
                     Pl4.PossibleMove = 4;
                     break;
             }
+        }
+        else if (Gpm.CurrentState == GamePlayManager.State.City)
+        {
+            UI.UICity.SetActive(false);
+            Gpm.CurrentState = GamePlayManager.State.End;
         }
         //EndP.SetActive(false);
     }

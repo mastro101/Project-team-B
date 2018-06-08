@@ -6,6 +6,7 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour {
 
     public GameObject InventoryPanel;
+    public GameObject UIInGame;
     public bool _isPanel;
 
     public TextMeshProUGUI PlayerStaminaText;
@@ -41,11 +42,13 @@ public class CombatManager : MonoBehaviour {
         Active = !Active;
         if (!_isPanel)
         {
+            UIInGame.SetActive(false);
             InventoryPanel.SetActive(true);
             _isPanel = true;
         }
         else
         {
+            UIInGame.SetActive(true);
             InventoryPanel.SetActive(false);
             _isPanel = false;
         }
@@ -55,6 +58,7 @@ public class CombatManager : MonoBehaviour {
     {
         Active = false;
         InventoryPanel.SetActive(false);
+        UIInGame.SetActive(true);
         _isPanel = false;
     }
 

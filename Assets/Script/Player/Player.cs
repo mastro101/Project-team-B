@@ -139,7 +139,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
             Tmp.SetMosse(PossibleMove.ToString());
-            Tmp.SetCombatPoints(CombatPoint.ToString());
+            Tmp.SetWinPoints(WinPoint.ToString());
             Tmp.SetM1(Materiali[0].ToString());
             Tmp.SetM2(Materiali[1].ToString());
             Tmp.SetM3(Materiali[2].ToString());
@@ -168,8 +168,30 @@ public class Player : PlayerStatistiche{
             {
                 if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
                 {
+                    UI.UICity.SetActive(true);
                     UI._isHealActive[0] = true;
                     UI._isHealActive[1] = true;
+                    switch (grid.FindCell(XPos, ZPos).GetNameTile())
+                    {
+                        case "A":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[0];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[1];
+                            break;
+                        case "B":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[1];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[2];
+                            break;
+                        case "C":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[2];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[3];
+                            break;
+                        case "D":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[3];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[0];
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else {
                     Gpm.CurrentState = GamePlayManager.State.End; 

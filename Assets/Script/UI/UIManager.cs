@@ -11,6 +11,11 @@ public class UIManager : MonoBehaviour {
     public GameObject InfoPanel;
     public bool _isInfo=false;
 
+    public GameObject UICity;
+
+    public Texture[] MaterialiImage;
+    public RawImage MaterialeToBuy, MaterialeToSell;
+
     public Scrollbar sb;
 
 	// Use this for initialization
