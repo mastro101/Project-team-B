@@ -1257,11 +1257,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -6034,11 +6034,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7110,6 +7110,20 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1d1ddb341c1cbc043bbafc6769169e35, type: 3}
   MaterialeToBuy: {fileID: 144645259}
   MaterialeToSell: {fileID: 745187498}
+  EventCardImage:
+  - {fileID: 2800000, guid: bc8eb395a175e1b48840d72d17401a28, type: 3}
+  - {fileID: 2800000, guid: 29bda7b617bb90c4ca33f66443179394, type: 3}
+  - {fileID: 2800000, guid: 04776c69eb1eaa147a00d1c09c6ca106, type: 3}
+  - {fileID: 2800000, guid: 82afcc7be3e571d49afa0b0dc0d81818, type: 3}
+  - {fileID: 2800000, guid: bc820e1c7f993af4c8a42146a1dbfda7, type: 3}
+  - {fileID: 2800000, guid: ab37ec122625a864ebd060ff123628d0, type: 3}
+  - {fileID: 2800000, guid: 8fc1ff42604274348b191c73609b8443, type: 3}
+  - {fileID: 2800000, guid: 2857e8842d05f4c46b7d91b14cb28aa9, type: 3}
+  - {fileID: 2800000, guid: 1444220c7712f8b42b670ddcbdaddc90, type: 3}
+  EventCard1: {fileID: 2060748169}
+  EventCard2: {fileID: 1974426065}
+  SpiegazioneCarta1: {fileID: 119179176}
+  SpiegazioneCarta2: {fileID: 2011968608}
   sb: {fileID: 1502361258}
 --- !u!1 &1184258792
 GameObject:
@@ -10888,11 +10902,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

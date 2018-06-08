@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class UIManager : MonoBehaviour {
 
     public Texture[] MaterialiImage;
     public RawImage MaterialeToBuy, MaterialeToSell;
+
+    public Texture[] EventCardImage;
+    public RawImage EventCard1, EventCard2;
+    public TextMeshProUGUI SpiegazioneCarta1, SpiegazioneCarta2;
 
     public Scrollbar sb;
 
