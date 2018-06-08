@@ -7,6 +7,8 @@ public class Mission : MonoBehaviour {
     public TheGrid grid;
     public LogManager Lg;
     public Player Player1, Player2, Player3, Player4;
+    public GameObject WinScreen, p1ws, p2ws, p3ws, p4ws;
+
 
     public int MissioniComuni;
 
@@ -17,6 +19,30 @@ public class Mission : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            WinScreen.SetActive(true);
+            p1ws.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            WinScreen.SetActive(true);
+            p2ws.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            WinScreen.SetActive(true);
+            p3ws.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            WinScreen.SetActive(true);
+            p4ws.SetActive(true);
+        }
+
         if (Player1.WinPoint == 4)
         {
             Lg.SetTextLog(Player1 + " HA VINTO", true);

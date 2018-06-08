@@ -3780,7 +3780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &493941873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4043,7 +4043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &563786967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5147,6 +5147,11 @@ MonoBehaviour:
   Player2: {fileID: 857374697}
   Player3: {fileID: 487505903}
   Player4: {fileID: 924047377}
+  WinScreen: {fileID: 493941872}
+  p1ws: {fileID: 1813491688}
+  p2ws: {fileID: 563786966}
+  p3ws: {fileID: 943902606}
+  p4ws: {fileID: 378950373}
   MissioniComuni: 0
   check: 00000000
 --- !u!1 &791004643
