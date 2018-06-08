@@ -72,7 +72,9 @@ public class Player : PlayerStatistiche{
 
     public float _Yoffset;
 
-    int eventCard;
+    [HideInInspector]
+    public int eventCard;
+
     public bool inCombatEnemy;
     public bool inCombatPlayer;
 
@@ -776,7 +778,7 @@ public class Player : PlayerStatistiche{
         {
             Gpm.CurrentState = GamePlayManager.State.End;
         }
-        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "")//In una casella neutrale
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "")//In una casella evento
         {
             // Viene scelto un numero randomico per ogni evento
             if (eventCard == 0)
@@ -801,26 +803,26 @@ public class Player : PlayerStatistiche{
                 UI.UICardEvent.SetActive(true);
             }
 
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                EventList(event1);
-                if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
-                {
-                    neutralizeCell(XPos, ZPos);
-                    Gpm.CurrentState = GamePlayManager.State.End;
-                }
-            }
-
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                EventList(event2);
-                if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
-                {
-                    neutralizeCell(XPos, ZPos);
-                    Gpm.CurrentState = GamePlayManager.State.End;
-                }
-            }
+           // if (Input.GetKeyDown(KeyCode.O))
+           // {
+           //     EventList(event1);
+           //     if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+           //     {
+           //         neutralizeCell(XPos, ZPos);
+           //         Gpm.CurrentState = GamePlayManager.State.End;
+           //     }
+           // }
+           //
+           //
+           // if (Input.GetKeyDown(KeyCode.P))
+           // {
+           //     EventList(event2);
+           //     if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+           //     {
+           //         neutralizeCell(XPos, ZPos);
+           //         Gpm.CurrentState = GamePlayManager.State.End;
+           //     }
+           // }
 
             
            
