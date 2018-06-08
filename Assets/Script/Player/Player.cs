@@ -786,6 +786,8 @@ public class Player : PlayerStatistiche{
                 } while (eventCard == 0);                
                 event1 = eventCard;
                 EventListView(event1);
+                UI.EventCard1.texture = UI.EventCardImage[immagineCarte];
+                UI.SpiegazioneCarta1.text = descrizioneCarte;
                 Debug.Log(event1);
                 do {
                     eventCard = Random.Range(3, 39);
@@ -793,6 +795,8 @@ public class Player : PlayerStatistiche{
                 while (eventCard == event1 || eventCard == 0);
                 event2 = eventCard;
                 EventListView(event2);
+                UI.EventCard2.texture = UI.EventCardImage[immagineCarte];
+                UI.SpiegazioneCarta2.text = descrizioneCarte;
                 Debug.Log(event2);
                 UI.UICardEvent.SetActive(true);
             }
@@ -842,23 +846,22 @@ public class Player : PlayerStatistiche{
             case 2:
                 Debug.Log("Error");
                 break;
-            // Von Canterlik Ferire 
+            //  Siero di rigenerazione
             case 3:
+                Life += 2;
+                break;
+            // Von Canterlik Ferire
+            case 4:
                 if (Credit >= 3)
                 {
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     Lg.SetTextLog("Gli altri giocatori hanno perso una vita", true);
                 }
                 break;
-            // Combattimento
-            case 4:
-                Gpm.CurrentState = GamePlayManager.State.Combat;
-                Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
-                break;
-            // Ladri
+            // Truffati
             case 5:
-                eventManager.TakeCredits(-5, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("Gli altri giocatori hanno perso 5 crediti", true);
+                eventManager.TakeCredits(-Random.Range(1, 3), PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                Lg.SetTextLog("Gli altri giocatori perdono 1 o 2 crediti", true);
                 break;
             // Siero di velocità
             case 6:
@@ -978,15 +981,19 @@ public class Player : PlayerStatistiche{
                 // Branco di Lingua rosa
             // Enorme
             case 28:
+                eventManager.AddMaterial(0, -3, this);
                 eventManager.AddMaterial(0, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             case 29:
+                eventManager.AddMaterial(1, -3, this);
                 eventManager.AddMaterial(1, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             case 30:
+                eventManager.AddMaterial(2, -3, this);
                 eventManager.AddMaterial(2, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             case 31:
+                eventManager.AddMaterial(3, -3, this);
                 eventManager.AddMaterial(3, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             //
@@ -1008,16 +1015,21 @@ public class Player : PlayerStatistiche{
             // Pioggia acida
             // Debole
             case 36:
+                eventManager.Heal(-1, this);
                 eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             // Normale
             case 37:
+                eventManager.Heal(-1, this);
                 eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                eventManager.RemoveRandomMaterial(1, this);
                 eventManager.RemoveRandomMaterial(1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             // Forte
             case 38:
+                eventManager.Heal(-2, this);
                 eventManager.Heal(-2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                eventManager.RemoveRandomMaterial(2, this);
                 eventManager.RemoveRandomMaterial(2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             default:
@@ -1026,59 +1038,209 @@ public class Player : PlayerStatistiche{
         }
     }
 
+    string descrizioneCarte;
+    int immagineCarte;
+
     public void EventListView(int _eventCard)
     {
         switch (_eventCard)
         {
-            // Evento Nemico
+            // Nulla
+            case 0:
+                Debug.Log("Error");
+                break;
+            // Nulla
             case 1:
-                Lg.SetTextLog("Un nemico Ti attacca", true);
+                Debug.Log("Error");
+
                 break;
-            // Cuore Meccanico
+            // Truffati
             case 2:
-                Lg.SetTextLog(" Ti curi di 2", true);
+                eventManager.TakeCredits(-Random.Range(1, 3), PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
-            // Pioggia Acida
+            //  Siero di rigenerazione
             case 3:
-                Lg.SetTextLog("Gli altri giocatori perdono una vita", true);
+                immagineCarte = 2;
+                descrizioneCarte = "Ripristina 2 punti salute.";
                 break;
-            // Vincere la scommessa
+            // Von Canterlik Ferire
             case 4:
-                Lg.SetTextLog("Guadagni 10 crediti", true);
+                immagineCarte = 5;
+                descrizioneCarte = "Paga 3 crediti. Ogni avversario perde 1 punto vita.";
                 break;
             // Ladri
             case 5:
-                Lg.SetTextLog("Gli altri giocatori Perdono 5 crediti", true);
+                immagineCarte = 8;
+                descrizioneCarte = "Tutti gli altri giocatori perdono 1 o 2 crediti.";
                 break;
-            // Jumper
+            // Siero di velocità
             case 6:
-                Lg.SetTextLog("Hai 2 movimenti in più", true);
+                immagineCarte = 2;
+                descrizioneCarte = "Effettua un movimento di 2. La casella su cui finisci attiva il suo effetto.";
                 break;
-            // Terreno Fangoso
+            // Stanchezza
             case 7:
-                Lg.SetTextLog("Gli altri giocatori perdono 2 movimenti", true);
+                immagineCarte = 8;
+                descrizioneCarte = "Tutti gli altri giocatori avranno solo 2 movimenti possibili fino al tuo turno";
                 break;
             // Jynix doppia coppia
             case 8:
-                Lg.SetTextLog("Vendi 2 materiali random per forse 6 crediti", true);
+                immagineCarte = 0;
+                descrizioneCarte = "Perdi 2 materiali casuali. Al 60% Jynix ti da 6 crediti.";
                 break;
             // Jynix Poker D'assi
             case 9:
-                Lg.SetTextLog("Vendi 4 materiali random per forse 10 crediti", true);
+                immagineCarte = 0;
+                descrizioneCarte = "Perdi 4 materiali casuali. All'80% Jynix ti da 10 crediti";
                 break;
-            // All in
+            // Jynix fold
             case 10:
-                Lg.SetTextLog("Vendi tutti i materiali di un tipo random per forse 1 punto vittoria", true);
+                immagineCarte = 0;
+                descrizioneCarte = "Perdi 1 materiale casuale. Ottieni 2 crediti.";
                 break;
-            // fold
+
+            // Sterlya
+            // Buon Umore
             case 11:
-                Lg.SetTextLog("Vendi 1 materiale random per 2 crediti", true);
+                immagineCarte = 1;
+                descrizioneCarte = "Spendi 5 crediti per ottenere 2 materiali di ogni tipo.";
                 break;
+            // Cattivo umore
             case 12:
-                Lg.SetTextLog("Ricevi 5 materiali random", true);
+                immagineCarte = 1;
+                descrizioneCarte = "Spendi 3 crediti per ottenere 2 materiali Casuali.";
                 break;
+            // Generosa A
             case 13:
-                Lg.SetTextLog("Rimuovi agli altri 2 materiali random", true);
+                immagineCarte = 1;
+                descrizioneCarte = "Se non hai crediti, ottieni 2 materiali di metallo.";
+                break;
+            // Generosa B
+            case 14:
+                immagineCarte = 1;
+                descrizioneCarte = "Se non hai crediti, ottieni 2 fiale di veleno.";
+                break;
+            // Generosa C
+            case 15:
+                immagineCarte = 1;
+                descrizioneCarte = "Se non hai crediti, ottieni 2 bottiglie d'olio.";
+                break;
+            // Generosa D
+            case 16:
+                immagineCarte = 1;
+                descrizioneCarte = "Se non hai crediti, ottieni 2 gemme.";
+                break;
+            // Professionale A
+            case 17:
+                immagineCarte = 1;
+                descrizioneCarte = "Spendi 2 crediti per ottenere 1 materiale di metallo.";
+                break;
+            // Professionale B
+            case 18:
+                immagineCarte = 1;
+                descrizioneCarte = "Spendi 2 crediti per ottenere 1 fiala di veleno.";
+                break;
+            // Professionale C
+            case 19:
+                immagineCarte = 1;
+                descrizioneCarte = "Spendi 2 crediti per ottenere 1 bottiglia d'olio.";
+                break;
+            // Professionale D
+            case 20:
+                immagineCarte = 1;
+                descrizioneCarte = "Spendi 2 crediti per ottenere 1 gemma.";
+                break;
+            //
+
+            // Pezzo di ricambio
+            case 21:
+                immagineCarte = 3;
+                descrizioneCarte = "Ottieni 2 crediti.";
+                break;
+            case 22:
+                immagineCarte = 3;
+                descrizioneCarte = "Ottieni un materiale di metallo.";
+                break;
+            case 23:
+                immagineCarte = 3;
+                descrizioneCarte = "Ottieni una fiala di veleno.";
+                break;
+            case 24:
+                immagineCarte = 3;
+                descrizioneCarte = "Ottieni una bottiglia d'olio.";
+                break;
+            case 25:
+                immagineCarte = 3;
+                descrizioneCarte = "Ottieni una gemma.";
+                break;
+            //
+
+            // Von Caterlick 
+            // Ferire e curare 
+            case 26:
+                immagineCarte = 5;
+                descrizioneCarte = "Paga 5 crediti. Ogni avversario perde 1 punto vita e tu ottieni 1 punto vita";
+                break;
+            // Ferirsi e ferire
+            case 27:
+                immagineCarte = 5;
+                descrizioneCarte = "Perdi 2 punti vita. Ogni avversario perde 1 punto vita.";
+                break;
+            //
+
+            // Branco di Lingua rosa
+            // Enorme
+            case 28:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti i giocatori perdono 3 materiali di metallo.";
+                break;
+            case 29:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti i giocatori perdono 3 fiale di veleno.";
+                break;
+            case 30:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti i giocatori perdono 3 bottiglie d'olio.";
+                break;
+            case 31:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti i giocatori perdono 3 gemme.";
+                break;
+            //
+            // Infestazione
+            case 32:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti gli altri giocatori perdono 1 materiale di metallo";
+                break;
+            case 33:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti gli altri giocatori perdono 1 fiala di veleno";
+                break;
+            case 34:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti gli altri giocatori perdono 1 bottiglia d'olio";
+                break;
+            case 35:
+                immagineCarte = 6;
+                descrizioneCarte = "Tutti gli altri giocatori perdono 1 gemma";
+                break;
+            //
+            //
+            // Pioggia acida
+            // Debole
+            case 36:
+                immagineCarte = 7;
+                descrizioneCarte = "Tutti i giocatori perdono 1 punto vita.";
+                break;
+            // Normale
+            case 37:
+                immagineCarte = 7;
+                descrizioneCarte = "Tutti i giocatori perdono 1 punto vita e 2 materiali casuali";
+                break;
+            // Forte
+            case 38:
+                immagineCarte = 7;
+                descrizioneCarte = "Tutti i giocatori perdono 2 punto vita e 2 materiali casuali";
                 break;
             default:
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);
