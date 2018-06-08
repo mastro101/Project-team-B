@@ -19,6 +19,8 @@ public class Mission : MonoBehaviour {
 
     private void Update()
     {
+        /* era solo un Test WinScreen
+         * 
         if (Input.GetKeyDown(KeyCode.H))
         {
             WinScreen.SetActive(true);
@@ -42,21 +44,29 @@ public class Mission : MonoBehaviour {
             WinScreen.SetActive(true);
             p4ws.SetActive(true);
         }
-
+        */
         if (Player1.WinPoint == 4)
         {
+            WinScreen.SetActive(true);
+            p1ws.SetActive(true);
             Lg.SetTextLog(Player1 + " HA VINTO", true);
         }
         else if (Player2.WinPoint == 4)
         {
+            WinScreen.SetActive(true);
+            p2ws.SetActive(true);
             Lg.SetTextLog(Player2 + " HA VINTO", true);
         }
         else if (Player3.WinPoint == 4)
         {
+            WinScreen.SetActive(true);
+            p3ws.SetActive(true);
             Lg.SetTextLog(Player3 + " HA VINTO", true);
         }
         else if (Player1.WinPoint == 4)
         {
+            WinScreen.SetActive(true);
+            p4ws.SetActive(true);
             Lg.SetTextLog(Player4 + " HA VINTO", true);
         }
 
