@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour {
 
@@ -10,6 +11,16 @@ public class UIManager : MonoBehaviour {
 
     public GameObject InfoPanel;
     public bool _isInfo=false;
+
+    public GameObject UICity;
+    public GameObject UICardEvent;
+
+    public Texture[] MaterialiImage;
+    public RawImage MaterialeToBuy, MaterialeToSell;
+
+    public Texture[] EventCardImage;
+    public RawImage EventCard1, EventCard2;
+    public TextMeshProUGUI SpiegazioneCarta1, SpiegazioneCarta2;
 
     public Scrollbar sb;
 

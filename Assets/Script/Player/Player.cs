@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Player : PlayerStatistiche{
 
-    public Grid grid;
+    public TheGrid grid;
     public DetectObject detectObject;
     public GamePlayManager Gpm;
     public IEnemy currentEnemy;
@@ -139,7 +139,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetCredits(Credit.ToString());
             Tmp.SetName(Gpm.Name);
             Tmp.SetMosse(PossibleMove.ToString());
-            Tmp.SetCombatPoints(CombatPoint.ToString());
+            Tmp.SetWinPoints(WinPoint.ToString());
             Tmp.SetM1(Materiali[0].ToString());
             Tmp.SetM2(Materiali[1].ToString());
             Tmp.SetM3(Materiali[2].ToString());
@@ -168,8 +168,30 @@ public class Player : PlayerStatistiche{
             {
                 if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
                 {
+                    UI.UICity.SetActive(true);
                     UI._isHealActive[0] = true;
                     UI._isHealActive[1] = true;
+                    switch (grid.FindCell(XPos, ZPos).GetNameTile())
+                    {
+                        case "A":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[0];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[1];
+                            break;
+                        case "B":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[1];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[2];
+                            break;
+                        case "C":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[2];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[3];
+                            break;
+                        case "D":
+                            UI.MaterialeToSell.texture = UI.MaterialiImage[3];
+                            UI.MaterialeToBuy.texture = UI.MaterialiImage[0];
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else {
                     Gpm.CurrentState = GamePlayManager.State.End; 
@@ -716,13 +738,14 @@ public class Player : PlayerStatistiche{
         }
     }
 
-    int event1, event2;
+    [HideInInspector]
+    public int event1, event2;
 
     void Event() {
         //Controllo in che tipo di casella mi trovo
 
         
-        if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
+        if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy" && grid.FindCell(XPos, ZPos).GetNameTile() != "Credit" && grid.FindCell(XPos, ZPos).GetNameTile() != "Empty")
         {
             // se è all'interno di una città passa alla fase Object
             Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
@@ -740,7 +763,18 @@ public class Player : PlayerStatistiche{
         {
             // se è all'interno di una Casella Nemico passa alla fase Combat
             Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
+            neutralizeCell(XPos, ZPos);
             Gpm.CurrentState = GamePlayManager.State.Combat;
+        }
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Credit")
+        {
+            eventManager.TakeCredits(Random.Range(1, 11), this);
+            neutralizeCell(XPos, ZPos);
+            Gpm.CurrentState = GamePlayManager.State.End;
+        }
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Empty")
+        {
+            Gpm.CurrentState = GamePlayManager.State.End;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "")//In una casella neutrale
         {
@@ -748,25 +782,29 @@ public class Player : PlayerStatistiche{
             if (eventCard == 0)
             {
                 do {
-                    eventCard = Random.Range(1, 14);
+                    eventCard = Random.Range(3, 39);
                 } while (eventCard == 0);                
                 event1 = eventCard;
                 EventListView(event1);
                 Debug.Log(event1);
                 do {
-                    eventCard = Random.Range(1, 14);
+                    eventCard = Random.Range(3, 39);
                 }
                 while (eventCard == event1 || eventCard == 0);
                 event2 = eventCard;
                 EventListView(event2);
                 Debug.Log(event2);
+                UI.UICardEvent.SetActive(true);
             }
 
             if (Input.GetKeyDown(KeyCode.O))
             {
                 EventList(event1);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+                {
+                    neutralizeCell(XPos, ZPos);
                     Gpm.CurrentState = GamePlayManager.State.End;
+                }
             }
 
 
@@ -774,7 +812,10 @@ public class Player : PlayerStatistiche{
             {
                 EventList(event2);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && jumperEvent == false)
+                {
+                    neutralizeCell(XPos, ZPos);
                     Gpm.CurrentState = GamePlayManager.State.End;
+                }
             }
 
             
@@ -788,37 +829,38 @@ public class Player : PlayerStatistiche{
     {
         switch (_event)
         {
-            // Evento che non comporta un cambio State
+            // Nulla
             case 0:
                 Debug.Log("Error");
                 break;
-            // Evento Nemico
+            // Nulla
             case 1:
-                Gpm.CurrentState = GamePlayManager.State.Combat;
-                Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
+                Debug.Log("Error");
 
                 break;
-            // Cuore Meccanico
+            // Nulla
             case 2:
-                eventManager.Heal(2, this);
-                Lg.SetTextLog(Name + " Si è curato di 2", true);
+                Debug.Log("Error");
                 break;
-            // Pioggia Acida
+            // Von Canterlik Ferire 
             case 3:
-                eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("Gli altri giocatori hanno perso una vita", true);
+                if (Credit >= 3)
+                {
+                    eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                    Lg.SetTextLog("Gli altri giocatori hanno perso una vita", true);
+                }
                 break;
-            // Vincere la scommessa
+            // Combattimento
             case 4:
-                eventManager.TakeCredits(10, this);
-                Lg.SetTextLog(Name + "Ha guadagnato 10 crediti", true);
+                Gpm.CurrentState = GamePlayManager.State.Combat;
+                Lg.SetTextLog(Name + " Ha pescato una carta nemico", true);
                 break;
             // Ladri
             case 5:
                 eventManager.TakeCredits(-5, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 Lg.SetTextLog("Gli altri giocatori hanno perso 5 crediti", true);
                 break;
-            // Jumper
+            // Siero di velocità
             case 6:
                 if (jumperEvent == false)
                     PossibleMove = 2;
@@ -840,18 +882,142 @@ public class Player : PlayerStatistiche{
             case 9:
                 eventManager.Jynix(this, 4, 8, 10);
                 break;
-            // All in
+            // Jynix fold
             case 10:
-                eventManager.Jynix(this, 1, 8, 0, true);
-                break;
-            // fold
-            case 11:
                 eventManager.Jynix(this, 1, 10, 1);
                 break;
-            case 12:
-                eventManager.AddRandomMaterial(5, this);
+
+                // Sterlya
+            // Buon Umore
+            case 11:
+                eventManager.PayForMaterial(5, 0, 2, this);
+                eventManager.PayForMaterial(5, 1, 2, this);
+                eventManager.PayForMaterial(5, 2, 2, this);
+                eventManager.PayForMaterial(5, 3, 2, this);
                 break;
+            // Cattivo umore
+            case 12:
+                eventManager.PayForRandomMaterial(3, 2, this);
+                break;
+            // Generosa A
             case 13:
+                if (Credit == 0)
+                    AddMaterial(0, 2);
+                break;
+            // Generosa B
+            case 14:
+                if (Credit == 0)
+                    AddMaterial(1, 2);
+                break;
+            // Generosa C
+            case 15:
+                if (Credit == 0)
+                    AddMaterial(2, 2);
+                break;
+            // Generosa D
+            case 16:
+                if (Credit == 0)
+                    AddMaterial(3, 2);
+                break;
+            // Professionale A
+            case 17:
+                eventManager.PayForMaterial(2, 0, 1, this);
+                break;
+            // Professionale B
+            case 18:
+                eventManager.PayForMaterial(2, 1, 1, this);
+                break;
+            // Professionale C
+            case 19:
+                eventManager.PayForMaterial(2, 2, 1, this);
+                break;
+            // Professionale D
+            case 20:
+                eventManager.PayForMaterial(2, 3, 1, this);
+                break;
+                //
+            
+            // Pezzo di ricambio
+            case 21:
+                Credit += 2;
+                break;
+            case 22:
+                eventManager.AddMaterial(0, 1, this);
+                break;
+            case 23:
+                eventManager.AddMaterial(1, 1, this);
+                break;
+            case 24:
+                eventManager.AddMaterial(2, 1, this);
+                break;
+            case 25:
+                eventManager.AddMaterial(3, 1, this);
+                break;
+                //
+
+                // Von Caterlick 
+            // Ferire e curare 
+            case 26:
+                if (Credit >= 5)
+                {
+                    eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                    eventManager.Heal(1, this); 
+                    Lg.SetTextLog("Gli altri giocatori hanno perso una vita", true);
+                }
+                break;
+            // Ferirsi e ferire
+            case 27:
+                if (Life <= 2)
+                {
+                    eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                    Life -= 2;
+                }
+                break;
+                //
+
+                // Branco di Lingua rosa
+            // Enorme
+            case 28:
+                eventManager.AddMaterial(0, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            case 29:
+                eventManager.AddMaterial(1, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            case 30:
+                eventManager.AddMaterial(2, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            case 31:
+                eventManager.AddMaterial(3, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            //
+            // Infestazione
+            case 32:
+                eventManager.AddMaterial(0, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            case 33:
+                eventManager.AddMaterial(1, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            case 34:
+                eventManager.AddMaterial(2, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            case 35:
+                eventManager.AddMaterial(3, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            //
+            //
+            // Pioggia acida
+            // Debole
+            case 36:
+                eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            // Normale
+            case 37:
+                eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                eventManager.RemoveRandomMaterial(1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                break;
+            // Forte
+            case 38:
+                eventManager.Heal(-2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 eventManager.RemoveRandomMaterial(2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 break;
             default:
@@ -918,6 +1084,12 @@ public class Player : PlayerStatistiche{
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);
                 break;
         }
+    }
+
+    public void neutralizeCell(int _x, int _z)
+    {
+        grid.FindCell(_x, _z).Tile.GetComponent<Renderer>().material.color = Color.gray;
+        grid.FindCell(_x, _z).SetNameTile("Empty");
     }
 
     public void LoseRound()

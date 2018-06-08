@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour {
 
     private void Start()
     {
-        Panel.SetActive(false);
+        Panel.SetActive(true);
     }
 
     private void Update(){

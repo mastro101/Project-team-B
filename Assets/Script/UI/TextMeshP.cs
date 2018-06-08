@@ -16,7 +16,7 @@ public class TextMeshP : MonoBehaviour {
     public TextMeshProUGUI M2Text;
     public TextMeshProUGUI M3Text;
     public TextMeshProUGUI M4Text;
-    public TextMeshProUGUI CombatPointsText;
+    public TextMeshProUGUI WinPointsText;
 
 
     public bool _TurnPlayer;
@@ -25,13 +25,12 @@ public class TextMeshP : MonoBehaviour {
     public bool _Credits;
 
     public string NamePlayer;
-    public string Mission, Life, Credits, Mosse, M1, M2, M3, M4, CombatPoints;
+    public string Mission, Life, Credits, Mosse, M1, M2, M3, M4, WinPoints;
     public string PlayerInventory;
 	
 	// Update is called once per frame
 	void Update () {
         textMesh.text=NamePlayer;
-        MissionText.text = Mission;
         LifeText.text = Life;
         CreditsText.text = Credits;
         PlayerInventoryText.text = PlayerInventory;
@@ -40,7 +39,7 @@ public class TextMeshP : MonoBehaviour {
         M2Text.text = M2;
         M3Text.text = M3;
         M4Text.text = M4;
-        CombatPointsText.text = CombatPoints;
+        WinPointsText.text = WinPoints;
     }
 
     public void SetName(string name) {
@@ -54,11 +53,11 @@ public class TextMeshP : MonoBehaviour {
     }
 
     public void SetLife(string life) {
-        Life = "Life:" + life;
+        Life = "Life: " + life;
     }
 
     public void SetCredits(string _credits) {
-        Credits = "Credits:" + _credits;
+        Credits = ": " + _credits;
     }
 
     public void SetMosse(string mosse)
@@ -68,26 +67,26 @@ public class TextMeshP : MonoBehaviour {
 
     public void SetM1(string _m1)
     {
-        M1 = "M1: " + _m1;
+        M1 = ": " + _m1;
     }
 
     public void SetM2(string _m2)
     {
-        M2 = "M2: " + _m2;
+        M2 = ": " + _m2;
     }
 
     public void SetM3(string _m3)
     {
-        M3 = "M3: " + _m3;
+        M3 = ": " + _m3;
     }
 
     public void SetM4(string _m4)
     {
-        M4 = "M4: " + _m4;
+        M4 = ": " + _m4;
     }
 
-    public void SetCombatPoints(string _combatPoints)
+    public void SetWinPoints(string _winPoints)
     {
-        CombatPoints = "Punti Combattimento: " + _combatPoints;
+        WinPoints = "Win Point: " + _winPoints;
     }
 }
