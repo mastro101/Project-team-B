@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
 
     public GameObject PanelConsole;
     bool ActiveConsole = true;
-
+    public GameObject MainMenu;
+    bool ActiveMainMenu = true;
     Vector3 ConsolPosition;
 
     UIManager UI;
@@ -39,6 +41,25 @@ public class ButtonManager : MonoBehaviour {
             ActiveConsole = false;
 
         }
+    }
+
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
+    public void OpenMenu()
+    {
+        MainMenu.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        MainMenu.SetActive(false);
+    }
+
+    public void gotoMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void SellMateriali(int _materialType)
@@ -492,4 +513,8 @@ public class ButtonManager : MonoBehaviour {
         }
         //EndP.SetActive(false);
     }
+
+    
+
+
 }
