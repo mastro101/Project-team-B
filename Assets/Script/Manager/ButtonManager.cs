@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
 
     public GameObject PanelConsole;
     bool ActiveConsole = true;
-
+    public GameObject MainMenu;
+    bool ActiveMainMenu = true;
     Vector3 ConsolPosition;
 
     UIManager UI;
@@ -39,6 +41,25 @@ public class ButtonManager : MonoBehaviour {
             ActiveConsole = false;
 
         }
+    }
+
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
+    public void OpenMenu()
+    {
+        MainMenu.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        MainMenu.SetActive(false);
+    }
+
+    public void gotoMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void SellMateriali(int _materialType)
@@ -90,6 +111,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
+                    Pl1.eventCard = 0;
                 }
                 break;
             case "Blue":
@@ -98,6 +120,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
+                    Pl2.eventCard = 0;
                 }
                 break;
             case "Red":
@@ -106,6 +129,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
+                    Pl3.eventCard = 0;
                 }
                 break;
             case "Yellow":
@@ -114,6 +138,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
+                    Pl4.eventCard = 0;
                 }
                 break;
         }
@@ -131,6 +156,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
+                    Pl1.eventCard = 0;
                 }
                 break;
             case "Blue":
@@ -139,6 +165,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
+                    Pl2.eventCard = 0;
                 }
                 break;
             case "Red":
@@ -147,6 +174,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
+                    Pl3.eventCard = 0;
                 }
                 break;
             case "Yellow":
@@ -155,6 +183,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     UI.UICardEvent.SetActive(false);
                     Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
+                    Pl4.eventCard = 0;
                 }
                 break;
         }
@@ -464,6 +493,21 @@ public class ButtonManager : MonoBehaviour {
         {
             EndP.SetActive(false);
             UI.UICardEvent.SetActive(false);
+            switch (Gpm.Name)
+            {
+                case "Green":
+                    Pl1.eventCard = 0;
+                    break;
+                case "Blue":
+                    Pl2.eventCard = 0;
+                    break;
+                case "Red":
+                    Pl3.eventCard = 0;
+                    break;
+                case "Yellow":
+                    Pl4.eventCard = 0;
+                    break;
+            }
             Gpm.CurrentState = GamePlayManager.State.End;
         }
         else if (Gpm.CurrentState == GamePlayManager.State.Movement)
@@ -492,4 +536,8 @@ public class ButtonManager : MonoBehaviour {
         }
         //EndP.SetActive(false);
     }
+
+    
+
+
 }
