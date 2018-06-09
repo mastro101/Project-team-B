@@ -33,9 +33,13 @@ public class Player : PlayerStatistiche{
         {
             if (value > MaxLife)
                 life = MaxLife;
+            else if (value <= 0)
+            {
+                life = 0;
+                Morte();
+            }
             else
-                life = value;
-            Morte();
+                life = value;                
         }
     }
 
@@ -78,7 +82,7 @@ public class Player : PlayerStatistiche{
     public bool inCombatEnemy;
     public bool inCombatPlayer;
 
-    float countdown = 5f;
+    float countdown = 2f;
 
     void Start()
     {
@@ -267,7 +271,7 @@ public class Player : PlayerStatistiche{
                             Debug.Log(countdown);
                             if (countdown <= 0)
                             {
-                                countdown = 5f;
+                                countdown = 2f;
                                 Gpm.CurrentCombatState = GamePlayManager.CombatState.Check;
                             }
                         }
@@ -570,7 +574,7 @@ public class Player : PlayerStatistiche{
         
         DistanceMove = 1;
         //DistanceMove = playerStatistiche.GetDistance();
-        if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
+        if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity() && grid.FindCell(ObjectX, ObjectZ).PlayerOnTile < 2) {
 
             
 
@@ -1276,6 +1280,15 @@ public class Player : PlayerStatistiche{
         
         if ((currentEnemy != null && currentEnemy.CombatPoint == 1) || (!inCombatEnemy && currentEnemyPlayer.CombatPoint == 1))
         {
+            if (!inCombatEnemy)
+            {
+                if (Gpm.Name == Name)
+                    grid.FindCell(XPos, ZPos).SetPlayer(this);
+                else
+                    grid.FindCell(XPos, ZPos).SetPlayer(currentEnemyPlayer);
+            }
+
+
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
 
@@ -1291,6 +1304,7 @@ public class Player : PlayerStatistiche{
             {
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
+                Life--;
             }
 
             if (inCombatEnemy)
@@ -1299,6 +1313,7 @@ public class Player : PlayerStatistiche{
             if (!inCombatEnemy)
             {                
                 inCombatPlayer = false;
+                currentEnemyPlayer.inCombatPlayer = false;
                 playerPrefab.transform.position = new Vector3(1000,1000,1000);
                 currentEnemyPlayer.playerPrefab.transform.position = new Vector3(1000,1000,1000);
             }
@@ -1331,7 +1346,7 @@ public class Player : PlayerStatistiche{
         {
             grid.FindCell(XPos, ZPos).PlayerOnTile--;
             if (grid.FindCell(XPos, ZPos).POnTile == this)
-                grid.FindCell(XPos, ZPos).SetPlayer(null);
+                grid.FindCell(XPos, ZPos).SetPlayer(currentEnemyPlayer);
             transform.position = grid.GetCenterPosition();
             transform.position += new Vector3(0f, _Yoffset, 0f);
             SetPositionPlayer();
@@ -1341,14 +1356,8 @@ public class Player : PlayerStatistiche{
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
             PossibleMove = 4;
             Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-            if (Name == Gpm.Name)
-                Gpm.CurrentState = GamePlayManager.State.End;
-                
-        }
-
-           
+        }          
     }
-
 }
 
 
