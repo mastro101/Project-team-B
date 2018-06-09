@@ -22,6 +22,13 @@ public class UIManager : MonoBehaviour {
     public RawImage EventCard1, EventCard2;
     public TextMeshProUGUI SpiegazioneCarta1, SpiegazioneCarta2;
 
+    public Texture[] PlayerImage;
+    public RawImage PlayerTurnImage;
+    public RawImage Player1InCombat, PlayerOrEnemyInCombat;
+
+    public Texture[] AttackImage;
+    public RawImage[] AttackPlayer, AttackPlayerOrEnemy;
+
     public Scrollbar sb;
 
 	// Use this for initialization
@@ -77,4 +84,25 @@ public class UIManager : MonoBehaviour {
         _isHealActive[0] = false;
         _isHealActive[1] = true;
     }
+
+    public void LightAttackOnPlayer(int _attack)
+    {
+        AttackPlayer[_attack].gameObject.SetActive(true);
+    }
+
+    public void LightAttackOnEnemy(int _attack)
+    {
+        AttackPlayerOrEnemy[_attack].gameObject.SetActive(true);
+    }
+
+    public void LightAttackOff()
+    {
+        AttackPlayer[0].gameObject.SetActive(false);
+        AttackPlayer[1].gameObject.SetActive(false);
+        AttackPlayer[2].gameObject.SetActive(false);
+        AttackPlayerOrEnemy[0].gameObject.SetActive(false);
+        AttackPlayerOrEnemy[1].gameObject.SetActive(false);
+        AttackPlayerOrEnemy[2].gameObject.SetActive(false);
+    }
+
 }

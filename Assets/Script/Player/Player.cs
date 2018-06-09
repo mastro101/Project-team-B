@@ -150,6 +150,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetM2(Materiali[1].ToString());
             Tmp.SetM3(Materiali[2].ToString());
             Tmp.SetM4(Materiali[3].ToString());
+            UI.PlayerTurnImage.texture = UI.PlayerImage[(int)Gpm.CurrentTurn];
 
 
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
@@ -205,7 +206,7 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
-                
+                UI.Player1InCombat.texture = UI.PlayerImage[(int)Gpm.CurrentTurn];
 
                 if (grid.FindCell(XPos, ZPos).POnTile == this)
                 {
@@ -213,6 +214,7 @@ public class Player : PlayerStatistiche{
                     if (!inCombatEnemy)
                     {
                         SpawnEnemy();
+                        UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[currentEnemy.ID + 4];
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographicSize = 4;
@@ -225,6 +227,21 @@ public class Player : PlayerStatistiche{
                     if (!inCombatPlayer)
                     {
                         currentEnemyPlayer = grid.FindCell(XPos, ZPos).POnTile;
+                        switch (currentEnemyPlayer.Name)
+                        {
+                            case "Green":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[0];
+                                break;
+                            case "Blue":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[1];
+                                break;
+                            case "Red":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[2];
+                                break;
+                            case "Yellow":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[3];
+                                break;
+                        }
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographicSize = 4;
@@ -266,12 +283,15 @@ public class Player : PlayerStatistiche{
                         }
 
                         if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Animation)
-                        { 
+                        {
+                            UI.LightAttackOnPlayer(Attacks - 1);
+                            UI.LightAttackOnEnemy(currentEnemy.Attack - 1);
                             countdown -= Time.deltaTime;
                             Debug.Log(countdown);
                             if (countdown <= 0)
                             {
                                 countdown = 2f;
+                                UI.LightAttackOff();
                                 Gpm.CurrentCombatState = GamePlayManager.CombatState.Check;
                             }
                         }
@@ -374,10 +394,13 @@ public class Player : PlayerStatistiche{
 
                         if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Animation)
                         {
+                            UI.LightAttackOnPlayer(Attacks - 1);
+                            UI.LightAttackOnEnemy(currentEnemyPlayer.Attacks - 1);
                             countdown -= Time.deltaTime;
                             Debug.Log(countdown);
                             if (countdown <= 0)
-                            {                               
+                            {
+                                UI.LightAttackOff();
                                 Gpm.CurrentCombatState = GamePlayManager.CombatState.Check;                                
                             }
                         }
