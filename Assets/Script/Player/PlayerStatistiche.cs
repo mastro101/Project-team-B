@@ -18,12 +18,4 @@ public class PlayerStatistiche : MonoBehaviour {
     public int CombatPoint;
     public int CurrentAttack;
     public int Attacks;
-    public GameObject[] Equip = {null, null, null};
-
-    private void Awake()
-    {
-       
-    }
-
-    
 }

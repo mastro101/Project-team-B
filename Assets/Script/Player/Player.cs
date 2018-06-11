@@ -33,9 +33,13 @@ public class Player : PlayerStatistiche{
         {
             if (value > MaxLife)
                 life = MaxLife;
+            else if (value <= 0)
+            {
+                life = 0;
+                Morte();
+            }
             else
-                life = value;
-            Morte();
+                life = value;                
         }
     }
 
@@ -78,7 +82,7 @@ public class Player : PlayerStatistiche{
     public bool inCombatEnemy;
     public bool inCombatPlayer;
 
-    float countdown = 5f;
+    float countdown = 2f;
 
     void Start()
     {
@@ -146,6 +150,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetM2(Materiali[1].ToString());
             Tmp.SetM3(Materiali[2].ToString());
             Tmp.SetM4(Materiali[3].ToString());
+            UI.PlayerTurnImage.texture = UI.PlayerImage[(int)Gpm.CurrentTurn];
 
 
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
@@ -201,7 +206,7 @@ public class Player : PlayerStatistiche{
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Combat)
             {
-                
+                UI.Player1InCombat.texture = UI.PlayerImage[(int)Gpm.CurrentTurn];
 
                 if (grid.FindCell(XPos, ZPos).POnTile == this)
                 {
@@ -209,6 +214,7 @@ public class Player : PlayerStatistiche{
                     if (!inCombatEnemy)
                     {
                         SpawnEnemy();
+                        UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[currentEnemy.ID + 4];
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographicSize = 4;
@@ -221,6 +227,21 @@ public class Player : PlayerStatistiche{
                     if (!inCombatPlayer)
                     {
                         currentEnemyPlayer = grid.FindCell(XPos, ZPos).POnTile;
+                        switch (currentEnemyPlayer.Name)
+                        {
+                            case "Green":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[0];
+                                break;
+                            case "Blue":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[1];
+                                break;
+                            case "Red":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[2];
+                                break;
+                            case "Yellow":
+                                UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[3];
+                                break;
+                        }
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographicSize = 4;
@@ -262,12 +283,15 @@ public class Player : PlayerStatistiche{
                         }
 
                         if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Animation)
-                        { 
+                        {
+                            UI.LightAttackOnPlayer(Attacks - 1);
+                            UI.LightAttackOnEnemy(currentEnemy.Attack - 1);
                             countdown -= Time.deltaTime;
                             Debug.Log(countdown);
                             if (countdown <= 0)
                             {
-                                countdown = 5f;
+                                countdown = 2f;
+                                UI.LightAttackOff();
                                 Gpm.CurrentCombatState = GamePlayManager.CombatState.Check;
                             }
                         }
@@ -370,10 +394,13 @@ public class Player : PlayerStatistiche{
 
                         if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Animation)
                         {
+                            UI.LightAttackOnPlayer(Attacks - 1);
+                            UI.LightAttackOnEnemy(currentEnemyPlayer.Attacks - 1);
                             countdown -= Time.deltaTime;
                             Debug.Log(countdown);
                             if (countdown <= 0)
-                            {                               
+                            {
+                                UI.LightAttackOff();
                                 Gpm.CurrentCombatState = GamePlayManager.CombatState.Check;                                
                             }
                         }
@@ -570,7 +597,7 @@ public class Player : PlayerStatistiche{
         
         DistanceMove = 1;
         //DistanceMove = playerStatistiche.GetDistance();
-        if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity()) {
+        if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity() && grid.FindCell(ObjectX, ObjectZ).PlayerOnTile < 2) {
 
             
 
@@ -1276,6 +1303,15 @@ public class Player : PlayerStatistiche{
         
         if ((currentEnemy != null && currentEnemy.CombatPoint == 1) || (!inCombatEnemy && currentEnemyPlayer.CombatPoint == 1))
         {
+            if (!inCombatEnemy)
+            {
+                if (Gpm.Name == Name)
+                    grid.FindCell(XPos, ZPos).SetPlayer(this);
+                else
+                    grid.FindCell(XPos, ZPos).SetPlayer(currentEnemyPlayer);
+            }
+
+
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
 
@@ -1291,6 +1327,7 @@ public class Player : PlayerStatistiche{
             {
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
+                Life--;
             }
 
             if (inCombatEnemy)
@@ -1299,6 +1336,7 @@ public class Player : PlayerStatistiche{
             if (!inCombatEnemy)
             {                
                 inCombatPlayer = false;
+                currentEnemyPlayer.inCombatPlayer = false;
                 playerPrefab.transform.position = new Vector3(1000,1000,1000);
                 currentEnemyPlayer.playerPrefab.transform.position = new Vector3(1000,1000,1000);
             }
@@ -1331,7 +1369,7 @@ public class Player : PlayerStatistiche{
         {
             grid.FindCell(XPos, ZPos).PlayerOnTile--;
             if (grid.FindCell(XPos, ZPos).POnTile == this)
-                grid.FindCell(XPos, ZPos).SetPlayer(null);
+                grid.FindCell(XPos, ZPos).SetPlayer(currentEnemyPlayer);
             transform.position = grid.GetCenterPosition();
             transform.position += new Vector3(0f, _Yoffset, 0f);
             SetPositionPlayer();
@@ -1341,14 +1379,8 @@ public class Player : PlayerStatistiche{
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
             PossibleMove = 4;
             Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
-            if (Name == Gpm.Name)
-                Gpm.CurrentState = GamePlayManager.State.End;
-                
-        }
-
-           
+        }          
     }
-
 }
 
 
