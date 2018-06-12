@@ -3727,7 +3727,7 @@ MonoBehaviour:
   Name: Red
   CheckMission: 0
   Mission: 0
-  MaxLife: 4
+  MaxLife: 5
   life: 0
   Materiali: 
   WinPoint: 0
@@ -3757,6 +3757,8 @@ MonoBehaviour:
   eventCard: 0
   inCombatEnemy: 0
   inCombatPlayer: 0
+  countdown: 2
+  JustEmpted: 0
   event1: 0
   event2: 0
 --- !u!1 &490757766
@@ -3888,11 +3890,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5841,7 +5843,7 @@ MonoBehaviour:
   Name: Blue
   CheckMission: 0
   Mission: 0
-  MaxLife: 4
+  MaxLife: 5
   life: 0
   Materiali: 
   WinPoint: 0
@@ -5872,6 +5874,8 @@ MonoBehaviour:
   eventCard: 0
   inCombatEnemy: 0
   inCombatPlayer: 0
+  countdown: 2
+  JustEmpted: 0
   event1: 0
   event2: 0
 --- !u!1 &860234989
@@ -6178,7 +6182,7 @@ MonoBehaviour:
   Name: Yellow
   CheckMission: 0
   Mission: 0
-  MaxLife: 4
+  MaxLife: 5
   life: 0
   Materiali: 
   WinPoint: 0
@@ -6208,6 +6212,8 @@ MonoBehaviour:
   eventCard: 0
   inCombatEnemy: 0
   inCombatPlayer: 0
+  countdown: 2
+  JustEmpted: 0
   event1: 0
   event2: 0
 --- !u!1 &931455028
@@ -9084,11 +9090,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -12552,7 +12558,7 @@ MonoBehaviour:
   Name: Green
   CheckMission: 0
   Mission: 0
-  MaxLife: 4
+  MaxLife: 5
   life: 0
   Materiali: 
   WinPoint: 0
@@ -12583,6 +12589,8 @@ MonoBehaviour:
   eventCard: 0
   inCombatEnemy: 0
   inCombatPlayer: 0
+  countdown: 2
+  JustEmpted: 0
   event1: 0
   event2: 0
 --- !u!1 &2076411933

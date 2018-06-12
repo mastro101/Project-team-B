@@ -102,7 +102,6 @@ public class ButtonManager : MonoBehaviour {
 
     public void Event1()
     {
-        Debug.Log("FuckU");
         switch (Gpm.Name)
         {
             case "Green":
@@ -112,6 +111,8 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
                     Pl1.eventCard = 0;
+                    Pl1.countdown = 2f;
+                    Pl1.JustEmpted = true;
                 }
                 break;
             case "Blue":
@@ -121,6 +122,8 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
                     Pl2.eventCard = 0;
+                    Pl2.countdown = 2f;
+                    Pl2.JustEmpted = true;
                 }
                 break;
             case "Red":
@@ -130,6 +133,8 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
                     Pl3.eventCard = 0;
+                    Pl3.countdown = 2f;
+                    Pl3.JustEmpted = true;
                 }
                 break;
             case "Yellow":
@@ -139,15 +144,16 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
                     Pl4.eventCard = 0;
+                    Pl4.countdown = 2f;
+                    Pl4.JustEmpted = true;
                 }
                 break;
         }
-        Gpm.CurrentState = GamePlayManager.State.End;
+        Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
     }
 
     public void Event2()
     {
-        Debug.Log("FuckU");
         switch (Gpm.Name)
         {
             case "Green":
@@ -157,6 +163,8 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
                     Pl1.eventCard = 0;
+                    Pl1.countdown = 2f;
+                    Pl1.JustEmpted = true;
                 }
                 break;
             case "Blue":
@@ -166,6 +174,8 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
                     Pl2.eventCard = 0;
+                    Pl2.countdown = 2f;
+                    Pl2.JustEmpted = true;
                 }
                 break;
             case "Red":
@@ -175,6 +185,8 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
                     Pl3.eventCard = 0;
+                    Pl3.countdown = 2f;
+                    Pl3.JustEmpted = true;
                 }
                 break;
             case "Yellow":
@@ -184,10 +196,12 @@ public class ButtonManager : MonoBehaviour {
                     UI.UICardEvent.SetActive(false);
                     Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
                     Pl4.eventCard = 0;
+                    Pl4.countdown = 2f;
+                    Pl4.JustEmpted = true;
                 }
                 break;
         }
-        Gpm.CurrentState = GamePlayManager.State.End;
+        Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
     }
 
     //
@@ -451,28 +465,28 @@ public class ButtonManager : MonoBehaviour {
         switch (Gpm.Name)
         {
             case "Green":
-                if (Pl1.Credit >= 6)
+                if (Pl1.Credit >= 6 && Pl1.Life == Pl1.MaxLife)
                 {
                     Pl1.Life = Pl1.MaxLife;
                     Pl1.Credit -= 6;
                 }
                 break;
             case "Blue":
-                if (Pl2.Credit >= 6)
+                if (Pl2.Credit >= 6 && Pl2.Life == Pl2.MaxLife)
                 {
                     Pl2.Life = Pl2.MaxLife;
                     Pl2.Credit -= 6;
                 }
                 break;
             case "Red":
-                if (Pl3.Credit >= 6)
+                if (Pl3.Credit >= 6 && Pl3.Life == Pl3.MaxLife)
                 {
                     Pl3.Life = Pl3.MaxLife;
                     Pl3.Credit -= 6;
                 }
                 break;
             case "Yellow":
-                if (Pl4.Credit >= 6)
+                if (Pl4.Credit >= 6 && Pl4.Life == Pl4.MaxLife)
                 {
                     Pl4.Life = Pl4.MaxLife;
                     Pl4.Credit -= 6;

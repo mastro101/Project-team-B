@@ -38,7 +38,15 @@ public class GamePlayManager : MonoBehaviour
         NotCombat,
     }
 
+    public enum EventState
+    {
+        NotEvent,
+        Event,
+        Animation,
+    }
+
     public CombatState CurrentCombatState;
+    public EventState CurrentEventState;
 
     public PlayerTurn CurrentTurn
     {

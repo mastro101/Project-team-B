@@ -82,7 +82,10 @@ public class Player : PlayerStatistiche{
     public bool inCombatEnemy;
     public bool inCombatPlayer;
 
-    float countdown = 2f;
+    [HideInInspector]
+    public float countdown = 2f;
+    [HideInInspector]
+    public bool JustEmpted;
 
     void Start()
     {
@@ -407,7 +410,7 @@ public class Player : PlayerStatistiche{
 
                         if (Gpm.CurrentCombatState == GamePlayManager.CombatState.Check)
                         {
-                            countdown = 5f;
+                            countdown = 2f;
                             switch (Attacks)
                             {
                                 case 1:
@@ -510,7 +513,11 @@ public class Player : PlayerStatistiche{
 
     private void SpawnEnemy()
     {
-        currentEnemy = enemyManager.GetEnemy(Random.Range(0, enemyManager.EnemyPrefabs.Length));
+        int possibilityEnemy0 = Random.Range(0, 10);
+        if (possibilityEnemy0 < 7)
+            currentEnemy = enemyManager.GetEnemy(0);
+        else
+            currentEnemy = enemyManager.GetEnemy(1);
         currentEnemy.gameObject.transform.position = new Vector3(21f, 36.9f, 21.03f);
         currentEnemy.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         currentEnemy.Spawn();
@@ -802,34 +809,53 @@ public class Player : PlayerStatistiche{
             neutralizeCell(XPos, ZPos);
             Gpm.CurrentState = GamePlayManager.State.End;
         }
-        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Empty")
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "" || (grid.FindCell(XPos, ZPos).GetNameTile() == "Empty" && JustEmpted))//In una casella evento
         {
-            Gpm.CurrentState = GamePlayManager.State.End;
-        }
-        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "")//In una casella evento
-        {
-            // Viene scelto un numero randomico per ogni evento
-            if (eventCard == 0)
+            if (Gpm.CurrentEventState == GamePlayManager.EventState.NotEvent)
+                Gpm.CurrentEventState = GamePlayManager.EventState.Event;
+
+            if (Gpm.CurrentEventState == GamePlayManager.EventState.Event)
             {
-                do {
-                    eventCard = Random.Range(3, 39);
-                } while (eventCard == 0);                
-                event1 = eventCard;
-                EventListView(event1);
-                UI.EventCard1.texture = UI.EventCardImage[immagineCarte];
-                UI.SpiegazioneCarta1.text = descrizioneCarte;
-                Debug.Log(event1);
-                do {
-                    eventCard = Random.Range(3, 39);
+                // Viene scelto un numero randomico per ogni evento
+                if (eventCard == 0)
+                {
+                    do
+                    {
+                        eventCard = Random.Range(3, 39);
+                    } while (eventCard == 0);
+                    event1 = eventCard;
+                    EventListView(event1);
+                    UI.EventCard1.texture = UI.EventCardImage[immagineCarte];
+                    UI.SpiegazioneCarta1.text = descrizioneCarte;
+                    Debug.Log(event1);
+                    do
+                    {
+                        eventCard = Random.Range(3, 39);
+                    }
+                    while (eventCard == event1 || eventCard == 0);
+                    event2 = eventCard;
+                    EventListView(event2);
+                    UI.EventCard2.texture = UI.EventCardImage[immagineCarte];
+                    UI.SpiegazioneCarta2.text = descrizioneCarte;
+                    Debug.Log(event2);
+                    UI.UICardEvent.SetActive(true);
                 }
-                while (eventCard == event1 || eventCard == 0);
-                event2 = eventCard;
-                EventListView(event2);
-                UI.EventCard2.texture = UI.EventCardImage[immagineCarte];
-                UI.SpiegazioneCarta2.text = descrizioneCarte;
-                Debug.Log(event2);
-                UI.UICardEvent.SetActive(true);
             }
+
+
+            if (Gpm.CurrentEventState == GamePlayManager.EventState.Animation)
+            {
+                countdown -= Time.deltaTime;
+                Debug.Log(countdown);
+                if (countdown <= 0)
+                {
+                    countdown = 2f;
+                    JustEmpted = false;
+                    Gpm.CurrentEventState = GamePlayManager.EventState.NotEvent;
+                    Gpm.CurrentState = GamePlayManager.State.End;
+                }
+            }
+
 
            // if (Input.GetKeyDown(KeyCode.O))
            // {
@@ -855,8 +881,15 @@ public class Player : PlayerStatistiche{
             
            
         }
+        else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Empty")
+        {
+            if (!JustEmpted)
+            {
+                Gpm.CurrentState = GamePlayManager.State.End;
+            }
+        }
 
-        
+
     }
 
     public void EventList(int _event)
@@ -1333,6 +1366,8 @@ public class Player : PlayerStatistiche{
             if (inCombatEnemy)
                 Life -= currentEnemy.Damage;
 
+
+
             if (!inCombatEnemy)
             {                
                 inCombatPlayer = false;
@@ -1367,9 +1402,12 @@ public class Player : PlayerStatistiche{
         }
         if (Life <= 0)
         {
+            Credit = 0;
             grid.FindCell(XPos, ZPos).PlayerOnTile--;
-            if (grid.FindCell(XPos, ZPos).POnTile == this)
+            if (grid.FindCell(XPos, ZPos).POnTile == this && Gpm.CurrentState == GamePlayManager.State.Combat && !inCombatEnemy)
                 grid.FindCell(XPos, ZPos).SetPlayer(currentEnemyPlayer);
+            else if (grid.FindCell(XPos, ZPos).POnTile == this)
+                grid.FindCell(XPos, ZPos).POnTile = null;
             transform.position = grid.GetCenterPosition();
             transform.position += new Vector3(0f, _Yoffset, 0f);
             SetPositionPlayer();
@@ -1377,6 +1415,7 @@ public class Player : PlayerStatistiche{
             ZPos = 6;
             Life = 5;
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
+            grid.FindCell(XPos, ZPos).POnTile = this;
             PossibleMove = 4;
             Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
         }          
