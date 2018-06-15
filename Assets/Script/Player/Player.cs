@@ -86,10 +86,12 @@ public class Player : PlayerStatistiche{
     public float countdown = 2f;
     [HideInInspector]
     public bool JustEmpted;
+    float sizeCamera;
 
     void Start()
     {
         Life = 5;
+        sizeCamera = gameCamera.orthographicSize;
 
         enemyManager = FindObjectOfType<EnemyPoolManager>();
         MissionManager = FindObjectOfType<Mission>();
@@ -528,9 +530,9 @@ public class Player : PlayerStatistiche{
     public void OnEnemyDestroy(IEnemy enemy)
     {
         CB.CloseInventoryCombat();
-        gameCamera.transform.position = new Vector3(40f, 32.3f, -7f);
-        gameCamera.transform.rotation = Quaternion.Euler(41.36f, -45.542f, 0.361f);
-        gameCamera.orthographicSize = 21;
+        gameCamera.transform.position = GameObject.Find("CameraStartPosition").transform.position;
+        gameCamera.transform.rotation = GameObject.Find("CameraStartPosition").transform.rotation;
+        gameCamera.orthographicSize = sizeCamera;
         if (currentEnemy.IsAlive == false)
         {
             Credit += currentEnemy.Credits;
@@ -1348,9 +1350,9 @@ public class Player : PlayerStatistiche{
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
 
-            gameCamera.transform.position = new Vector3(40f, 32.3f, -7f);
-            gameCamera.transform.rotation = Quaternion.Euler(41.36f, -45.542f, 0.361f);
-            gameCamera.orthographicSize = 21;
+            gameCamera.transform.position = GameObject.Find("CameraStartPosition").transform.position;
+            gameCamera.transform.rotation = GameObject.Find("CameraStartPosition").transform.rotation;
+            gameCamera.orthographicSize = sizeCamera;
             
 
             if (currentEnemy != null)
