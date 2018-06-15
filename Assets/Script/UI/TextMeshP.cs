@@ -30,7 +30,7 @@ public class TextMeshP : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        textMesh.text=NamePlayer;
+        //textMesh.text=NamePlayer;
         LifeText.text = Life;
         CreditsText.text = Credits;
         PlayerInventoryText.text = PlayerInventory;
