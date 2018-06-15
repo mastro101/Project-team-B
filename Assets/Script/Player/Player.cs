@@ -91,7 +91,6 @@ public class Player : PlayerStatistiche{
     void Start()
     {
         Life = 5;
-        sizeCamera = gameCamera.orthographicSize;
 
         enemyManager = FindObjectOfType<EnemyPoolManager>();
         MissionManager = FindObjectOfType<Mission>();
@@ -107,6 +106,7 @@ public class Player : PlayerStatistiche{
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
         SetPositionPlayer();
+        sizeCamera = gameCamera.orthographicSize;
     }
 
 
