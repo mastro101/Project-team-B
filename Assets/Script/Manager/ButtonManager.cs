@@ -22,25 +22,25 @@ public class ButtonManager : MonoBehaviour {
         grid = FindObjectOfType<TheGrid>();
         UI = FindObjectOfType<UIManager>();
         ConsolPosition = PanelConsole.transform.position;
-        PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
+        //PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
     }
 
 
     public void OpenConsole() {
-        if (!ActiveConsole)
-        {
-            //PanelConsole.SetActive(true);
-            PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
-            ActiveConsole = true;
-
-        }
-        else
-        {
-            //PanelConsole.SetActive(false);
-            PanelConsole.transform.position = ConsolPosition;
-            ActiveConsole = false;
-
-        }
+       //if (!ActiveConsole)
+       //{
+       //    //PanelConsole.SetActive(true);
+       //    PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
+       //    ActiveConsole = true;
+       //
+       //}
+       //else
+       //{
+       //    //PanelConsole.SetActive(false);
+       //    PanelConsole.transform.position = ConsolPosition;
+       //    ActiveConsole = false;
+       //
+       //}
         UI.Console.SetActive(false);
         Gpm.CurrentState = GamePlayManager.State.End;
     }
