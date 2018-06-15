@@ -53,16 +53,16 @@ public class TextMeshP : MonoBehaviour {
     }
 
     public void SetLife(string life) {
-        Life = "Life: " + life;
+        Life = life;
     }
 
     public void SetCredits(string _credits) {
-        Credits = ": " + _credits;
+        Credits = _credits;
     }
 
     public void SetMosse(string mosse)
     {
-        Mosse = "MOSSE RIMASTE: " + mosse;
+        Mosse = mosse;
     }
 
     public void SetM1(string _m1)
@@ -87,6 +87,6 @@ public class TextMeshP : MonoBehaviour {
 
     public void SetWinPoints(string _winPoints)
     {
-        WinPoints = "Win Point: " + _winPoints;
+        WinPoints = _winPoints;
     }
 }
