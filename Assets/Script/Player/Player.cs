@@ -86,11 +86,12 @@ public class Player : PlayerStatistiche{
     public float countdown = 2f;
     [HideInInspector]
     public bool JustEmpted;
+    float cameraSize;
 
     void Start()
     {
         Life = 5;
-
+        
         enemyManager = FindObjectOfType<EnemyPoolManager>();
         MissionManager = FindObjectOfType<Mission>();
         gameCamera = FindObjectOfType<Camera>();
@@ -105,6 +106,7 @@ public class Player : PlayerStatistiche{
         transform.position += new Vector3(0f, _Yoffset, 0f);   //Fix posizione Y del player
         CheckMissions = new int[4];
         SetPositionPlayer();
+        cameraSize = gameCamera.orthographicSize;
     }
 
 
@@ -528,9 +530,9 @@ public class Player : PlayerStatistiche{
     public void OnEnemyDestroy(IEnemy enemy)
     {
         CB.CloseInventoryCombat();
-        gameCamera.transform.position = new Vector3(40f, 32.3f, -7f);
-        gameCamera.transform.rotation = Quaternion.Euler(41.36f, -45.542f, 0.361f);
-        gameCamera.orthographicSize = 21;
+        gameCamera.transform.position = GameObject.Find("CameraPosition").transform.position;
+        gameCamera.transform.rotation = GameObject.Find("CameraPosition").transform.rotation;
+        gameCamera.orthographicSize = cameraSize;
         if (currentEnemy.IsAlive == false)
         {
             Credit += currentEnemy.Credits;
@@ -1348,9 +1350,9 @@ public class Player : PlayerStatistiche{
             Gpm.CurrentState = GamePlayManager.State.End;
             CB.CloseInventoryCombat();
 
-            gameCamera.transform.position = new Vector3(40f, 32.3f, -7f);
-            gameCamera.transform.rotation = Quaternion.Euler(41.36f, -45.542f, 0.361f);
-            gameCamera.orthographicSize = 21;
+            gameCamera.transform.position = GameObject.Find("CameraPosition").transform.position;
+            gameCamera.transform.rotation = GameObject.Find("CameraPosition").transform.rotation;
+            gameCamera.orthographicSize = cameraSize;
             
 
             if (currentEnemy != null)
