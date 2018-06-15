@@ -162,6 +162,10 @@ public class Player : PlayerStatistiche{
             {
                 AssignMisison();
             }
+            else if (Gpm.CurrentState == GamePlayManager.State.Debug)
+            {
+                UI.Console.SetActive(true);
+            }
             else if (Gpm.CurrentState == GamePlayManager.State.Movement && PossibleMove > 0)
             {
                 
@@ -485,7 +489,7 @@ public class Player : PlayerStatistiche{
                         inCombatEnemy = false;
                         //CB.OpenAndCloseInventoryCombat();
                         playerPrefab.transform.position = new Vector3(1000, 1000, 1000);
-                        Gpm.CurrentState = GamePlayManager.State.End;
+                        Gpm.CurrentState = GamePlayManager.State.Debug;
                     }
                 }
             }
@@ -809,7 +813,7 @@ public class Player : PlayerStatistiche{
         {
             eventManager.TakeCredits(Random.Range(1, 11), this);
             neutralizeCell(XPos, ZPos);
-            Gpm.CurrentState = GamePlayManager.State.End;
+            Gpm.CurrentState = GamePlayManager.State.Debug;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "" || (grid.FindCell(XPos, ZPos).GetNameTile() == "Empty" && JustEmpted))//In una casella evento
         {
@@ -847,14 +851,14 @@ public class Player : PlayerStatistiche{
 
             if (Gpm.CurrentEventState == GamePlayManager.EventState.Animation)
             {
-                countdown -= Time.deltaTime;
+                countdown = 0;
                 Debug.Log(countdown);
                 if (countdown <= 0)
                 {
                     countdown = 2f;
                     JustEmpted = false;
                     Gpm.CurrentEventState = GamePlayManager.EventState.NotEvent;
-                    Gpm.CurrentState = GamePlayManager.State.End;
+                    Gpm.CurrentState = GamePlayManager.State.Debug;
                 }
             }
 
@@ -887,7 +891,7 @@ public class Player : PlayerStatistiche{
         {
             if (!JustEmpted)
             {
-                Gpm.CurrentState = GamePlayManager.State.End;
+                Gpm.CurrentState = GamePlayManager.State.Debug;
             }
         }
 
@@ -1347,7 +1351,7 @@ public class Player : PlayerStatistiche{
             }
 
 
-            Gpm.CurrentState = GamePlayManager.State.End;
+            Gpm.CurrentState = GamePlayManager.State.Debug;
             CB.CloseInventoryCombat();
 
             gameCamera.transform.position = GameObject.Find("CameraPosition").transform.position;

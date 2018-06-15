@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour {
     public GameObject InfoPanel;
     public bool _isInfo=false;
 
+    public GameObject Console;
+
     public GameObject UICity;
     public GameObject UICardEvent;
 
