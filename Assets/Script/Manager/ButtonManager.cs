@@ -41,6 +41,8 @@ public class ButtonManager : MonoBehaviour {
             ActiveConsole = false;
 
         }
+        UI.Console.SetActive(false);
+        Gpm.CurrentState = GamePlayManager.State.End;
     }
 
     public void exitGame()

@@ -27,6 +27,7 @@ public class GamePlayManager : MonoBehaviour
         Event,
         City,
         Combat,
+        Debug,
         End,
     }
 
@@ -254,8 +255,10 @@ public class GamePlayManager : MonoBehaviour
                 if (CurrentState != State.Event)
                     return false;
                 return true;
+            case State.Debug:
+                return true;
             case State.End:
-                if (CurrentState == State.Event || CurrentState == State.City || CurrentState == State.Combat || CurrentState == State.Mission || CurrentState == State.Movement)
+                if (CurrentState == State.Debug || CurrentState == State.Event || CurrentState == State.City || CurrentState == State.Combat || CurrentState == State.Mission || CurrentState == State.Movement)
                     return true;
                 return false;
             default:
