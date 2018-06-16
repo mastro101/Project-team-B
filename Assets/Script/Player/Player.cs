@@ -31,6 +31,11 @@ public class Player : PlayerStatistiche{
         get { return life; }
         set
         {
+            if (value >= Life)
+                Lg.SetTextLog(Name + " si è curato di " + (value - Life), true);
+            else
+                Lg.SetTextLog(Name + " ha perso " + (Life - value) + " Punti vita ", true);
+
             if (value > MaxLife)
                 life = MaxLife;
             else if (value <= 0)
@@ -48,6 +53,11 @@ public class Player : PlayerStatistiche{
         get { return credit; }
         set
         {
+            if (value >= Life)
+                Lg.SetTextLog(Name + " ha guadagnato " + (value - Credit) + " Crediti", true);
+            else
+                Lg.SetTextLog(Name + " ha perso " + (Credit - value) + " Crediti", true);
+
             credit = value;
             if (credit < 0)
                 credit = 0;
@@ -482,7 +492,7 @@ public class Player : PlayerStatistiche{
 
 
 
-                if (grid.FindCell(XPos, ZPos).POnTile == this)
+                if (grid.FindCell(XPos, ZPos).POnTile == this && inCombatEnemy)
                 {
                     if (currentEnemy.CurrentState == IEnemyState.InPool)
                     {
