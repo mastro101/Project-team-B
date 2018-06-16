@@ -945,9 +945,13 @@ public class Player : PlayerStatistiche{
             // Siero di velocità
             case 6:
                 if (jumperEvent == false)
+                {
                     PossibleMove = 2;
-                jumperEvent = true;
-                Gpm.CurrentState = GamePlayManager.State.Movement;
+                    jumperEvent = true;
+                    Gpm.CurrentState = GamePlayManager.State.Movement;
+                    Gpm.CurrentEventState = GamePlayManager.EventState.NotEvent;
+                    UI.UICardEvent.SetActive(false);
+                }
                 break;
             // Terreno Fangoso
             case 7:
