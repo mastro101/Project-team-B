@@ -837,7 +837,7 @@ public class Player : PlayerStatistiche{
                 {
                     do
                     {
-                        eventCard = Random.Range(3, 39);
+                        eventCard = Random.Range(4, 39);
                     } while (eventCard == 0);
                     event1 = eventCard;
                     EventListView(event1);
@@ -846,7 +846,7 @@ public class Player : PlayerStatistiche{
                     Debug.Log(event1);
                     do
                     {
-                        eventCard = Random.Range(3, 39);
+                        eventCard = Random.Range(4, 39);
                     }
                     while (eventCard == event1 || eventCard == 0);
                     event2 = eventCard;
@@ -925,9 +925,9 @@ public class Player : PlayerStatistiche{
             case 2:
                 Debug.Log("Error");
                 break;
-            //  Siero di rigenerazione
+            //  Nulla
             case 3:
-                Life += 2;
+                Debug.Log("Error"); ;
                 break;
             // Von Canterlik Ferire
             case 4:
@@ -942,16 +942,9 @@ public class Player : PlayerStatistiche{
                 eventManager.TakeCredits(-Random.Range(1, 3), PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 Lg.SetTextLog("Gli altri giocatori perdono 1 o 2 crediti", true);
                 break;
-            // Siero di velocità
+            // Siero di rigenerazione
             case 6:
-                if (jumperEvent == false)
-                {
-                    PossibleMove = 2;
-                    jumperEvent = true;
-                    Gpm.CurrentState = GamePlayManager.State.Movement;
-                    Gpm.CurrentEventState = GamePlayManager.EventState.NotEvent;
-                    UI.UICardEvent.SetActive(false);
-                }
+                Life += 2;
                 break;
             // Terreno Fangoso
             case 7:
@@ -1137,29 +1130,28 @@ public class Player : PlayerStatistiche{
                 Debug.Log("Error");
 
                 break;
-            // Truffati
+            // 
             case 2:
-                eventManager.TakeCredits(-Random.Range(1, 3), PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                Debug.Log("Error");
                 break;
-            //  Siero di rigenerazione
+            // 
             case 3:
-                immagineCarte = 2;
-                descrizioneCarte = "Ripristina 2 punti salute.";
+                Debug.Log("Error");
                 break;
             // Von Canterlik Ferire
             case 4:
                 immagineCarte = 5;
                 descrizioneCarte = "Paga 3 crediti. Ogni avversario perde 1 punto vita.";
                 break;
-            // Ladri
+            // Truffati
             case 5:
                 immagineCarte = 8;
                 descrizioneCarte = "Tutti gli altri giocatori perdono 1 o 2 crediti.";
                 break;
-            // Siero di velocità
+            // Siero di rigenerazione
             case 6:
                 immagineCarte = 2;
-                descrizioneCarte = "Effettua un movimento di 2. La casella su cui finisci attiva il suo effetto.";
+                descrizioneCarte = "Ripristina 2 punti salute.";
                 break;
             // Stanchezza
             case 7:
@@ -1335,6 +1327,7 @@ public class Player : PlayerStatistiche{
     {
         grid.FindCell(_x, _z).Tile.GetComponent<Renderer>().material.color = Color.gray;
         grid.FindCell(_x, _z).SetNameTile("Empty");
+        MissionManager.EmptyCell++;
     }
 
     public void LoseRound()

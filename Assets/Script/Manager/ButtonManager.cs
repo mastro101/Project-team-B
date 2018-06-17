@@ -104,6 +104,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void Event1()
     {
+        Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
         switch (Gpm.Name)
         {
             case "Green":
@@ -151,11 +152,11 @@ public class ButtonManager : MonoBehaviour {
                 }
                 break;
         }
-        Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
     }
 
     public void Event2()
     {
+        Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
         switch (Gpm.Name)
         {
             case "Green":
@@ -203,9 +204,16 @@ public class ButtonManager : MonoBehaviour {
                 }
                 break;
         }
-        Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
     }
 
+    void evento(Player _player)
+    {
+        UI.UICardEvent.SetActive(false);
+        _player.neutralizeCell(_player.XPos, _player.ZPos);
+        _player.eventCard = 0;
+        _player.countdown = 2f;
+        _player.JustEmpted = true;
+    }
     //
 
 
