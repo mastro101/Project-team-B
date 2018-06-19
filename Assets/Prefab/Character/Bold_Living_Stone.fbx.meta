@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9fe45cae9e66c7b498c583dbed8d5bb2
-timeCreated: 1528466184
+timeCreated: 1529413870
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -140,11 +140,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: 39833d71d3f9d8544b15c16f7fc104ac, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 4b1453c98445b2d4b962df499ab57781, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -179,8 +174,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
