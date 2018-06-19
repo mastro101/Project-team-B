@@ -13,6 +13,8 @@ public class TheGrid : MonoBehaviour {
     public int Width = 0, Height = 0;
     public Material[] texture = new Material[3];
 
+    Mission mission;
+
     public Texture2D heightmapTerreinType;
 
     GameObject tile;
@@ -23,6 +25,7 @@ public class TheGrid : MonoBehaviour {
     private void Awake()
     {
         Cells = new List<CellData>();
+        mission = FindObjectOfType<Mission>();
         GridSize(Width, Height);
         //SetTower();
     }
@@ -170,6 +173,7 @@ public class TheGrid : MonoBehaviour {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
                         tile.GetComponent<Renderer>().material.color = Color.grey;
+                        mission.EmptyCell++;
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Credit")
                     {
