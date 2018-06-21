@@ -757,11 +757,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3211,6 +3211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Red
+  Nickname: Bold
   CheckMission: 0
   Mission: 0
   MaxLife: 5
@@ -5506,6 +5507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Blue
+  Nickname: Mordukk
   CheckMission: 0
   Mission: 0
   MaxLife: 5
@@ -5845,6 +5847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Yellow
+  Nickname: Merope
   CheckMission: 0
   Mission: 0
   MaxLife: 5
@@ -11110,7 +11113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.6, y: -40.7}
+  m_AnchoredPosition: {x: -107.6, y: -42.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974426065
@@ -11375,11 +11378,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -11705,7 +11708,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.6, y: -40.7}
+  m_AnchoredPosition: {x: -107.6, y: -41.82}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060748169
@@ -11914,6 +11917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Green
+  Nickname: Faust
   CheckMission: 0
   Mission: 0
   MaxLife: 5
