@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStatistiche : MonoBehaviour {
 
     public string Name;
+    public string Nickname;
     public bool CheckMission = false;
     static public int[] CheckMissions;
     public int Mission;

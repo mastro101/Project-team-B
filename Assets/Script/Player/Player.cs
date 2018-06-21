@@ -32,9 +32,9 @@ public class Player : PlayerStatistiche{
         set
         {
             if (value >= Life)
-                Lg.SetTextLog(Name + " si è curato di " + (value - Life), true);
+                Lg.SetTextLog(Nickname + " si è curato di " + (value - Life), true);
             else
-                Lg.SetTextLog(Name + " ha perso " + (Life - value) + " Punti vita ", true);
+                Lg.SetTextLog(Nickname + " ha perso " + (Life - value) + " Punti vita ", true);
 
             if (value > MaxLife)
                 life = MaxLife;
@@ -54,9 +54,9 @@ public class Player : PlayerStatistiche{
         set
         {
             if (value >= Life)
-                Lg.SetTextLog(Name + " ha guadagnato " + (value - Credit) + " Crediti", true);
+                Lg.SetTextLog(Nickname + " ha guadagnato " + (value - Credit) + " Crediti", true);
             else
-                Lg.SetTextLog(Name + " ha perso " + (Credit - value) + " Crediti", true);
+                Lg.SetTextLog(Nickname + " ha perso " + (Credit - value) + " Crediti", true);
 
             credit = value;
             if (credit < 0)
@@ -158,7 +158,7 @@ public class Player : PlayerStatistiche{
             //Tmp.SetMission(Mission.ToString());
             Tmp.SetLife(Life.ToString());
             Tmp.SetCredits(Credit.ToString());
-            Tmp.SetName(Gpm.Name);
+            Tmp.SetName(Nickname);
             Tmp.SetMosse(PossibleMove.ToString());
             Tmp.SetWinPoints(WinPoint.ToString());
             Tmp.SetM1(Materiali[0].ToString());
@@ -600,7 +600,7 @@ public class Player : PlayerStatistiche{
             }*/
                 
 
-            Lg.SetTextLog(Name + " si è mosso (" +XPos+"-"+ZPos+")" , true);
+            Lg.SetTextLog(Nickname + " si è mosso (" +XPos+"-"+ZPos+")" , true);
                 
         }
         else
@@ -785,7 +785,7 @@ public class Player : PlayerStatistiche{
             }
 
 
-            Lg.SetTextLog("Missione assegnata a: " + Name, true);
+            Lg.SetTextLog("Missione assegnata a: " + Nickname, true);
             CheckMission = true;
             Gpm.CurrentState = GamePlayManager.State.End;
         }
@@ -802,20 +802,20 @@ public class Player : PlayerStatistiche{
         {
             // se è all'interno di una città passa alla fase Object
             Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
-            Lg.SetTextLog(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
+            Lg.SetTextLog(Nickname + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
 
             //ActiveTurn = false;
             Gpm.CurrentState = GamePlayManager.State.City;
         }
         else if (grid.FindCell(XPos, ZPos).POnTile != this)
         {
-            Lg.SetTextLog(Name + "Sta Combattendo contro " + grid.FindCell(XPos, ZPos).POnTile.Name, true);
+            Lg.SetTextLog(Nickname + "Sta Combattendo contro " + grid.FindCell(XPos, ZPos).POnTile.Name, true);
             Gpm.CurrentState = GamePlayManager.State.Combat;
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Enemy")
         {
             // se è all'interno di una Casella Nemico passa alla fase Combat
-            Lg.SetTextLog(Name + " si trova in una casella Nemico", true);
+            Lg.SetTextLog(Nickname + " si trova in una casella Nemico", true);
             neutralizeCell(XPos, ZPos);
             Gpm.CurrentState = GamePlayManager.State.Combat;
         }
@@ -1371,6 +1371,22 @@ public class Player : PlayerStatistiche{
 
             if (!inCombatEnemy)
             {
+                int m;
+                if (Materiali[0] + Materiali[1] + Materiali[2] + Materiali[3] > 0)
+                {
+                    do
+                    {
+                        m = Random.Range(0, 4);
+                    }
+                    while (Materiali[m] > 0);
+                    eventManager.AddMaterial(m, -1, this);
+                    eventManager.AddMaterial(m, 1, currentEnemyPlayer);
+                }
+                if (Credit > 0)
+                {
+                    Credit--;
+                    currentEnemyPlayer.Credit++;
+                }
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
                 Life--;
@@ -1411,7 +1427,7 @@ public class Player : PlayerStatistiche{
         if (Input.GetKeyDown(KeyCode.A))
         {
             Life--;
-            Lg.SetTextLog(Name + " ha perso vita", true);
+            Lg.SetTextLog(Nickname + " ha perso vita", true);
         }
         if (Life <= 0)
         {
@@ -1430,7 +1446,7 @@ public class Player : PlayerStatistiche{
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
             grid.FindCell(XPos, ZPos).POnTile = this;
             PossibleMove = 4;
-            Lg.SetTextLog(Name + " è morto ed è tornato al centro", true);
+            Lg.SetTextLog(Nickname + " è morto ed è tornato al centro", true);
         }          
     }
 }

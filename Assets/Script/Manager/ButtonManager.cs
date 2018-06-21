@@ -8,6 +8,7 @@ public class ButtonManager : MonoBehaviour {
     public GameObject PanelConsole;
     bool ActiveConsole = true;
     public GameObject MainMenu;
+    public GameObject Tutorial;
     bool ActiveMainMenu = true;
     Vector3 ConsolPosition;
 
@@ -44,6 +45,12 @@ public class ButtonManager : MonoBehaviour {
         UI.Console.SetActive(false);
         Gpm.CurrentState = GamePlayManager.State.End;
     }
+
+    public void OpenTutorial()
+    {
+        Tutorial.SetActive(true);
+    }
+
 
     public void exitGame()
     {
