@@ -1382,6 +1382,11 @@ public class Player : PlayerStatistiche{
                     eventManager.AddMaterial(m, -1, this);
                     eventManager.AddMaterial(m, 1, currentEnemyPlayer);
                 }
+                if (Credit > 0)
+                {
+                    Credit--;
+                    currentEnemyPlayer.Credit++;
+                }
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
                 Life--;
