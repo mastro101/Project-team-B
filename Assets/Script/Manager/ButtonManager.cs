@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour {
 
     public GameObject PanelConsole;
-    bool ActiveConsole = true;
+    bool ActiveConsole = false;
     public GameObject MainMenu;
     public GameObject Tutorial;
     bool ActiveMainMenu = true;
@@ -48,7 +48,17 @@ public class ButtonManager : MonoBehaviour {
 
     public void OpenTutorial()
     {
-        Tutorial.SetActive(true);
+        if (!ActiveConsole)
+        {
+            Tutorial.SetActive(true);
+            ActiveConsole = true;
+        }
+        else
+        {
+            Tutorial.SetActive(false);
+            ActiveConsole = false;
+        }
+
     }
 
 

@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour {
     public Texture[] PlayerImage;
     public RawImage PlayerTurnImage;
     public RawImage Player1InCombat, PlayerOrEnemyInCombat;
+    public Texture[] PlayerName;
+    public RawImage PlayerNameImage;
 
     public Texture[] AttackImage;
     public RawImage[] AttackPlayer, AttackPlayerOrEnemy;

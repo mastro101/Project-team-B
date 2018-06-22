@@ -166,6 +166,7 @@ public class Player : PlayerStatistiche{
             Tmp.SetM3(Materiali[2].ToString());
             Tmp.SetM4(Materiali[3].ToString());
             UI.PlayerTurnImage.texture = UI.PlayerImage[(int)Gpm.CurrentTurn];
+            UI.PlayerNameImage.texture = UI.PlayerName[(int)Gpm.CurrentTurn];
 
 
             if (Gpm.CurrentState == GamePlayManager.State.Mission)

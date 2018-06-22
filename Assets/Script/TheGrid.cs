@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TheGrid : MonoBehaviour {
 
-    public GameObject Tile;
+    public GameObject Tile, TileCredit, TileEnemy, TileEmpty, CenterTile;
     public GameObject Wall, City, City2, City3, City4;
     public GameObject Tower;
+    public Material[] TileMaterial = new Material[4];
     public List<CellData> Cells = new List<CellData>();
     public float CellSize = -1;
     public string NameTile;
@@ -70,7 +71,6 @@ public class TheGrid : MonoBehaviour {
                     {
                         tile = (GameObject)Instantiate(Tile);
                         tile.transform.position = cell.WorldPosition;
-                        tile.GetComponent<Renderer>().material.color = Color.green;
 
 
                     }
@@ -163,23 +163,20 @@ public class TheGrid : MonoBehaviour {
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Enemy")
                     {
-                        tile = (GameObject)Instantiate(Tile);
+                        tile = (GameObject)Instantiate(TileEnemy);
                         tile.transform.position = cell.WorldPosition;
-                        tile.GetComponent<Renderer>().material.color = Color.blue;
                         
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Empty")
                     {
-                        tile = (GameObject)Instantiate(Tile);
+                        tile = (GameObject)Instantiate(TileEmpty);
                         tile.transform.position = cell.WorldPosition;
-                        tile.GetComponent<Renderer>().material.color = Color.grey;
                         mission.EmptyCell++;
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Credit")
                     {
-                        tile = (GameObject)Instantiate(Tile);
+                        tile = (GameObject)Instantiate(TileCredit);
                         tile.transform.position = cell.WorldPosition;
-                        tile.GetComponent<Renderer>().material.color = Color.yellow;
                     }
 
                     cell.Tile = tile;
@@ -191,7 +188,7 @@ public class TheGrid : MonoBehaviour {
                     //Colora il centro
                     if (cell == Center())
                     {
-                        //tile.GetComponent<Renderer>().material.color = Color.black;
+                        tile = CenterTile;
                     }
 
                     // Colora le città                    
