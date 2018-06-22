@@ -253,19 +253,19 @@ public class Player : PlayerStatistiche{
                         {
                             case "Green":
                                 UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[0];
-                                UI.Player1NameInCombat.texture = UI.PlayerName[0];
+                                UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[0];
                                 break;
                             case "Blue":
                                 UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[1];
-                                UI.Player1NameInCombat.texture = UI.PlayerName[1];
+                                UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[1];
                                 break;
                             case "Red":
                                 UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[2];
-                                UI.Player1NameInCombat.texture = UI.PlayerName[2];
+                                UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[2];
                                 break;
                             case "Yellow":
                                 UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[3];
-                                UI.Player1NameInCombat.texture = UI.PlayerName[3];
+                                UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[3];
                                 break;
                         }
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
