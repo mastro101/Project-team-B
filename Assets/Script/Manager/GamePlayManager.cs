@@ -10,6 +10,7 @@ public class GamePlayManager : MonoBehaviour
     public ButtonManager buttonManager;
     public DetectObject DO;
     public EnemyBase Enemy;
+    public SoundManager sound;
 
     public enum PlayerTurn
     {
@@ -86,6 +87,11 @@ public class GamePlayManager : MonoBehaviour
                 OnStateEnd(_currentState);
                 _currentState = value;
                 OnStateStart(_currentState);
+                if (value == State.Combat)
+                {
+                    sound.audioSource.clip = sound.CombatAudio;
+                    sound.audioSource.Play();
+                }
             }
             else
                 Debug.Log("Nope State");
@@ -203,6 +209,12 @@ public class GamePlayManager : MonoBehaviour
                 break;
             default:
                 break;
+        }
+
+        if (oldState == State.Combat)
+        {
+            sound.audioSource.clip = sound.GameAudio;
+            sound.audioSource.Play();
         }
     }
 

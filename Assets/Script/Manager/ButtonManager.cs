@@ -492,31 +492,31 @@ public class ButtonManager : MonoBehaviour {
         switch (Gpm.Name)
         {
             case "Green":
-                if (Pl1.Credit >= 6 && Pl1.Life != Pl1.MaxLife)
+                if (Pl1.Credit >= 3 && Pl1.Life != Pl1.MaxLife)
                 {
                     Pl1.Life = Pl1.MaxLife;
-                    Pl1.Credit -= 6;
+                    Pl1.Credit -= 3;
                 }
                 break;
             case "Blue":
-                if (Pl2.Credit >= 6 && Pl2.Life != Pl2.MaxLife)
+                if (Pl2.Credit >= 3 && Pl2.Life != Pl2.MaxLife)
                 {
                     Pl2.Life = Pl2.MaxLife;
-                    Pl2.Credit -= 6;
+                    Pl2.Credit -= 3;
                 }
                 break;
             case "Red":
-                if (Pl3.Credit >= 6 && Pl3.Life != Pl3.MaxLife)
+                if (Pl3.Credit >= 3 && Pl3.Life != Pl3.MaxLife)
                 {
                     Pl3.Life = Pl3.MaxLife;
-                    Pl3.Credit -= 6;
+                    Pl3.Credit -= 3;
                 }
                 break;
             case "Yellow":
-                if (Pl4.Credit >= 6 && Pl4.Life != Pl4.MaxLife)
+                if (Pl4.Credit >= 3 && Pl4.Life != Pl4.MaxLife)
                 {
                     Pl4.Life = Pl4.MaxLife;
-                    Pl4.Credit -= 6;
+                    Pl4.Credit -= 3;
                 }
                 break;
         }

@@ -239,6 +239,7 @@ public class Player : PlayerStatistiche{
                         UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[0];
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        gameCamera.orthographic = true;
                         gameCamera.orthographicSize = 4;
                         playerPrefab.transform.position = new Vector3(14.73f, 36.6f, 21f);
                         inCombatEnemy = true;
@@ -270,6 +271,7 @@ public class Player : PlayerStatistiche{
                         }
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        gameCamera.orthographic = true;
                         gameCamera.orthographicSize = 4;
                         playerPrefab.transform.position = new Vector3(14.73f, 36.6f, 21f);
                         inCombatPlayer = true;
@@ -553,6 +555,7 @@ public class Player : PlayerStatistiche{
         CB.CloseInventoryCombat();
         gameCamera.transform.position = GameObject.Find("CameraPosition").transform.position;
         gameCamera.transform.rotation = GameObject.Find("CameraPosition").transform.rotation;
+        gameCamera.orthographic = false;
         gameCamera.orthographicSize = cameraSize;
         if (currentEnemy.IsAlive == false)
         {
@@ -1370,6 +1373,7 @@ public class Player : PlayerStatistiche{
 
             gameCamera.transform.position = GameObject.Find("CameraPosition").transform.position;
             gameCamera.transform.rotation = GameObject.Find("CameraPosition").transform.rotation;
+            gameCamera.orthographic = false;
             gameCamera.orthographicSize = cameraSize;
             
 
