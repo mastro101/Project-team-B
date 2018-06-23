@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,7 +39,6 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.32075956, g: 0.35809287, b: 0.41683006, a: 0.5}
-  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -55,10 +54,11 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 1024
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -149,7 +149,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &16345234
 Transform:
   m_ObjectHideFlags: 0
@@ -212,7 +211,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -879,7 +877,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -2237,7 +2234,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -2697,8 +2693,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 294.9, y: 96.15}
-  m_SizeDelta: {x: 256.19, y: 83.74}
+  m_AnchoredPosition: {x: 6.4, y: -39.159}
+  m_SizeDelta: {x: 495, y: 371.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358231271
 MonoBehaviour:
@@ -2719,7 +2715,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: The Game
+  m_text: "4 giocatori per giocare.\r\n\r\nIl primo giocatore che arriva a 2 Punti
+    vittoria vince la partita\r\n\r\nI punti vittoria si ottengono dal mercante, che
+    si trova in citt\xE0, in cambio di materiali.\r\n\r\nCi sono 4 tipi di caselle:\r\ncaselle
+    nemico = affronti un nemico di danno 1-2, se vinci ottieni 3 crediti e 3 materiali
+    casuali, se perdi subisci il rispettivo danno del nemico.\r\ncaselle evento =
+    appaiono due eventi e scegli quale farlo attivare oppure con end phase salti l\u2019evento.\r\ncaselle
+    crediti = ti danno X crediti\r\ncaselle neutrali = non succede nulla\r\n\r\nQuando
+    finiscono le caselle evento, crediti e nemici. Quello che ha pi\xF9 materiali
+    e crediti vince la partita.\r\n\r\nOgni citt\xE0 possiede un materiale diverso.\r\n\r\nNelle
+    citt\xE0 hai 3 possibile scelte da fare:\r\ncurarsi\r\nscambiare materiali per
+    i punti vittoria\r\nscambiare crediti per materiali\r\n\r\nQuando affronti un
+    giocatore e vinci ottieni 2 materiali casuali.\r\n\r\nNon ci possono stare pi\xF9
+    di 2 giocatori su una casella.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -2746,8 +2754,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3842,7 +3850,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -4488,7 +4495,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -4577,7 +4583,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -6797,7 +6802,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -7103,7 +7107,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -7509,7 +7512,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -9058,7 +9060,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -10022,7 +10023,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -10752,7 +10752,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -10838,7 +10837,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -12868,7 +12866,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -12954,7 +12951,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:
@@ -13111,7 +13107,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a1025bb34224bd84bb9b0d52a1b135ac, type: 2}
   m_StaticBatchInfo:

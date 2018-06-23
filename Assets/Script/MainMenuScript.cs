@@ -26,7 +26,7 @@ public class MainMenuScript : MonoBehaviour
     public void loadlevel()
     {
        
-            SceneManager.LoadScene("Scene 2 - Copia");
+            SceneManager.LoadScene("Scene 2 - Copia 1");
        
     }
 }
