@@ -236,7 +236,7 @@ public class Player : PlayerStatistiche{
                     {
                         SpawnEnemy();
                         UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[currentEnemy.ID + 4];
-                        UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[0];
+                        UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[4];
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographic = true;
