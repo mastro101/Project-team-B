@@ -1332,7 +1332,7 @@ public class Player : PlayerStatistiche{
 
     public void neutralizeCell(int _x, int _z)
     {
-        grid.FindCell(_x, _z).Tile.GetComponent<Renderer>().material.color = Color.gray;
+        grid.FindCell(_x, _z).Tile.GetComponent<MeshRenderer>().material = grid.TileMaterial[3];
         grid.FindCell(_x, _z).SetNameTile("Empty");
         MissionManager.EmptyCell++;
     }

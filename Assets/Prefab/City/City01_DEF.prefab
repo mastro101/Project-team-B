@@ -187,8 +187,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4481195140881550}
-  - component: {fileID: 33509384546601940}
-  - component: {fileID: 23110743561971678}
   m_Layer: 0
   m_Name: casella
   m_TagString: Untagged
@@ -3448,40 +3446,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23110743561971678
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118704209606510}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 4a3ca7d3a5a733f439331a6a495fc2de, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23114727298743994
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -6667,13 +6631,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1652354482665586}
   m_Mesh: {fileID: 4300002, guid: 0e3d30e4303fb5243b93c8c925f09912, type: 3}
---- !u!33 &33509384546601940
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118704209606510}
-  m_Mesh: {fileID: 4300000, guid: cb1d544bf617f014a8ea7af2aad2f680, type: 3}
 --- !u!33 &33512872737181132
 MeshFilter:
   m_ObjectHideFlags: 1

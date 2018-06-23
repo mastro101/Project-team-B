@@ -12,7 +12,7 @@ public class TheGrid : MonoBehaviour {
     public float CellSize = -1;
     public string NameTile;
     public int Width = 0, Height = 0;
-    public Material[] texture = new Material[3];
+    public Material[] material = new Material[3];
 
     Mission mission;
 
@@ -767,66 +767,66 @@ public class TheGrid : MonoBehaviour {
         switch (_data.cellTerrainType)
         {
             case CellTerrainType.Water1:
-                tileT.material = texture[0];
+                tileT.material = material[0];
                 break;
             case CellTerrainType.Water2:
-                tileT.material = texture[1];
+                tileT.material = material[1];
                 _tile.transform.rotation = Quaternion.Euler(0, 90f, 0);
                 break;
             case CellTerrainType.Water3:
-                tileT.material = texture[2];
+                tileT.material = material[2];
                 break;
             case CellTerrainType.Water4:
-                tileT.material = texture[3];
+                tileT.material = material[3];
                 break;
             case CellTerrainType.Water5:
-                tileT.material = texture[4];
+                tileT.material = material[4];
                 break;
             case CellTerrainType.Grass1:
-                tileT.material = texture[5];
+                tileT.material = material[5];
                 break;
             case CellTerrainType.Grass2:
-                tileT.material = texture[6];
+                tileT.material = material[6];
                 break;
             case CellTerrainType.Grass3:
-                tileT.material = texture[7];
+                tileT.material = material[7];
                 break;
             case CellTerrainType.Grass4:
-                tileT.material = texture[8];
+                tileT.material = material[8];
                 break;
             case CellTerrainType.Grass5:
-                tileT.material = texture[9];
+                tileT.material = material[9];
                 break;
             case CellTerrainType.Grass6:
-                tileT.material = texture[10];
+                tileT.material = material[10];
                 break;
             case CellTerrainType.Grass7:
-                tileT.material = texture[11];
+                tileT.material = material[11];
                 break;
             case CellTerrainType.Grass8:
-                tileT.material = texture[12];
+                tileT.material = material[12];
                 break;
             case CellTerrainType.Grass9:
-                tileT.material = texture[13];
+                tileT.material = material[13];
                 break;
             case CellTerrainType.Ancient1:
-                tileT.material = texture[14];
+                tileT.material = material[14];
                 break;
             case CellTerrainType.Ancient2:
-                tileT.material = texture[15];
+                tileT.material = material[15];
                 break;
             case CellTerrainType.Ancient3:
-                tileT.material = texture[16];
+                tileT.material = material[16];
                 _tile.transform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
             case CellTerrainType.Ancient4:
-                tileT.material = texture[17];
+                tileT.material = material[17];
                 break;
             case CellTerrainType.Ancient5:
-                tileT.material = texture[18];
+                tileT.material = material[18];
                 break;
             case CellTerrainType.Desert:
-                tileT.material = texture[19];
+                tileT.material = material[19];
                 break;
             default:
                 break;
