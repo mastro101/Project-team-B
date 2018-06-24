@@ -14343,6 +14343,7 @@ MonoBehaviour:
   buttonManager: {fileID: 0}
   DO: {fileID: 0}
   Enemy: {fileID: 0}
+  sound: {fileID: 0}
   CurrentCombatState: 0
   CurrentEventState: 0
 --- !u!4 &493988555
@@ -20267,7 +20268,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -42757,18 +42758,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tile: {fileID: 0}
+  TileCredit: {fileID: 0}
+  TileEnemy: {fileID: 0}
+  TileEmpty: {fileID: 0}
+  CenterTile: {fileID: 0}
   Wall: {fileID: 1652642082125686, guid: cc6b00a0b1c424545882f755665dc0e4, type: 2}
   City: {fileID: 0}
   City2: {fileID: 0}
   City3: {fileID: 0}
   City4: {fileID: 0}
   Tower: {fileID: 100002, guid: 294d7c65afcded64d9f23a3a024e01f4, type: 3}
+  TileMaterial:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Cells: []
   CellSize: 1
   NameTile: 
   Width: 13
   Height: 13
-  texture:
+  material:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
