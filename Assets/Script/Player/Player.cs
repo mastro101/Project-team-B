@@ -195,6 +195,7 @@ public class Player : PlayerStatistiche{
             {
                 if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy")
                 {
+                    UI.Console.SetActive(true);
                     UI.UICity.SetActive(true);
                     UI._isHealActive[0] = true;
                     UI._isHealActive[1] = true;
@@ -240,8 +241,8 @@ public class Player : PlayerStatistiche{
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographic = true;
-                        gameCamera.orthographicSize = 4;
-                        playerPrefab.transform.position = new Vector3(14.73f, 36.6f, 21f);
+                        gameCamera.orthographicSize = 2.4f;
+                        playerPrefab.transform.position = new Vector3(16.3f, 35.85f, 21f);
                         inCombatEnemy = true;
                     }
                 }
@@ -272,8 +273,8 @@ public class Player : PlayerStatistiche{
                         gameCamera.transform.position = new Vector3(18.1f, 36.2f, 18.5f);
                         gameCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
                         gameCamera.orthographic = true;
-                        gameCamera.orthographicSize = 4;
-                        playerPrefab.transform.position = new Vector3(14.73f, 36.6f, 21f);
+                        gameCamera.orthographicSize = 2.4f;
+                        playerPrefab.transform.position = new Vector3(16.3f, 35.85f, 21f);
                         inCombatPlayer = true;
                     }
                 }
@@ -397,7 +398,7 @@ public class Player : PlayerStatistiche{
                 else if (inCombatPlayer)
                 {
                     currentEnemyPlayer.currentEnemyPlayer = this;
-                    currentEnemyPlayer.playerPrefab.transform.position = new Vector3(21f, 36.6f, 21.03f);
+                    currentEnemyPlayer.playerPrefab.transform.position = new Vector3(19.6f, 35.85f, 21.03f);
                     CB.player = this;
                     if (CB.Active == false)
                         CB.OpenAndCloseInventoryCombat();
@@ -540,10 +541,13 @@ public class Player : PlayerStatistiche{
     {
         int possibilityEnemy0 = Random.Range(0, 10);
         if (possibilityEnemy0 < 7)
-            currentEnemy = enemyManager.GetEnemy(0);
-        else
             currentEnemy = enemyManager.GetEnemy(1);
-        currentEnemy.gameObject.transform.position = new Vector3(21f, 36.9f, 21.03f);
+        else
+            currentEnemy = enemyManager.GetEnemy(0);
+        if (currentEnemy.ID == 1)
+            currentEnemy.gameObject.transform.position = new Vector3(19.5f, 36.05f, 21f);
+        else
+            currentEnemy.gameObject.transform.position = new Vector3(19.5f, 36.7f, 21f);
         currentEnemy.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         currentEnemy.Spawn();
         currentEnemy.OnDestroy += OnEnemyDestroy;
@@ -943,6 +947,7 @@ public class Player : PlayerStatistiche{
             case 4:
                 if (Credit >= 3)
                 {
+                    Credit -= 3;
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     Lg.SetTextLog("Gli altri giocatori hanno perso una vita", true);
                 }
@@ -979,10 +984,13 @@ public class Player : PlayerStatistiche{
                 // Sterlya
             // Buon Umore
             case 11:
-                eventManager.PayForMaterial(5, 0, 2, this);
-                eventManager.PayForMaterial(5, 1, 2, this);
-                eventManager.PayForMaterial(5, 2, 2, this);
-                eventManager.PayForMaterial(5, 3, 2, this);
+                if (Credit >= 5)
+                {
+                    eventManager.PayForMaterial(2, 0, 2, this);
+                    eventManager.PayForMaterial(1, 1, 2, this);
+                    eventManager.PayForMaterial(1, 2, 2, this);
+                    eventManager.PayForMaterial(1, 3, 2, this);
+                }
                 break;
             // Cattivo umore
             case 12:
@@ -1049,6 +1057,7 @@ public class Player : PlayerStatistiche{
             case 26:
                 if (Credit >= 5)
                 {
+                    Credit -= 5;
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     eventManager.Heal(1, this); 
                     Lg.SetTextLog("Gli altri giocatori hanno perso una vita", true);

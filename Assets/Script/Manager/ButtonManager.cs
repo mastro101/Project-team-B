@@ -43,6 +43,11 @@ public class ButtonManager : MonoBehaviour {
        //
        //}
         UI.Console.SetActive(false);
+        if (Gpm.CurrentState == GamePlayManager.State.City)
+        {
+            UI.UICity.SetActive(false);
+            Gpm.CurrentState = GamePlayManager.State.End;
+        }
         Gpm.CurrentState = GamePlayManager.State.End;
     }
 
@@ -569,11 +574,6 @@ public class ButtonManager : MonoBehaviour {
                     Pl4.PossibleMove = 4;
                     break;
             }
-        }
-        else if (Gpm.CurrentState == GamePlayManager.State.City)
-        {
-            UI.UICity.SetActive(false);
-            Gpm.CurrentState = GamePlayManager.State.End;
         }
         //EndP.SetActive(false);
     }

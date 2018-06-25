@@ -90,6 +90,7 @@ public class GamePlayManager : MonoBehaviour
                 if (value == State.Combat)
                 {
                     sound.audioSource.clip = sound.CombatAudio;
+                    sound.audioSource.volume = 0.3f;
                     sound.audioSource.Play();
                 }
             }
@@ -214,6 +215,7 @@ public class GamePlayManager : MonoBehaviour
         if (oldState == State.Combat)
         {
             sound.audioSource.clip = sound.GameAudio;
+            sound.audioSource.volume = 1f;
             sound.audioSource.Play();
         }
     }
