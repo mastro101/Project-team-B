@@ -15,6 +15,7 @@ public class Player : PlayerStatistiche{
     Camera gameCamera;
     GameObject playerPrefab;
 
+    public Animator anim;
     public GameObject PlayerPrefab;
     public  TextMeshP Tmp;
     public LogManager Lg;
@@ -101,7 +102,7 @@ public class Player : PlayerStatistiche{
     void Start()
     {
         Life = 5;
-        
+
         enemyManager = FindObjectOfType<EnemyPoolManager>();
         MissionManager = FindObjectOfType<Mission>();
         gameCamera = FindObjectOfType<Camera>();
@@ -636,8 +637,8 @@ public class Player : PlayerStatistiche{
         //DistanceMove = playerStatistiche.GetDistance();
         if (detectObject.CorrectMove == true && grid.FindCell(ObjectX, ObjectZ).GetValidity() && grid.FindCell(ObjectX, ObjectZ).PlayerOnTile < 2) {
 
-            
 
+            anim.SetTrigger("Walk");
             if (ObjectX == XPos && ObjectZ - 1 == ZPos && grid.FindCell(ObjectX, ObjectZ).Walls[2] != true)
             { //SU
 
