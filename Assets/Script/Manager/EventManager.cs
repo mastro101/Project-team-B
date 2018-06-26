@@ -85,7 +85,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            _player1.Lg.SetTextLog("Non hai abbastanza crediti", true);
+            _player1.Lg.SetTextLog("You don't have enough Credits", true);
         }
 
     }
@@ -99,7 +99,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            _player1.Lg.SetTextLog("Non hai abbastanza crediti", true);
+            _player1.Lg.SetTextLog("You don't have enough Credits", true);
         }
 
     }
@@ -141,13 +141,17 @@ public class EventManager : MonoBehaviour
                 if (random <= possibility)
                 {
                     _player.Credit += _credit;
-                    _player.Lg.SetTextLog("Hai vinto " + _credit + " credit", true);
+                    _player.Lg.SetTextLog("You win " + _credit + " credits", true);
+                }
+                else
+                {
+                    _player.Lg.SetTextLog("You lost the bet", true);
                 }
             }
         }
         else
         {
-            _player.Lg.SetTextLog("Non hai abbastanza crediti", true);
+            _player.Lg.SetTextLog("You don't have enough Credits", true);
         }
     }
 }

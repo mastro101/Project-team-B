@@ -25,4 +25,12 @@ public class LogManager : MonoBehaviour {
         LogText = logText;
         _isEquals = isEquals;
     }
+
+    enum Material
+    {
+        Metal,
+        Poison,
+        Oil,
+        Gem,
+    }
 }
