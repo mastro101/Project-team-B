@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour
 {
 
+    public GameObject TutorialPanel;
+    bool ActiveConsole = false;
+
     // Use this for initialization
     void Start()
     {
@@ -22,6 +25,23 @@ public class MainMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+
+    public void OpenTutorialPanel()
+    {
+        if (!ActiveConsole)
+        {
+            TutorialPanel.SetActive(true);
+            ActiveConsole = true;
+        }
+        else
+        {
+            TutorialPanel.SetActive(false);
+            ActiveConsole = false;
+        }
+
+    }
+
 
     public void loadlevel()
     {
