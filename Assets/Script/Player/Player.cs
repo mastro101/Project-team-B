@@ -12,9 +12,11 @@ public class Player : PlayerStatistiche{
     public Player currentEnemyPlayer;
     public Player PlayerEnemy1, PlayerEnemy2, PlayerEnemy3;
 
+    bool vfxPlay;
     Camera gameCamera;
     GameObject playerPrefab;
 
+    public ParticleSystem vfx;
     public Animator anim;
     public GameObject PlayerPrefab;
     public  TextMeshP Tmp;
@@ -118,6 +120,7 @@ public class Player : PlayerStatistiche{
         CheckMissions = new int[4];
         SetPositionPlayer();
         cameraSize = gameCamera.orthographicSize;
+        vfx.Stop();
     }
 
 
@@ -127,6 +130,11 @@ public class Player : PlayerStatistiche{
 
         if (Name == Gpm.Name)
         {
+            if (!vfxPlay)
+            {
+                vfx.Play();
+                vfxPlay = true;
+            }
             /*switch (Mission)
             {
                 case 1:
@@ -529,6 +537,11 @@ public class Player : PlayerStatistiche{
             
             // Morte
             Morte();
+        }
+        else
+        {
+            vfx.Stop();
+            vfxPlay = false;
         }
         //playerStatistiche.SetDistace(Name, DistanceMove);   //Setto il movimento del player // Da rivedere in futuro
     }
