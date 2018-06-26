@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour {
     public GameObject UICardEvent;
 
     public Texture[] MaterialiImage;
+    public Texture[] MaterialiToSellImage;
     public RawImage MaterialeToBuy, MaterialeToSell;
 
     public Texture[] EventCardImage;

@@ -203,19 +203,19 @@ public class Player : PlayerStatistiche{
                     switch (grid.FindCell(XPos, ZPos).GetNameTile())
                     {
                         case "A":
-                            UI.MaterialeToSell.texture = UI.MaterialiImage[0];
+                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[0];
                             UI.MaterialeToBuy.texture = UI.MaterialiImage[1];
                             break;
                         case "B":
-                            UI.MaterialeToSell.texture = UI.MaterialiImage[1];
+                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[1];
                             UI.MaterialeToBuy.texture = UI.MaterialiImage[2];
                             break;
                         case "C":
-                            UI.MaterialeToSell.texture = UI.MaterialiImage[2];
+                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[2];
                             UI.MaterialeToBuy.texture = UI.MaterialiImage[3];
                             break;
                         case "D":
-                            UI.MaterialeToSell.texture = UI.MaterialiImage[3];
+                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[3];
                             UI.MaterialeToBuy.texture = UI.MaterialiImage[0];
                             break;
                         default:
