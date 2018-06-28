@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public AudioClip GameAudio, CombatAudio;
+    public AudioClip GameAudio, CombatAudio, WinAudio;
     public AudioSource audioSource;
 
     private void Awake()

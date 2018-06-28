@@ -12,6 +12,7 @@ public class ButtonManager : MonoBehaviour {
     bool ActiveMainMenu = true;
     Vector3 ConsolPosition;
 
+    SoundEffectManager soundEffect;
     UIManager UI;
     TheGrid grid;
     public GamePlayManager Gpm;
@@ -23,25 +24,27 @@ public class ButtonManager : MonoBehaviour {
         grid = FindObjectOfType<TheGrid>();
         UI = FindObjectOfType<UIManager>();
         ConsolPosition = PanelConsole.transform.position;
+        soundEffect = FindObjectOfType<SoundEffectManager>();
         //PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
     }
 
 
     public void OpenConsole() {
-       //if (!ActiveConsole)
-       //{
-       //    //PanelConsole.SetActive(true);
-       //    PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
-       //    ActiveConsole = true;
-       //
-       //}
-       //else
-       //{
-       //    //PanelConsole.SetActive(false);
-       //    PanelConsole.transform.position = ConsolPosition;
-       //    ActiveConsole = false;
-       //
-       //}
+        //if (!ActiveConsole)
+        //{
+        //    //PanelConsole.SetActive(true);
+        //    PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
+        //    ActiveConsole = true;
+        //
+        //}
+        //else
+        //{
+        //    //PanelConsole.SetActive(false);
+        //    PanelConsole.transform.position = ConsolPosition;
+        //    ActiveConsole = false;
+        //
+        //}
+        soundEffect.PlayEffect(soundEffect.Click);
         UI.Console.SetActive(false);
         if (Gpm.CurrentState == GamePlayManager.State.City)
         {
@@ -53,6 +56,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void OpenTutorial()
     {
+        soundEffect.PlayEffect(soundEffect.Click);
         if (!ActiveConsole)
         {
             Tutorial.SetActive(true);
@@ -69,15 +73,18 @@ public class ButtonManager : MonoBehaviour {
 
     public void exitGame()
     {
+        soundEffect.PlayEffect(soundEffect.Click);
         Application.Quit();
     }
 
     public void OpenMenu()
     {
+        soundEffect.PlayEffect(soundEffect.Click);
         MainMenu.SetActive(true);
     }
     public void ResumeGame()
     {
+        soundEffect.PlayEffect(soundEffect.Click);
         MainMenu.SetActive(false);
     }
 
@@ -85,6 +92,8 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("MainMenuScene");
     }
+
+    bool selled;
 
     public void SellMateriali(int _materialType)
     {
@@ -95,6 +104,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl1.Materiali[_materialType] -= 10;
                     Pl1.WinPoint++;
+                    selled = true;
                 }
                 break;
             case "Blue":
@@ -102,6 +112,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl2.Materiali[_materialType] -= 10;
                     Pl2.WinPoint++;
+                    selled = true;
                 }
                 break;
             case "Red":
@@ -109,6 +120,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl3.Materiali[_materialType] -= 10;
                     Pl3.WinPoint++;
+                    selled = true;
                 }
                 break;
             case "Yellow":
@@ -116,6 +128,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl4.Materiali[_materialType] -= 10;
                     Pl4.WinPoint++;
+                    selled = true;
                 }
                 break;
         }
@@ -126,6 +139,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void Event1()
     {
+        soundEffect.PlayEffect(soundEffect.ActiveEvent);
         Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
         switch (Gpm.Name)
         {
@@ -178,6 +192,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void Event2()
     {
+        soundEffect.PlayEffect(soundEffect.ActiveEvent);
         Gpm.CurrentEventState = GamePlayManager.EventState.Animation;
         switch (Gpm.Name)
         {
@@ -240,7 +255,7 @@ public class ButtonManager : MonoBehaviour {
 
 
 
-
+    bool bought;
 
     public void BuyMateriali(int _materialType)
     {
@@ -251,6 +266,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl1.Materiali[_materialType]++;
                     Pl1.Credit -= 2;
+                    bought = true;
                 }
                 break;
             case "Blue":
@@ -258,6 +274,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl2.Materiali[_materialType]++;
                     Pl2.Credit -= 2;
+                    bought = true;
                 }
                 break;
             case "Red":
@@ -265,6 +282,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl3.Materiali[_materialType]++;
                     Pl3.Credit -= 2;
+                    bought = true;
                 }
                 break;
             case "Yellow":
@@ -272,6 +290,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl4.Materiali[_materialType]++;
                     Pl4.Credit -= 2;
+                    bought = true;
                 }
                 break;
         }
@@ -367,21 +386,41 @@ public class ButtonManager : MonoBehaviour {
     public void SellInCityA()
     {
         SellMateriali(0);
+        if (selled)
+        {
+            soundEffect.PlayEffect(soundEffect.Sell);
+            selled = false;
+        }
     }
 
     public void SellInCityB()
     {
         SellMateriali(1);
+        if (selled)
+        {
+            soundEffect.PlayEffect(soundEffect.Sell);
+            selled = false;
+        }
     }
 
     public void SellInCityC()
     {
         SellMateriali(2);
+        if (selled)
+        {
+            soundEffect.PlayEffect(soundEffect.Sell);
+            selled = false;
+        }
     }
 
     public void SellInCityD()
     {
         SellMateriali(3);
+        if (selled)
+        {
+            soundEffect.PlayEffect(soundEffect.Sell);
+            selled = false;
+        }
     }
 
         // Per Comprare materiali
@@ -473,21 +512,41 @@ public class ButtonManager : MonoBehaviour {
     public void BuyInCityA()
     {
         BuyMateriali(1);
+        if (bought)
+        {
+            soundEffect.PlayEffect(soundEffect.BuyPoison);
+            bought = false;
+        }
     }
 
     public void BuyInCityB()
     {
         BuyMateriali(2);
+        if (bought)
+        {
+            soundEffect.PlayEffect(soundEffect.BuyOil);
+            bought = false;
+        }
     }
 
     public void BuyInCityC()
     {
         BuyMateriali(3);
+        if (bought)
+        {
+            soundEffect.PlayEffect(soundEffect.BuyGem);
+            bought = false;
+        }
     }
 
     public void BuyInCityD()
     {
         BuyMateriali(0);
+        if (bought)
+        {
+            soundEffect.PlayEffect(soundEffect.BuyMetal);
+            bought = false;
+        }
     }
 
     //
@@ -501,6 +560,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl1.Life = Pl1.MaxLife;
                     Pl1.Credit -= 3;
+                    soundEffect.PlayEffect(soundEffect.Heal);
                 }
                 break;
             case "Blue":
@@ -508,6 +568,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl2.Life = Pl2.MaxLife;
                     Pl2.Credit -= 3;
+                    soundEffect.PlayEffect(soundEffect.Heal);
                 }
                 break;
             case "Red":
@@ -515,6 +576,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl3.Life = Pl3.MaxLife;
                     Pl3.Credit -= 3;
+                    soundEffect.PlayEffect(soundEffect.Heal);
                 }
                 break;
             case "Yellow":
@@ -522,6 +584,7 @@ public class ButtonManager : MonoBehaviour {
                 {
                     Pl4.Life = Pl4.MaxLife;
                     Pl4.Credit -= 3;
+                    soundEffect.PlayEffect(soundEffect.Heal);
                 }
                 break;
         }
@@ -534,7 +597,7 @@ public class ButtonManager : MonoBehaviour {
     }
 
     public void EndPhase() {
-
+        soundEffect.PlayEffect(soundEffect.Click);
         if (Gpm.CurrentState == GamePlayManager.State.Event)
         {
             EndP.SetActive(false);

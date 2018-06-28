@@ -15,7 +15,8 @@ public class Player : PlayerStatistiche{
     bool vfxPlay;
     Camera gameCamera;
     GameObject playerPrefab;
-
+    SoundEffectManager soundEffect;
+    
     public ParticleSystem vfx;
     //public Animator anim;
     public GameObject PlayerPrefab;
@@ -105,6 +106,7 @@ public class Player : PlayerStatistiche{
     {
         Life = 5;
 
+        soundEffect = FindObjectOfType<SoundEffectManager>();
         enemyManager = FindObjectOfType<EnemyPoolManager>();
         MissionManager = FindObjectOfType<Mission>();
         gameCamera = FindObjectOfType<Camera>();
@@ -243,6 +245,7 @@ public class Player : PlayerStatistiche{
                     
                     if (!inCombatEnemy)
                     {
+                        soundEffect.PlayEffect(soundEffect.CombatTile);
                         SpawnEnemy();
                         UI.PlayerOrEnemyInCombat.texture = UI.PlayerImage[currentEnemy.ID + 4];
                         UI.PlayerOrEnemyNameInCombat.texture = UI.PlayerName[4];
@@ -258,6 +261,7 @@ public class Player : PlayerStatistiche{
                 {
                     if (!inCombatPlayer)
                     {
+                        soundEffect.PlayEffect(soundEffect.CombatTile);
                         currentEnemyPlayer = grid.FindCell(XPos, ZPos).POnTile;
                         switch (currentEnemyPlayer.Name)
                         {
@@ -292,12 +296,20 @@ public class Player : PlayerStatistiche{
                 if ((inCombatEnemy || inCombatPlayer) && Attacks == 0)
                 {
                     if (Input.GetKeyDown(KeyCode.Alpha1))
+                    {
                         Attacks = 1;
+                        soundEffect.PlayEffect(soundEffect.Attack);
+                    }
                     else if (Input.GetKeyDown(KeyCode.Alpha2))
+                    {
                         Attacks = 2;
+                        soundEffect.PlayEffect(soundEffect.Attack);
+                    }
                     else if (Input.GetKeyDown(KeyCode.Alpha3))
+                    {
                         Attacks = 3;
-
+                        soundEffect.PlayEffect(soundEffect.Attack);
+                    }
                 }
 
                 if (inCombatEnemy)
@@ -413,11 +425,20 @@ public class Player : PlayerStatistiche{
                     if (currentEnemyPlayer.Attacks == 0)
                     {
                         if (Input.GetKeyDown(KeyCode.Alpha8))
+                        {
                             currentEnemyPlayer.Attacks = 1;
+                            soundEffect.PlayEffect(soundEffect.Attack);
+                        }
                         else if (Input.GetKeyDown(KeyCode.Alpha9))
+                        {
                             currentEnemyPlayer.Attacks = 2;
+                            soundEffect.PlayEffect(soundEffect.Attack);
+                        }
                         else if (Input.GetKeyDown(KeyCode.Alpha0))
+                        {
                             currentEnemyPlayer.Attacks = 3;
+                            soundEffect.PlayEffect(soundEffect.Attack);
+                        }
                     }
 
                     if (Attacks != 0 && currentEnemyPlayer.Attacks != 0)
@@ -587,6 +608,7 @@ public class Player : PlayerStatistiche{
     {
         if (grid.IsValidPosition(XPos, ZPos))
         {
+            soundEffect.PlayEffect(soundEffect.Move);
             Vector3 globalPosition = grid.GetWorldPosition(XPos, ZPos);
             globalPosition += new Vector3(0f, _Yoffset, 0f); ;
             
@@ -827,6 +849,7 @@ public class Player : PlayerStatistiche{
         
         if (grid.FindCell(XPos, ZPos).GetNameTile() != "" && grid.FindCell(XPos, ZPos).GetNameTile() != "Enemy" && grid.FindCell(XPos, ZPos).GetNameTile() != "Credit" && grid.FindCell(XPos, ZPos).GetNameTile() != "Empty")
         {
+            soundEffect.PlayEffect(soundEffect.City);
             // se è all'interno di una città passa alla fase Object
             Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
             Lg.SetTextLog(Nickname + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
@@ -848,6 +871,7 @@ public class Player : PlayerStatistiche{
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Credit")
         {
+            soundEffect.PlayEffect(soundEffect.CreditTile);
             eventManager.TakeCredits(Random.Range(1, 11), this);
             neutralizeCell(XPos, ZPos);
             Gpm.CurrentState = GamePlayManager.State.Debug;
@@ -862,6 +886,7 @@ public class Player : PlayerStatistiche{
                 // Viene scelto un numero randomico per ogni evento
                 if (eventCard == 0)
                 {
+                    soundEffect.PlayEffect(soundEffect.EventTile);
                     do
                     {
                         eventCard = Random.Range(4, 39);
@@ -1381,6 +1406,11 @@ public class Player : PlayerStatistiche{
 
     public void LoseRound()
     {
+        if (Gpm.Name != Name)
+            soundEffect.PlayEffect(soundEffect.WinCombat);
+        else
+            soundEffect.PlayEffect(soundEffect.LoseCombat);
+
         if (inCombatEnemy)
         {
             currentEnemy.CombatPoint++;
@@ -1481,6 +1511,7 @@ public class Player : PlayerStatistiche{
         }
         if (Life <= 0)
         {
+            soundEffect.PlayEffect(soundEffect.PlayerDeath);
             Credit = 0;
             grid.FindCell(XPos, ZPos).PlayerOnTile--;
             if (grid.FindCell(XPos, ZPos).POnTile == this && Gpm.CurrentState == GamePlayManager.State.Combat && !inCombatEnemy)

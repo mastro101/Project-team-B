@@ -8,7 +8,7 @@ public class Mission : MonoBehaviour {
     public LogManager Lg;
     public Player Player1, Player2, Player3, Player4;
     public GameObject WinScreen, p1ws, p2ws, p3ws, p4ws;
-    bool end;
+    bool end, win;
 
 
     public int MissioniComuni;
@@ -47,30 +47,41 @@ public class Mission : MonoBehaviour {
             p4ws.SetActive(true);
         }
         */
+        if (win)
+        {
+            SoundManager sound = FindObjectOfType<SoundManager>();
+            sound.audioSource.clip = sound.WinAudio;
+            sound.audioSource.Play();
+        }
+
 
         if (Player1.WinPoint == 2)
         {
             WinScreen.SetActive(true);
             p1ws.SetActive(true);
             Lg.SetTextLog(Player1 + " HA VINTO", true);
+            win = true;
         }
         else if (Player2.WinPoint == 2)
         {
             WinScreen.SetActive(true);
             p2ws.SetActive(true);
             Lg.SetTextLog(Player2 + " HA VINTO", true);
+            win = true;
         }
         else if (Player3.WinPoint == 2)
         {
             WinScreen.SetActive(true);
             p3ws.SetActive(true);
             Lg.SetTextLog(Player3 + " HA VINTO", true);
+            win = true;
         }
         else if (Player1.WinPoint == 2)
         {
             WinScreen.SetActive(true);
             p4ws.SetActive(true);
             Lg.SetTextLog(Player4 + " HA VINTO", true);
+            win = true;
         }
 
         if (EmptyCell == 153)
@@ -81,6 +92,7 @@ public class Mission : MonoBehaviour {
                 p1ws.SetActive(true);
                 Lg.SetTextLog(Player1 + " HA VINTO", true);
                 end = true;
+                win = true;
             }
             else if (Player2.WinPoint > Player1.WinPoint && Player2.WinPoint > Player3.WinPoint && Player2.WinPoint > Player4.WinPoint)
             {
@@ -88,6 +100,7 @@ public class Mission : MonoBehaviour {
                 p2ws.SetActive(true);
                 Lg.SetTextLog(Player2 + " HA VINTO", true);
                 end = true;
+                win = true;
             }
             else if (Player3.WinPoint > Player1.WinPoint && Player3.WinPoint > Player2.WinPoint && Player3.WinPoint > Player4.WinPoint)
             {
@@ -95,6 +108,7 @@ public class Mission : MonoBehaviour {
                 p3ws.SetActive(true);
                 Lg.SetTextLog(Player3 + " HA VINTO", true);
                 end = true;
+                win = true;
             }
             else if (Player4.WinPoint > Player1.WinPoint && Player4.WinPoint > Player2.WinPoint && Player4.WinPoint > Player3.WinPoint)
             {
@@ -102,6 +116,7 @@ public class Mission : MonoBehaviour {
                 p4ws.SetActive(true);
                 Lg.SetTextLog(Player4 + " HA VINTO", true);
                 end = true;
+                win = true;
             }
         }
 
@@ -148,6 +163,7 @@ public class Mission : MonoBehaviour {
                     Lg.SetTextLog(Player4 + " HA VINTO", true);
                 }
             }
+            win = true;
         }
         /*if (grid.GetCity("A").POnTile != null && grid.GetCity("A").POnTile.Mission == 1)
         {
