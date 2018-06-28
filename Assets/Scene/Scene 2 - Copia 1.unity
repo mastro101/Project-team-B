@@ -7687,7 +7687,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1747440291770614, guid: 995df49fbb8a80e4cb1c057b1d859ce8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224105665848565218, guid: 995df49fbb8a80e4cb1c057b1d859ce8,
         type: 2}
@@ -7844,6 +7844,10 @@ Prefab:
       propertyPath: m_subTextObjects.Array.data[1]
       value: 
       objectReference: {fileID: 1432534461}
+    - target: {fileID: 1689612580391832, guid: 995df49fbb8a80e4cb1c057b1d859ce8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 995df49fbb8a80e4cb1c057b1d859ce8, type: 2}
   m_IsPrefabParent: 0
@@ -13209,7 +13213,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1432534459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1908110080, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
   m_Name: 
