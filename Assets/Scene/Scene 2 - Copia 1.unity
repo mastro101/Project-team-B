@@ -922,11 +922,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -11469,7 +11469,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 306e5baf0574c734184a79561d009503, type: 3}
   - {fileID: 2800000, guid: 8d0e460f2c98d8441b87acff453512a7, type: 3}
   - {fileID: 2800000, guid: d31ccca2f221d034193f5a2489656962, type: 3}
-  - {fileID: 2800000, guid: a07d195f39393224ba512747825886dd, type: 3}
+  - {fileID: 2800000, guid: 616fd43165363b04eafa3c394bfef39c, type: 3}
   - {fileID: 2800000, guid: 4b1f3b6d3a266d340951481eafbec6cd, type: 3}
   PlayerTurnImage: {fileID: 78747874}
   Player1InCombat: {fileID: 401925172}
@@ -11496,6 +11496,7 @@ MonoBehaviour:
   - {fileID: 1076770673}
   - {fileID: 671009297}
   Menu: {fileID: 1883176983}
+  Ok: {fileID: 1172658148}
   sb: {fileID: 1502361258}
 --- !u!1 &1184258792
 GameObject:
@@ -18729,11 +18730,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

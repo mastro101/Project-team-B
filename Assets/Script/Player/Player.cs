@@ -1239,112 +1239,112 @@ public class Player : PlayerStatistiche{
             // Von Canterlik Ferire
             case 4:
                 immagineCarte = 5;
-                descrizioneCarte = "Paga 3 crediti. Ogni avversario perde 1 punto vita.";
+                descrizioneCarte = "Pay 3 credits. Each opponent loses 1 life.";
                 break;
             // Truffati
             case 5:
                 immagineCarte = 8;
-                descrizioneCarte = "Tutti gli altri giocatori perdono 1 o 2 crediti.";
+                descrizioneCarte = "all other player lose 1 or 2 credits.";
                 break;
             // Siero di rigenerazione
             case 6:
                 immagineCarte = 2;
-                descrizioneCarte = "Ripristina 2 punti salute.";
+                descrizioneCarte = "Restores 2 life.";
                 break;
             // Stanchezza
             case 7:
                 immagineCarte = 8;
-                descrizioneCarte = "Tutti gli altri giocatori avranno solo 2 movimenti possibili fino al tuo turno";
+                descrizioneCarte = "All other player have two possible move until their next turn.";
                 break;
             // Jynix doppia coppia
             case 8:
                 immagineCarte = 0;
-                descrizioneCarte = "Perdi 2 materiali casuali. Al 60% Jynix ti da 6 crediti.";
+                descrizioneCarte = "Lose 2 random materials. At 60% Jyinix gives you 6 credits.";
                 break;
             // Jynix Poker D'assi
             case 9:
                 immagineCarte = 0;
-                descrizioneCarte = "Perdi 4 materiali casuali. All'80% Jynix ti da 10 crediti";
+                descrizioneCarte = "Lose 4 random materials. At 80% Jyinx gives you 10 credits.";
                 break;
             // Jynix fold
             case 10:
                 immagineCarte = 0;
-                descrizioneCarte = "Perdi 1 materiale casuale. Ottieni 2 crediti.";
+                descrizioneCarte = "Lose 1 random material. Get 2 credits.";
                 break;
 
             // Sterlya
             // Buon Umore
             case 11:
                 immagineCarte = 1;
-                descrizioneCarte = "Spendi 5 crediti per ottenere 2 materiali di ogni tipo.";
+                descrizioneCarte = "Spend 5 credits to get 2 materials of all kinds.";
                 break;
             // Cattivo umore
             case 12:
                 immagineCarte = 1;
-                descrizioneCarte = "Spendi 3 crediti per ottenere 2 materiali Casuali.";
+                descrizioneCarte = "Spend 3 credits to get 2 random materials.";
                 break;
             // Generosa A
             case 13:
                 immagineCarte = 1;
-                descrizioneCarte = "Se non hai crediti, ottieni 2 materiali di metallo.";
+                descrizioneCarte = "If you do not have credits, you get 2 metal.";
                 break;
             // Generosa B
             case 14:
                 immagineCarte = 1;
-                descrizioneCarte = "Se non hai crediti, ottieni 2 fiale di veleno.";
+                descrizioneCarte = "If you do not have credits, you get 2 poison.";
                 break;
             // Generosa C
             case 15:
                 immagineCarte = 1;
-                descrizioneCarte = "Se non hai crediti, ottieni 2 bottiglie d'olio.";
+                descrizioneCarte = "If you do not have credits, you get 2 oil.";
                 break;
             // Generosa D
             case 16:
                 immagineCarte = 1;
-                descrizioneCarte = "Se non hai crediti, ottieni 2 gemme.";
+                descrizioneCarte = "If you do not have credits, you get 2 gem.";
                 break;
             // Professionale A
             case 17:
                 immagineCarte = 1;
-                descrizioneCarte = "Spendi 2 crediti per ottenere 1 materiale di metallo.";
+                descrizioneCarte = "Spend 2 credits to get 1 metal.";
                 break;
             // Professionale B
             case 18:
                 immagineCarte = 1;
-                descrizioneCarte = "Spendi 2 crediti per ottenere 1 fiala di veleno.";
+                descrizioneCarte = "Spend 2 credits to get 1 poison.";
                 break;
             // Professionale C
             case 19:
                 immagineCarte = 1;
-                descrizioneCarte = "Spendi 2 crediti per ottenere 1 bottiglia d'olio.";
+                descrizioneCarte = "Spend 2 credits to get 1 oil.";
                 break;
             // Professionale D
             case 20:
                 immagineCarte = 1;
-                descrizioneCarte = "Spendi 2 crediti per ottenere 1 gemma.";
+                descrizioneCarte = "Spend 2 credits to get 1 gem.";
                 break;
             //
 
             // Pezzo di ricambio
             case 21:
                 immagineCarte = 3;
-                descrizioneCarte = "Ottieni 2 crediti.";
+                descrizioneCarte = "Get 2 credits.";
                 break;
             case 22:
                 immagineCarte = 3;
-                descrizioneCarte = "Ottieni un materiale di metallo.";
+                descrizioneCarte = "Get 1 metal.";
                 break;
             case 23:
                 immagineCarte = 3;
-                descrizioneCarte = "Ottieni una fiala di veleno.";
+                descrizioneCarte = "Get 1 poison.";
                 break;
             case 24:
                 immagineCarte = 3;
-                descrizioneCarte = "Ottieni una bottiglia d'olio.";
+                descrizioneCarte = "Get 1 oil.";
                 break;
             case 25:
                 immagineCarte = 3;
-                descrizioneCarte = "Ottieni una gemma.";
+                descrizioneCarte = "Get 1 gem.";
                 break;
             //
 
@@ -1352,12 +1352,12 @@ public class Player : PlayerStatistiche{
             // Ferire e curare 
             case 26:
                 immagineCarte = 5;
-                descrizioneCarte = "Paga 5 crediti. Ogni avversario perde 1 punto vita e tu ottieni 1 punto vita";
+                descrizioneCarte = "Pay 5 credits. Each opponent loses 1 life point and you gain 1 life";
                 break;
             // Ferirsi e ferire
             case 27:
                 immagineCarte = 5;
-                descrizioneCarte = "Perdi 2 punti vita. Ogni avversario perde 1 punto vita.";
+                descrizioneCarte = "Lose 2 life. Each opponent loses 1 life";
                 break;
             //
 
@@ -1365,37 +1365,37 @@ public class Player : PlayerStatistiche{
             // Enorme
             case 28:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti i giocatori perdono 3 materiali di metallo.";
+                descrizioneCarte = "All players lose 3 metal.";
                 break;
             case 29:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti i giocatori perdono 3 fiale di veleno.";
+                descrizioneCarte = "All players lose 3 poison.";
                 break;
             case 30:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti i giocatori perdono 3 bottiglie d'olio.";
+                descrizioneCarte = "All players lose 3 oil.";
                 break;
             case 31:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti i giocatori perdono 3 gemme.";
+                descrizioneCarte = "All players lose 3 gem.";
                 break;
             //
             // Infestazione
             case 32:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti gli altri giocatori perdono 1 materiale di metallo";
+                descrizioneCarte = "All other players lose 1 metal.";
                 break;
             case 33:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti gli altri giocatori perdono 1 fiala di veleno";
+                descrizioneCarte = "All other players lose 1 poison";
                 break;
             case 34:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti gli altri giocatori perdono 1 bottiglia d'olio";
+                descrizioneCarte = "All other players lose 1 oil";
                 break;
             case 35:
                 immagineCarte = 6;
-                descrizioneCarte = "Tutti gli altri giocatori perdono 1 gemma";
+                descrizioneCarte = "All other players lose 1 gem";
                 break;
             //
             //
@@ -1403,17 +1403,17 @@ public class Player : PlayerStatistiche{
             // Debole
             case 36:
                 immagineCarte = 7;
-                descrizioneCarte = "Tutti i giocatori perdono 1 punto vita.";
+                descrizioneCarte = "All players lose 1 life.";
                 break;
             // Normale
             case 37:
                 immagineCarte = 7;
-                descrizioneCarte = "Tutti i giocatori perdono 1 punto vita e 2 materiali casuali";
+                descrizioneCarte = "All players lose 1 life and 2 random materials";
                 break;
             // Forte
             case 38:
                 immagineCarte = 7;
-                descrizioneCarte = "Tutti i giocatori perdono 2 punto vita e 2 materiali casuali";
+                descrizioneCarte = "All players lose 2 life and 2 random materials";
                 break;
             default:
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);

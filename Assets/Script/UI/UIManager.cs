@@ -35,19 +35,26 @@ public class UIManager : MonoBehaviour {
     public RawImage[] AttackPlayer, AttackPlayerOrEnemy;
 
     public GameObject Menu;
+    public GameObject Ok;
 
     public Scrollbar sb;
+    GamePlayManager Gpm;
 
 	// Use this for initialization
 	void Start () {
         _isHealActive = new bool[2];
         _isHealActive[0] = false;
         _isHealActive[1] = false;
-
+        Gpm = FindObjectOfType<GamePlayManager>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Gpm.CurrentState == GamePlayManager.State.Combat)
+        {
+            Ok.SetActive(false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
