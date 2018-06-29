@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour {
     public Texture[] AttackImage;
     public RawImage[] AttackPlayer, AttackPlayerOrEnemy;
 
+    public GameObject Menu;
+
     public Scrollbar sb;
 
 	// Use this for initialization
@@ -46,6 +48,14 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!Menu.activeSelf)
+                FindObjectOfType<ButtonManager>().OpenMenu();
+            else
+                FindObjectOfType<ButtonManager>().ResumeGame();
+        }
 
         sb.value = 0;
 
