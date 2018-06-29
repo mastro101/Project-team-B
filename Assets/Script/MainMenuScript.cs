@@ -8,11 +8,12 @@ public class MainMenuScript : MonoBehaviour
 
     public GameObject TutorialPanel;
     bool ActiveConsole = false;
+    SoundEffectManager soundEffect;
 
     // Use this for initialization
     void Start()
     {
-
+        soundEffect = FindObjectOfType<SoundEffectManager>();
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void QuitGame()
     {
+        soundEffect.PlayEffect(soundEffect.Click);
         Application.Quit();
     }
 
@@ -39,14 +41,14 @@ public class MainMenuScript : MonoBehaviour
             TutorialPanel.SetActive(false);
             ActiveConsole = false;
         }
-
+        soundEffect.PlayEffect(soundEffect.Click);
     }
 
 
     public void loadlevel()
     {
-       
-            SceneManager.LoadScene("Scene 2 - Copia 1");
+        soundEffect.PlayEffect(soundEffect.Click);
+        SceneManager.LoadScene("Scene 2 - Copia 1");
        
     }
 }
