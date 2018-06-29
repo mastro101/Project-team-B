@@ -25,7 +25,7 @@ public class DetectObject : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (!Menu)
+        if (Menu.activeSelf == false)
         {
 
         
