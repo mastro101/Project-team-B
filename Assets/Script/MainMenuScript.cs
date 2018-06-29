@@ -9,6 +9,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject TutorialPanel;
     bool ActiveConsole = false;
     SoundEffectManager soundEffect;
+    public GameObject CreditsPanel;
 
     // Use this for initialization
     void Start()
@@ -44,6 +45,18 @@ public class MainMenuScript : MonoBehaviour
         soundEffect.PlayEffect(soundEffect.Click);
     }
 
+
+    public void OpenCreditsPanel()
+    {
+        soundEffect.PlayEffect(soundEffect.Click);
+        CreditsPanel.SetActive(true);
+    }
+
+    public void CloseCreditsPanel()
+    {
+        soundEffect.PlayEffect(soundEffect.Click);
+        CreditsPanel.SetActive(false);
+    }
 
     public void loadlevel()
     {
