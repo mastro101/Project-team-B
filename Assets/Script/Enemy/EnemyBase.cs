@@ -123,6 +123,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
 
     public virtual void LoseRound()
     {
+        SoundEffectManager soundEffect = FindObjectOfType<SoundEffectManager>();
+        soundEffect.PlayEffect(soundEffect.WinCombat);
         Attack = 0;
         CurrentPlayer.Attacks = 0;
         CurrentPlayer.CombatPoint++;
@@ -133,19 +135,19 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
             {
                 case IEnemyType.Green:
                     CurrentPlayer.AddMaterial(0, Materiali);
-                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M1", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " metal end " + Credits + "credits", true);
                     break;
                 case IEnemyType.Blue:
                     CurrentPlayer.AddMaterial(1, Materiali);
-                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M2", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " poison end " + Credits + "credits", true);
                     break;
                 case IEnemyType.Red:
                     CurrentPlayer.AddMaterial(2, Materiali);
-                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M3", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " oil end " + Credits + "credits", true);
                     break;
                 case IEnemyType.Yellow:
                     CurrentPlayer.AddMaterial(3, Materiali);
-                    CurrentPlayer.Lg.SetTextLog("Guadagnato " + Materiali.ToString() + " M4", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " gem end " + Credits + "credits", true);
                     break;
                 default:
                     Debug.Log("Non Ha dato materiali. Colore assente");

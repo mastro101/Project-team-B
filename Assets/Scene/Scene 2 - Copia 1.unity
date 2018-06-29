@@ -3767,11 +3767,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -18324,10 +18324,10 @@ MonoBehaviour:
   Heal: {fileID: 8300000, guid: af80c09aec3a29e4f96c88da0d89f2de, type: 3}
   Sell: {fileID: 8300000, guid: 79c8e786e0cf9c8448c985ab98584ce3, type: 3}
   LoseCombat: {fileID: 8300000, guid: c5d7f51792fc28348a72d986222a5415, type: 3}
-  WinCombat: {fileID: 0}
+  WinCombat: {fileID: 8300000, guid: 20fa168aa9a23b9469f06e9ef467a1b3, type: 3}
   PlayerDeath: {fileID: 8300000, guid: 21de0c3efb23108429b9e3767177dda7, type: 3}
   City: {fileID: 8300000, guid: 2463e13af06d9df438a2bc7f6a003a4c, type: 3}
-  ActiveEvent: {fileID: 0}
+  ActiveEvent: {fileID: 8300000, guid: 7c52ea79d80784649985b48a1e57dd59, type: 3}
   Mercante: {fileID: 8300000, guid: ca35ee38e1daad84b8f22a1caacddba6, type: 3}
 --- !u!1 &2002531039
 GameObject:

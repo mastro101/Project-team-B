@@ -105,6 +105,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl1.Materiali[_materialType] -= 10;
                     Pl1.WinPoint++;
                     selled = true;
+                    Pl1.Lg.SetTextLog(Pl1.Nickname + " sell 10 " + Pl1.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
             case "Blue":
@@ -113,6 +114,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl2.Materiali[_materialType] -= 10;
                     Pl2.WinPoint++;
                     selled = true;
+                    Pl2.Lg.SetTextLog(Pl2.Nickname + " sell 10 " + Pl2.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
             case "Red":
@@ -121,6 +123,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl3.Materiali[_materialType] -= 10;
                     Pl3.WinPoint++;
                     selled = true;
+                    Pl3.Lg.SetTextLog(Pl3.Nickname + " sell 10 " + Pl3.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
             case "Yellow":
@@ -129,6 +132,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl4.Materiali[_materialType] -= 10;
                     Pl4.WinPoint++;
                     selled = true;
+                    Pl4.Lg.SetTextLog(Pl4.Nickname + " sell 10 " + Pl4.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
         }
@@ -267,6 +271,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl1.Materiali[_materialType]++;
                     Pl1.Credit -= 2;
                     bought = true;
+                    Pl1.Lg.SetTextLog(Pl1.Nickname + " buy 1 " + Pl1.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
             case "Blue":
@@ -275,6 +280,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl2.Materiali[_materialType]++;
                     Pl2.Credit -= 2;
                     bought = true;
+                    Pl2.Lg.SetTextLog(Pl2.Nickname + " buy 1 " + Pl2.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
             case "Red":
@@ -283,6 +289,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl3.Materiali[_materialType]++;
                     Pl3.Credit -= 2;
                     bought = true;
+                    Pl3.Lg.SetTextLog(Pl3.Nickname + " buy 1 " + Pl3.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
             case "Yellow":
@@ -291,6 +298,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl4.Materiali[_materialType]++;
                     Pl4.Credit -= 2;
                     bought = true;
+                    Pl4.Lg.SetTextLog(Pl4.Nickname + " buy 1 " + Pl4.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
         }
@@ -561,6 +569,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl1.Life = Pl1.MaxLife;
                     Pl1.Credit -= 3;
                     soundEffect.PlayEffect(soundEffect.Heal);
+                    Pl1.Lg.SetTextLog(Pl1.Nickname + " heal for 3 credit", true);
                 }
                 break;
             case "Blue":
@@ -569,6 +578,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl2.Life = Pl2.MaxLife;
                     Pl2.Credit -= 3;
                     soundEffect.PlayEffect(soundEffect.Heal);
+                    Pl2.Lg.SetTextLog(Pl2.Nickname + " heal for 3 credit", true);
                 }
                 break;
             case "Red":
@@ -577,6 +587,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl3.Life = Pl3.MaxLife;
                     Pl3.Credit -= 3;
                     soundEffect.PlayEffect(soundEffect.Heal);
+                    Pl3.Lg.SetTextLog(Pl3.Nickname + " heal for 3 credit", true);
                 }
                 break;
             case "Yellow":
@@ -585,6 +596,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl4.Life = Pl4.MaxLife;
                     Pl4.Credit -= 3;
                     soundEffect.PlayEffect(soundEffect.Heal);
+                    Pl4.Lg.SetTextLog(Pl4.Nickname + " heal for 3 credit", true);
                 }
                 break;
         }

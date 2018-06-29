@@ -26,11 +26,20 @@ public class LogManager : MonoBehaviour {
         _isEquals = isEquals;
     }
 
-    enum Material
+    public string MaterialName(int _materialType)
     {
-        Metal,
-        Poison,
-        Oil,
-        Gem,
+        switch (_materialType)
+        {
+            case 1:
+                return "metal";
+            case 2:
+                return "poison";
+            case 3:
+                return "oil";
+            case 4:
+                return "gem";
+            default:
+                return null;
+        }
     }
 }

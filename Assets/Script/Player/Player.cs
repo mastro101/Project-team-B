@@ -35,10 +35,10 @@ public class Player : PlayerStatistiche{
         get { return life; }
         set
         {
-            if (value >= Life)
-                Lg.SetTextLog(Nickname + " heal of " + (value - Life), true);
-            else
-                Lg.SetTextLog(Nickname + " lost " + (Life - value) + " life ", true);
+           //if (value >= Life)
+           //    Lg.SetTextLog(Nickname + " heal of " + (value - Life), true);
+           //else
+           //    Lg.SetTextLog(Nickname + " lost " + (Life - value) + " life ", true);
 
             if (value > MaxLife)
                 life = MaxLife;
@@ -57,10 +57,10 @@ public class Player : PlayerStatistiche{
         get { return credit; }
         set
         {
-            if (value >= Credit)
-                Lg.SetTextLog(Nickname + " received " + (value - Credit) + " Credits", true);
-            else
-                Lg.SetTextLog(Nickname + " lost " + (Credit - value) + " Credits", true);
+           //if (value >= Credit)
+           //    Lg.SetTextLog(Nickname + " received " + (value - Credit) + " Credits", true);
+           //else
+           //    Lg.SetTextLog(Nickname + " lost " + (Credit - value) + " Credits", true);
 
             credit = value;
             if (credit < 0)
@@ -649,7 +649,7 @@ public class Player : PlayerStatistiche{
             }*/
                 
 
-            Lg.SetTextLog(Nickname + " si è mosso (" +XPos+"-"+ZPos+")" , true);
+            Lg.SetTextLog(Nickname + " moved" , true);
                 
         }
         else
@@ -871,8 +871,10 @@ public class Player : PlayerStatistiche{
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Credit")
         {
+            int i = Random.Range(1, 11);
             soundEffect.PlayEffect(soundEffect.CreditTile);
-            eventManager.TakeCredits(Random.Range(1, 11), this);
+            eventManager.TakeCredits(i, this);
+            Lg.SetTextLog(Nickname + " recived " + i + " credits", true);
             neutralizeCell(XPos, ZPos);
             Gpm.CurrentState = GamePlayManager.State.Debug;
         }
@@ -889,7 +891,7 @@ public class Player : PlayerStatistiche{
                     soundEffect.PlayEffect(soundEffect.EventTile);
                     do
                     {
-                        eventCard = Random.Range(4, 39);
+                        eventCard = 11; // Random.Range(4, 39);
                     } while (eventCard == 0);
                     event1 = eventCard;
                     EventListView(event1);
@@ -987,14 +989,14 @@ public class Player : PlayerStatistiche{
                 {
                     Credit -= 3;
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                    Lg.SetTextLog("The other player lost 1 life", true);
+                    Lg.SetTextLog("The other players lost 1 life", true);
                 }
                 break;
             // Truffati
             case 5:
                 int i = -Random.Range(1, 3);
                 eventManager.TakeCredits(i, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("The other Player Lost " + i + " credits", true);
+                Lg.SetTextLog("The other Players Lost " + i + " credits", true);
                 break;
             // Siero di rigenerazione
             case 6:
@@ -1005,7 +1007,7 @@ public class Player : PlayerStatistiche{
                 PlayerEnemy1.PossibleMove = 2;
                 PlayerEnemy2.PossibleMove = 2;
                 PlayerEnemy3.PossibleMove = 2;
-                Lg.SetTextLog("The other Player Lost 2 Movements", true);
+                Lg.SetTextLog("The other Players Lost 2 Movements", true);
                 break;
             // Jynix doppia coppia
             case 8:
@@ -1029,8 +1031,10 @@ public class Player : PlayerStatistiche{
                     eventManager.PayForMaterial(1, 1, 2, this);
                     eventManager.PayForMaterial(1, 2, 2, this);
                     eventManager.PayForMaterial(1, 3, 2, this);
-                    Lg.SetTextLog(Nickname + " recived 5 materials", true);
+                    Lg.SetTextLog(Nickname + " received 5 materials", true);
                 }
+                else
+                    Lg.SetTextLog(Nickname + " dosen't have enough credits", true);
                 break;
             // Cattivo umore
             case 12:
@@ -1040,22 +1044,34 @@ public class Player : PlayerStatistiche{
             // Generosa A
             case 13:
                 if (Credit == 0)
+                {
                     AddMaterial(0, 2);
+                    Lg.SetTextLog(Nickname + " received 2 metal", true);
+                }
                 break;
             // Generosa B
             case 14:
                 if (Credit == 0)
+                {
                     AddMaterial(1, 2);
+                    Lg.SetTextLog(Nickname + " received 2 poison", true);
+                }
                 break;
             // Generosa C
             case 15:
                 if (Credit == 0)
+                {
                     AddMaterial(2, 2);
+                    Lg.SetTextLog(Nickname + " received 2 oil", true);
+                }
                 break;
             // Generosa D
             case 16:
                 if (Credit == 0)
+                {
                     AddMaterial(3, 2);
+                    Lg.SetTextLog(Nickname + " received 2 gem", true);
+                }
                 break;
             // Professionale A
             case 17:
@@ -1085,15 +1101,19 @@ public class Player : PlayerStatistiche{
                 break;
             case 22:
                 eventManager.AddMaterial(0, 1, this);
+                Lg.SetTextLog(Nickname + " received 1 metal", true);
                 break;
             case 23:
                 eventManager.AddMaterial(1, 1, this);
+                Lg.SetTextLog(Nickname + " received 1 poison", true);
                 break;
             case 24:
                 eventManager.AddMaterial(2, 1, this);
+                Lg.SetTextLog(Nickname + " received 1 oil", true);
                 break;
             case 25:
                 eventManager.AddMaterial(3, 1, this);
+                Lg.SetTextLog(Nickname + " received 1 gem", true);
                 break;
                 //
 
@@ -1105,7 +1125,7 @@ public class Player : PlayerStatistiche{
                     Credit -= 5;
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     eventManager.Heal(1, this); 
-                    Lg.SetTextLog("Other player lost 1 Life", true);
+                    Lg.SetTextLog("Other players lost 1 Life", true);
                 }
                 break;
             // Ferirsi e ferire
@@ -1114,7 +1134,10 @@ public class Player : PlayerStatistiche{
                 {
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     Life -= 2;
+                    Lg.SetTextLog(Nickname + " lost 2 life. Other players lost 1 life", true);
                 }
+                else
+                    Lg.SetTextLog(Nickname + " dosn't have enough life", true);
                 break;
                 //
 
@@ -1123,40 +1146,40 @@ public class Player : PlayerStatistiche{
             case 28:
                 eventManager.AddMaterial(0, -3, this);
                 eventManager.AddMaterial(0, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All player lost 3 metal", true);
+                Lg.SetTextLog("All players lost 3 metal", true);
                 break;
             case 29:
                 eventManager.AddMaterial(1, -3, this);
                 eventManager.AddMaterial(1, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All player lost 3 poison", true);
+                Lg.SetTextLog("All players lost 3 poison", true);
                 break;
             case 30:
                 eventManager.AddMaterial(2, -3, this);
                 eventManager.AddMaterial(2, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All player lost 3 oil", true);
+                Lg.SetTextLog("All players lost 3 oil", true);
                 break;
             case 31:
                 eventManager.AddMaterial(3, -3, this);
                 eventManager.AddMaterial(3, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All player lost 3 metal", true);
+                Lg.SetTextLog("All players lost 3 metal", true);
                 break;
             //
             // Infestazione
             case 32:
                 eventManager.AddMaterial(0, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("The other player lost 1 Metal", true);
+                Lg.SetTextLog("The other players lost 1 Metal", true);
                 break;
             case 33:
                 eventManager.AddMaterial(1, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("The other player lost 1 poison", true);
+                Lg.SetTextLog("The other players lost 1 poison", true);
                 break;
             case 34:
                 eventManager.AddMaterial(2, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("The other player lost 1 oil", true);
+                Lg.SetTextLog("The other players lost 1 oil", true);
                 break;
             case 35:
                 eventManager.AddMaterial(3, -1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("The other player lost 1 gem", true);
+                Lg.SetTextLog("The other players lost 1 gem", true);
                 break;
             //
             //
@@ -1165,6 +1188,7 @@ public class Player : PlayerStatistiche{
             case 36:
                 eventManager.Heal(-1, this);
                 eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
+                Lg.SetTextLog("All players lost 1 life", true);
                 break;
             // Normale
             case 37:
@@ -1172,7 +1196,7 @@ public class Player : PlayerStatistiche{
                 eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 eventManager.RemoveRandomMaterial(1, this);
                 eventManager.RemoveRandomMaterial(1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All player lost 1 life and 1 material", true);
+                Lg.SetTextLog("All players lost 1 life and 1 material", true);
                 break;
             // Forte
             case 38:
@@ -1180,7 +1204,7 @@ public class Player : PlayerStatistiche{
                 eventManager.Heal(-2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 eventManager.RemoveRandomMaterial(2, this);
                 eventManager.RemoveRandomMaterial(2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All player lost 2 life and 2 material", true);
+                Lg.SetTextLog("All players lost 2 life and 2 material", true);
                 break;
             default:
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);
@@ -1451,7 +1475,9 @@ public class Player : PlayerStatistiche{
 
             if (!inCombatEnemy)
             {
-                int m;
+                int m = 0;
+                int i = 0;
+                int c = 0;
                 if (Materiali[0] + Materiali[1] + Materiali[2] + Materiali[3] > 0)
                 {
                     do
@@ -1461,19 +1487,26 @@ public class Player : PlayerStatistiche{
                     while (Materiali[m] > 0);
                     eventManager.AddMaterial(m, -1, this);
                     eventManager.AddMaterial(m, 1, currentEnemyPlayer);
+                    i = 1;
                 }
                 if (Credit > 0)
                 {
                     Credit--;
                     currentEnemyPlayer.Credit++;
+                    c = 1;
                 }
+                Lg.SetTextLog(Nickname + " lost 1 life" + currentEnemyPlayer.Nickname + " stole " + i + " " + Lg.MaterialName(m) + " and "+ c + " credit", true);
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
                 Life--;
             }
 
             if (inCombatEnemy)
-                Life -= currentEnemy.Damage;
+            {
+                int l = currentEnemy.Damage;
+                Life -= l;
+                Lg.SetTextLog(Nickname + " lost " + l + " life", true);
+            }
 
 
 
@@ -1527,7 +1560,7 @@ public class Player : PlayerStatistiche{
             grid.FindCell(XPos, ZPos).PlayerOnTile++;
             grid.FindCell(XPos, ZPos).POnTile = this;
             PossibleMove = 4;
-            Lg.SetTextLog(Nickname + " è morto ed è tornato al centro", true);
+            Lg.SetTextLog(Nickname + " died and returned to the center", true);
         }          
     }
 }
