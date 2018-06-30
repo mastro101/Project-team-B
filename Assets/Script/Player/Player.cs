@@ -556,7 +556,7 @@ public class Player : PlayerStatistiche{
             
             
             // Morte
-            Morte();
+            //Morte();
         }
         else
         {
@@ -891,7 +891,7 @@ public class Player : PlayerStatistiche{
                     soundEffect.PlayEffect(soundEffect.EventTile);
                     do
                     {
-                        eventCard = 11; // Random.Range(4, 39);
+                        eventCard = Random.Range(4, 39);
                     } while (eventCard == 0);
                     event1 = eventCard;
                     EventListView(event1);
