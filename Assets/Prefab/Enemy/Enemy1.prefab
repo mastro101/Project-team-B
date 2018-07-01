@@ -154,12 +154,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CB: {fileID: 0}
-  Credits: 2
+  Credits: 4
   Attack: 0
   Damage: 2
   Materiali: 4
   IsAlive: 0
-  PlayerToAttack: Blue
+  PlayerToAttack: Red
   PGreen: {fileID: 0}
   PBlue: {fileID: 0}
   PRed: {fileID: 0}
