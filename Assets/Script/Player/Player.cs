@@ -192,8 +192,8 @@ public class Player : PlayerStatistiche{
             {
                 
                 MainMove2();    //Movimento del Player tramite Click
-                if(PossibleMove == 2)
-                    MainMove3();
+               //if(PossibleMove == 2)
+               //    MainMove3();
                 
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Event)
@@ -871,10 +871,10 @@ public class Player : PlayerStatistiche{
         }
         else if (grid.FindCell(XPos, ZPos).GetNameTile() == "Credit")
         {
-            int i = Random.Range(1, 11);
+            int i = Random.Range(2, 6);
             soundEffect.PlayEffect(soundEffect.CreditTile);
             eventManager.TakeCredits(i, this);
-            Lg.SetTextLog(Nickname + " recived " + i + " credits", true);
+            Lg.SetTextLog(Nickname + " received " + i + " credits", true);
             neutralizeCell(XPos, ZPos);
             Gpm.CurrentState = GamePlayManager.State.Debug;
         }
@@ -1031,7 +1031,7 @@ public class Player : PlayerStatistiche{
                     eventManager.PayForMaterial(1, 1, 2, this);
                     eventManager.PayForMaterial(1, 2, 2, this);
                     eventManager.PayForMaterial(1, 3, 2, this);
-                    Lg.SetTextLog(Nickname + " received 5 materials", true);
+                    Lg.SetTextLog(Nickname + " received 8 materials", true);
                 }
                 else
                     Lg.SetTextLog(Nickname + " dosen't have enough credits", true);
@@ -1488,13 +1488,41 @@ public class Player : PlayerStatistiche{
                     eventManager.AddMaterial(m, -1, this);
                     eventManager.AddMaterial(m, 1, currentEnemyPlayer);
                     i = 1;
+                    if (Materiali[0] + Materiali[1] + Materiali[2] + Materiali[3] > 0)
+                    {
+                        do
+                        {
+                            m = Random.Range(0, 4);
+                        }
+                        while (Materiali[m] == 0);
+                        eventManager.AddMaterial(m, -1, this);
+                        eventManager.AddMaterial(m, 1, currentEnemyPlayer);
+                        i = 2;
+                        if (Materiali[0] + Materiali[1] + Materiali[2] + Materiali[3] > 0)
+                        {
+                            do
+                            {
+                                m = Random.Range(0, 4);
+                            }
+                            while (Materiali[m] == 0);
+                            eventManager.AddMaterial(m, -1, this);
+                            eventManager.AddMaterial(m, 1, currentEnemyPlayer);
+                            i = 3;
+                        }
+                    }
                 }
                 if (Credit > 0)
                 {
                     Credit--;
                     currentEnemyPlayer.Credit++;
                     c = 1;
-                }
+                    if (Credit > 0)
+                    {
+                        Credit--;
+                        currentEnemyPlayer.Credit++;
+                        c = 2;
+                    }
+                    }
                 Lg.SetTextLog(Nickname + " lost 1 life" + currentEnemyPlayer.Nickname + " stole " + i + " " + Lg.MaterialName(m) + " and "+ c + " credit", true);
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;

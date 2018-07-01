@@ -564,39 +564,39 @@ public class ButtonManager : MonoBehaviour {
         switch (Gpm.Name)
         {
             case "Green":
-                if (Pl1.Credit >= 3 && Pl1.Life != Pl1.MaxLife)
+                if (Pl1.Credit >= 4 && Pl1.Life != Pl1.MaxLife)
                 {
                     Pl1.Life = Pl1.MaxLife;
-                    Pl1.Credit -= 3;
+                    Pl1.Credit -= 4;
                     soundEffect.PlayEffect(soundEffect.Heal);
-                    Pl1.Lg.SetTextLog(Pl1.Nickname + " heal for 3 credit", true);
+                    Pl1.Lg.SetTextLog(Pl1.Nickname + " heal for 4 credit", true);
                 }
                 break;
             case "Blue":
-                if (Pl2.Credit >= 3 && Pl2.Life != Pl2.MaxLife)
+                if (Pl2.Credit >= 4 && Pl2.Life != Pl2.MaxLife)
                 {
                     Pl2.Life = Pl2.MaxLife;
-                    Pl2.Credit -= 3;
+                    Pl2.Credit -= 4;
                     soundEffect.PlayEffect(soundEffect.Heal);
-                    Pl2.Lg.SetTextLog(Pl2.Nickname + " heal for 3 credit", true);
+                    Pl2.Lg.SetTextLog(Pl2.Nickname + " heal for 4 credit", true);
                 }
                 break;
             case "Red":
-                if (Pl3.Credit >= 3 && Pl3.Life != Pl3.MaxLife)
+                if (Pl3.Credit >= 4 && Pl3.Life != Pl3.MaxLife)
                 {
                     Pl3.Life = Pl3.MaxLife;
-                    Pl3.Credit -= 3;
+                    Pl3.Credit -= 4;
                     soundEffect.PlayEffect(soundEffect.Heal);
-                    Pl3.Lg.SetTextLog(Pl3.Nickname + " heal for 3 credit", true);
+                    Pl3.Lg.SetTextLog(Pl3.Nickname + " heal for 4 credit", true);
                 }
                 break;
             case "Yellow":
-                if (Pl4.Credit >= 3 && Pl4.Life != Pl4.MaxLife)
+                if (Pl4.Credit >= 4 && Pl4.Life != Pl4.MaxLife)
                 {
                     Pl4.Life = Pl4.MaxLife;
-                    Pl4.Credit -= 3;
+                    Pl4.Credit -= 4;
                     soundEffect.PlayEffect(soundEffect.Heal);
-                    Pl4.Lg.SetTextLog(Pl4.Nickname + " heal for 3 credit", true);
+                    Pl4.Lg.SetTextLog(Pl4.Nickname + " heal for 4 credit", true);
                 }
                 break;
         }
