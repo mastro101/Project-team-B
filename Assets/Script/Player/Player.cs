@@ -1484,7 +1484,7 @@ public class Player : PlayerStatistiche{
                     {
                         m = Random.Range(0, 4);
                     }
-                    while (Materiali[m] > 0);
+                    while (Materiali[m] == 0);
                     eventManager.AddMaterial(m, -1, this);
                     eventManager.AddMaterial(m, 1, currentEnemyPlayer);
                     i = 1;
