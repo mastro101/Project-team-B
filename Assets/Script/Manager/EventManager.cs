@@ -151,7 +151,7 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            _player.Lg.SetTextLog("You don't have enough Credits", true);
+            _player.Lg.SetTextLog("You don't have enough materials", true);
         }
     }
 }
