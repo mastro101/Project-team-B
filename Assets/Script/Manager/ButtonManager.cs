@@ -64,6 +64,7 @@ public class ButtonManager : MonoBehaviour {
         }
         else
         {
+            FindObjectOfType<TutorialScript>().CurrentPage = TutorialScript.Page.One;
             Tutorial.SetActive(false);
             ActiveConsole = false;
         }
