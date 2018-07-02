@@ -30,13 +30,13 @@ public class LogManager : MonoBehaviour {
     {
         switch (_materialType)
         {
-            case 1:
+            case 0:
                 return "metal";
-            case 2:
+            case 1:
                 return "poison";
-            case 3:
+            case 2:
                 return "oil";
-            case 4:
+            case 3:
                 return "gem";
             default:
                 return null;
