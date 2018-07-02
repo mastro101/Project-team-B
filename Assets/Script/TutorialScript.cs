@@ -30,6 +30,8 @@ public class TutorialScript : MonoBehaviour {
 
     public void TurnPageUp()
     {
+        SoundEffectManager sound = FindObjectOfType<SoundEffectManager>();
+        sound.PlayEffect(sound.Click);
         switch (CurrentPage)
         {
             case Page.One:
@@ -48,6 +50,8 @@ public class TutorialScript : MonoBehaviour {
 
     public void TurnPageDown()
     {
+        SoundEffectManager sound = FindObjectOfType<SoundEffectManager>();
+        sound.PlayEffect(sound.Click);
         switch (CurrentPage)
         {
             case Page.One:

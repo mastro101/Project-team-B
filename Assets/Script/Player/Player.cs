@@ -1034,7 +1034,7 @@ public class Player : PlayerStatistiche{
                     Lg.SetTextLog(Nickname + " received 8 materials", true);
                 }
                 else
-                    Lg.SetTextLog(Nickname + " dosen't have enough credits", true);
+                    Lg.SetTextLog(Nickname + " doesn't have enough credits", true);
                 break;
             // Cattivo umore
             case 12:
@@ -1137,7 +1137,7 @@ public class Player : PlayerStatistiche{
                     Lg.SetTextLog(Nickname + " lost 2 life. Other players lost 1 life", true);
                 }
                 else
-                    Lg.SetTextLog(Nickname + " dosn't have enough life", true);
+                    Lg.SetTextLog(Nickname + " doesn't have enough life", true);
                 break;
                 //
 
@@ -1239,7 +1239,7 @@ public class Player : PlayerStatistiche{
             // Von Canterlik Ferire
             case 4:
                 immagineCarte = 5;
-                descrizioneCarte = "Pay 3 credits. Each opponent loses 1 life.";
+                descrizioneCarte = "Pay 3 credits. Each opponent loses 1 HP.";
                 break;
             // Truffati
             case 5:
@@ -1249,7 +1249,7 @@ public class Player : PlayerStatistiche{
             // Siero di rigenerazione
             case 6:
                 immagineCarte = 2;
-                descrizioneCarte = "Restores 2 life.";
+                descrizioneCarte = "Restores 2 HP.";
                 break;
             // Stanchezza
             case 7:
@@ -1352,12 +1352,12 @@ public class Player : PlayerStatistiche{
             // Ferire e curare 
             case 26:
                 immagineCarte = 5;
-                descrizioneCarte = "Pay 5 credits. Each opponent loses 1 life point and you gain 1 life";
+                descrizioneCarte = "Pay 5 credits. Each opponent loses 1 HP point and you gain 1 life";
                 break;
             // Ferirsi e ferire
             case 27:
                 immagineCarte = 5;
-                descrizioneCarte = "Lose 2 life. Each opponent loses 1 life";
+                descrizioneCarte = "Lose 2 HP. Each opponent loses 1 HP";
                 break;
             //
 
@@ -1403,17 +1403,17 @@ public class Player : PlayerStatistiche{
             // Debole
             case 36:
                 immagineCarte = 7;
-                descrizioneCarte = "All players lose 1 life.";
+                descrizioneCarte = "All players lose 1 HP.";
                 break;
             // Normale
             case 37:
                 immagineCarte = 7;
-                descrizioneCarte = "All players lose 1 life and 2 random materials";
+                descrizioneCarte = "All players lose 1 HP and 2 random materials";
                 break;
             // Forte
             case 38:
                 immagineCarte = 7;
-                descrizioneCarte = "All players lose 2 life and 2 random materials";
+                descrizioneCarte = "All players lose 2 HP and 2 random materials";
                 break;
             default:
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);
@@ -1523,7 +1523,7 @@ public class Player : PlayerStatistiche{
                         c = 2;
                     }
                     }
-                Lg.SetTextLog(Nickname + " lost 1 life" + currentEnemyPlayer.Nickname + " stole " + i + " " + Lg.MaterialName(m) + " and "+ c + " credit", true);
+                Lg.SetTextLog(Nickname + " lost 1 HP" + currentEnemyPlayer.Nickname + " stole " + i + " " + Lg.MaterialName(m) + " and "+ c + " credit", true);
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
                 Life--;
@@ -1533,7 +1533,7 @@ public class Player : PlayerStatistiche{
             {
                 int l = currentEnemy.Damage;
                 Life -= l;
-                Lg.SetTextLog(Nickname + " lost " + l + " life", true);
+                Lg.SetTextLog(Nickname + " lost " + l + " HP", true);
             }
 
 

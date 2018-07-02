@@ -135,19 +135,19 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
             {
                 case IEnemyType.Green:
                     CurrentPlayer.AddMaterial(0, Materiali);
-                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " metal end " + Credits + "credits", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " received " + Materiali.ToString() + " metal and " + Credits + " credits", true);
                     break;
                 case IEnemyType.Blue:
                     CurrentPlayer.AddMaterial(1, Materiali);
-                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " poison end " + Credits + "credits", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " received " + Materiali.ToString() + " poison and " + Credits + " credits", true);
                     break;
                 case IEnemyType.Red:
                     CurrentPlayer.AddMaterial(2, Materiali);
-                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " oil end " + Credits + "credits", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " received " + Materiali.ToString() + " oil and " + Credits + " credits", true);
                     break;
                 case IEnemyType.Yellow:
                     CurrentPlayer.AddMaterial(3, Materiali);
-                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " recived " + Materiali.ToString() + " gem end " + Credits + "credits", true);
+                    CurrentPlayer.Lg.SetTextLog(CurrentPlayer.Nickname + " received " + Materiali.ToString() + " gem and " + Credits + " credits", true);
                     break;
                 default:
                     Debug.Log("Non Ha dato materiali. Colore assente");
