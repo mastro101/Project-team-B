@@ -852,7 +852,7 @@ public class Player : PlayerStatistiche{
             soundEffect.PlayEffect(soundEffect.City);
             // se è all'interno di una città passa alla fase Object
             Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
-            Lg.SetTextLog(Nickname + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
+            Lg.SetTextLog(Nickname + " is in city: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
 
             //ActiveTurn = false;
             Gpm.CurrentState = GamePlayManager.State.City;
@@ -989,8 +989,10 @@ public class Player : PlayerStatistiche{
                 {
                     Credit -= 3;
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                    Lg.SetTextLog("The other players lost 1 life", true);
+                    Lg.SetTextLog("The other players lost 1 HP", true);
                 }
+                else
+                    Lg.SetTextLog("You don't have enough credits", true);
                 break;
             // Truffati
             case 5:
@@ -1048,6 +1050,8 @@ public class Player : PlayerStatistiche{
                     AddMaterial(0, 2);
                     Lg.SetTextLog(Nickname + " received 2 metal", true);
                 }
+                else
+                    Lg.SetTextLog("You have too much credits", true);
                 break;
             // Generosa B
             case 14:
@@ -1056,6 +1060,8 @@ public class Player : PlayerStatistiche{
                     AddMaterial(1, 2);
                     Lg.SetTextLog(Nickname + " received 2 poison", true);
                 }
+                else
+                    Lg.SetTextLog("You have too much credits", true);
                 break;
             // Generosa C
             case 15:
@@ -1064,6 +1070,8 @@ public class Player : PlayerStatistiche{
                     AddMaterial(2, 2);
                     Lg.SetTextLog(Nickname + " received 2 oil", true);
                 }
+                else
+                    Lg.SetTextLog("You have too much credits", true);
                 break;
             // Generosa D
             case 16:
@@ -1072,6 +1080,8 @@ public class Player : PlayerStatistiche{
                     AddMaterial(3, 2);
                     Lg.SetTextLog(Nickname + " received 2 gem", true);
                 }
+                else
+                    Lg.SetTextLog("You have too much credits", true);
                 break;
             // Professionale A
             case 17:
@@ -1098,6 +1108,7 @@ public class Player : PlayerStatistiche{
             // Pezzo di ricambio
             case 21:
                 Credit += 2;
+                Lg.SetTextLog(Nickname + " received 2 credits", true);
                 break;
             case 22:
                 eventManager.AddMaterial(0, 1, this);
@@ -1127,6 +1138,8 @@ public class Player : PlayerStatistiche{
                     eventManager.Heal(1, this); 
                     Lg.SetTextLog("Other players lost 1 Life", true);
                 }
+                else
+                    Lg.SetTextLog("You don't have enough credits", true);
                 break;
             // Ferirsi e ferire
             case 27:
@@ -1188,7 +1201,7 @@ public class Player : PlayerStatistiche{
             case 36:
                 eventManager.Heal(-1, this);
                 eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All players lost 1 life", true);
+                Lg.SetTextLog("All players lost 1 HP", true);
                 break;
             // Normale
             case 37:
@@ -1196,7 +1209,7 @@ public class Player : PlayerStatistiche{
                 eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 eventManager.RemoveRandomMaterial(1, this);
                 eventManager.RemoveRandomMaterial(1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All players lost 1 life and 1 material", true);
+                Lg.SetTextLog("All players lost 1 HP and 1 material", true);
                 break;
             // Forte
             case 38:
@@ -1204,7 +1217,7 @@ public class Player : PlayerStatistiche{
                 eventManager.Heal(-2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                 eventManager.RemoveRandomMaterial(2, this);
                 eventManager.RemoveRandomMaterial(2, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All players lost 2 life and 2 material", true);
+                Lg.SetTextLog("All players lost 2 HP and 2 material", true);
                 break;
             default:
                 Lg.SetTextLog("Evento " + eventCard + " nullo", true);

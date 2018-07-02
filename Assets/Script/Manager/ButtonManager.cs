@@ -106,7 +106,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl1.Materiali[_materialType] -= 10;
                     Pl1.WinPoint++;
                     selled = true;
-                    Pl1.Lg.SetTextLog(Pl1.Nickname + " sell 10 " + Pl1.Lg.MaterialName(_materialType) + " for 1 win point", true);
+                    Pl1.Lg.SetTextLog(Pl1.Nickname + " sold 10 " + Pl1.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
             case "Blue":
@@ -115,7 +115,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl2.Materiali[_materialType] -= 10;
                     Pl2.WinPoint++;
                     selled = true;
-                    Pl2.Lg.SetTextLog(Pl2.Nickname + " sell 10 " + Pl2.Lg.MaterialName(_materialType) + " for 1 win point", true);
+                    Pl2.Lg.SetTextLog(Pl2.Nickname + " sold 10 " + Pl2.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
             case "Red":
@@ -124,7 +124,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl3.Materiali[_materialType] -= 10;
                     Pl3.WinPoint++;
                     selled = true;
-                    Pl3.Lg.SetTextLog(Pl3.Nickname + " sell 10 " + Pl3.Lg.MaterialName(_materialType) + " for 1 win point", true);
+                    Pl3.Lg.SetTextLog(Pl3.Nickname + " sold 10 " + Pl3.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
             case "Yellow":
@@ -133,7 +133,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl4.Materiali[_materialType] -= 10;
                     Pl4.WinPoint++;
                     selled = true;
-                    Pl4.Lg.SetTextLog(Pl4.Nickname + " sell 10 " + Pl4.Lg.MaterialName(_materialType) + " for 1 win point", true);
+                    Pl4.Lg.SetTextLog(Pl4.Nickname + " sold 10 " + Pl4.Lg.MaterialName(_materialType) + " for 1 win point", true);
                 }
                 break;
         }
@@ -272,7 +272,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl1.Materiali[_materialType]++;
                     Pl1.Credit -= 2;
                     bought = true;
-                    Pl1.Lg.SetTextLog(Pl1.Nickname + " buy 1 " + Pl1.Lg.MaterialName(_materialType) + " for 2 credit", true);
+                    Pl1.Lg.SetTextLog(Pl1.Nickname + " bought 1 " + Pl1.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
             case "Blue":
@@ -281,7 +281,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl2.Materiali[_materialType]++;
                     Pl2.Credit -= 2;
                     bought = true;
-                    Pl2.Lg.SetTextLog(Pl2.Nickname + " buy 1 " + Pl2.Lg.MaterialName(_materialType) + " for 2 credit", true);
+                    Pl2.Lg.SetTextLog(Pl2.Nickname + " bought 1 " + Pl2.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
             case "Red":
@@ -290,7 +290,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl3.Materiali[_materialType]++;
                     Pl3.Credit -= 2;
                     bought = true;
-                    Pl3.Lg.SetTextLog(Pl3.Nickname + " buy 1 " + Pl3.Lg.MaterialName(_materialType) + " for 2 credit", true);
+                    Pl3.Lg.SetTextLog(Pl3.Nickname + " bought 1 " + Pl3.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
             case "Yellow":
@@ -299,7 +299,7 @@ public class ButtonManager : MonoBehaviour {
                     Pl4.Materiali[_materialType]++;
                     Pl4.Credit -= 2;
                     bought = true;
-                    Pl4.Lg.SetTextLog(Pl4.Nickname + " buy 1 " + Pl4.Lg.MaterialName(_materialType) + " for 2 credit", true);
+                    Pl4.Lg.SetTextLog(Pl4.Nickname + " bought 1 " + Pl4.Lg.MaterialName(_materialType) + " for 2 credit", true);
                 }
                 break;
         }
