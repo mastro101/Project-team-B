@@ -1143,14 +1143,9 @@ public class Player : PlayerStatistiche{
                 break;
             // Ferirsi e ferire
             case 27:
-                if (Life >= 2)
-                {
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     Life -= 2;
                     Lg.SetTextLog(Nickname + " lost 2 HP. Other players lost 1 HP", true);
-                }
-                else
-                    Lg.SetTextLog(Nickname + " doesn't have enough HP", true);
                 break;
                 //
 
