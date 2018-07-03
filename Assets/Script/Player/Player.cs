@@ -857,7 +857,7 @@ public class Player : PlayerStatistiche{
             //ActiveTurn = false;
             Gpm.CurrentState = GamePlayManager.State.City;
         }
-        else if (grid.FindCell(XPos, ZPos).POnTile != this)
+        else if (grid.FindCell(XPos, ZPos).POnTile != this && (XPos != 6 && XPos != 6))
         {
             Lg.SetTextLog(Nickname + "Sta Combattendo contro " + grid.FindCell(XPos, ZPos).POnTile.Name, true);
             Gpm.CurrentState = GamePlayManager.State.Combat;
@@ -1136,21 +1136,21 @@ public class Player : PlayerStatistiche{
                     Credit -= 5;
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     eventManager.Heal(1, this); 
-                    Lg.SetTextLog("Other players lost 1 Life", true);
+                    Lg.SetTextLog("Other players lost 1 HP", true);
                 }
                 else
                     Lg.SetTextLog("You don't have enough credits", true);
                 break;
             // Ferirsi e ferire
             case 27:
-                if (Life <= 2)
+                if (Life >= 2)
                 {
                     eventManager.Heal(-1, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
                     Life -= 2;
-                    Lg.SetTextLog(Nickname + " lost 2 life. Other players lost 1 life", true);
+                    Lg.SetTextLog(Nickname + " lost 2 HP. Other players lost 1 HP", true);
                 }
                 else
-                    Lg.SetTextLog(Nickname + " doesn't have enough life", true);
+                    Lg.SetTextLog(Nickname + " doesn't have enough HP", true);
                 break;
                 //
 
@@ -1174,7 +1174,7 @@ public class Player : PlayerStatistiche{
             case 31:
                 eventManager.AddMaterial(3, -3, this);
                 eventManager.AddMaterial(3, -3, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("All players lost 3 metal", true);
+                Lg.SetTextLog("All players lost 3 gem", true);
                 break;
             //
             // Infestazione
@@ -1365,7 +1365,7 @@ public class Player : PlayerStatistiche{
             // Ferire e curare 
             case 26:
                 immagineCarte = 5;
-                descrizioneCarte = "Pay 5 credits. Each opponent loses 1 HP point and you gain 1 life";
+                descrizioneCarte = "Pay 5 credits. Each opponent loses 1 HP point and you gain 1 HP";
                 break;
             // Ferirsi e ferire
             case 27:

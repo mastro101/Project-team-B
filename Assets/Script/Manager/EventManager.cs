@@ -132,10 +132,11 @@ public class EventManager : MonoBehaviour
                     do
                     {
                         chooseMateriali = Random.Range(0, 4);
-                        if (_player.Materiali[chooseMateriali] != 0)
-                            _player.Materiali[chooseMateriali]--;
                     }
                     while (_player.Materiali[chooseMateriali] == 0);
+
+                    if (_player.Materiali[chooseMateriali] != 0)
+                        _player.Materiali[chooseMateriali]--;
                 }
 
                 if (random <= possibility)

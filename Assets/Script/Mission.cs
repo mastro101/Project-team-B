@@ -8,6 +8,7 @@ public class Mission : MonoBehaviour {
     public LogManager Lg;
     public Player Player1, Player2, Player3, Player4;
     public GameObject WinScreen, p1ws, p2ws, p3ws, p4ws;
+    GamePlayManager Gpm;
     bool end, win;
 
 
@@ -16,7 +17,10 @@ public class Mission : MonoBehaviour {
 
     public bool[] check = new bool[4];
 
-
+    private void Awake()
+    {
+        Gpm = FindObjectOfType<GamePlayManager>();
+    }
 
 
     private void Update()
@@ -47,123 +51,141 @@ public class Mission : MonoBehaviour {
             p4ws.SetActive(true);
         }
         */
-        if (win)
+        if (Gpm.CurrentState == GamePlayManager.State.Mission)
         {
-            SoundManager sound = FindObjectOfType<SoundManager>();
-            sound.audioSource.clip = sound.WinAudio;
-            sound.audioSource.Play();
-        }
+            if (win)
+            {
+                SoundManager sound = FindObjectOfType<SoundManager>();
+                sound.audioSource.clip = sound.WinAudio;
+                sound.audioSource.Play();
+            }
 
 
-        if (Player1.WinPoint == 2)
-        {
-            WinScreen.SetActive(true);
-            p1ws.SetActive(true);
-            Lg.SetTextLog(Player1 + " HA VINTO", true);
-            win = true;
-        }
-        else if (Player2.WinPoint == 2)
-        {
-            WinScreen.SetActive(true);
-            p2ws.SetActive(true);
-            Lg.SetTextLog(Player2 + " HA VINTO", true);
-            win = true;
-        }
-        else if (Player3.WinPoint == 2)
-        {
-            WinScreen.SetActive(true);
-            p3ws.SetActive(true);
-            Lg.SetTextLog(Player3 + " HA VINTO", true);
-            win = true;
-        }
-        else if (Player1.WinPoint == 2)
-        {
-            WinScreen.SetActive(true);
-            p4ws.SetActive(true);
-            Lg.SetTextLog(Player4 + " HA VINTO", true);
-            win = true;
-        }
-
-        if (EmptyCell == 153)
-        {
-            if (Player1.WinPoint > Player2.WinPoint && Player1.WinPoint > Player3.WinPoint && Player1.WinPoint > Player4.WinPoint)
+            if (Player1.WinPoint == 2)
             {
                 WinScreen.SetActive(true);
                 p1ws.SetActive(true);
-                Lg.SetTextLog(Player1 + " HA VINTO", true);
-                end = true;
                 win = true;
             }
-            else if (Player2.WinPoint > Player1.WinPoint && Player2.WinPoint > Player3.WinPoint && Player2.WinPoint > Player4.WinPoint)
+            else if (Player2.WinPoint == 2)
             {
                 WinScreen.SetActive(true);
                 p2ws.SetActive(true);
-                Lg.SetTextLog(Player2 + " HA VINTO", true);
-                end = true;
                 win = true;
             }
-            else if (Player3.WinPoint > Player1.WinPoint && Player3.WinPoint > Player2.WinPoint && Player3.WinPoint > Player4.WinPoint)
+            else if (Player3.WinPoint == 2)
             {
                 WinScreen.SetActive(true);
                 p3ws.SetActive(true);
-                Lg.SetTextLog(Player3 + " HA VINTO", true);
-                end = true;
                 win = true;
             }
-            else if (Player4.WinPoint > Player1.WinPoint && Player4.WinPoint > Player2.WinPoint && Player4.WinPoint > Player3.WinPoint)
+            else if (Player1.WinPoint == 2)
             {
                 WinScreen.SetActive(true);
                 p4ws.SetActive(true);
-                Lg.SetTextLog(Player4 + " HA VINTO", true);
-                end = true;
                 win = true;
             }
-        }
 
-        if (EmptyCell == 153 && end == false)
-        {
-            int p1Point = countRisorse(Player1);
-            int p2Point = countRisorse(Player2);
-            int p3Point = countRisorse(Player3);
-            int p4Point = countRisorse(Player4);
-
-            if (Player1.WinPoint >= Player2.WinPoint && Player1.WinPoint >= Player3.WinPoint && Player1.WinPoint >= Player4.WinPoint)
+            if (EmptyCell == 153)
             {
-                if (p1Point > p2Point && p1Point > p3Point && p1Point > p4Point)
+                if (Player1.WinPoint > Player2.WinPoint && Player1.WinPoint > Player3.WinPoint && Player1.WinPoint > Player4.WinPoint)
                 {
                     WinScreen.SetActive(true);
                     p1ws.SetActive(true);
-                    Lg.SetTextLog(Player1 + " HA VINTO", true);
+                    end = true;
+                    win = true;
                 }
-            }
-            else if (Player1.WinPoint >= Player2.WinPoint && Player1.WinPoint >= Player3.WinPoint && Player1.WinPoint >= Player4.WinPoint)
-            {
-                if (p2Point > p1Point && p2Point > p3Point && p2Point > p4Point)
+                else if (Player2.WinPoint > Player1.WinPoint && Player2.WinPoint > Player3.WinPoint && Player2.WinPoint > Player4.WinPoint)
                 {
                     WinScreen.SetActive(true);
                     p2ws.SetActive(true);
-                    Lg.SetTextLog(Player2 + " HA VINTO", true);
+                    end = true;
+                    win = true;
                 }
-            }
-            else if (Player3.WinPoint >= Player1.WinPoint && Player3.WinPoint >= Player2.WinPoint && Player3.WinPoint >= Player4.WinPoint)
-            {
-                if (p3Point > p1Point && p3Point > p2Point && p3Point > p4Point)
+                else if (Player3.WinPoint > Player1.WinPoint && Player3.WinPoint > Player2.WinPoint && Player3.WinPoint > Player4.WinPoint)
                 {
                     WinScreen.SetActive(true);
                     p3ws.SetActive(true);
-                    Lg.SetTextLog(Player3 + " HA VINTO", true);
+                    end = true;
+                    win = true;
                 }
-            }
-            else if (Player4.WinPoint >= Player1.WinPoint && Player4.WinPoint >= Player2.WinPoint && Player4.WinPoint >= Player3.WinPoint)
-            {
-                if (p4Point > p1Point && p4Point > p2Point && p4Point > p3Point)
+                else if (Player4.WinPoint > Player1.WinPoint && Player4.WinPoint > Player2.WinPoint && Player4.WinPoint > Player3.WinPoint)
                 {
                     WinScreen.SetActive(true);
                     p4ws.SetActive(true);
-                    Lg.SetTextLog(Player4 + " HA VINTO", true);
+                    end = true;
+                    win = true;
                 }
             }
-            win = true;
+
+            if (EmptyCell == 153 && end == false)
+            {
+                int p1Point = 0;
+                int p2Point = 0;
+                int p3Point = 0;
+                int p4Point = 0;
+                bool p1tie = false;
+                bool p2tie = false;
+                bool p3tie = false;
+                bool p4tie = false;
+
+                if (Player1.WinPoint >= Player2.WinPoint && Player1.WinPoint >= Player3.WinPoint && Player1.WinPoint >= Player4.WinPoint)
+                {
+                    p1Point = countRisorse(Player1);
+                    p1tie = true;
+                }
+                else if (Player2.WinPoint >= Player1.WinPoint && Player2.WinPoint >= Player3.WinPoint && Player2.WinPoint >= Player4.WinPoint)
+                {
+                    p2Point = countRisorse(Player2);
+                    p2tie = true;
+                }
+                else if (Player3.WinPoint >= Player1.WinPoint && Player3.WinPoint >= Player2.WinPoint && Player3.WinPoint >= Player4.WinPoint)
+                {
+                    p3Point = countRisorse(Player3);
+                    p3tie = true;
+                }
+                else if (Player4.WinPoint >= Player1.WinPoint && Player4.WinPoint >= Player2.WinPoint && Player4.WinPoint >= Player3.WinPoint)
+                {
+                    p4Point = countRisorse(Player4);
+                    p4tie = true;
+                }
+
+                if (p1tie)
+                {
+                    if (p1Point > p2Point && p1Point > p3Point && p1Point > p4Point)
+                    {
+                        WinScreen.SetActive(true);
+                        p1ws.SetActive(true);
+                    }
+                }
+                if (p2tie)
+                {
+                    if (p2Point > p1Point && p2Point > p3Point && p2Point > p4Point)
+                    {
+                        WinScreen.SetActive(true);
+                        p2ws.SetActive(true);
+                    }
+                }
+                if (p3tie)
+                {
+                    if (p3Point > p1Point && p3Point > p2Point && p3Point > p4Point)
+                    {
+                        WinScreen.SetActive(true);
+                        p3ws.SetActive(true);
+                    }
+                }
+                if (p4tie)
+                {
+                    if (p4Point > p1Point && p4Point > p2Point && p4Point > p3Point)
+                    {
+                        WinScreen.SetActive(true);
+                        p4ws.SetActive(true);
+                    }
+                }
+                
+
+                win = true;
+            }
         }
         /*if (grid.GetCity("A").POnTile != null && grid.GetCity("A").POnTile.Mission == 1)
         {

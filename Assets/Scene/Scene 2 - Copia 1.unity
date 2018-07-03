@@ -11424,7 +11424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameAudio: {fileID: 8300000, guid: d208c2902381b8a428d80a2fed16be78, type: 3}
   CombatAudio: {fileID: 8300000, guid: 55b835dd9b2ed7f46a5746eb284ccc10, type: 3}
-  WinAudio: {fileID: 0}
+  WinAudio: {fileID: 8300000, guid: 944989e61f31908428f933d5392200e8, type: 3}
   audioSource: {fileID: 1160252396}
 --- !u!1 &1163208448
 GameObject:
