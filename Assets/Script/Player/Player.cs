@@ -182,7 +182,7 @@ public class Player : PlayerStatistiche{
 
             if (Gpm.CurrentState == GamePlayManager.State.Mission)
             {
-                AssignMisison();
+                //AssignMisison();
             }
             else if (Gpm.CurrentState == GamePlayManager.State.Debug)
             {

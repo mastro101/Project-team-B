@@ -64,15 +64,43 @@ public class EventManager : MonoBehaviour
 
     public void RemoveRandomMaterial(int _materiali, Player _player1, Player _player2 = null, Player _player3 = null)
     {
+        int m;
         for (int i = 0; i < _materiali; i++)
         {
-            AddMaterial(Random.Range(0, 4), -1, _player1);
+            if (_player1.Materiali[0] + _player1.Materiali[1] + _player1.Materiali[2] + _player1.Materiali[3] > 0)
+            {
+                do
+                {
+                    m = Random.Range(0, 4);
+                }
+                while (_player1.Materiali[m] == 0);
+                AddMaterial(m, -1, _player1);
+            }
             if (_player2 != null && _player3 != null)
             {
-                AddMaterial(Random.Range(0, 4), -1, _player2);
-                AddMaterial(Random.Range(0, 4), -1, _player3);
+                if (_player2.Materiali[0] + _player2.Materiali[1] + _player2.Materiali[2] + _player2.Materiali[3] > 0)
+                {
+                    do
+                    {
+                        m = Random.Range(0, 4);
+                    }
+                    while (_player2.Materiali[m] == 0);
+                    AddMaterial(m, -1, _player2);
+                }
+
+                if (_player3.Materiali[0] + _player3.Materiali[1] + _player3.Materiali[2] + _player3.Materiali[3] > 0)
+                {
+                    do
+                    {
+                        m = Random.Range(0, 4);
+                    }
+                    while (_player3.Materiali[m] == 0);
+                    AddMaterial(m, -1, _player3);
+                }
             }
         }
+
+        
     }
 
 

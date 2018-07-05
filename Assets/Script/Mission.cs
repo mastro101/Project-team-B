@@ -9,7 +9,7 @@ public class Mission : MonoBehaviour {
     public Player Player1, Player2, Player3, Player4;
     public GameObject WinScreen, p1ws, p2ws, p3ws, p4ws;
     GamePlayManager Gpm;
-    bool end, win;
+    bool realEnd, end, win;
 
 
     public int MissioniComuni;
@@ -51,14 +51,16 @@ public class Mission : MonoBehaviour {
             p4ws.SetActive(true);
         }
         */
+        if (win && !realEnd)
+        {
+            SoundManager sound = FindObjectOfType<SoundManager>();
+            sound.audioSource.clip = sound.WinAudio;
+            sound.audioSource.Play();
+            realEnd = true;
+        }
+
         if (Gpm.CurrentState == GamePlayManager.State.Mission)
         {
-            if (win)
-            {
-                SoundManager sound = FindObjectOfType<SoundManager>();
-                sound.audioSource.clip = sound.WinAudio;
-                sound.audioSource.Play();
-            }
 
 
             if (Player1.WinPoint == 2)
@@ -134,17 +136,17 @@ public class Mission : MonoBehaviour {
                     p1Point = countRisorse(Player1);
                     p1tie = true;
                 }
-                else if (Player2.WinPoint >= Player1.WinPoint && Player2.WinPoint >= Player3.WinPoint && Player2.WinPoint >= Player4.WinPoint)
+                if (Player2.WinPoint >= Player1.WinPoint && Player2.WinPoint >= Player3.WinPoint && Player2.WinPoint >= Player4.WinPoint)
                 {
                     p2Point = countRisorse(Player2);
                     p2tie = true;
                 }
-                else if (Player3.WinPoint >= Player1.WinPoint && Player3.WinPoint >= Player2.WinPoint && Player3.WinPoint >= Player4.WinPoint)
+                if (Player3.WinPoint >= Player1.WinPoint && Player3.WinPoint >= Player2.WinPoint && Player3.WinPoint >= Player4.WinPoint)
                 {
                     p3Point = countRisorse(Player3);
                     p3tie = true;
                 }
-                else if (Player4.WinPoint >= Player1.WinPoint && Player4.WinPoint >= Player2.WinPoint && Player4.WinPoint >= Player3.WinPoint)
+                if (Player4.WinPoint >= Player1.WinPoint && Player4.WinPoint >= Player2.WinPoint && Player4.WinPoint >= Player3.WinPoint)
                 {
                     p4Point = countRisorse(Player4);
                     p4tie = true;
@@ -156,6 +158,7 @@ public class Mission : MonoBehaviour {
                     {
                         WinScreen.SetActive(true);
                         p1ws.SetActive(true);
+                        win = true;
                     }
                 }
                 if (p2tie)
@@ -164,6 +167,7 @@ public class Mission : MonoBehaviour {
                     {
                         WinScreen.SetActive(true);
                         p2ws.SetActive(true);
+                        win = true;
                     }
                 }
                 if (p3tie)
@@ -172,6 +176,7 @@ public class Mission : MonoBehaviour {
                     {
                         WinScreen.SetActive(true);
                         p3ws.SetActive(true);
+                        win = true;
                     }
                 }
                 if (p4tie)
@@ -180,12 +185,16 @@ public class Mission : MonoBehaviour {
                     {
                         WinScreen.SetActive(true);
                         p4ws.SetActive(true);
+                        win = true;
                     }
                 }
                 
 
-                win = true;
+                
             }
+
+            if (!win)
+                Gpm.CurrentState = GamePlayManager.State.Movement;
         }
         /*if (grid.GetCity("A").POnTile != null && grid.GetCity("A").POnTile.Mission == 1)
         {

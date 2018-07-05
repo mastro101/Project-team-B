@@ -8321,10 +8321,10 @@ MonoBehaviour:
   Player3: {fileID: 487505903}
   Player4: {fileID: 924047377}
   WinScreen: {fileID: 493941872}
-  p1ws: {fileID: 1813491688}
-  p2ws: {fileID: 563786966}
-  p3ws: {fileID: 943902606}
-  p4ws: {fileID: 378950373}
+  p1ws: {fileID: 943902606}
+  p2ws: {fileID: 1813491688}
+  p3ws: {fileID: 378950373}
+  p4ws: {fileID: 563786966}
   MissioniComuni: 0
   EmptyCell: 0
   check: 00000000
