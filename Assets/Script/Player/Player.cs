@@ -998,11 +998,12 @@ public class Player : PlayerStatistiche{
             case 5:
                 int i = -Random.Range(1, 3);
                 eventManager.TakeCredits(i, PlayerEnemy1, PlayerEnemy2, PlayerEnemy3);
-                Lg.SetTextLog("The other Players Lost " + i + " credits", true);
+                Lg.SetTextLog("The other Players Lost " + -i + " credits", true);
                 break;
             // Siero di rigenerazione
             case 6:
                 Life += 2;
+                Lg.SetTextLog(Nickname + "heal 2 HP", true);
                 break;
             // Terreno Fangoso
             case 7:
