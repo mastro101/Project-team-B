@@ -28,6 +28,15 @@ public class ButtonManager : MonoBehaviour {
         //PanelConsole.transform.position += new Vector3(800f, 0f, 0f);
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (UI.Console.activeInHierarchy)
+                OpenConsole();
+        }
+    }
+
 
     public void OpenConsole() {
         //if (!ActiveConsole)
