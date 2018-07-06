@@ -32,7 +32,7 @@ public class ButtonManager : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (UI.Console.activeInHierarchy)
+            if (UI.Console.activeInHierarchy && Gpm.CurrentState != GamePlayManager.State.City)
                 OpenConsole();
         }
     }
