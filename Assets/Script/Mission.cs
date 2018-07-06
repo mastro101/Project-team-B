@@ -7,7 +7,7 @@ public class Mission : MonoBehaviour {
     public TheGrid grid;
     public LogManager Lg;
     public Player Player1, Player2, Player3, Player4;
-    public GameObject WinScreen, p1ws, p2ws, p3ws, p4ws;
+    public GameObject WinScreen, p1ws, p2ws, p3ws, p4ws, Draw;
     GamePlayManager Gpm;
     bool realEnd, end, win;
 
@@ -188,6 +188,14 @@ public class Mission : MonoBehaviour {
                         win = true;
                     }
                 }
+                if ((p1tie || p2tie || p3tie || p4tie) && !win)
+                {
+                    if (p1Point == p2Point || p1Point == p3Point || p1Point == p4Point || p2Point == p3Point || p2Point == p4Point || p3Point == p4Point)
+                    {
+                        WinScreen.SetActive(true);
+                        Draw.SetActive(true);
+                    }
+                }
                 
 
                 
@@ -255,7 +263,7 @@ public class Mission : MonoBehaviour {
 
     int countRisorse(Player _player)
     {
-        int i = _player.Credit + _player.Materiali[0] + _player.Materiali[1] + _player.Materiali[2] + _player.Materiali[3];
+        int i = _player.Credit;
         return i;
     }
 

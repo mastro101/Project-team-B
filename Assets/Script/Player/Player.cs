@@ -1003,7 +1003,7 @@ public class Player : PlayerStatistiche{
             // Siero di rigenerazione
             case 6:
                 Life += 2;
-                Lg.SetTextLog(Nickname + "heal 2 HP", true);
+                Lg.SetTextLog(Nickname + " recovered 2 HP", true);
                 break;
             // Terreno Fangoso
             case 7:
