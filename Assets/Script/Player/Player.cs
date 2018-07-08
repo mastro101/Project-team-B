@@ -852,12 +852,31 @@ public class Player : PlayerStatistiche{
             soundEffect.PlayEffect(soundEffect.City);
             // se è all'interno di una città passa alla fase Object
             Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
-            Lg.SetTextLog(Nickname + " is in city: " + grid.FindCell(XPos, ZPos).GetNameTile(), true);
+            string s = "city";
+            switch (grid.FindCell(XPos, ZPos).GetNameTile())
+            {
+                case "A":
+                    s = "mesarthim";
+                    break;
+                case "B":
+                    s = "zeta prime";
+                    break;
+                case "C":
+                    s = "a'crabe";
+                    break;
+                case "D":
+                    s = "azaleh";
+                    break;
+                default:
+                    s = "unknown";
+                    break;
+            }
+            Lg.SetTextLog(Nickname + " is in " + s + " city", true);
 
             //ActiveTurn = false;
             Gpm.CurrentState = GamePlayManager.State.City;
         }
-        else if (grid.FindCell(XPos, ZPos).POnTile != this && (XPos != 6 && XPos != 6))
+        else if (grid.FindCell(XPos, ZPos).POnTile != this && (XPos != 6 || ZPos != 6))
         {
             Lg.SetTextLog(Nickname + "Sta Combattendo contro " + grid.FindCell(XPos, ZPos).POnTile.Name, true);
             Gpm.CurrentState = GamePlayManager.State.Combat;
@@ -1022,7 +1041,7 @@ public class Player : PlayerStatistiche{
                 break;
             // Jynix fold
             case 10:
-                eventManager.Jynix(this, 1, 10, 1);
+                eventManager.Jynix(this, 1, 10, 2);
                 break;
 
                 // Sterlya
@@ -1532,7 +1551,7 @@ public class Player : PlayerStatistiche{
                         c = 2;
                     }
                     }
-                Lg.SetTextLog(Nickname + " lost 1 HP" + currentEnemyPlayer.Nickname + " stole " + i + " " + Lg.MaterialName(m) + " and "+ c + " credit", true);
+                Lg.SetTextLog(Nickname + " lost 1 HP " + currentEnemyPlayer.Nickname + " stole " + i + " " + Lg.MaterialName(m) + " and "+ c + " credit", true);
                 currentEnemyPlayer.Attacks = 0;
                 currentEnemyPlayer.CombatPoint = 0;
                 Life--;
