@@ -17,9 +17,14 @@ public class UIManager : MonoBehaviour {
     public GameObject UICity;
     public GameObject UICardEvent;
 
-    public Texture[] MaterialiImage;
-    public Texture[] MaterialiToSellImage;
-    public RawImage MaterialeToBuy, MaterialeToSell;
+    public Sprite[] MaterialiImage;
+    public Sprite[] MaterialiToSellImage;
+    public Sprite[] MaterialiToBuyImageON;
+    public Sprite[] MaterialiToSellImageON;
+    public Image MaterialeToBuy, MaterialeToSell;
+    public Button SellButton, BuyButton;
+    public SpriteState SellSpriteState = new SpriteState();
+    public SpriteState BuySpriteState = new SpriteState();
 
     public Texture[] EventCardImage;
     public RawImage EventCard1, EventCard2;

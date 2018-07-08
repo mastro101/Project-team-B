@@ -212,20 +212,36 @@ public class Player : PlayerStatistiche{
                     switch (grid.FindCell(XPos, ZPos).GetNameTile())
                     {
                         case "A":
-                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[0];
-                            UI.MaterialeToBuy.texture = UI.MaterialiImage[1];
+                            UI.MaterialeToSell.sprite = UI.MaterialiToSellImage[0];
+                            UI.SellSpriteState.highlightedSprite = UI.MaterialiToSellImageON[0];
+                            UI.SellButton.spriteState = UI.SellSpriteState;
+                            UI.MaterialeToBuy.sprite = UI.MaterialiImage[1];
+                            UI.BuySpriteState.highlightedSprite = UI.MaterialiToBuyImageON[1];
+                            UI.BuyButton.spriteState = UI.BuySpriteState;
                             break;
                         case "B":
-                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[1];
-                            UI.MaterialeToBuy.texture = UI.MaterialiImage[2];
+                            UI.MaterialeToSell.sprite = UI.MaterialiToSellImage[1];
+                            UI.SellSpriteState.highlightedSprite = UI.MaterialiToSellImageON[1];
+                            UI.SellButton.spriteState = UI.SellSpriteState;
+                            UI.MaterialeToBuy.sprite = UI.MaterialiImage[2];
+                            UI.BuySpriteState.highlightedSprite = UI.MaterialiToBuyImageON[2];
+                            UI.BuyButton.spriteState = UI.BuySpriteState;
                             break;
                         case "C":
-                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[2];
-                            UI.MaterialeToBuy.texture = UI.MaterialiImage[3];
+                            UI.MaterialeToSell.sprite = UI.MaterialiToSellImage[2];
+                            UI.SellSpriteState.highlightedSprite = UI.MaterialiToSellImageON[2];
+                            UI.SellButton.spriteState = UI.SellSpriteState;
+                            UI.MaterialeToBuy.sprite = UI.MaterialiImage[3];
+                            UI.BuySpriteState.highlightedSprite = UI.MaterialiToBuyImageON[3];
+                            UI.BuyButton.spriteState = UI.BuySpriteState;
                             break;
                         case "D":
-                            UI.MaterialeToSell.texture = UI.MaterialiToSellImage[3];
-                            UI.MaterialeToBuy.texture = UI.MaterialiImage[0];
+                            UI.MaterialeToSell.sprite = UI.MaterialiToSellImage[3];
+                            UI.SellSpriteState.highlightedSprite = UI.MaterialiToSellImageON[3];
+                            UI.SellButton.spriteState = UI.SellSpriteState;
+                            UI.MaterialeToBuy.sprite = UI.MaterialiImage[0];
+                            UI.BuySpriteState.highlightedSprite = UI.MaterialiToBuyImageON[0];
+                            UI.BuyButton.spriteState = UI.BuySpriteState;
                             break;
                         default:
                             break;
