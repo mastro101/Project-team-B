@@ -61,7 +61,19 @@ public class Mission : MonoBehaviour {
 
         if (Gpm.CurrentState == GamePlayManager.State.Mission)
         {
+            EmptyCell = 0;
+            for (int x = 0; x < 13; x++)
+            {
+                for (int z = 0; z < 13; z++)
+                {
+                    if (grid.FindCell(x, z).GetNameTile() == "Empty")
+                    {
+                        EmptyCell++;
+                    }
 
+                }
+            }
+            Debug.Log(EmptyCell);
 
             if (Player1.WinPoint == 2)
             {

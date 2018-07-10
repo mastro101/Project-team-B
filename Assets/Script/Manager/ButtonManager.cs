@@ -158,44 +158,48 @@ public class ButtonManager : MonoBehaviour {
         switch (Gpm.Name)
         {
             case "Green":
+                Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
                 Pl1.EventList(Pl1.event1);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl1.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
+                    
                     Pl1.eventCard = 0;
                     Pl1.countdown = 2f;
                     Pl1.JustEmpted = true;
                 }
                 break;
             case "Blue":
+                Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
                 Pl2.EventList(Pl2.event1);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl2.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
+                    
                     Pl2.eventCard = 0;
                     Pl2.countdown = 2f;
                     Pl2.JustEmpted = true;
                 }
                 break;
             case "Red":
+                Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
                 Pl3.EventList(Pl3.event1);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl3.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
+                    
                     Pl3.eventCard = 0;
                     Pl3.countdown = 2f;
                     Pl3.JustEmpted = true;
                 }
                 break;
             case "Yellow":
+                Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
                 Pl4.EventList(Pl4.event1);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl4.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
+                    
                     Pl4.eventCard = 0;
                     Pl4.countdown = 2f;
                     Pl4.JustEmpted = true;
@@ -211,44 +215,48 @@ public class ButtonManager : MonoBehaviour {
         switch (Gpm.Name)
         {
             case "Green":
+                Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
                 Pl1.EventList(Pl1.event2);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl1.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl1.neutralizeCell(Pl1.XPos, Pl1.ZPos);
+                    
                     Pl1.eventCard = 0;
                     Pl1.countdown = 2f;
                     Pl1.JustEmpted = true;
                 }
                 break;
             case "Blue":
+                Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
                 Pl2.EventList(Pl2.event2);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl2.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl2.neutralizeCell(Pl2.XPos, Pl2.ZPos);
+                    
                     Pl2.eventCard = 0;
                     Pl2.countdown = 2f;
                     Pl2.JustEmpted = true;
                 }
                 break;
             case "Red":
+                Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
                 Pl3.EventList(Pl3.event2);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl3.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl3.neutralizeCell(Pl3.XPos, Pl3.ZPos);
+                    
                     Pl3.eventCard = 0;
                     Pl3.countdown = 2f;
                     Pl3.JustEmpted = true;
                 }
                 break;
             case "Yellow":
+                Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
                 Pl4.EventList(Pl4.event2);
                 if (Gpm.CurrentState != GamePlayManager.State.Combat && Pl4.jumperEvent == false)
                 {
                     UI.UICardEvent.SetActive(false);
-                    Pl4.neutralizeCell(Pl4.XPos, Pl4.ZPos);
+                    
                     Pl4.eventCard = 0;
                     Pl4.countdown = 2f;
                     Pl4.JustEmpted = true;

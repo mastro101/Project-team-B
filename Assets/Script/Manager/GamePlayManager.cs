@@ -49,6 +49,7 @@ public class GamePlayManager : MonoBehaviour
 
     public CombatState CurrentCombatState;
     public EventState CurrentEventState;
+    public bool CellNeutralizeInThisTurn;
 
     public PlayerTurn CurrentTurn
     {
@@ -63,11 +64,12 @@ public class GamePlayManager : MonoBehaviour
                 OnTurnEnd(_currentTurn);
                 _currentTurn = value;
                 OnTurnStart(_currentTurn);
+                CellNeutralizeInThisTurn = false;
             }
             else
             {
                 CurrentTurn = PlayerTurn.P1;
-                Debug.Log("Nope Turn");
+                //Debug.Log("Nope Turn");
             }
                 
 
@@ -94,8 +96,8 @@ public class GamePlayManager : MonoBehaviour
                     sound.audioSource.Play();
                 }
             }
-            else
-                Debug.Log("Nope State");
+           //else
+           //    Debug.Log("Nope State");
         }
     }
 
@@ -109,29 +111,29 @@ public class GamePlayManager : MonoBehaviour
     /// <param name="newState"></param>
     void OnStateStart(State newState)
     {
-        switch (newState)
-        {
-            case State.Mission:
-                Debug.Log("Enter" + CurrentState);
-                break;
-            case State.Movement:
-                Debug.Log("Enter" + CurrentState);
-                break;
-            case State.Event:
-                Debug.Log("Enter" + CurrentState);
-                break;
-            case State.City:
-                Debug.Log("Enter" + CurrentState);
-                break;
-            case State.Combat:
-                Debug.Log("Enter" + CurrentState);
-                break;
-            case State.End:
-                Debug.Log("Enter" + CurrentState);
-                break;
-            default:
-                break;
-        }
+        //switch (newState)
+        //{
+        //    case State.Mission:
+        //        Debug.Log("Enter" + CurrentState);
+        //        break;
+        //    case State.Movement:
+        //        Debug.Log("Enter" + CurrentState);
+        //        break;
+        //    case State.Event:
+        //        Debug.Log("Enter" + CurrentState);
+        //        break;
+        //    case State.City:
+        //        Debug.Log("Enter" + CurrentState);
+        //        break;
+        //    case State.Combat:
+        //        Debug.Log("Enter" + CurrentState);
+        //        break;
+        //    case State.End:
+        //        Debug.Log("Enter" + CurrentState);
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 
     void OnTurnStart(PlayerTurn newTurn)
@@ -188,29 +190,29 @@ public class GamePlayManager : MonoBehaviour
     /// <param name="oldState"></param>
     void OnStateEnd(State oldState)
     {
-        switch (oldState)
-        {
-            case State.Mission:
-                Debug.Log("Exit" + CurrentState);
-                break;
-            case State.Movement:
-                Debug.Log("Exit" + CurrentState);
-                break;
-            case State.Event:
-                Debug.Log("Exit" + CurrentState);
-                break;
-            case State.City:
-                Debug.Log("Exit" + CurrentState);
-                break;
-            case State.Combat:
-                Debug.Log("Exit" + CurrentState);
-                break;
-            case State.End:
-                Debug.Log("Exit" + CurrentState);
-                break;
-            default:
-                break;
-        }
+        //switch (oldState)
+        //{
+        //    case State.Mission:
+        //        Debug.Log("Exit" + CurrentState);
+        //        break;
+        //    case State.Movement:
+        //        Debug.Log("Exit" + CurrentState);
+        //        break;
+        //    case State.Event:
+        //        Debug.Log("Exit" + CurrentState);
+        //        break;
+        //    case State.City:
+        //        Debug.Log("Exit" + CurrentState);
+        //        break;
+        //    case State.Combat:
+        //        Debug.Log("Exit" + CurrentState);
+        //        break;
+        //    case State.End:
+        //        Debug.Log("Exit" + CurrentState);
+        //        break;
+        //    default:
+        //        break;
+        //}
 
         if (oldState == State.Combat)
         {
@@ -222,23 +224,23 @@ public class GamePlayManager : MonoBehaviour
 
     void OnTurnEnd(PlayerTurn oldTurn)
     {
-        switch (oldTurn)
-        {
-            case PlayerTurn.P1:
-                Debug.Log("Exit" + CurrentTurn);
-                break;
-            case PlayerTurn.P2:
-                Debug.Log("Exit" + CurrentTurn);
-                break;
-            case PlayerTurn.P3:
-                Debug.Log("Exit" + CurrentTurn);
-                break;
-            case PlayerTurn.P4:
-                Debug.Log("Exit" + CurrentTurn);
-                break;
-            default:
-                break;
-        }
+        //switch (oldTurn)
+        //{
+        //    case PlayerTurn.P1:
+        //        Debug.Log("Exit" + CurrentTurn);
+        //        break;
+        //    case PlayerTurn.P2:
+        //        Debug.Log("Exit" + CurrentTurn);
+        //        break;
+        //    case PlayerTurn.P3:
+        //        Debug.Log("Exit" + CurrentTurn);
+        //        break;
+        //    case PlayerTurn.P4:
+        //        Debug.Log("Exit" + CurrentTurn);
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
     /// <summary>
     /// Controlla se è possibile cambiare lo stato in quello richiesto in <paramref name="newState"/>

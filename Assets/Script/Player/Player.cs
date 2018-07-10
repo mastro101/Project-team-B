@@ -352,7 +352,7 @@ public class Player : PlayerStatistiche{
                             UI.LightAttackOnPlayer(Attacks - 1);
                             UI.LightAttackOnEnemy(currentEnemy.Attack - 1);
                             countdown -= Time.deltaTime;
-                            Debug.Log(countdown);
+                            //Debug.Log(countdown);
                             if (countdown <= 0)
                             {
                                 countdown = 2f;
@@ -471,7 +471,7 @@ public class Player : PlayerStatistiche{
                             UI.LightAttackOnPlayer(Attacks - 1);
                             UI.LightAttackOnEnemy(currentEnemyPlayer.Attacks - 1);
                             countdown -= Time.deltaTime;
-                            Debug.Log(countdown);
+                            //Debug.Log(countdown);
                             if (countdown <= 0)
                             {
                                 UI.LightAttackOff();
@@ -822,7 +822,7 @@ public class Player : PlayerStatistiche{
         if (!CheckMission)
         {
             // Assegnata missione casuale diversa da quella di un altro giocatore
-            Debug.Log("M");
+            //Debug.Log("M");
             do
             {
                 Mission = Random.Range(1, 5);
@@ -867,7 +867,7 @@ public class Player : PlayerStatistiche{
         {
             soundEffect.PlayEffect(soundEffect.City);
             // se è all'interno di una città passa alla fase Object
-            Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
+            //Debug.Log(Name + " si trova nella città: " + grid.FindCell(XPos, ZPos).GetNameTile());
             string s = "city";
             switch (grid.FindCell(XPos, ZPos).GetNameTile())
             {
@@ -932,7 +932,7 @@ public class Player : PlayerStatistiche{
                     EventListView(event1);
                     UI.EventCard1.texture = UI.EventCardImage[immagineCarte];
                     UI.SpiegazioneCarta1.text = descrizioneCarte;
-                    Debug.Log(event1);
+                    //Debug.Log(event1);
                     do
                     {
                         eventCard = Random.Range(4, 39);
@@ -942,7 +942,7 @@ public class Player : PlayerStatistiche{
                     EventListView(event2);
                     UI.EventCard2.texture = UI.EventCardImage[immagineCarte];
                     UI.SpiegazioneCarta2.text = descrizioneCarte;
-                    Debug.Log(event2);
+                    //Debug.Log(event2);
                     UI.UICardEvent.SetActive(true);
                 }
             }
@@ -951,7 +951,7 @@ public class Player : PlayerStatistiche{
             if (Gpm.CurrentEventState == GamePlayManager.EventState.Animation)
             {
                 countdown = 0;
-                Debug.Log(countdown);
+                //Debug.Log(countdown);
                 if (countdown <= 0)
                 {
                     countdown = 2f;
@@ -1467,9 +1467,14 @@ public class Player : PlayerStatistiche{
 
     public void neutralizeCell(int _x, int _z)
     {
-        grid.FindCell(_x, _z).Tile.GetComponent<MeshRenderer>().material = grid.TileMaterial[3];
-        grid.FindCell(_x, _z).SetNameTile("Empty");
-        MissionManager.EmptyCell++;
+        if (!Gpm.CellNeutralizeInThisTurn)
+        {
+            Gpm.CellNeutralizeInThisTurn = true;
+            grid.FindCell(_x, _z).Tile.GetComponent<MeshRenderer>().material = grid.TileMaterial[3];
+            grid.FindCell(_x, _z).SetNameTile("Empty");
+            MissionManager.EmptyCell++;
+            Debug.Log("Empty Cell = " + MissionManager.EmptyCell);
+        }
     }
 
     public void LoseRound()

@@ -172,6 +172,7 @@ public class TheGrid : MonoBehaviour {
                         tile = (GameObject)Instantiate(TileEmpty);
                         tile.transform.position = cell.WorldPosition;
                         mission.EmptyCell++;
+                        Debug.Log("Empty Cell = " + mission.EmptyCell);
                     }
                     else if (FindCell(_x, _z).GetNameTile() == "Credit")
                     {

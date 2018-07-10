@@ -78,7 +78,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy {
     public virtual void Spawn()
     {
         IsAlive = true;
-        int random = UnityEngine.Random.Range(0, 5);
+        int random = UnityEngine.Random.Range(1, 5);
         switch (random)
         {
             case 1:
