@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-
+    [SerializeField]
+    GameObject menuCanvas;
     public GameObject TutorialPanel;
     bool ActiveConsole = false;
     SoundEffectManager soundEffect;
@@ -58,10 +59,11 @@ public class MainMenuScript : MonoBehaviour
         CreditsPanel.SetActive(false);
     }
 
+    bool loaded;
     public void loadlevel()
     {
         soundEffect.PlayEffect(soundEffect.Click);
-        SceneManager.LoadScene("Scene 2 - Copia 1");
-       
+        menuCanvas.SetActive(false);
+        loaded = true;
     }
 }
